@@ -38,7 +38,6 @@ class TreeNode(object):
                 nodes.append(None)
             else:
                 nodes.append(node.val)
-
                 que.put(node.left)
                 que.put(node.right)
 
