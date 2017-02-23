@@ -1,0 +1,44 @@
+import unittest
+from tree import TreeNode, null
+
+
+class Solution(object):
+
+    def __init__(self):
+        self.paths = []
+
+    def binaryTreePaths(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[str]
+        """
+        if root is None:
+            return []
+
+        self._binary_tree_paths(root, '')
+        return self.paths
+
+    def _binary_tree_paths(self, node, path):
+        path += str(node.val)
+
+        if node.left is None and node.right is None:
+            self.paths.append(path)
+        else:
+            path += '->'
+            if node.left != None:
+                self._binary_tree_paths(node.left, path)
+            if node.right != None:
+                self._binary_tree_paths(node.right, path)
+
+
+class Test(unittest.TestCase):
+
+    def test(self):
+        root = TreeNode.from_array([1, 2, 3, null, 5])
+        self.assertEqual(
+            Solution().binaryTreePaths(root),
+            ["1->2->5", "1->3"])
+
+
+if __name__ == '__main__':
+    unittest.main()
