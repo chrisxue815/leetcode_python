@@ -2,6 +2,9 @@ import Queue
 import unittest
 
 
+null = None
+
+
 class TreeNode(object):
 
     def __init__(self, x):
