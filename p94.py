@@ -11,18 +11,16 @@ class Solution(object):
         """
         vals = []
         stack = []
-        stack.append(root)
+        cur = root
 
-        while len(stack) > 0:
-            node = stack.pop()
-            if node is None:
-                continue
-            if isinstance(node, TreeNode):
-                stack.append(node.right)
-                stack.append(node.val)
-                stack.append(node.left)
-            else:
-                vals.append(node)
+        while cur != None or len(stack) > 0:
+            while cur != None:
+                stack.append(cur)
+                cur = cur.left
+            cur = stack.pop()
+            vals.append(cur.val)
+
+            cur = cur.right
 
         return vals
 

@@ -1,4 +1,5 @@
 import Queue
+import sys
 import unittest
 from tree import TreeNode, null
 
@@ -13,29 +14,26 @@ class Solution(object):
         if root is None:
             return []
 
-        curr_level = 0
-        curr_max = root.val
         max_vals = []
-
         que = Queue.Queue()
-        que.put((root, 0))
+        que.put(root)
 
         while not que.empty():
-            node, level = que.get()
+            level_nodes = que.qsize()
+            level_max = -sys.maxint - 1
 
-            if curr_level != level:
-                curr_level = level
-                max_vals.append(curr_max)
-                curr_max = node.val
-            elif curr_max < node.val:
-                curr_max = node.val
+            for _ in xrange(level_nodes):
+                node = que.get()
 
-            if node.left != None:
-                que.put((node.left, level + 1))
-            if node.right != None:
-                que.put((node.right, level + 1))
+                if level_max < node.val:
+                    level_max = node.val
 
-        max_vals.append(curr_max)
+                if node.left != None:
+                    que.put(node.left)
+                if node.right != None:
+                    que.put(node.right)
+
+            max_vals.append(level_max)
 
         return max_vals
 
