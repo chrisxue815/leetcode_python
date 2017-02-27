@@ -49,14 +49,14 @@ class TreeNode(object):
 
         return vals
 
-    @staticmethod
-    def from_array(vals):
+    @classmethod
+    def from_array(cls, vals):
         """
         Deserializes binary tree from Leetcode-style representation
         :type vals: List[int or None]
         :rtype: TreeNode
         """
-        rootParent = TreeNode(0)
+        rootParent = cls(0)
         que = Queue.Queue()
         que.put((rootParent, 'l'))
 
@@ -66,7 +66,7 @@ class TreeNode(object):
             if val is None:
                 continue
 
-            node = TreeNode(val)
+            node = cls(val)
 
             if leftOrRight == 'l':
                 parent.left = node
@@ -96,6 +96,29 @@ class TreeNode(object):
 
         if node.right != None:
             TreeNode._to_array_inorder(node.right, vals)
+
+
+class TreeLinkNode(TreeNode):
+
+    def __init__(self, x):
+        super(TreeLinkNode, self).__init__(x)
+        self.next = None
+
+    def to_array_bfs_fulltree(self):
+        """
+        Serializes FULL binary tree in Leetcode style using level order traversal (BFS)
+        :rtype: List[int or None]
+        """
+        vals = []
+        prev = curr = self
+
+        while prev != None:
+            while curr != None:
+                vals.append(curr.val)
+                curr = curr.next
+            prev = curr = prev.left
+
+        return vals
 
 
 class Test(unittest.TestCase):
