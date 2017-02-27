@@ -78,6 +78,25 @@ class TreeNode(object):
 
         return rootParent.left
 
+    def to_array_inorder(self):
+        """
+        Serializes binary tree using inorder DFS traversal
+        :rtype: List[int or None]
+        """
+        vals = []
+        TreeNode._to_array_inorder(self, vals)
+        return vals
+
+    @staticmethod
+    def _to_array_inorder(node, vals):
+        if node.left != None:
+            TreeNode._to_array_inorder(node.left, vals)
+
+        vals.append(node.val)
+
+        if node.right != None:
+            TreeNode._to_array_inorder(node.right, vals)
+
 
 class Test(unittest.TestCase):
 
@@ -90,6 +109,12 @@ class Test(unittest.TestCase):
     def test_from_array(self):
         vals = [1, 2, 4, None, 3, 5]
         self.assertEqual(TreeNode.from_array(vals).to_array(), vals)
+
+    def test_to_array_inorder(self):
+        vals = [4, 2, 6, 1, 3, 5, 7]
+        self.assertEqual(
+            TreeNode.from_array(vals).to_array_inorder(),
+            [1, 2, 3, 4, 5, 6, 7])
 
 
 if __name__ == '__main__':

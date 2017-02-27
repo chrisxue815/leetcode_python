@@ -1,0 +1,68 @@
+import unittest
+from tree import TreeNode, null
+
+# Definition for a  binary tree node
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+
+class BSTIterator(object):
+
+    def __init__(self, root):
+        """
+        :type root: TreeNode
+        """
+        stack = []
+        self.stack = stack
+        while root != None:
+            stack.append(root)
+            root = root.left
+
+    def hasNext(self):
+        """
+        :rtype: bool
+        """
+        return len(self.stack) > 0
+
+    def next(self):
+        """
+        :rtype: int
+        """
+        stack = self.stack
+
+        if len(stack) == 0:
+            return None
+
+        curr = stack.pop()
+        nextnode = curr.right
+
+        while nextnode != None:
+            stack.append(nextnode)
+            nextnode = nextnode.left
+
+        return curr.val
+
+
+# Your BSTIterator will be called like this:
+# i, v = BSTIterator(root), []
+# while i.hasNext(): v.append(i.next())
+
+
+class Test(unittest.TestCase):
+
+    def test(self):
+        self._test([4, 2, 6, 1, 3, 5, 7])
+
+    def _test(self, vals):
+        root = TreeNode.from_array(vals)
+        i, v = BSTIterator(root), []
+        while i.hasNext():
+            v.append(i.next())
+        self.assertEqual(v, root.to_array_inorder())
+
+
+if __name__ == '__main__':
+    unittest.main()
