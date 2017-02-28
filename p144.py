@@ -10,15 +10,15 @@ class Solution(object):
         :rtype: List[int]
         """
         vals = []
-        stack = []
-        cur = root
+        stack = [root]
 
-        while cur != None or len(stack) > 0:
+        while len(stack) > 0:
+            cur = stack.pop()
             while cur != None:
                 vals.append(cur.val)
-                stack.append(cur)
+                if cur.right != None:
+                    stack.append(cur.right)
                 cur = cur.left
-            cur = stack.pop().right
 
         return vals
 
