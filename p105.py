@@ -23,13 +23,16 @@ class Solution(object):
             return None
 
         root_val = self.preorder[preorder_index]
+
         for i in xrange(inorder_left, inorder_right):
             if self.inorder[i] == root_val:
                 break
 
         root = TreeNode(root_val)
         root.left = self._build(preorder_index + 1, inorder_left, i)
-        root.right = self._build(preorder_index + i - inorder_left + 1,
+
+        left_tree_size = i - inorder_left
+        root.right = self._build(preorder_index + left_tree_size + 1,
                                  i + 1, inorder_right)
         return root
 
