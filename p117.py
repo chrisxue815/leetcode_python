@@ -16,7 +16,7 @@ class Solution(object):
     # @return nothing
 
     def connect(self, root):
-        if root is None:
+        if not root:
             return
 
         curr = root
@@ -24,21 +24,21 @@ class Solution(object):
         prev = phantom
 
         while True:
-            if curr.left != None:
+            if curr.left:
                 prev.next = curr.left
-                if curr.right != None:
+                if curr.right:
                     curr.left.next = curr.right
                     prev = curr.right
                 else:
                     prev = curr.left
-            elif curr.right != None:
+            elif curr.right:
                 prev.next = curr.right
                 prev = curr.right
 
             curr = curr.next
 
-            if curr is None:
-                if phantom.next is None:
+            if not curr:
+                if not phantom.next:
                     break
                 prev = phantom
                 curr = phantom.next

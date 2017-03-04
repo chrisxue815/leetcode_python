@@ -37,7 +37,7 @@ class TreeNode(object):
         while not que.empty():
             node = que.get()
 
-            if node is None:
+            if not node:
                 vals.append(None)
             else:
                 vals.append(node.val)
@@ -63,7 +63,7 @@ class TreeNode(object):
         for val in vals:
             (parent, leftOrRight) = que.get()
 
-            if val is None:
+            if not val:
                 continue
 
             node = cls(val)
@@ -89,12 +89,12 @@ class TreeNode(object):
 
     @staticmethod
     def _to_array_inorder(node, vals):
-        if node.left != None:
+        if node.left:
             TreeNode._to_array_inorder(node.left, vals)
 
         vals.append(node.val)
 
-        if node.right != None:
+        if node.right:
             TreeNode._to_array_inorder(node.right, vals)
 
 
@@ -112,8 +112,8 @@ class TreeLinkNode(TreeNode):
         vals = []
         prev = curr = self
 
-        while prev != None:
-            while curr != None:
+        while prev:
+            while curr:
                 vals.append(curr.val)
                 curr = curr.next
             prev = curr = prev.left

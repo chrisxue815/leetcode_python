@@ -11,7 +11,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        if root is None:
+        if not root:
             return []
 
         max_vals = []
@@ -28,9 +28,9 @@ class Solution(object):
                 if level_max < node.val:
                     level_max = node.val
 
-                if node.left != None:
+                if node.left:
                     que.put(node.left)
-                if node.right != None:
+                if node.right:
                     que.put(node.right)
 
             max_vals.append(level_max)

@@ -17,7 +17,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        if root is None:
+        if not root:
             return []
 
         right_view = []
@@ -36,9 +36,9 @@ class Solution(object):
 
     def _pop_and_push_subtree(self, q):
         node = q.get()
-        if node.right != None:
+        if node.right:
             q.put(node.right)
-        if node.left != None:
+        if node.left:
             q.put(node.left)
         return node
 

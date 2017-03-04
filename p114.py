@@ -12,11 +12,11 @@ class Solution(object):
         stack = [root]
         prev = TreeNode(0)
 
-        while len(stack) > 0:
+        while stack:
             curr = stack.pop()
 
-            while curr != None:
-                if curr.right != None:
+            while curr:
+                if curr.right:
                     stack.append(curr.right)
                 prev.left = None
                 prev.right = curr

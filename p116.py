@@ -15,16 +15,16 @@ class Solution(object):
     # @return nothing
 
     def connect(self, root):
-        if root is None:
+        if not root:
             return
 
         curr = root
         next_level = curr.left
 
-        while next_level != None:
-            while curr != None:
+        while next_level:
+            while curr:
                 curr.left.next = curr.right
-                if curr.next != None:
+                if curr.next:
                     curr.right.next = curr.next.left
                 curr = curr.next
             curr = next_level

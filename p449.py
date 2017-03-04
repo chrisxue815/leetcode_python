@@ -18,7 +18,7 @@ class Codec(object):
         return self.tree[:-1]
 
     def _preorder(self, node):
-        if node is None:
+        if not node:
             return
         self.tree += str(node.val) + ' '
         self._preorder(node.left)
@@ -47,7 +47,7 @@ class Codec(object):
                 stack.append(parent)
                 parent = parent.left
 
-                while parent.right != None:
+                while parent.right:
                     stack.append(parent)
                     parent = parent.right
 

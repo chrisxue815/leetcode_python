@@ -17,7 +17,7 @@ class BSTIterator(object):
         """
         stack = []
         self.stack = stack
-        while root != None:
+        while root:
             stack.append(root)
             root = root.left
 
@@ -33,13 +33,13 @@ class BSTIterator(object):
         """
         stack = self.stack
 
-        if len(stack) == 0:
+        if not stack:
             return None
 
         curr = stack.pop()
         nextnode = curr.right
 
-        while nextnode != None:
+        while nextnode:
             stack.append(nextnode)
             nextnode = nextnode.left
 

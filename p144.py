@@ -12,8 +12,8 @@ class Solution(object):
         stack = []
         cur = root
 
-        while cur is not None or len(stack) > 0:
-            if cur is not None:
+        while cur or stack:
+            if cur:
                 stack.append(cur)
                 vals.append(cur.val)
                 cur = cur.left

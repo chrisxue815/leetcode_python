@@ -21,7 +21,7 @@ class Solution(object):
         return self.max_vals
 
     def _find_mode(self, node):
-        if node is None:
+        if not node:
             return
 
         self._find_mode(node.left)

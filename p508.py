@@ -29,7 +29,7 @@ class Solution(object):
         return max_tree_sums
 
     def _tree_sum(self, node):
-        if node is None:
+        if not node:
             return 0
 
         left = self._tree_sum(node.left)

@@ -21,7 +21,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        if node is None:
+        if not node:
             return
 
         if self.depth < depth:

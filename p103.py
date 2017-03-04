@@ -9,7 +9,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[int]]
         """
-        if root is None:
+        if not root:
             return []
 
         vals = []
@@ -34,9 +34,9 @@ class Solution(object):
                 else:
                     left, right = node.right, node.left
 
-                if left != None:
+                if left:
                     level_stack.append(left)
-                if right != None:
+                if right:
                     level_stack.append(right)
 
             vals.append(level_vals)

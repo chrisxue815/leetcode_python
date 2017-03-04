@@ -11,7 +11,7 @@ class Solution(object):
         :type key: int
         :rtype: TreeNode
         """
-        if root is None:
+        if not root:
             return None
 
         root_parent = TreeNode(sys.maxint)
@@ -19,14 +19,14 @@ class Solution(object):
 
         node, parent = self._find_node(root, root_parent, key)
 
-        if node != None:
+        if node:
             self._delete_node(node, parent)
 
         return root_parent.left
 
     def _find_node(self, root, root_parent, key):
         while True:
-            if root is None:
+            if not root:
                 return None, None
 
             if key < root.val:
@@ -40,13 +40,13 @@ class Solution(object):
 
     def _delete_node(self, node, parent):
         while True:
-            if node.left is None:
+            if not node.left:
                 if node == parent.left:
                     parent.left = node.right
                 else:
                     parent.right = node.right
                 return
-            elif node.right is None:
+            elif not node.right:
                 if node == parent.left:
                     parent.left = node.left
                 else:
@@ -58,7 +58,7 @@ class Solution(object):
                 node = largest_node
 
     def _find_largest(self, root, root_parent):
-        while root.right != None:
+        while root.right:
             root_parent = root
             root = root.right
         return root, root_parent

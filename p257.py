@@ -12,7 +12,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[str]
         """
-        if root is None:
+        if not root:
             return []
 
         self._binary_tree_paths(root, '')
@@ -21,13 +21,13 @@ class Solution(object):
     def _binary_tree_paths(self, node, path):
         path += str(node.val)
 
-        if node.left is None and node.right is None:
+        if not node.left and not node.right:
             self.paths.append(path)
         else:
             path += '->'
-            if node.left != None:
+            if node.left:
                 self._binary_tree_paths(node.left, path)
-            if node.right != None:
+            if node.right:
                 self._binary_tree_paths(node.right, path)
 
 

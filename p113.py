@@ -14,7 +14,7 @@ class Solution(object):
         :type sum: int
         :rtype: List[List[int]]
         """
-        if root is None:
+        if not root:
             return []
 
         self.sum = sum_
@@ -26,13 +26,13 @@ class Solution(object):
         path = list(path)
         path.append(node.val)
 
-        if node.left is None and node.right is None:
+        if not node.left and not node.right:
             if sum_ == self.sum:
                 self.paths.append(path)
         else:
-            if node.left != None:
+            if node.left:
                 self._path_sum(node.left, sum_, path)
-            if node.right != None:
+            if node.right:
                 self._path_sum(node.right, sum_, path)
 
 

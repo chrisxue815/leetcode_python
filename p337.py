@@ -10,7 +10,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        if root is None:
+        if not root:
             return 0
 
         self._rob(root)
@@ -20,20 +20,20 @@ class Solution(object):
         a = 0  # not robbing this node
         b = node.val  # robbing this node
 
-        if node.left != None:
+        if node.left:
             self._rob(node.left)
             a += node.left.optimal
-            if node.left.left != None:
+            if node.left.left:
                 b += node.left.left.optimal
-            if node.left.right != None:
+            if node.left.right:
                 b += node.left.right.optimal
 
-        if node.right != None:
+        if node.right:
             self._rob(node.right)
             a += node.right.optimal
-            if node.right.left != None:
+            if node.right.left:
                 b += node.right.left.optimal
-            if node.right.right != None:
+            if node.right.right:
                 b += node.right.right.optimal
 
         node.optimal = max(a, b)

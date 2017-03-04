@@ -21,7 +21,7 @@ class Solution(object):
         return self.kth
 
     def _kth(self, node):
-        if node is None:
+        if not node:
             return False
 
         if self._kth(node.left):

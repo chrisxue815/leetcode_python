@@ -20,7 +20,7 @@ class Solution(object):
         return self.count
 
     def _path_sum(self, node, paths):
-        if node is None:
+        if not node:
             return
 
         paths = list(paths)

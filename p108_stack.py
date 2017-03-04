@@ -22,7 +22,7 @@ class Solution(object):
         rootParent = TreeNode(0)
         stack.append(StackFrame(0, len(nums) - 1, rootParent, 'l'))
 
-        while len(stack) > 0:
+        while stack:
             frame = stack.pop()
 
             if frame.left <= frame.right:

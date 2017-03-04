@@ -12,7 +12,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        if root is None:
+        if not root:
             return 0
 
         self._sum(root, 0)
@@ -21,14 +21,14 @@ class Solution(object):
     def _sum(self, node, parent_sum):
         parent_sum += node.val
 
-        if node.left is None and node.right is None:
+        if not node.left and not node.right:
             self.sum += parent_sum
             return
 
         parent_sum *= 10
-        if node.left != None:
+        if node.left:
             self._sum(node.left, parent_sum)
-        if node.right != None:
+        if node.right:
             self._sum(node.right, parent_sum)
 
 
