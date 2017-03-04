@@ -1,9 +1,8 @@
 import unittest
-from tree import TreeNode, null
+from tree import TreeNode
 
 
 class Solution(object):
-
     def inorderTraversal(self, root):
         """
         :type root: TreeNode
@@ -13,25 +12,24 @@ class Solution(object):
         stack = []
         cur = root
 
-        while cur != None or len(stack) > 0:
-            while cur != None:
+        while cur is not None or len(stack) > 0:
+            if cur is not None:
                 stack.append(cur)
                 cur = cur.left
-            cur = stack.pop()
-            vals.append(cur.val)
-
-            cur = cur.right
+            else:
+                cur = stack.pop()
+                vals.append(cur.val)
+                cur = cur.right
 
         return vals
 
 
 class Test(unittest.TestCase):
-
     def test(self):
-        root = TreeNode.from_array([1, null, 2, 3])
+        root = TreeNode.from_array([1, 2, 3, 4, 5, 6, 7])
         self.assertEqual(
             Solution().inorderTraversal(root),
-            [1, 3, 2])
+            [4, 2, 5, 1, 6, 3, 7])
 
 
 if __name__ == '__main__':
