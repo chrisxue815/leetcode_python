@@ -1,12 +1,10 @@
 import Queue
 import unittest
 
-
 null = None
 
 
 class TreeNode(object):
-
     def __init__(self, x):
         self.val = x
         self.left = None
@@ -63,7 +61,7 @@ class TreeNode(object):
         for val in vals:
             (parent, leftOrRight) = que.get()
 
-            if not val:
+            if val is None:
                 continue
 
             node = cls(val)
@@ -99,7 +97,6 @@ class TreeNode(object):
 
 
 class TreeLinkNode(TreeNode):
-
     def __init__(self, x):
         super(TreeLinkNode, self).__init__(x)
         self.next = None
@@ -122,7 +119,6 @@ class TreeLinkNode(TreeNode):
 
 
 class Test(unittest.TestCase):
-
     def test_to_array(self):
         root = TreeNode(1) \
             .setleft(TreeNode(2).setright(TreeNode(3))) \
