@@ -47,6 +47,13 @@ class TreeNode(object):
 
         return vals
 
+    @staticmethod
+    def to_array_static(root):
+        if root:
+            return root.to_array()
+        else:
+            return []
+
     @classmethod
     def from_array(cls, vals):
         """
@@ -54,9 +61,9 @@ class TreeNode(object):
         :type vals: List[int or None]
         :rtype: TreeNode
         """
-        rootParent = cls(0)
+        root_parent = cls(0)
         que = Queue.Queue()
-        que.put((rootParent, 'l'))
+        que.put((root_parent, 'l'))
 
         for val in vals:
             (parent, leftOrRight) = que.get()
@@ -74,7 +81,7 @@ class TreeNode(object):
             que.put((node, 'l'))
             que.put((node, 'r'))
 
-        return rootParent.left
+        return root_parent.left
 
     def to_array_inorder(self):
         """
