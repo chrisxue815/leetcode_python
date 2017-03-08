@@ -42,7 +42,7 @@ class TreeNode(object):
                 que.put(node.left)
                 que.put(node.right)
 
-        while not vals[-1]:
+        while vals[-1] is None:
             vals.pop()
 
         return vals
