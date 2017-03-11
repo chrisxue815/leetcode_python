@@ -41,6 +41,25 @@ def binary_insertion_sort(a):
             a[left + 1] = to_be_inserted
 
 
+def _shell_gaps(n):
+    gap = n // 2
+    while gap > 0:
+        yield gap
+        gap //= 2
+
+
+def shell_sort(a):
+    n = len(a)
+    for gap in _shell_gaps(n):
+        for i in xrange(gap, n):
+            to_be_inserted = a[i]
+            j = i
+            while j >= gap and a[j - gap] > to_be_inserted:
+                a[j] = a[j - gap]
+                j -= gap
+            a[j] = to_be_inserted
+
+
 # Swap
 
 def bubble_sort(a):
@@ -67,7 +86,7 @@ class Test(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(Test, self).__init__(*args, **kwargs)
 
-        n = 100
+        n = 10
         self.ordered = list(xrange(n))
 
         cloned = list(self.ordered)
@@ -80,6 +99,7 @@ class Test(unittest.TestCase):
         self._test(selection_sort)
         self._test(insertion_sort)
         self._test(binary_insertion_sort)
+        self._test(shell_sort)
 
     def _test(self, func):
         unordered = list(self.unordered)
