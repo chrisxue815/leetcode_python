@@ -2,12 +2,27 @@ import random
 import unittest
 
 
+# Swap
+
 def bubble_sort(a):
     n = len(a)
     for i in xrange(n):
         for j in xrange(1, n - i):
             if a[j - 1] > a[j]:
                 a[j - 1], a[j] = a[j], a[j - 1]
+    return a
+
+
+def selection_sort(a):
+    n = len(a)
+    for i in xrange(n):
+        min_val = a[i]
+        min_val_index = i
+        for j in xrange(i + 1, n):
+            if a[j] < min_val:
+                min_val = a[j]
+                min_val_index = j
+        a[i], a[min_val_index] = a[min_val_index], a[i]
     return a
 
 
@@ -25,6 +40,7 @@ class Test(unittest.TestCase):
 
     def test(self):
         self._test(bubble_sort)
+        self._test(selection_sort)
 
     def _test(self, func):
         unordered = list(self.unordered)
