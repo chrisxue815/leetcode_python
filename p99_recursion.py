@@ -15,9 +15,7 @@ class Solution(object):
         """
         found = self._recover(root)
         if not found and self.error1:
-            tmp = self.error1.val
-            self.error1.val = self.error2.val
-            self.error2.val = tmp
+            self.error1.val, self.error2.val = self.error2.val, self.error1.val
 
     def _recover(self, root):
         if not root:
@@ -30,17 +28,13 @@ class Solution(object):
         if self.prev:
             if self.prev.val >= root.val:
                 if self.error1:
-                    tmp = self.error1.val
-                    self.error1.val = root.val
-                    root.val = tmp
+                    self.error1.val, root.val = root.val, self.error1.val
                     return True
                 else:
                     self.error1 = self.prev
                     self.error2 = root
             elif self.error1 and root.val >= self.error1.val:
-                tmp = self.error1.val
-                self.error1.val = self.error2.val
-                self.error2.val = tmp
+                self.error1.val, self.error2.val = self.error2.val, self.error1.val
                 return True
 
         self.prev = root

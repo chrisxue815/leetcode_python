@@ -30,7 +30,6 @@ class Solution(object):
         prev = None
         error1 = None
         error2 = None
-        stopping = False
 
         while root:
             predecessor = _find_predecessor(root)
@@ -39,18 +38,14 @@ class Solution(object):
                 if prev:
                     if prev.val > root.val:
                         if error1:
-                            tmp = root.val
-                            root.val = error1.val
-                            error1.val = tmp
+                            root.val, error1.val = error1.val, root.val
                             _stop_morris(root)
                             return
                         else:
                             error1 = prev
                             error2 = root
                     elif error1 and root.val > error1.val:
-                        tmp = error1.val
-                        error1.val = error2.val
-                        error2.val = tmp
+                        error1.val, error2.val = error2.val, error1.val
                         _stop_morris(root)
                         return
 
@@ -66,9 +61,7 @@ class Solution(object):
                 root = root.left
 
         if error1:
-            tmp = error1.val
-            error1.val = error2.val
-            error2.val = tmp
+            error1.val, error2.val = error2.val, error1.val
 
 
 class Test(unittest.TestCase):

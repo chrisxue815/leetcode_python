@@ -16,9 +16,7 @@ class Solution(object):
             reverse_len = min(k, l - left)
             right = left + reverse_len - 1
             for i in xrange(reverse_len // 2):
-                tmp = chars[left + i]
-                chars[left + i] = chars[right - i]
-                chars[right - i] = tmp
+                chars[left + i], chars[right - i] = chars[right - i], chars[left + i]
             left = right + 1 + k
 
         return ''.join(chars)

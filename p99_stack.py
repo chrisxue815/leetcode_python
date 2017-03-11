@@ -23,17 +23,13 @@ class Solution(object):
                 if prev:
                     if prev.val > root.val:
                         if error1:
-                            tmp = root.val
-                            root.val = error1.val
-                            error1.val = tmp
+                            root.val, error1.val = error1.val, root.val
                             return
                         else:
                             error1 = prev
                             error2 = root
                     elif error1 and root.val > error1.val:
-                        tmp = error1.val
-                        error1.val = error2.val
-                        error2.val = tmp
+                        error1.val, error2.val = error2.val, error1.val
                         return
 
                 prev = root
@@ -41,9 +37,7 @@ class Solution(object):
                 root = root.right
 
         if error1:
-            tmp = error1.val
-            error1.val = error2.val
-            error2.val = tmp
+            error1.val, error2.val = error2.val, error1.val
 
 
 class Test(unittest.TestCase):
