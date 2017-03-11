@@ -8,12 +8,17 @@ def insertion_sort(a):
     n = len(a)
     for i in xrange(1, n):
         to_be_inserted = a[i]
-        for j in xrange(i):
-            if a[j] > to_be_inserted:
+        inserted = False
+        for j in xrange(i - 1, -1, -1):
+            if a[j] <= to_be_inserted:
                 # memmove(a + j + 1, a + j, i - j)
-                a[j + 1: i + 1] = a[j: i]
-                a[j] = to_be_inserted
+                a[j + 2: i + 1] = a[j + 1: i]
+                a[j + 1] = to_be_inserted
+                inserted = True
                 break
+        if not inserted:
+            a[1: i + 1] = a[0: i]
+            a[0] = to_be_inserted
 
 
 # Swap
