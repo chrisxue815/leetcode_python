@@ -2,6 +2,20 @@ import random
 import unittest
 
 
+# Insert
+
+def insertion_sort(a):
+    n = len(a)
+    for i in xrange(1, n):
+        to_be_inserted = a[i]
+        for j in xrange(i):
+            if a[j] > to_be_inserted:
+                # memmove(a + j + 1, a + j, i - j)
+                a[j + 1: i + 1] = a[j: i]
+                a[j] = to_be_inserted
+                break
+
+
 # Swap
 
 def bubble_sort(a):
@@ -10,7 +24,6 @@ def bubble_sort(a):
         for j in xrange(1, n - i):
             if a[j - 1] > a[j]:
                 a[j - 1], a[j] = a[j], a[j - 1]
-    return a
 
 
 def selection_sort(a):
@@ -23,7 +36,6 @@ def selection_sort(a):
                 min_val = a[j]
                 min_val_index = j
         a[i], a[min_val_index] = a[min_val_index], a[i]
-    return a
 
 
 class Test(unittest.TestCase):
@@ -41,10 +53,12 @@ class Test(unittest.TestCase):
     def test(self):
         self._test(bubble_sort)
         self._test(selection_sort)
+        self._test(insertion_sort)
 
     def _test(self, func):
         unordered = list(self.unordered)
-        self.assertEqual(func(unordered), self.ordered)
+        func(unordered)
+        self.assertEqual(unordered, self.ordered)
 
 
 if __name__ == '__main__':
