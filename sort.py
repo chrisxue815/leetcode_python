@@ -21,6 +21,26 @@ def insertion_sort(a):
             a[0] = to_be_inserted
 
 
+def binary_insertion_sort(a):
+    n = len(a)
+    for i in xrange(1, n):
+        to_be_inserted = a[i]
+        left = 0
+        right = i - 1
+        while left < right:
+            middle = left + (right - left) // 2
+            if to_be_inserted < a[middle]:
+                right = middle - 1
+            else:
+                left = middle + 1
+        if to_be_inserted < a[left]:
+            a[left + 1: i + 1] = a[left: i]
+            a[left] = to_be_inserted
+        else:
+            a[left + 2: i + 1] = a[left + 1: i]
+            a[left + 1] = to_be_inserted
+
+
 # Swap
 
 def bubble_sort(a):
@@ -59,6 +79,7 @@ class Test(unittest.TestCase):
         self._test(bubble_sort)
         self._test(selection_sort)
         self._test(insertion_sort)
+        self._test(binary_insertion_sort)
 
     def _test(self, func):
         unordered = list(self.unordered)
