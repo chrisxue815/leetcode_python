@@ -89,7 +89,10 @@ def _quick_sort(a, left, right):
         i += 1
         j -= 1
 
-    # Optimization: tail call, see CLR
+    # Optimization: tail call
+    # see CLR
+    # https://github.com/kasicass/sscli20/blob/dc64e12c9b835d4d373aa04978c0e8f1763b2e1b/clr/src/vm/comarrayhelpers.h#L77
+    # https://github.com/kasicass/sscli20/blob/dc64e12c9b835d4d373aa04978c0e8f1763b2e1b/clr/src/bcl/system/collections/generic/arraysorthelper.cs#L70
     _quick_sort(a, left, j)
     _quick_sort(a, i, right)
 
@@ -117,6 +120,7 @@ def selection_sort(a):
 def _merge_sort(dest, src, low, high):
     # Optimization: using insertion sort on smallest arrays (length < 7)
     # see OpenJDK
+    # http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8u40-b25/java/util/Arrays.java#1338
     if low >= high - 1:
         return
 
@@ -144,6 +148,34 @@ def merge_sort(a):
     _merge_sort(a, aux, 0, len(a))
 
 
+# Misc
+
+def _heapify(a, root, n):
+    left = 2 * root + 1
+    right = 2 * root + 2
+    largest = root
+
+    if left < n and a[left] > a[largest]:
+        largest = left
+    if right < n and a[right] > a[largest]:
+        largest = right
+
+    if largest != root:
+        a[largest], a[root] = a[root], a[largest]
+        _heapify(a, largest, n)
+
+
+def heap_sort(a):
+    n = len(a)
+
+    for i in xrange(n // 2 - 1, -1, -1):
+        _heapify(a, i, n)
+
+    for i in xrange(n - 1, -1, -1):
+        a[0], a[i] = a[i], a[0]
+        _heapify(a, 0, i)
+
+
 class Test(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(Test, self).__init__(*args, **kwargs)
@@ -164,6 +196,7 @@ class Test(unittest.TestCase):
         self._test(shell_sort)
         self._test(quick_sort)
         self._test(merge_sort)
+        self._test(heap_sort)
 
     def _test(self, func):
         unordered = list(self.unordered)
