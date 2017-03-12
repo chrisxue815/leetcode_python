@@ -5,6 +5,17 @@ import unittest
 # Insertion
 
 def insertion_sort(a):
+    # see OpenJDK
+    # http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8u40-b25/java/util/Arrays.java#1345
+    n = len(a)
+    for i in xrange(1, n):
+        for j in xrange(i, 0, -1):
+            if a[j - 1] <= a[j]:
+                break
+            a[j - 1], a[j] = a[j], a[j - 1]
+
+
+def insertion_sort_memmove(a):
     n = len(a)
     for i in xrange(1, n):
         to_be_inserted = a[i]
@@ -189,12 +200,13 @@ class Test(unittest.TestCase):
         self.unordered = cloned
 
     def test(self):
-        self._test(bubble_sort)
-        self._test(selection_sort)
         self._test(insertion_sort)
+        self._test(insertion_sort_memmove)
         self._test(binary_insertion_sort)
         self._test(shell_sort)
+        self._test(bubble_sort)
         self._test(quick_sort)
+        self._test(selection_sort)
         self._test(merge_sort)
         self._test(heap_sort)
 
