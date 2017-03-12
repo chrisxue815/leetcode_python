@@ -88,6 +88,8 @@ def _quick_sort(a, left, right):
             a[i], a[j] = a[j], a[i]
         i += 1
         j -= 1
+
+    # Optimization: tail call, see CLR
     _quick_sort(a, left, j)
     _quick_sort(a, i, right)
 
@@ -110,6 +112,38 @@ def selection_sort(a):
         a[i], a[min_val_index] = a[min_val_index], a[i]
 
 
+# Merging
+
+def _merge_sort(dest, src, low, high):
+    # Optimization: using insertion sort on smallest arrays (length < 7)
+    # see OpenJDK
+    if low >= high - 1:
+        return
+
+    mid = low + (high - low) // 2
+    _merge_sort(src, dest, low, mid)
+    _merge_sort(src, dest, mid, high)
+
+    if src[mid - 1] < src[mid]:
+        dest[low: high] = src[low: high]
+        return
+
+    p = low
+    q = mid
+    for i in xrange(low, high):
+        if q >= high or p < mid and src[p] < src[q]:
+            dest[i] = src[p]
+            p += 1
+        else:
+            dest[i] = src[q]
+            q += 1
+
+
+def merge_sort(a):
+    aux = list(a)
+    _merge_sort(a, aux, 0, len(a))
+
+
 class Test(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(Test, self).__init__(*args, **kwargs)
@@ -129,6 +163,7 @@ class Test(unittest.TestCase):
         self._test(binary_insertion_sort)
         self._test(shell_sort)
         self._test(quick_sort)
+        self._test(merge_sort)
 
     def _test(self, func):
         unordered = list(self.unordered)
