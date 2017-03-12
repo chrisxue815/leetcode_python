@@ -2,7 +2,7 @@ import random
 import unittest
 
 
-# Insert
+# Insertion
 
 def insertion_sort(a):
     n = len(a)
@@ -70,6 +70,34 @@ def bubble_sort(a):
                 a[j - 1], a[j] = a[j], a[j - 1]
 
 
+def _quick_sort(a, left, right):
+    if left >= right:
+        return
+    middle = left + (right - left) // 2
+    pivot = a[middle]
+    i = left
+    j = right
+    while i <= j:
+        while a[i] < pivot:
+            i += 1
+        while a[j] > pivot:
+            j -= 1
+        if i > j:
+            break
+        elif i < j:
+            a[i], a[j] = a[j], a[i]
+        i += 1
+        j -= 1
+    _quick_sort(a, left, j)
+    _quick_sort(a, i, right)
+
+
+def quick_sort(a):
+    _quick_sort(a, 0, len(a) - 1)
+
+
+# Selection
+
 def selection_sort(a):
     n = len(a)
     for i in xrange(n):
@@ -100,6 +128,7 @@ class Test(unittest.TestCase):
         self._test(insertion_sort)
         self._test(binary_insertion_sort)
         self._test(shell_sort)
+        self._test(quick_sort)
 
     def _test(self, func):
         unordered = list(self.unordered)
