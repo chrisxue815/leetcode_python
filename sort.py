@@ -2,6 +2,65 @@ import random
 import unittest
 
 
+def binary_search(a, x, left=0, right=-1):
+    """
+    Returns the index of x if it exists in a.
+    Otherwise returns the index of either its left or right neighbor.
+    right is inclusive.
+    """
+    n = len(a)
+    if right < 0:
+        right += n
+
+    while left < right:
+        mid = left + (right - left) // 2
+        if x < a[mid]:
+            right = mid - 1
+        elif a[mid] < x:
+            left = mid + 1
+        else:
+            return mid
+    return left
+
+
+def binary_search_rightmost(a, x, left=0, right=-1):
+    """
+    Returns the index of the rightmost x or its right neighbor if it exists in a.
+    Otherwise returns the index of either its left or right neighbor.
+    right is inclusive.
+    """
+    n = len(a)
+    if right < 0:
+        right += n
+
+    while left < right:
+        mid = left + (right - left) // 2
+        if x < a[mid]:
+            right = mid - 1
+        else:
+            left = mid + 1
+    return left
+
+
+def binary_search_leftmost(a, x, left=0, right=-1):
+    """
+    Returns the index of the leftmost x or its left neighbor if it exists in a.
+    Otherwise returns the index of either its left or right neighbor.
+    right is inclusive.
+    """
+    n = len(a)
+    if right < 0:
+        right += n
+
+    while left < right:
+        mid = left + (right - left) // 2
+        if x <= a[mid]:
+            right = mid - 1
+        else:
+            left = mid + 1
+    return left
+
+
 # Insertion
 
 def insertion_sort(a):
@@ -18,38 +77,31 @@ def insertion_sort(a):
 def insertion_sort_memmove(a):
     n = len(a)
     for i in xrange(1, n):
-        to_be_inserted = a[i]
+        next_val = a[i]
         inserted = False
         for j in xrange(i - 1, -1, -1):
-            if a[j] <= to_be_inserted:
+            if a[j] <= next_val:
                 # memmove(a + j + 1, a + j, i - j)
                 a[j + 2: i + 1] = a[j + 1: i]
-                a[j + 1] = to_be_inserted
+                a[j + 1] = next_val
                 inserted = True
                 break
         if not inserted:
             a[1: i + 1] = a[0: i]
-            a[0] = to_be_inserted
+            a[0] = next_val
 
 
 def binary_insertion_sort(a):
     n = len(a)
     for i in xrange(1, n):
-        to_be_inserted = a[i]
-        left = 0
-        right = i - 1
-        while left < right:
-            middle = left + (right - left) // 2
-            if to_be_inserted < a[middle]:
-                right = middle - 1
-            else:
-                left = middle + 1
-        if to_be_inserted < a[left]:
-            a[left + 1: i + 1] = a[left: i]
-            a[left] = to_be_inserted
+        next_val = a[i]
+        index = binary_search_rightmost(a, next_val, 0, i - 1)
+        if next_val < a[index]:
+            a[index + 1: i + 1] = a[index: i]
+            a[index] = next_val
         else:
-            a[left + 2: i + 1] = a[left + 1: i]
-            a[left + 1] = to_be_inserted
+            a[index + 2: i + 1] = a[index + 1: i]
+            a[index + 1] = next_val
 
 
 def _shell_gaps(n):
@@ -255,6 +307,11 @@ class Test(unittest.TestCase):
         unordered = list(self.unordered)
         func(unordered)
         self.assertEqual(unordered, self.ordered)
+
+    def test_binary_sort(self):
+        self.assertEqual(binary_search([1, 2, 2, 3, 4, 5], 2), 2)
+        self.assertEqual(binary_search_rightmost([1, 2, 2, 3, 4, 5], 2), 3)
+        self.assertEqual(binary_search_leftmost([1, 2, 2, 3, 4, 5], 2), 1)
 
 
 if __name__ == '__main__':
