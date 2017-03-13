@@ -173,6 +173,7 @@ def _heapify(a, root, n):
 
     if largest != root:
         a[largest], a[root] = a[root], a[largest]
+        # Optimization: tail call
         _heapify(a, largest, n)
 
 
@@ -187,12 +188,51 @@ def heap_sort(a):
         _heapify(a, 0, i)
 
 
+def radix_sort(a):
+    # see com.indeed.util.core.sort.RadixSort
+    # http://grepcode.com/file/repo1.maven.org/maven2/com.indeed/util-core/1.0.14/com/indeed/util/core/sort/RadixSort.java#7
+    n = len(a)
+    count_scratch = [0] * 0x10000
+    scratch = [0] * n
+    sum_ = 0
+    for num in a:
+        radix = num & 0xFFFF
+        count_scratch[radix] += 1
+    for i in xrange(0x10000):
+        tmp = count_scratch[i]
+        count_scratch[i] = sum_
+        sum_ += tmp
+    for i in xrange(n):
+        num = a[i]
+        radix = num & 0xFFFF
+        offset = count_scratch[radix]
+        scratch[offset] = a[i]
+        count_scratch[radix] += 1
+
+    count_scratch = [0] * 0x10000
+    sum_ = 0
+    for num in a:
+        radix = (num >> 16) + 0x8000
+        count_scratch[radix] += 1
+    for i in xrange(0x10000):
+        tmp = count_scratch[i]
+        count_scratch[i] = sum_
+        sum_ += tmp
+    for i in xrange(n):
+        num = scratch[i]
+        radix = (num >> 16) + 0x8000
+        offset = count_scratch[radix]
+        a[offset] = scratch[i]
+        count_scratch[radix] += 1
+
+
 class Test(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(Test, self).__init__(*args, **kwargs)
 
-        n = 10
-        self.ordered = list(xrange(n))
+        start = -5
+        end = 5
+        self.ordered = list(xrange(start, end))
 
         cloned = list(self.ordered)
         random_func = random.Random(1).random
@@ -209,6 +249,7 @@ class Test(unittest.TestCase):
         self._test(selection_sort)
         self._test(merge_sort)
         self._test(heap_sort)
+        self._test(radix_sort)
 
     def _test(self, func):
         unordered = list(self.unordered)
