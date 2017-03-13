@@ -92,17 +92,12 @@ def insertion_sort_memmove(a):
     n = len(a)
     for i in xrange(1, n):
         next_val = a[i]
-        inserted = False
-        for j in xrange(i - 1, -1, -1):
-            if a[j] <= next_val:
-                # memmove(a + j + 1, a + j, i - j)
-                a[j + 2: i + 1] = a[j + 1: i]
-                a[j + 1] = next_val
-                inserted = True
-                break
-        if not inserted:
-            a[1: i + 1] = a[0: i]
-            a[0] = next_val
+        j = i - 1
+        while j >= 0 and a[j] > next_val:
+            j -= 1
+        # memmove(a + j + 1, a + j, i - j)
+        a[j + 2: i + 1] = a[j + 1: i]
+        a[j + 1] = next_val
 
 
 def binary_insertion_sort(a):
