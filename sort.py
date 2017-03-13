@@ -61,6 +61,20 @@ def binary_search_leftmost(a, x, left=0, right=-1):
     return left
 
 
+def binary_insert(a, x, left=0, right=-1):
+    n = len(a)
+    if right < 0:
+        right += n
+
+    index = binary_search_rightmost(a, x, left, right)
+    if x < a[index]:
+        a[index + 1: right + 2] = a[index: right + 1]
+        a[index] = x
+    else:
+        a[index + 2: right + 2] = a[index + 1: right + 1]
+        a[index + 1] = x
+
+
 # Insertion
 
 def insertion_sort(a):
@@ -94,14 +108,7 @@ def insertion_sort_memmove(a):
 def binary_insertion_sort(a):
     n = len(a)
     for i in xrange(1, n):
-        next_val = a[i]
-        index = binary_search_rightmost(a, next_val, 0, i - 1)
-        if next_val < a[index]:
-            a[index + 1: i + 1] = a[index: i]
-            a[index] = next_val
-        else:
-            a[index + 2: i + 1] = a[index + 1: i]
-            a[index + 1] = next_val
+        binary_insert(a, a[i], 0, i - 1)
 
 
 def _shell_gaps(n):
