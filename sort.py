@@ -2,32 +2,10 @@ import random
 import unittest
 
 
-def binary_search(a, x, left=0, right=-1):
-    """
-    Returns the index of x if it exists in a.
-    Otherwise returns the index of either its left or right neighbor.
-    right is inclusive.
-    """
-    n = len(a)
-    if right < 0:
-        right += n
-
-    while left < right:
-        mid = left + (right - left) // 2
-        if x < a[mid]:
-            right = mid - 1
-        elif a[mid] < x:
-            left = mid + 1
-        else:
-            return mid
-    return left
-
-
 def binary_search_rightmost(a, x, left=0, right=-1):
     """
-    Returns the index of the rightmost x or its right neighbor if it exists in a.
-    Otherwise returns the index of either its left or right neighbor.
-    right is inclusive.
+    Returns the index of the rightmost x's right neighbor.
+    arg->right is inclusive.
     """
     n = len(a)
     if right < 0:
@@ -39,25 +17,9 @@ def binary_search_rightmost(a, x, left=0, right=-1):
             right = mid - 1
         else:
             left = mid + 1
-    return left
 
-
-def binary_search_leftmost(a, x, left=0, right=-1):
-    """
-    Returns the index of the leftmost x or its left neighbor if it exists in a.
-    Otherwise returns the index of either its left or right neighbor.
-    right is inclusive.
-    """
-    n = len(a)
-    if right < 0:
-        right += n
-
-    while left < right:
-        mid = left + (right - left) // 2
-        if x <= a[mid]:
-            right = mid - 1
-        else:
-            left = mid + 1
+    if a[left] <= x:
+        left += 1
     return left
 
 
@@ -67,12 +29,8 @@ def binary_insert(a, x, left=0, right=-1):
         right += n
 
     index = binary_search_rightmost(a, x, left, right)
-    if x < a[index]:
-        a[index + 1: right + 2] = a[index: right + 1]
-        a[index] = x
-    else:
-        a[index + 2: right + 2] = a[index + 1: right + 1]
-        a[index + 1] = x
+    a[index + 1: right + 2] = a[index: right + 1]
+    a[index] = x
 
 
 # Insertion
@@ -309,11 +267,6 @@ class Test(unittest.TestCase):
         unordered = list(self.unordered)
         func(unordered)
         self.assertEqual(unordered, self.ordered)
-
-    def test_binary_sort(self):
-        self.assertEqual(binary_search([1, 2, 2, 3, 4, 5], 2), 2)
-        self.assertEqual(binary_search_rightmost([1, 2, 2, 3, 4, 5], 2), 3)
-        self.assertEqual(binary_search_leftmost([1, 2, 2, 3, 4, 5], 2), 1)
 
 
 if __name__ == '__main__':
