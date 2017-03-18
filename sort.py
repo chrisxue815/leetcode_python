@@ -2,6 +2,27 @@ import random
 import unittest
 
 
+def binary_search(a, x, lo=0, hi=-1):
+    n = len(a)
+    if hi < 0:
+        hi += n
+
+    # OpenJDK:
+    # http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8u40-b25/java/util/Arrays.java#1906
+    # CoreCLR:
+    # https://github.com/dotnet/coreclr/blob/master/src/classlibnative/bcltype/arrayhelpers.h#L62
+    while lo <= hi:
+        mid = lo + ((hi - lo) >> 1)
+        mid_val = a[mid]
+        if mid_val < x:
+            lo = mid + 1
+        elif mid_val > x:
+            hi = mid - 1
+        else:
+            return mid
+    return ~lo
+
+
 def binary_search_rightmost(a, x, left=0, right=-1):
     """
     Returns the index of the rightmost x's right neighbor.
@@ -11,15 +32,13 @@ def binary_search_rightmost(a, x, left=0, right=-1):
     if right < 0:
         right += n
 
-    while left < right:
+    while left <= right:
         mid = left + (right - left) // 2
         if x < a[mid]:
             right = mid - 1
         else:
             left = mid + 1
 
-    if a[left] <= x:
-        left += 1
     return left
 
 
