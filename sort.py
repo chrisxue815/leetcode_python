@@ -192,31 +192,34 @@ def merge_sort(a):
 
 # Misc
 
-def _heapify(a, root, n):
-    left = 2 * root + 1
-    right = 2 * root + 2
-    largest = root
+def _down_heap(a, root, n):
+    while True:
+        child = 2 * root + 1
+        if child >= n:
+            break
 
-    if left < n and a[left] > a[largest]:
-        largest = left
-    if right < n and a[right] > a[largest]:
-        largest = right
+        # find the larger child
+        if child + 1 < n and a[child] < a[child + 1]:
+            child += 1
 
-    if largest != root:
-        a[largest], a[root] = a[root], a[largest]
-        # Optimization: tail call
-        _heapify(a, largest, n)
+        if a[child] <= a[root]:
+            break
+
+        a[root], a[child] = a[child], a[root]
+        root = child
 
 
 def heap_sort(a):
+    # see CoreCLR:
+    # https://github.com/dotnet/coreclr/blob/master/src/classlibnative/bcltype/arrayhelpers.h#L242
     n = len(a)
 
     for i in xrange(n // 2 - 1, -1, -1):
-        _heapify(a, i, n)
+        _down_heap(a, i, n)
 
     for i in xrange(n - 1, -1, -1):
         a[0], a[i] = a[i], a[0]
-        _heapify(a, 0, i)
+        _down_heap(a, 0, i)
 
 
 def radix_sort(a):
