@@ -7,10 +7,10 @@ def _down_minheap(a, root, hi):
         if child >= hi:
             break
 
-        if child + 1 < hi and a[child + 1][0] < a[child][0]:
+        if child + 1 < hi and a[child + 1] < a[child]:
             child += 1
 
-        if a[root][0] <= a[child][0]:
+        if a[root] <= a[child]:
             break
 
         a[root], a[child] = a[child], a[root]
@@ -23,10 +23,10 @@ def _down_maxheap(a, root, hi):
         if child >= hi:
             break
 
-        if child + 1 < hi and a[child + 1][0] > a[child][0]:
+        if child + 1 < hi and a[child + 1] > a[child]:
             child += 1
 
-        if a[root][0] >= a[child][0]:
+        if a[root] >= a[child]:
             break
 
         a[root], a[child] = a[child], a[root]
