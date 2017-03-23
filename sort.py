@@ -212,6 +212,12 @@ def _down_heap(a, root, n):
 def heap_sort(a):
     # see CoreCLR:
     # https://github.com/dotnet/coreclr/blob/master/src/classlibnative/bcltype/arrayhelpers.h#L242
+    # see OpenJDK:
+    # http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8u40-b25/java/util/PriorityQueue.java#712
+    # http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8u40-b25/java/util/PriorityQueue.java#665
+    # see CPython:
+    # https://github.com/python/cpython/blob/master/Lib/heapq.py#L205
+    # https://github.com/python/cpython/blob/master/Lib/heapq.py#L258
     n = len(a)
 
     for i in xrange(n // 2 - 1, -1, -1):
