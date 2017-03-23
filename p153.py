@@ -7,19 +7,21 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        pivot = nums[0]
         lo = 0
         hi = len(nums) - 1
-        while lo <= hi:
+        while lo < hi:
+            lo_val = nums[lo]
+            if lo_val <= nums[hi]:
+                return lo_val
+
             mid = lo + ((hi - lo) >> 1)
             mid_val = nums[mid]
-            if mid_val < pivot:
-                hi = mid - 1
+
+            if mid_val < lo_val:
+                hi = mid
             else:
                 lo = mid + 1
 
-        if lo == len(nums):
-            return pivot
         return nums[lo]
 
 
