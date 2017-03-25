@@ -11,6 +11,8 @@ def binary_search(a, x, lo=0, hi=-1):
     # http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8u40-b25/java/util/Arrays.java#1906
     # CoreCLR:
     # https://github.com/dotnet/coreclr/blob/master/src/classlibnative/bcltype/arrayhelpers.h#L62
+    # CPython:
+    # https://github.com/python/cpython/blob/master/Lib/bisect.py#L22
     while lo <= hi:
         mid = lo + ((hi - lo) >> 1)
         mid_val = a[mid]
