@@ -23,7 +23,7 @@ class Solution(object):
             if not heap:
                 break
 
-            top = heapq.heappop(heap)
+            top = heap[0]
             i = top[1]
             j = top[2]
             x = nums1[i]
@@ -34,7 +34,10 @@ class Solution(object):
             if j < len(nums2):
                 x = nums1[i]
                 y = nums2[j]
-                heapq.heappush(heap, (x + y, i, j))
+                heap[0] = (x + y, i, j)
+                heapq._siftup(heap, 0)
+            else:
+                heapq.heappop(heap)
 
         return result
 

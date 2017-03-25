@@ -68,7 +68,7 @@ class Solution(object):
             if not heap:
                 break
 
-            top = heappop(heap)
+            top = heap[0]
             i = top[1]
             j = top[2]
             x = nums1[i]
@@ -79,7 +79,10 @@ class Solution(object):
             if j < len(nums2):
                 x = nums1[i]
                 y = nums2[j]
-                heappush(heap, (x + y, i, j))
+                heap[0] = (x + y, i, j)
+                _sift_down(heap, 0)
+            else:
+                heappop(heap)
 
         return result
 
