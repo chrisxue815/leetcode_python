@@ -50,6 +50,7 @@ class Solution(object):
 
         heap = []
         row0 = matrix[0]
+        # Optimization: append the first row on demand
         for j in xrange(cols):
             heap.append((row0[j], 0, j))
 
@@ -82,6 +83,7 @@ class Solution(object):
 
         heap = []
         row0 = matrix[-1]
+        # Optimization: append the first row on demand
         for j in xrange(cols - 1, -1, -1):
             heap.append((row0[j], rows - 1, j))
 
