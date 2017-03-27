@@ -7,14 +7,20 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        visited = [0] * len(nums)
-
         for num in nums:
-            visited[num - 1] = 1
+            if num == 0:
+                continue
+
+            i = num - 1
+            next_i = nums[i] - 1
+            while next_i > -1:
+                nums[i] = 0
+                i = next_i
+                next_i = nums[i] - 1
 
         result = []
-        for i in xrange(len(visited)):
-            if visited[i] == 0:
+        for i in xrange(len(nums)):
+            if nums[i] > 0:
                 result.append(i + 1)
 
         return result
@@ -23,6 +29,7 @@ class Solution(object):
 class Test(unittest.TestCase):
     def test(self):
         self._test([4, 3, 2, 7, 8, 2, 3, 1], [5, 6])
+        self._test([4, 3, 2, 7, 7, 2, 3, 1], [5, 6, 8])
 
     def _test(self, nums, expected):
         actual = Solution().findDisappearedNumbers(nums)
