@@ -8,7 +8,7 @@ class Solution(object):
         self.combination = []
         self.result = []
 
-    def combinationSum(self, candidates, target):
+    def combinationSum2(self, candidates, target):
         """
         :type candidates: List[int]
         :type target: int
@@ -26,6 +26,9 @@ class Solution(object):
         for i in xrange(start_index, self.num_candidates):
             candidate = self.candidates[i]
 
+            if i > start_index and candidate == self.candidates[i - 1]:
+                continue
+
             if candidate == target:
                 self.result.append(self.combination + [candidate])
                 break
@@ -33,19 +36,21 @@ class Solution(object):
                 break
 
             self.combination.append(candidate)
-            self._combine(target - candidate, i)
+            self._combine(target - candidate, i + 1)
             self.combination.pop()
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([2, 3, 6, 7], 7, [
-            [7],
-            [2, 2, 3],
+        self._test([10, 1, 2, 7, 6, 1, 5], 8, [
+            [1, 7],
+            [1, 2, 5],
+            [2, 6],
+            [1, 1, 6]
         ])
 
     def _test(self, candidates, target, expected):
-        actual = Solution().combinationSum(candidates, target)
+        actual = Solution().combinationSum2(candidates, target)
         self.assertItemsEqual(actual, expected)
 
 
