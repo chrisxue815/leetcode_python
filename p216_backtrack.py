@@ -21,9 +21,7 @@ class Solution(object):
     def _combine(self, combination, k, start, n):
         if k == 1:
             if start <= n <= 9:
-                combination.append(n)
-                self.result.append(list(combination))
-                combination.pop()
+                self.result.append(combination + [n])
         else:
             end = min(10, n)
             for i in xrange(start, end):
@@ -39,7 +37,7 @@ class Test(unittest.TestCase):
 
     def _test(self, k, n, expected):
         actual = Solution().combinationSum3(k, n)
-        self.assertEqual(actual, expected)
+        self.assertItemsEqual(actual, expected)
 
 
 if __name__ == '__main__':
