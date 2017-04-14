@@ -39,6 +39,37 @@ def _combinations_include_exclude(pool, r, result, combination, index):
         _combinations_include_exclude(pool, r, result, combination, index + 1)
 
 
+def combinations_iterative(pool, r=None):
+    # See CPython:
+    # https://docs.python.org/2/library/itertools.html#itertools.combinations
+    # https://github.com/python/cpython/blob/bf623ae8843dc30b28c574bec8d29fc14be59d86/Modules/itertoolsmodule.c#L2465
+    pool = tuple(pool)
+    n = len(pool)
+    if r is None:
+        r = n
+    elif r > n:
+        return
+
+    indices = range(r)
+    yield tuple(pool[i] for i in indices)
+
+    while True:
+        # Find the last index
+        for i in xrange(r - 1, -1, -1):
+            # which is not the greatest possible at its position
+            if indices[i] != n - r + i:
+                break
+        else:
+            # Return if not found
+            return
+
+        indices[i] += 1
+        for j in xrange(i + 1, r):
+            indices[j] = indices[j - 1] + 1
+
+        yield tuple(pool[i] for i in indices)
+
+
 class Test(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -49,6 +80,7 @@ class Test(unittest.TestCase):
     def test_combinations(self):
         self._test_combinations(combinations_fix_elements)
         self._test_combinations(combinations_include_exclude)
+        self._test_combinations(combinations_iterative)
 
     def _test_combinations(self, func):
         for pool in Test.pools:
