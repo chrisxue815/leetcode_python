@@ -39,10 +39,6 @@ def _combinations_include_exclude(pool, r, result, combination, index):
         _combinations_include_exclude(pool, r, result, combination, index + 1)
 
 
-def permutations_dummy(pool, r=None):
-    return itertools.permutations(pool, r)
-
-
 class Test(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -59,16 +55,6 @@ class Test(unittest.TestCase):
             for r in xrange(len(pool) + 2):
                 actual = func(pool, r)
                 expected = itertools.combinations(pool, r)
-                self.assertItemsEqual(actual, expected)
-
-    def test_permutations(self):
-        self._test_permutations(permutations_dummy)
-
-    def _test_permutations(self, func):
-        for pool in Test.pools:
-            for r in xrange(len(pool) + 2):
-                actual = func(pool, r)
-                expected = itertools.permutations(pool, r)
                 self.assertItemsEqual(actual, expected)
 
 
