@@ -74,7 +74,7 @@ class Test(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.pools = [
-            range(3),
+            range(5),
         ]
 
     def test_combinations(self):
