@@ -2,6 +2,32 @@ import itertools
 import unittest
 
 
+def permutations_recursive(pool, r=None):
+    pool = list(pool)
+    n = len(pool)
+    if r is None:
+        r = n
+    elif r > n:
+        return []
+
+    result = []
+    _permutations_recursive(pool, r, result, 0)
+    return result
+
+
+def _permutations_recursive(pool, r, result, start_index):
+    if start_index == r:
+        result.append(tuple(pool[:r]))
+    else:
+        next_index = start_index + 1
+        _permutations_recursive(pool, r, result, next_index)
+
+        for i in xrange(next_index, len(pool)):
+            pool[i], pool[start_index] = pool[start_index], pool[i]
+            _permutations_recursive(pool, r, result, next_index)
+            pool[i], pool[start_index] = pool[start_index], pool[i]
+
+
 def permutations_iterative(pool, r=None):
     # See CPython:
     # https://docs.python.org/2/library/itertools.html#itertools.permutations
@@ -46,6 +72,7 @@ class Test(unittest.TestCase):
         ]
 
     def test_permutations(self):
+        self._test_permutations(permutations_recursive)
         self._test_permutations(permutations_iterative)
 
     def _test_permutations(self, func):
