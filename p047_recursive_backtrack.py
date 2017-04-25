@@ -21,11 +21,12 @@ class Solution(object):
             self._permute(nums, result, next_index)
 
             for i in xrange(next_index, len(nums)):
-                if nums[i] == nums[i - 1]:
+                if nums[i] == nums[start]:
                     continue
-                nums[start:i + 1] = nums[i:i + 1] + nums[start:i]
+                nums[i], nums[start] = nums[start], nums[i]
                 self._permute(nums, result, next_index)
-                nums[start:i + 1] = nums[start + 1:i + 1] + nums[start:start + 1]
+
+            nums[start:len(nums)] = nums[start + 1:len(nums)] + nums[start:start + 1]
 
 
 class Test(unittest.TestCase):
