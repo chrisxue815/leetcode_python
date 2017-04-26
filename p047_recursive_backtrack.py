@@ -31,24 +31,11 @@ class Solution(object):
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 1, 2], [
-            [1, 1, 2],
-            [1, 2, 1],
-            [2, 1, 1],
-        ])
+        self._test([1, 1, 2])
+        self._test([1, 2, 3])
+        self._test([0, 1, 0, 0, 9])
 
-        self._test([1, 2, 3], [
-            [1, 2, 3],
-            [1, 3, 2],
-            [2, 1, 3],
-            [2, 3, 1],
-            [3, 1, 2],
-            [3, 2, 1],
-        ])
-
-        self._test([0, 1, 0, 0, 9], [])
-
-    def _test(self, nums, expected):
+    def _test(self, nums):
         actual = Solution().permuteUnique(nums)
         self.assertItemsEqual(actual, [list(p) for p in set(p for p in itertools.permutations(nums))])
 
