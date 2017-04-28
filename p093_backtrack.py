@@ -48,6 +48,7 @@ class Test(unittest.TestCase):
             '10.9.9.9',
             '1.0.99.9',
             '1.0.9.99',
+            # Should not contain 1.9.9.9
         ])
 
     def _test(self, s, expected):
