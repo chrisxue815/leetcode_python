@@ -26,7 +26,6 @@ class Test(unittest.TestCase):
 
     def _test(self, n, k, expected):
         actual = Solution().getPermutation(n, k)
-        print(actual)
         self.assertItemsEqual(actual, expected)
 
 
