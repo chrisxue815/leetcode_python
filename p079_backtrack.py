@@ -11,13 +11,11 @@ class Solution(object):
         if not board or not board[0] or not word:
             return False
 
-        rows = len(board)
-        cols = len(board[0])
-
-        for row in xrange(rows):
-            for col in xrange(cols):
+        for row in xrange(len(board)):
+            for col in xrange(len(board[0])):
                 if self._dfs(board, word, 0, row, col):
                     return True
+                
         return False
 
     def _dfs(self, board, word, index, row, col):
