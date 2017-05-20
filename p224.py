@@ -1,5 +1,7 @@
 import unittest
 
+_zero = ord('0')
+
 
 class Solution(object):
     def calculate(self, s):
@@ -8,41 +10,34 @@ class Solution(object):
         :rtype: int
         """
         stack = []
+        sum_ = 0
         sign = 1
-        lo = 0
-        hi = 0
-        result = 0
-        while hi < len(s):
-            ch = s[hi]
+        num = 0
 
-            if lo < hi and not ch.isdigit():
-                num_s = s[lo:hi]
-                if num_s != '-':
-                    num = int(num_s)
-                    result += num * sign
-
-            if ch == '+':
-                lo = hi + 1
+        for ch in s:
+            if ch.isdigit():
+                num = num * 10 + ord(ch) - _zero
+            elif ch == '+':
+                sum_ += sign * num
+                num = 0
+                sign = 1
             elif ch == '-':
-                lo = hi
+                sum_ += sign * num
+                num = 0
+                sign = -1
             elif ch == '(':
-                lo = hi + 1
+                stack.append(sum_)
                 stack.append(sign)
-                if hi > 0 and s[hi - 1] == '-':
-                    sign = -sign
+                sum_ = 0
+                sign = 1
             elif ch == ')':
-                lo = hi + 1
+                num = sum_ + sign * num
                 sign = stack.pop()
-            elif ch == ' ':
-                lo = hi + 1
+                sum_ = stack.pop()
 
-            hi += 1
+        sum_ += sign * num
 
-        if lo < hi:
-            num = int(s[lo:hi])
-            result += num * sign
-
-        return result
+        return sum_
 
 
 class Test(unittest.TestCase):
