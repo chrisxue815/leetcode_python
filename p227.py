@@ -3,37 +3,16 @@ import unittest
 _zero = ord('0')
 
 
-def _process_mul_div(s, i, product):
-    op = s[i]
-    i += 1
+def scan_int(s, i):
     num = 0
-
     while i < len(s):
         ch = s[i]
-
-        if ch == ' ':
-            pass
-        elif ch.isdigit():
+        if ch.isdigit():
             num = num * 10 + ord(ch) - _zero
-        elif ch == '*' or ch == '/':
-            product = _mul_div(op, product, num)
-            op = ch
-            num = 0
-        else:
+        elif ch != ' ':
             break
-
         i += 1
-
-    product = _mul_div(op, product, num)
-
-    return product, i - 1
-
-
-def _mul_div(op, num1, num2):
-    if op == '*':
-        return num1 * num2
-    else:
-        return num1 // num2
+    return i - 1, num
 
 
 class Solution(object):
@@ -50,9 +29,7 @@ class Solution(object):
         while i < len(s):
             ch = s[i]
 
-            if ch == ' ':
-                pass
-            elif ch.isdigit():
+            if ch.isdigit():
                 num = num * 10 + ord(ch) - _zero
             elif ch == '+':
                 sum_ += sign * num
@@ -62,8 +39,12 @@ class Solution(object):
                 sum_ += sign * num
                 num = 0
                 sign = -1
-            else:
-                num, i = _process_mul_div(s, i, num)
+            elif ch == '*':
+                i, operand = scan_int(s, i + 1)
+                num *= operand
+            elif ch == '/':
+                i, operand = scan_int(s, i + 1)
+                num //= operand
 
             i += 1
 
