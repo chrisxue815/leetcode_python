@@ -31,14 +31,10 @@ class Solution(object):
 
             if ch.isdigit():
                 num = num * 10 + ord(ch) - _zero
-            elif ch == '+':
+            elif ch == '+' or ch == '-':
                 sum_ += sign * num
                 num = 0
-                sign = 1
-            elif ch == '-':
-                sum_ += sign * num
-                num = 0
-                sign = -1
+                sign = 44 - ord(ch)
             elif ch == '*':
                 i, operand = scan_int(s, i + 1)
                 num *= operand
