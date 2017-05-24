@@ -2,34 +2,31 @@ import unittest
 
 
 class Solution(object):
-    def __init__(self):
-        self.s = None
-        self.n = 0
-        self.lo = 0
-        self.len = 0
-
-    def _max_palindrome(self, lo, hi):
-        while lo >= 0 and hi < self.n and self.s[lo] == self.s[hi]:
-            lo -= 1
-            hi += 1
-        length = hi - lo
-        if length > self.len:
-            self.len = length
-            self.lo = lo
-
     def longestPalindrome(self, s):
         """
         :type s: str
         :rtype: str
         """
-        self.s = s
-        self.n = len(s)
+        n = len(s)
+        max_lo = 0
+        max_len = 0
+        i = 0
 
-        for i in xrange(self.n):
-            self._max_palindrome(i - 1, i + 1)
-            self._max_palindrome(i, i + 1)
+        while i < n:
+            hi = i + 1
+            while hi < n and s[hi] == s[hi - 1]:
+                hi += 1
+            lo = i - 1
+            i = hi
+            while lo >= 0 and hi < n and s[lo] == s[hi]:
+                lo -= 1
+                hi += 1
+            length = hi - lo
+            if length > max_len:
+                max_len = length
+                max_lo = lo
 
-        return s[self.lo + 1:self.lo + self.len]
+        return s[max_lo + 1:max_lo + max_len]
 
 
 class Test(unittest.TestCase):
