@@ -7,21 +7,14 @@ class Solution(object):
         :type path: str
         :rtype: str
         """
-        n = len(path)
         stack = []
-        lo = 1
-        i = 1
 
-        while i <= n:
-            if i == n or path[i] == '/':
-                part = path[lo:i]
-                if part == '..':
-                    if stack:
-                        stack.pop()
-                elif part and part != '.':
-                    stack.append(part)
-                lo = i + 1
-            i += 1
+        for p in path.split('/'):
+            if p == '..':
+                if stack:
+                    stack.pop()
+            elif p and p != '.':
+                stack.append(p)
 
         return '/' + '/'.join(stack)
 
