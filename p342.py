@@ -2,12 +2,12 @@ import unittest
 
 
 class Solution(object):
-    def isPowerOfTwo(self, n):
+    def isPowerOfFour(self, num):
         """
-        :type n: int
+        :type num: int
         :rtype: bool
         """
-        return n > 0 and not (n & (n - 1))
+        return num > 0 and not num & (num - 1) and not num & 0xaaaaaaaa
 
 
 class Test(unittest.TestCase):
@@ -15,12 +15,13 @@ class Test(unittest.TestCase):
         self._test(-1, False)
         self._test(0, False)
         self._test(1, True)
-        self._test(2, True)
+        self._test(2, False)
         self._test(3, False)
         self._test(4, True)
+        self._test(5, False)
 
     def _test(self, n, expected):
-        actual = Solution().isPowerOfTwo(n)
+        actual = Solution().isPowerOfFour(n)
         self.assertEqual(actual, expected)
 
 
