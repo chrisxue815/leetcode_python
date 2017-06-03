@@ -8,21 +8,15 @@ class Solution(object):
         :rtype: int
         """
         n = len(nums)
-        num_ones = [0] * 32
-
-        for num in nums:
-            for i in xrange(32):
-                if num == 0:
-                    break
-                if num & 1:
-                    num_ones[i] += 1
-                num >>= 1
-
-        distance = 0
-        for count in num_ones:
-            distance += count * (n - count)
-
-        return distance
+        total = 0
+        for i in xrange(32):
+            mask = 1 << i
+            count = 0
+            for num in nums:
+                if num & mask:
+                    count += 1
+            total += count * (n - count)
+        return total
 
 
 class Test(unittest.TestCase):
