@@ -9,24 +9,21 @@ class Solution(object):
         :type words: List[str]
         :rtype: int
         """
-        n = len(words)
-        mask_and_len = [None] * n
+        if not words:
+            return 0
 
-        for i in xrange(n):
+        lengths = {}
+
+        for word in words:
             mask = 0
-            word = words[i]
             for ch in word:
                 mask |= 1 << (ord(ch) - _a)
-            mask_and_len[i] = (mask, len(word))
+            if len(word) > lengths.get(mask, -1):
+                lengths[mask] = len(word)
 
-        max_product = 0
-        for i in xrange(n):
-            for j in xrange(i + 1, n):
-                if mask_and_len[i][0] & mask_and_len[j][0] == 0:
-                    product = mask_and_len[i][1] * mask_and_len[j][1]
-                    if product > max_product:
-                        max_product = product
-        return max_product
+        return max(len0 * len1 if not mask0 & mask1 else 0
+                   for mask1, len1 in lengths.items()
+                   for mask0, len0 in lengths.items())
 
 
 class Test(unittest.TestCase):
