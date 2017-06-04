@@ -11,14 +11,14 @@ class Solution(object):
         i = 0
         while i < size:
             lead = data[i]
-            if not lead & 0x80:
+            if not lead >> 7:
                 i += 1
                 continue
-            elif lead & 0xe0 == 0xc0:
+            elif lead >> 5 == 0b110:
                 n = 2
-            elif lead & 0xf0 == 0xe0:
+            elif lead >> 4 == 0b1110:
                 n = 3
-            elif lead & 0xf8 == 0xf0:
+            elif lead >> 3 == 0b11110:
                 n = 4
             else:
                 return False
@@ -27,7 +27,7 @@ class Solution(object):
                 return False
             i += 1
             while i < hi:
-                if data[i] & 0xc0 != 0x80:
+                if data[i] >> 6 != 0b10:
                     return False
                 i += 1
         return True
