@@ -10,14 +10,15 @@ class Solution(object):
         """
         x ^= y
 
-        # TODO: Hacker's Delight, Figure 5-2
+        # Hacker's Delight, Figure 5-2
         # OpenJDK:
         # http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/6-b14/java/lang/Integer.java#1082
-        count = 0
-        while x > 0:
-            count += x & 1
-            x >>= 1
-        return count
+        x = x - ((x >> 1) & 0x55555555)
+        x = (x & 0x33333333) + ((x >> 2) & 0x33333333)
+        x = (x + (x >> 4)) & 0x0f0f0f0f
+        x += x >> 8
+        x += x >> 16
+        return x & 0x3f
 
 
 class Test(unittest.TestCase):
