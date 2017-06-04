@@ -5,11 +5,13 @@ class Solution:
     # @param n, an integer
     # @return an integer
     def reverseBits(self, n):
-        n = n >> 16 | n << 16
-        n = (n & 0xff00ff00) >> 8 | (n & 0x00ff00ff) << 8
-        n = (n & 0xf0f0f0f0) >> 4 | (n & 0x0f0f0f0f) << 4
-        n = (n & 0xcccccccc) >> 2 | (n & 0x33333333) << 2
-        return (n & 0xaaaaaaaa) >> 1 | (n & 0x55555555) << 1
+        # Hacker's Delight, Figure 7-1
+        # OpenJDK:
+        # http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/6-b14/java/lang/Integer.java#1145
+        n = (n & 0x55555555) << 1 | (n >> 1) & 0x55555555
+        n = (n & 0x33333333) << 2 | (n >> 2) & 0x33333333
+        n = (n & 0x0f0f0f0f) << 4 | (n >> 4) & 0x0f0f0f0f
+        return (n << 24) & 0xffffffff | (n & 0xff00) << 8 | (n >> 8) & 0xff00 | n >> 24
 
 
 class Test(unittest.TestCase):
