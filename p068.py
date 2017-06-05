@@ -25,8 +25,7 @@ class Solution(object):
                 if num_spans == 0:
                     lines.append(words[lo] + ' ' * total_spaces)
                 else:
-                    spaces_per_span = total_spaces // num_spans
-                    extra_space = total_spaces % num_spans
+                    spaces_per_span, extra_space = divmod(total_spaces, num_spans)
                     spaces = ' ' * (spaces_per_span + 1)
                     line = spaces.join(words[lo:lo + extra_space + 1])
                     spaces = ' ' * spaces_per_span

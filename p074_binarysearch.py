@@ -18,8 +18,7 @@ class Solution(object):
         hi = n - 1
         while lo <= hi:
             mid = lo + ((hi - lo) >> 1)
-            row = mid / cols
-            col = mid % cols
+            row, col = divmod(mid, cols)
             mid_val = matrix[row][col]
             if mid_val < target:
                 lo = mid + 1

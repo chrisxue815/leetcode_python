@@ -11,7 +11,7 @@ class Solution(object):
         if not nums:
             return
         n = len(nums)
-        
+
         k %= n
         if k == 0:
             return

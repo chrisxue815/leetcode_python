@@ -71,9 +71,8 @@ class Solution(object):
         nums = [0] * 12
         i = 0
         while num > 0:
-            nums[i] = num % 10
+            num, nums[i] = divmod(num, 10)
             i += 1
-            num //= 10
 
         if _to_words(words, nums[9:]):
             words.append('Billion')

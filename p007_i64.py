@@ -12,8 +12,8 @@ class Solution(object):
             x = -x
         y = 0
         while x > 0:
-            y = y * 10 + x % 10
-            x //= 10
+            x, r = divmod(x, 10)
+            y = y * 10 + r
         if neg:
             return -y if y <= 0x80000000 else 0
         else:

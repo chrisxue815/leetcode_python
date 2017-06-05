@@ -9,9 +9,8 @@ class Solution(object):
         """
         digits = []
         while n > 0:
-            q = n // 10
-            digits.append(n - q * 10)
-            n = q
+            n, r = divmod(n, 10)
+            digits.append(r)
 
         for i in xrange(1, len(digits)):
             if digits[i] < digits[i - 1]:

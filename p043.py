@@ -43,8 +43,7 @@ class Solution(object):
         carry = 0
         for i in xrange(len(product)):
             num = product[i] + carry
-            carry = num // 10
-            product[i] = num - carry * 10
+            carry, product[i] = divmod(num, 10)
 
         while product[-1] == 0:
             product.pop()
