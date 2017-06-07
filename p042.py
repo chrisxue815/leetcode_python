@@ -7,48 +7,27 @@ class Solution(object):
         :type heights: List[int]
         :rtype: int
         """
-        if not heights:
-            return 0
-
-        left_peaks = []
-        curr_max = -1
-        for i, height in enumerate(heights):
-            if height > curr_max:
-                curr_max = height
-                left_peaks.append((i, height))
-
-        right_peaks = []
-        curr_max = -1
-        for i in xrange(len(heights) - 1, -1, -1):
-            height = heights[i]
-            if height > curr_max:
-                curr_max = height
-                right_peaks.append((i, height))
-
+        left = 0
+        right = len(heights) - 1
+        left_peak = 0
+        right_peak = 0
         water = 0
-        if len(left_peaks) > 1:
-            peak_index = 1
-            curr_peak_height = left_peaks[0][1]
-            next_peak_index = left_peaks[1][0]
-            for i, height in enumerate(heights):
-                if i >= next_peak_index:
-                    peak_index += 1
-                    if peak_index >= len(left_peaks):
-                        break
-                    curr_peak_height = left_peaks[peak_index - 1][1]
-                    next_peak_index = left_peaks[peak_index][0]
-                water += curr_peak_height - height
 
-        peak_index = len(right_peaks) - 1
-        curr_peak_height = right_peaks[-1][1]
-        next_peak_index = right_peaks[-1][0]
-        for i in xrange(i + 1, len(heights)):
-            height = heights[i]
-            if i > next_peak_index:
-                peak_index -= 1
-                curr_peak_height = right_peaks[peak_index][1]
-                next_peak_index = right_peaks[peak_index][0]
-            water += curr_peak_height - height
+        while left < right:
+            left_height = heights[left]
+            right_height = heights[right]
+            if left_height <= right_height:
+                if left_height >= left_peak:
+                    left_peak = left_height
+                else:
+                    water += left_peak - left_height
+                left += 1
+            else:
+                if right_height >= right_peak:
+                    right_peak = right_height
+                else:
+                    water += right_peak - right_height
+                right -= 1
 
         return water
 
