@@ -8,8 +8,7 @@ class Solution(object):
         :rtype: int
         """
         nums.sort()
-        median = nums[len(nums) >> 1]
-        return sum(abs(median - num) for num in nums)
+        return sum(nums[~i] - nums[i] for i in xrange(len(nums) >> 1))
 
 
 class Test(unittest.TestCase):
