@@ -17,12 +17,12 @@ class Solution(object):
             while k and stack and ord(digit) < ord(stack[-1]):
                 stack.pop()
                 k -= 1
-            if digit != '0' or stack:
-                stack.append(digit)
-        while k and stack:
-            stack.pop()
-            k -= 1
-        return ''.join(stack) if stack else '0'
+            stack.append(digit)
+        hi = len(stack) - k
+        lo = 0
+        while lo < hi and stack[lo] == '0':
+            lo += 1
+        return ''.join(stack[lo:hi]) if lo < hi else '0'
 
 
 class Test(unittest.TestCase):
