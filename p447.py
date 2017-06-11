@@ -1,6 +1,5 @@
 import unittest
 import collections
-import math
 
 
 class Solution(object):
@@ -10,16 +9,17 @@ class Solution(object):
         :rtype: int
         """
         ret = 0
+        distances = collections.Counter()
         for a in points:
-            distances = collections.Counter()
             for b in points:
-                diffx = a[0] - b[0]
-                diffy = a[1] - b[1]
-                distsq = diffx * diffx + diffy * diffy
-                distances[distsq] += 1
-            for dist in distances.values():
-                if dist >= 2:
-                    ret += math.factorial(dist) / math.factorial(dist - 2)
+                dx = a[0] - b[0]
+                dy = a[1] - b[1]
+                dist = dx * dx + dy * dy
+                distances[dist] += 1
+            for count in distances.values():
+                if count >= 2:
+                    ret += count * (count - 1)
+            distances.clear()
         return ret
 
 
