@@ -11,11 +11,10 @@ class Solution(object):
         counts = collections.Counter()
         for row in wall:
             width = 0
-            for brick in row:
+            for brick in row[:-1]:
                 width += brick
                 counts[width] += 1
-        most_common = counts.most_common(2)
-        return len(wall) - (most_common[1][1] if len(most_common) > 1 else 0)
+        return len(wall) - (max(counts.values()) if counts else 0)
 
 
 class Test(unittest.TestCase):
