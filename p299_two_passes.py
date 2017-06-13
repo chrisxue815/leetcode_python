@@ -1,5 +1,4 @@
 import unittest
-import collections
 
 
 class Solution(object):
@@ -11,9 +10,12 @@ class Solution(object):
         """
         bulls = 0
         cows = 0
-        counter = collections.Counter(secret)
+        counter = [0] * (ord('9') + 1)
+        for digit in secret:
+            counter[ord(digit)] += 1
         for i, digit in enumerate(guess):
-            if digit == secret[i]:
+            digit = ord(digit)
+            if digit == ord(secret[i]):
                 bulls += 1
                 if counter[digit]:
                     counter[digit] -= 1
