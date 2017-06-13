@@ -9,7 +9,7 @@ class RandomizedCollection(object):
         Initialize your data structure here.
         """
         self.values = []
-        self.indices = collections.defaultdict(set)
+        self.indices = collections.defaultdict(list)
 
     def insert(self, val):
         """
@@ -19,8 +19,8 @@ class RandomizedCollection(object):
         """
         pool = self.indices[val]
         is_new_val = not pool
-        pool.add(len(self.values))
-        self.values.append(val)
+        pool.append(len(self.values))
+        self.values.append((val, len(pool) - 1))
         return is_new_val
 
     def remove(self, val):
@@ -34,13 +34,12 @@ class RandomizedCollection(object):
             return False
 
         index = pool.pop()
-        last = self.values.pop()
+        last, last_index = self.values.pop()
 
         if index != len(self.values):
-            self.values[index] = last
+            self.values[index] = (last, last_index)
             last_pool = self.indices[last] if last != val else pool
-            last_pool.remove(len(self.values))
-            last_pool.add(index)
+            last_pool[last_index] = index
 
         return True
 
@@ -49,7 +48,7 @@ class RandomizedCollection(object):
         Get a random element from the collection.
         :rtype: int
         """
-        return self.values[random.randrange(len(self.values))]
+        return self.values[random.randrange(len(self.values))][0]
 
 
 class Test(unittest.TestCase):
