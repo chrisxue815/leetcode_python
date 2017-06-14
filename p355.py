@@ -1,5 +1,7 @@
 import unittest
 import collections
+import itertools
+import heapq
 
 
 class User(object):
@@ -8,19 +10,13 @@ class User(object):
         self.tweets = collections.deque()
 
 
-class Tweet(object):
-    def __init__(self, id, time):
-        self.id = id
-        self.time = time
-
-
 class Twitter(object):
     def __init__(self):
         """
         Initialize your data structure here.
         """
         self.users = collections.defaultdict(User)
-        self.time = 0
+        self.timer = itertools.count(step=-1)
 
     def postTweet(self, userId, tweetId):
         """
@@ -31,22 +27,20 @@ class Twitter(object):
         """
         tweets = self.users[userId].tweets
         if len(tweets) >= 10:
-            tweets.popleft()
-        tweets.append(Tweet(tweetId, self.time))
-        self.time += 1
+            tweets.pop()
+        tweets.appendleft((next(self.timer), tweetId))
 
     def getNewsFeed(self, userId):
         """
-        Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent.
+        Retrieve the 10 most recent tweet ids in the user's news feed.
+        Each item in the news feed must be posted by users who the user followed or by the user herself.
+        Tweets must be ordered from most recent to least recent.
         :type userId: int
         :rtype: List[int]
         """
         user = self.users[userId]
-        tweets = sorted(
-            (tweet for followee in user.followees for tweet in followee.tweets),
-            key=lambda x: x.time,
-            reverse=True)
-        return map(lambda x: x.id, tweets[:10])
+        tweets = heapq.merge(*(followee.tweets for followee in user.followees))
+        return map(lambda x: x[1], itertools.islice(tweets, 10))
 
     def follow(self, followerId, followeeId):
         """
