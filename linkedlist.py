@@ -23,3 +23,21 @@ class ListNode(object):
             vals.append(root.val)
             root = root.next
         return vals
+
+    @staticmethod
+    def reverse_list(root):
+        prev = None
+        while root:
+            next_ = root.next
+            root.next = prev
+            prev = root
+            root = next_
+        return prev
+
+    @staticmethod
+    def count(root):
+        result = 0
+        while root:
+            result += 1
+            root = root.next
+        return result
