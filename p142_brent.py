@@ -57,13 +57,10 @@ class Test(unittest.TestCase):
             for i in xrange(loop_start_index):
                 loop_start_node = loop_start_node.next
 
-            if not loop_start_node.next:
-                loop_start_node.next = loop_start_node
-            else:
-                curr = loop_start_node
-                while curr.next:
-                    curr = curr.next
-                curr.next = loop_start_node
+            curr = loop_start_node
+            while curr.next:
+                curr = curr.next
+            curr.next = loop_start_node
 
         actual = Solution().detectCycle(root)
         self.assertEqual(actual, loop_start_node)
