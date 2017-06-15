@@ -6,6 +6,8 @@ class ListNode(object):
 
     @staticmethod
     def from_array(vals):
+        if not vals:
+            return None
         root_parent = ListNode(0)
         parent = root_parent
 
