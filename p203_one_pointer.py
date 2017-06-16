@@ -12,18 +12,12 @@ class Solution(object):
         while head and head.val == val:
             head = head.next
 
-        if not head:
-            return None
-
         result = head
-        prev = head
-        head = head.next
-        while head:
-            if head.val == val:
-                prev.next = head.next
+        while head and head.next:
+            if head.next.val == val:
+                head.next = head.next.next
             else:
-                prev = head
-            head = head.next
+                head = head.next
         return result
 
 
