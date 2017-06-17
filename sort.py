@@ -192,6 +192,35 @@ def merge_sort(a):
     _merge_sort(a, aux, 0, len(a))
 
 
+def merge_sort_iterative(a):
+    n = len(a)
+    aux = [0] * n
+
+    sublen = 1  # sublist length
+    while True:
+        new_sublen = sublen << 1  # new sublist length after merge
+
+        for lo in xrange(0, n, new_sublen):
+            hi = min(lo + sublen, n)
+            lo_end = hi
+            hi_end = min(lo + new_sublen, n)
+            
+            for i in xrange(lo, hi_end):
+                if hi >= hi_end or lo < lo_end and a[lo] <= a[hi]:
+                    aux[i] = a[lo]
+                    lo += 1
+                else:
+                    aux[i] = a[hi]
+                    hi += 1
+
+        if new_sublen >= n:
+            break
+        sublen = new_sublen
+        a, aux = aux, a
+
+    return aux
+
+
 # Misc
 
 def _down_heap(a, root, n):
@@ -290,6 +319,7 @@ class Test(unittest.TestCase):
         self._test(quick_sort)
         self._test(selection_sort)
         self._test(merge_sort)
+        self._test(merge_sort_iterative)
         self._test(heap_sort)
         self._test(radix_sort)
 
