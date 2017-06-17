@@ -201,10 +201,10 @@ def merge_sort_iterative(a):
         new_sublen = sublen << 1  # new sublist length after merge
 
         for lo in xrange(0, n, new_sublen):
-            hi = min(lo + sublen, n)
-            lo_end = hi
-            hi_end = min(lo + new_sublen, n)
-            
+            lo_end = min(lo + sublen, n)
+            hi = lo_end
+            hi_end = min(hi + sublen, n)
+
             for i in xrange(lo, hi_end):
                 if hi >= hi_end or lo < lo_end and a[lo] <= a[hi]:
                     aux[i] = a[lo]
