@@ -24,18 +24,18 @@ class Solution(object):
         while True:
             new_sublen = sublen << 1
             prev = parent
+            hi_node = prev.next
 
             for lo in xrange(0, n, new_sublen):
                 lo_end = min(lo + sublen, n)
                 hi = lo_end
                 hi_end = min(hi + sublen, n)
 
-                lo_node = prev.next
-                hi_node = lo_node
+                lo_node = hi_node
                 for _ in xrange(hi - lo):
                     hi_node = hi_node.next
 
-                for i in xrange(lo, hi_end):
+                for _ in xrange(hi_end - lo):
                     if hi >= hi_end or lo < lo_end and lo_node.val <= hi_node.val:
                         prev.next = lo_node
                         prev = lo_node
@@ -46,7 +46,6 @@ class Solution(object):
                         prev = hi_node
                         hi_node = hi_node.next
                         hi += 1
-                prev.next = hi_node
 
             if new_sublen >= n:
                 break
