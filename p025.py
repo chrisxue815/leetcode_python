@@ -21,31 +21,22 @@ class Solution(object):
         if k > length:
             return head
 
-        tail = head
-        prev = head
-        curr = head.next
-        for _ in xrange(k - 1):
-            next_ = curr.next
-            curr.next = prev
-            prev = curr
-            curr = next_
-        if not curr:
-            tail.next = None
-            return prev
-        head = prev
-        length -= k
+        curr = tail = head
+        head = None
 
         while length >= k:
-            next_tail = curr
-            prev = curr
+            prev = next_tail = curr
             curr = curr.next
             for _ in xrange(k - 1):
                 next_ = curr.next
                 curr.next = prev
                 prev = curr
                 curr = next_
-            tail.next = prev
-            tail = next_tail
+            if head:
+                tail.next = prev
+                tail = next_tail
+            else:
+                head = prev
             length -= k
 
         tail.next = curr
