@@ -10,34 +10,36 @@ class Solution(object):
         if not s:
             return ''
 
-        num_ch = [0] * 256
         digits = [0] * 10
 
         for ch in s:
             if ch == 'z':
                 digits[0] += 1
+            elif ch == 'n':
+                digits[1] += 1
             elif ch == 'w':
                 digits[2] += 1
+            elif ch == 'h':
+                digits[3] += 1
             elif ch == 'u':
                 digits[4] += 1
-                num_ch[ord('f')] -= 1
+            elif ch == 'f':
+                digits[5] += 1
             elif ch == 'x':
                 digits[6] += 1
-                num_ch[ord('s')] -= 1
-                num_ch[ord('i')] -= 1
+            elif ch == 's':
+                digits[7] += 1
             elif ch == 'g':
                 digits[8] += 1
-                num_ch[ord('i')] -= 1
-                num_ch[ord('h')] -= 1
-            else:
-                num_ch[ord(ch)] += 1
+            elif ch == 'i':
+                digits[9] += 1
 
-        digits[3] = num_ch[ord('h')]
-        digits[5] = num_ch[ord('f')]
-        digits[7] = num_ch[ord('s')]
+        digits[3] -= digits[8]
+        digits[5] -= digits[4]
+        digits[7] -= digits[6]
 
-        digits[9] = num_ch[ord('i')] - digits[5]
-        digits[1] = num_ch[ord('n')] - digits[7] - (digits[9] << 1)
+        digits[9] -= digits[5] + digits[6] + digits[8]
+        digits[1] -= digits[7] + (digits[9] << 1)
 
         return ''.join(chr(digit + ord('0')) * num_digit for digit, num_digit in enumerate(digits) if num_digit)
 
