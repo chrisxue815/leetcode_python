@@ -10,24 +10,19 @@ class Solution(object):
         if n < 10:
             return n
 
+        n -= 10
         num_digits = 2
-        start = 10
-        end = 190
         count = 90
 
-        while n >= end:
+        while n >= count * num_digits:
+            n -= count * num_digits
             num_digits += 1
             count *= 10
-            start = end
-            end += count * num_digits
 
-        n -= start
-        r = n % num_digits
+        q, r = divmod(n, num_digits)
+        result = q // (10 ** (num_digits - 1 - r)) % 10
 
-        if not r:
-            return n // (num_digits * (10 ** (num_digits - 1))) + 1
-
-        return n // num_digits % (10 ** (num_digits - r)) // (10 ** (num_digits - 1 - r))
+        return result if r else result + 1
 
 
 class Test(unittest.TestCase):
