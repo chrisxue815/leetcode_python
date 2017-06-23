@@ -7,20 +7,13 @@ class Solution(object):
         :type people: List[List[int]]
         :rtype: List[List[int]]
         """
-        if not people:
-            return people
+        people.sort(key=lambda (h, k): (-h, k))
 
-        people.sort(lambda x, y: y[0] - x[0] if x[0] != y[0] else x[1] - y[1])
+        r = []
+        for p in people:
+            r.insert(p[1], p)
 
-        i = 1
-        while i < len(people) and people[i][0] == people[0][0]:
-            i += 1
-
-        for i in xrange(i, len(people)):
-            if people[i][1] < i:
-                people.insert(people[i][1], people.pop(i))
-
-        return people
+        return r
 
 
 class Test(unittest.TestCase):
