@@ -3,26 +3,19 @@ from tree import TreeNode
 
 
 class Solution(object):
-    def __init__(self):
-        self.sum_ = 0
-
-    def _make_bst_greater_again(self, root):
-        if not root:
-            return
-
-        self._make_bst_greater_again(root.right)
-
-        self.sum_ += root.val
-        root.val = self.sum_
-
-        self._make_bst_greater_again(root.left)
-
     def convertBST(self, root):
         """
         :type root: TreeNode
         :rtype: TreeNode
         """
-        self._make_bst_greater_again(root)
+
+        def make_bst_greater_again(node, sum_):
+            if not node:
+                return sum_
+            node.val += make_bst_greater_again(node.right, sum_)
+            return make_bst_greater_again(node.left, node.val)
+
+        make_bst_greater_again(root, 0)
         return root
 
 
