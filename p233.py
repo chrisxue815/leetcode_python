@@ -11,7 +11,7 @@ class Solution(object):
         m = 1
         while m <= n:
             m2 = m * 10
-            result += n // m2 * m + min(m, max(0, n % m2 - m + 1))
+            result += (n // m + 8) // 10 * m + (n // m % 10 == 1) * (n % m + 1)
             m = m2
         return result
 
