@@ -45,6 +45,27 @@ def mul(a, b):
     return result if pos else -result
 
 
+def div(a, b):
+    if not b:
+        return float('inf')
+    if not a:
+        return 0
+
+    pos = (a < 0) == (b < 0)
+    if a < 0:
+        a = -a
+    if b < 0:
+        b = - b
+
+    result = 0
+    for i in xrange(31, -1, -1):
+        if a >> i >= b:
+            result += 1 << i
+            a -= b << i
+
+    return result if pos else -result
+
+
 class Test(unittest.TestCase):
     def test(self):
         for i in xrange(20):
@@ -66,6 +87,11 @@ class Test(unittest.TestCase):
 
         self.assertEqual(mul(a, b), a * b)
         self.assertEqual(mul(b, a), b * a)
+
+        if b:
+            self.assertEqual(div(a, b), int(float(a) / b))
+        if a:
+            self.assertEqual(div(b, a), int(float(b) / a))
 
 
 if __name__ == '__main__':
