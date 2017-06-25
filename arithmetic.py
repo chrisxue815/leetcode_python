@@ -20,6 +20,31 @@ def sub(a, b):
     return add(a, add(~b, 1))
 
 
+def mul(a, b):
+    if not a or not b:
+        return 0
+    if a == 1:
+        return b
+    if b == 1:
+        return a
+
+    pos = (a < 0) == (b < 0)
+    if a < 0:
+        a = -a
+    if b < 0:
+        b = - b
+
+    result = 0
+    while b != 1:
+        if b & 1:
+            result += a
+        a <<= 1
+        b >>= 1
+    result += a
+
+    return result if pos else -result
+
+
 class Test(unittest.TestCase):
     def test(self):
         for i in xrange(20):
@@ -38,6 +63,9 @@ class Test(unittest.TestCase):
 
         self.assertEqual(sub(a, b), a - b)
         self.assertEqual(sub(b, a), b - a)
+
+        self.assertEqual(mul(a, b), a * b)
+        self.assertEqual(mul(b, a), b * a)
 
 
 if __name__ == '__main__':
