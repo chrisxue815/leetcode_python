@@ -7,57 +7,11 @@ class Solution(object):
         :type x: List[int]
         :rtype: bool
         """
-        if len(x) < 4:
-            return False
-
-        inward = False
-        right = prev_left = 0
-        bot = prev_top = 0
-        top = prev_bot = x[0]
-        left = prev_right = -x[1]
-
-        for i in xrange(2, len(x)):
-            direction = i & 3
-            if direction == 2:
-                new_bot = top - x[i]
-                if inward:
-                    if new_bot <= bot:
-                        return True
-                elif new_bot >= bot:
-                    inward = True
-                    if new_bot <= prev_top:
-                        right = prev_left
-                prev_bot, bot = bot, new_bot
-            elif direction == 3:
-                new_right = left + x[i]
-                if inward:
-                    if new_right >= right:
-                        return True
-                elif new_right <= right:
-                    inward = True
-                    if new_right >= prev_left:
-                        top = prev_bot
-                prev_right, right = right, new_right
-            elif direction == 0:
-                new_top = bot + x[i]
-                if inward:
-                    if new_top >= top:
-                        return True
-                elif new_top <= top:
-                    inward = True
-                    if new_top >= prev_bot:
-                        left = prev_right
-                prev_top, top = top, new_top
-            elif direction == 1:
-                new_left = right - x[i]
-                if inward:
-                    if new_left <= left:
-                        return True
-                elif new_left >= left:
-                    inward = True
-                    if new_left <= prev_right:
-                        bot = prev_top
-                prev_left, left = left, new_left
+        b = c = d = e = f = 0
+        for a in x:
+            if d >= b > 0 and (a >= c or c >= e and a >= c - e and f >= d - b):
+                return True
+            b, c, d, e, f = a, b, c, d, e
 
         return False
 
