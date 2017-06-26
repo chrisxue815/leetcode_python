@@ -11,15 +11,13 @@ class Solution(object):
         stack = []
 
         def dfs(i):
-            if i >= len(nums):
-                return
-            if not stack or nums[i] >= stack[-1]:
-                stack.append(nums[i])
-                if len(stack) > 1:
-                    result.add(tuple(stack))
-                dfs(i + 1)
-                stack.pop()
-            dfs(i + 1)
+            for i in xrange(i, len(nums)):
+                if not stack or nums[i] >= stack[-1]:
+                    stack.append(nums[i])
+                    if len(stack) > 1:
+                        result.add(tuple(stack))
+                    dfs(i + 1)
+                    stack.pop()
 
         dfs(0)
 
