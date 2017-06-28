@@ -3,28 +3,17 @@ from tree import TreeNode
 
 
 class Solution(object):
-    def __init__(self):
-        self.sum_left_leaves = 0
-
-    def _traverse(self, root):
-        if not root:
-            return
-
-        if root.left:
-            if root.left.left or root.left.right:
-                self._traverse(root.left)
-            else:
-                self.sum_left_leaves += root.left.val
-
-        self._traverse(root.right)
-
     def sumOfLeftLeaves(self, root):
         """
         :type root: TreeNode
         :rtype: int
         """
-        self._traverse(root)
-        return self.sum_left_leaves
+        if not root:
+            return 0
+
+        if root.left and not root.left.left and not root.left.right:
+            return root.left.val + self.sumOfLeftLeaves(root.right)
+        return self.sumOfLeftLeaves(root.left) + self.sumOfLeftLeaves(root.right)
 
 
 class Test(unittest.TestCase):
