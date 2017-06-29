@@ -1,5 +1,4 @@
 import unittest
-import itertools
 
 
 class Solution(object):
@@ -8,17 +7,17 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        leading = nums[0]
-        count = 0
+        major = count = 0
 
-        for num in itertools.islice(nums, 1, len(nums)):
-            if num == leading:
+        for num in nums:
+            if num == major:
                 count += 1
             elif count > 0:
                 count -= 1
             else:
-                leading = num
-        return leading
+                major = num
+                count = 1
+        return major
 
 
 class Test(unittest.TestCase):
