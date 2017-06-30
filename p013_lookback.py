@@ -8,23 +8,17 @@ class Solution(object):
         :rtype: int
         """
         symbols = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
-        result = 0
-        prev = symbols[s[0]]
-        num = prev
+        result = prev = 0
 
-        for i in xrange(1, len(s)):
-            curr = symbols[s[i]]
-            if curr == prev:
-                num += curr
+        for ch in reversed(s):
+            curr = symbols[ch]
+            if curr < prev:
+                result -= curr
             else:
-                if prev < curr:
-                    result -= num
-                else:
-                    result += num
-                num = curr
+                result += curr
             prev = curr
 
-        return result + num
+        return result
 
 
 class Test(unittest.TestCase):
