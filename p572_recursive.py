@@ -12,10 +12,8 @@ def _set_heights(root):
 
 
 def _match(s, t):
-    if not s and not t:
-        return True
     if not s or not t:
-        return False
+        return s is t
     if s.height < t.height:
         return False
     if s.height > t.height:
@@ -30,10 +28,8 @@ class Solution(object):
         :type t: TreeNode
         :rtype: bool
         """
-        if not s and not t:
-            return True
         if not s or not t:
-            return False
+            return s is t
 
         _set_heights(s)
         _set_heights(t)
