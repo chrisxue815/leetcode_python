@@ -2,7 +2,6 @@ import unittest
 
 
 class Solution(object):
-
     def numTrees(self, n):
         """
         :type n: int
@@ -19,13 +18,16 @@ class Solution(object):
 
 
 class Test(unittest.TestCase):
-
     def test(self):
-        self.assertEqual(Solution().numTrees(0), 1)
-        self.assertEqual(Solution().numTrees(1), 1)
-        self.assertEqual(Solution().numTrees(2), 2)
-        self.assertEqual(Solution().numTrees(3), 5)
-        self.assertEqual(Solution().numTrees(4), 14)
+        self._test(0, 1)
+        self._test(1, 1)
+        self._test(2, 2)
+        self._test(3, 5)
+        self._test(4, 14)
+
+    def _test(self, n, expected):
+        actual = Solution().numTrees(n)
+        self.assertEqual(actual, expected)
 
 
 if __name__ == '__main__':
