@@ -14,13 +14,17 @@ class Solution(object):
         while lo <= hi:
             mid = lo + ((hi - lo) >> 1)
             mid_val = nums[mid]
-            lo_val = nums[lo]
-            hi_val = nums[hi]
 
             if mid_val == target:
                 return True
 
-            if mid_val > lo_val:
+            while nums[lo] == mid_val and lo < mid:
+                lo += 1
+
+            lo_val = nums[lo]
+            hi_val = nums[hi]
+
+            if mid_val >= lo_val:
                 if target < lo_val or target > mid_val:
                     lo = mid + 1
                 else:
@@ -30,11 +34,6 @@ class Solution(object):
                     hi = mid - 1
                 else:
                     lo = mid + 1
-            else:
-                if all(num == mid_val for num in nums[lo:mid]):
-                    lo = mid + 1
-                else:
-                    hi = mid - 1
 
         return False
 
