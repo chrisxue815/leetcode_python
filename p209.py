@@ -8,19 +8,18 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        result = 0x7FFFFFFF
+        result = len(nums)
         lo = 0
         sum_ = 0
 
         for hi in xrange(len(nums)):
             sum_ += nums[hi]
             if sum_ >= s:
-                while lo < hi and sum_ - nums[lo] >= s:
+                while sum_ >= s:
                     sum_ -= nums[lo]
                     lo += 1
-                if hi - lo < result:
-                    result = hi - lo
-        return result + 1 if result != 0x7FFFFFFF else 0
+                result = min(result, hi - lo)
+        return result + 2 if result != len(nums) else 0
 
 
 class Test(unittest.TestCase):
