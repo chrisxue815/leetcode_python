@@ -7,27 +7,18 @@ class Solution(object):
         :type board: List[List[str]]
         :rtype: void Do not return anything, modify board in-place instead.
         """
-        rows = [[0] * 10 for _ in xrange(9)]
-        cols = [[0] * 10 for _ in xrange(9)]
-        blocks = [[0] * 10 for _ in xrange(9)]
+        rows = [[1] * 10 for _ in xrange(9)]
+        cols = [[1] * 10 for _ in xrange(9)]
+        blocks = [[1] * 10 for _ in xrange(9)]
 
         for rownum, row in enumerate(board):
             for colnum, num in enumerate(row):
                 if num != '.':
                     num = int(num)
-                    rows[rownum][num] = 1
-                    cols[colnum][num] = 1
-                    blocks[rownum // 3 * 3 + colnum // 3][num] = 1
+                    rows[rownum][num] = cols[colnum][num] = blocks[rownum // 3 * 3 + colnum // 3][num] = 0
 
         def dfs(rownum, colnum):
-            if colnum > 8:
-                if rownum < 8:
-                    colnum = 0
-                    rownum += 1
-                else:
-                    return True
-
-            while board[rownum][colnum] != '.':
+            while True:
                 if colnum < 8:
                     colnum += 1
                 elif rownum < 8:
@@ -35,24 +26,22 @@ class Solution(object):
                     rownum += 1
                 else:
                     return True
+                if board[rownum][colnum] == '.':
+                    break
 
             row = rows[rownum]
             col = cols[colnum]
             block = blocks[rownum // 3 * 3 + colnum // 3]
             for num in xrange(1, 10):
-                if row[num] == 0 and col[num] == 0 and block[num] == 0:
-                    row[num] = 1
-                    col[num] = 1
-                    block[num] = 1
-                    if dfs(rownum, colnum + 1):
+                if row[num] and col[num] and block[num]:
+                    row[num] = col[num] = block[num] = 0
+                    if dfs(rownum, colnum):
                         board[rownum][colnum] = str(num)
                         return True
-                    row[num] = 0
-                    col[num] = 0
-                    block[num] = 0
+                    row[num] = col[num] = block[num] = 1
             return False
 
-        dfs(0, 0)
+        dfs(0, -1)
 
 
 class Test(unittest.TestCase):
