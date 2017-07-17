@@ -11,28 +11,18 @@ class Solution(object):
         if n == 1 or n >= len(s):
             return s
 
-        result = []
+        result = [''] * n
 
-        i = 0
-        while i < len(s):
-            result.append(s[i])
-            i += (n << 1) - 2
+        row = 0
+        step = 1
 
-        for row in xrange(1, n - 1):
-            i = row
-            while i < len(s):
-                result.append(s[i])
-                i += (n - row - 1) << 1
-                if i < len(s):
-                    result.append(s[i])
-                else:
-                    break
-                i += row << 1
-
-        i = n - 1
-        while i < len(s):
-            result.append(s[i])
-            i += (n << 1) - 2
+        for ch in s:
+            result[row] += ch
+            if row == 0:
+                step = 1
+            elif row == n - 1:
+                step = -1
+            row += step
 
         return ''.join(result)
 
