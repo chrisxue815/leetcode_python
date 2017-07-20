@@ -1,5 +1,4 @@
 import unittest
-import itertools
 
 
 # Definition for an interval.
@@ -16,29 +15,34 @@ class Solution(object):
         :type newInterval: Interval
         :rtype: List[Interval]
         """
-        # TODO: binary search left and right index to merge into newInterval
-        for i, old in enumerate(intervals):
-            if newInterval.start <= old.end:
-                if newInterval.end < old.start:
-                    intervals.insert(i, newInterval)
-                    return intervals
+
+        def search(num, find_left):
+            lo = 0
+            hi = len(intervals) - 1
+
+            while lo <= hi:
+                mid = lo + ((hi - lo) >> 1)
+                mid_start = intervals[mid].end if find_left else intervals[mid].start
+                if mid_start < num:
+                    lo = mid + 1
+                elif mid_start > num:
+                    hi = mid - 1
                 else:
-                    old.start = min(old.start, newInterval.start)
-                    old.end = max(old.end, newInterval.end)
-                    lo, lo_interval = i, old
-                    break
+                    return mid
+            return lo if find_left else hi
+
+        left = search(newInterval.start, True)
+        right = search(newInterval.end, False)
+
+        if left > right:
+            intervals.insert(left, newInterval)
         else:
-            intervals.append(newInterval)
-            return intervals
+            left_interval = intervals[left]
+            left_interval.start = min(left_interval.start, newInterval.start)
+            left_interval.end = max(intervals[right].end, newInterval.end)
+            del intervals[left + 1:right + 1]
 
-        for hi_index, hi_interval in enumerate(itertools.islice(intervals, lo + 1, len(intervals))):
-            if hi_interval.start <= lo_interval.end:
-                lo_interval.end = max(lo_interval.end, hi_interval.end)
-            else:
-                intervals[lo + 1:] = intervals[lo + 1 + hi_index:]
-                return intervals
-
-        return intervals[:lo + 1]
+        return intervals
 
 
 class Test(unittest.TestCase):
@@ -52,6 +56,29 @@ class Test(unittest.TestCase):
             [[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]],
             [4, 9],
             [[1, 2], [3, 10], [12, 16]])
+
+        self._test(
+            [[1, 3], [6, 9]],
+            [0, 10],
+            [[0, 10]])
+
+        self._test(
+            [],
+            [5, 7],
+            [[5, 7]]
+        )
+
+        self._test(
+            [[1, 5]],
+            [6, 8],
+            [[1, 5], [6, 8]]
+        )
+
+        self._test(
+            [[1, 3], [7, 9]],
+            [5, 6],
+            [[1, 3], [5, 6], [7, 9]]
+        )
 
     def _test(self, intervals, newInterval, expected):
         intervals = [Interval(*interval) for interval in intervals]
