@@ -1,10 +1,4 @@
 import unittest
-import heapq
-import operator
-
-
-def prod(iterable):
-    return reduce(operator.mul, iterable, 1)
 
 
 class Solution(object):
@@ -13,38 +7,22 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        pos = [0] * 3
-        neg = [0] * 3
-        zero = 0
+        max1, max2, max3, min1, min2 = -1000, -1000, -1000, 1000, 1000
         for num in nums:
-            if num > 0:
-                heapq.heappushpop(pos, num)
-            elif num < 0:
-                heapq._heappushpop_max(neg, num)
-            else:
-                zero = 1
-        pos = sorted(num for num in pos if num)
-        neg = sorted(num for num in neg if num)
-        if len(pos) >= 3:
-            if len(neg) >= 2:
-                if pos[0] * pos[1] >= neg[0] * neg[1]:
-                    return pos[0] * pos[1] * pos[2]
+            if num > max3:
+                if num >= max2:
+                    if num >= max1:
+                        max1, max2, max3 = num, max1, max2
+                    else:
+                        max2, max3 = num, max2
                 else:
-                    return pos[2] * neg[0] * neg[1]
-            else:
-                return pos[0] * pos[1] * pos[2]
-        elif len(pos) == 2:
-            if len(neg) >= 2:
-                return pos[1] * neg[0] * neg[1]
-            else:
-                return 0 if zero else pos[0] * pos[1] * neg[0]
-        elif len(pos) == 1:
-            if len(neg) >= 2:
-                return pos[0] * neg[0] * neg[1]
-            else:
-                return 0
-        else:
-            return 0 if zero else prod(heapq.nlargest(3, nums))
+                    max3 = num
+            if num < min2:
+                if num <= min1:
+                    min1, min2 = num, min1
+                else:
+                    min2 = num
+        return max(max1 * max2 * max3, max1 * min1 * min2)
 
 
 class Test(unittest.TestCase):
