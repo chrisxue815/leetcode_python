@@ -7,15 +7,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        pending = set(xrange(1, len(nums) + 1))
-        result = [0] * 2
-        for num in nums:
-            if num in pending:
-                pending.remove(num)
-            else:
-                result[0] = num
-        result[1] = next(iter(pending))
-        return result
+        n = len(nums)
+        s = sum(set(nums))
+        return [sum(nums) - s, ((1 + n) * n >> 1) - s]
 
 
 class Test(unittest.TestCase):
