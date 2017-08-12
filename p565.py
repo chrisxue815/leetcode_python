@@ -8,6 +8,7 @@ class Solution(object):
         :rtype: int
         """
         max_ring = 0
+        remain = len(nums)
         for index in xrange(len(nums)):
             ring = 0
             while True:
@@ -15,10 +16,13 @@ class Solution(object):
                 if num == -1:
                     break
                 ring += 1
+                remain -= 1
                 nums[index] = -1
                 index = num
             if ring > max_ring:
                 max_ring = ring
+            if not remain:
+                break
         return max_ring
 
 
