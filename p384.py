@@ -8,7 +8,8 @@ class Solution(object):
         """
         :type nums: List[int]
         """
-        self.nums = nums
+        self.orig = nums
+        self.nums = list(nums)
         self.rand = random.Random()
 
     def reset(self):
@@ -16,18 +17,18 @@ class Solution(object):
         Resets the array to its original configuration and return it.
         :rtype: List[int]
         """
-        return self.nums
+        return self.orig
 
     def shuffle(self):
         """
         Returns a random shuffling of the array.
         :rtype: List[int]
         """
-        ret = list(self.nums)
-        for i in xrange(len(self.nums) - 1, -1, -1):
+        nums = self.nums
+        for i in xrange(len(nums) - 1, -1, -1):
             j = self.rand.randint(0, i)
-            ret[i], ret[j] = ret[j], ret[i]
-        return ret
+            nums[i], nums[j] = nums[j], nums[i]
+        return nums
 
 
 class Test(unittest.TestCase):
