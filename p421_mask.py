@@ -10,14 +10,10 @@ class Solution(object):
         ret = mask = 0
         for i in xrange(31, -1, -1):
             mask |= 1 << i
-            prefixes = set()
-            for num in nums:
-                prefixes.add(num & mask)
-            tmp = ret | (1 << i)
-            for prefix in prefixes:
-                if tmp ^ prefix in prefixes:
-                    ret = tmp
-                    break
+            prefixes = set(num & mask for num in nums)
+            candidate = ret | (1 << i)
+            if any(candidate ^ prefix in prefixes for prefix in prefixes):
+                ret = candidate
         return ret
 
 
