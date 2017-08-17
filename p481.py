@@ -14,7 +14,7 @@ class Solution(object):
             return 1
 
         result = 1
-        s = [0] * n
+        s = [0] * (n + 1)
         s[0] = 1
         s[1] = 2
         s[2] = 2
@@ -24,12 +24,12 @@ class Solution(object):
         for r in itertools.islice(s, 2, len(s)):
             for _ in xrange(r):
                 s[w] = next_
-                if next_ == 1:
-                    result += 1
                 w += 1
-                if w == n:
-                    return result
-            next_ = 2 if next_ == 1 else 1
+            if next_ == 1:
+                result += r
+            if w >= n:
+                return result - 1 if w == n + 1 and s[n] == 1 else result
+            next_ = 3 - next_
 
 
 class Test(unittest.TestCase):
