@@ -1,12 +1,6 @@
 import unittest
 
 
-class Window(object):
-    def __init__(self):
-        self.gaps = 0
-        self.indices = []
-
-
 class Solution(object):
     def characterReplacement(self, s, k):
         """
@@ -17,24 +11,18 @@ class Solution(object):
         if len(s) <= k:
             return len(s)
 
-        result = 0
-        windows = [Window() for _ in xrange(26)]
+        counts = [0] * 128
+        lo = max_count = 0
 
-        for i, ch in enumerate(s):
-            window = windows[ord(ch) - ord('A')]
-            indices = window.indices
+        for hi, hi_ch in enumerate(s):
+            counts[ord(hi_ch)] += 1
+            max_count = max(max_count, counts[ord(hi_ch)])
 
-            if indices:
-                window.gaps += i - indices[-1] - 1
+            if hi - lo + 1 - max_count > k:
+                counts[ord(s[lo])] -= 1
+                lo += 1
 
-            window.indices.append(i)
-
-            while window.gaps > k:
-                left = indices.pop(0)
-                window.gaps -= indices[0] - left - 1
-            result = max(result, indices[-1] - indices[0] + 1 + k - window.gaps)
-
-        return min(result, len(s))
+        return len(s) - lo
 
 
 class Test(unittest.TestCase):
