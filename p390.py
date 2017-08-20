@@ -8,20 +8,14 @@ class Solution(object):
         :rtype: int
         """
         lo = 1
-        hi = n
         step = 1
         lr = True
 
-        while lo < hi:
-            if lr:
-                if ((hi - lo) // step) & 1 == 0:
-                    hi -= step
+        while n > 1:
+            if lr or n & 1:
                 lo += step
-            else:
-                if ((hi - lo) // step) & 1 == 0:
-                    lo += step
-                hi -= step
-            step *= 2
+            n >>= 1
+            step <<= 1
             lr = not lr
 
         return lo
