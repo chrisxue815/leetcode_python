@@ -17,19 +17,16 @@ class Solution(object):
         if not intervals:
             return 0
 
-        intervals.sort(key=lambda x: x.start)
-        prev = intervals[0]
-        result = 0
+        intervals.sort(key=lambda x: x.end)
+        prev = intervals[0].end
+        count = 1
 
         for curr in intervals:
-            if curr.start < prev.end:
-                result += 1
-                if curr.end <= prev.end:
-                    prev = curr
-            else:
-                prev = curr
+            if curr.start >= prev:
+                count += 1
+                prev = curr.end
 
-        return result - 1
+        return len(intervals) - count
 
 
 class Test(unittest.TestCase):
