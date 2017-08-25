@@ -10,16 +10,14 @@ class Solution(object):
         if not points:
             return 0
 
-        points.sort()
-        curr = points[0][1]
+        points.sort(key=lambda x: x[1])
+        prev = points[0][1]
         count = 1
 
-        for p in points:
-            if p[0] > curr:
-                curr = p[1]
+        for curr in points:
+            if curr[0] > prev:
                 count += 1
-            elif p[1] < curr:
-                curr = p[1]
+                prev = curr[1]
 
         return count
 
