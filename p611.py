@@ -10,17 +10,16 @@ class Solution(object):
         nums.sort()
         result = 0
 
-        for i in xrange(0, len(nums) - 2):
-            if nums[i] == 0:
-                continue
-
-            a = nums[i]
-            k = i + 2
-            for j in xrange(i + 1, len(nums) - 1):
-                b = nums[j]
-                while k < len(nums) and a + b > nums[k]:
-                    k += 1
-                result += k - j - 1
+        for i in xrange(len(nums) - 1, 1, -1):
+            side = nums[i]
+            lo = 0
+            hi = i - 1
+            while lo < hi:
+                if nums[lo] + nums[hi] > side:
+                    result += hi - lo
+                    hi -= 1
+                else:
+                    lo += 1
 
         return result
 
