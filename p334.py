@@ -8,26 +8,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        if not nums:
-            return False
-        lo = new_lo = nums[0]
-        mid = 0x7fffffff
+        lo = mid = 0x7fffffff
         for num in nums:
-            if lo == new_lo:
-                if num <= lo:
-                    new_lo = num
-                elif num < mid:
-                    mid = num
-                elif num > mid:
-                    return True
+            if num <= lo:
+                lo = num
+            elif num <= mid:
+                mid = num
             else:
-                if num <= new_lo:
-                    new_lo = num
-                elif num <= mid:
-                    lo = new_lo
-                    mid = num
-                else:
-                    return True
+                return True
 
         return False
 
