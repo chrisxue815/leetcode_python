@@ -28,7 +28,7 @@ class Solution(object):
             heapq.heappush(q, (heightMap[0][col], 0, col))
             heapq.heappush(q, (heightMap[rows - 1][col], rows - 1, col))
 
-        dirs = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+        dirs = ((-1, 0), (1, 0), (0, -1), (0, 1))
         while q:
             prev_height, prev_row, prev_col = heapq.heappop(q)
             for delta_row, delta_col in dirs:
