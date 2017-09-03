@@ -9,14 +9,23 @@ class Solution(object):
         """
         lo = 0
         hi = len(height) - 1
-        max_area = 0
+        lo_height = height[lo]
+        hi_height = height[hi]
+        max_area = min(lo_height, hi_height) * (hi - lo)
 
         while lo < hi:
-            max_area = max(max_area, min(height[lo], height[hi]) * (hi - lo))
-            if height[lo] < height[hi]:
+            if lo_height <= hi_height:
                 lo += 1
+                is_higher = height[lo] > lo_height
+                lo_height = height[lo]
+                if is_higher:
+                    max_area = max(max_area, min(lo_height, hi_height) * (hi - lo))
             else:
                 hi -= 1
+                is_higher = height[hi] > hi_height
+                hi_height = height[hi]
+                if is_higher:
+                    max_area = max(max_area, min(lo_height, hi_height) * (hi - lo))
 
         return max_area
 
