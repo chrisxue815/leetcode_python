@@ -10,29 +10,16 @@ class Solution(object):
         :rtype: List[int]
         """
         lo = 0
-        hi = len(arr) - 1
+        hi = len(arr) - 1 - k
 
         while lo <= hi:
             mid = lo + ((hi - lo) >> 1)
-            mid_val = arr[mid]
-            if mid_val < x:
+            if x - arr[mid] > arr[mid + k] - x:
                 lo = mid + 1
-            elif mid_val > x:
+            else:
                 hi = mid - 1
-            else:
-                lo = hi = mid
 
-                break
-
-        lo, hi = hi, lo
-
-        while hi - lo - 1 < k:
-            if hi == len(arr) or lo >= 0 and x - arr[lo] <= arr[hi] - x:
-                lo -= 1
-            else:
-                hi += 1
-
-        return arr[lo + 1:hi]
+        return arr[lo:lo + k]
 
 
 class Test(unittest.TestCase):
