@@ -13,25 +13,26 @@ class Solution(object):
         senate = list(senate)
 
         while True:
-            i = 0
-            while i < len(senate):
-                if senate[i] == 'R':
+            for i, ch in enumerate(senate):
+                if ch == 'R':
                     d -= 1
                     if d <= 0:
                         return 'Radiant'
                     ch = 'D'
-                else:
+                elif ch == 'D':
                     r -= 1
                     if r <= 0:
                         return 'Dire'
                     ch = 'R'
+                else:
+                    continue
 
                 for j in xrange(i + 1, len(senate)):
                     if senate[j] == ch:
-                        senate.pop(j)
+                        senate[j] = 0
                         break
 
-                i += 1
+            senate = filter(lambda a: a != 0, senate)
 
 
 class Test(unittest.TestCase):
