@@ -1,4 +1,5 @@
 import unittest
+import collections
 
 
 class Solution(object):
@@ -7,32 +8,24 @@ class Solution(object):
         :type senate: str
         :rtype: str
         """
-        r = senate.count('R')
-        d = len(senate) - r
+        r = collections.deque()
+        d = collections.deque()
 
-        senate = list(senate)
+        for i, ch in enumerate(senate):
+            if ch == 'R':
+                r.append(i)
+            else:
+                d.append(i)
 
-        while True:
-            for i, ch in enumerate(senate):
-                if ch == 'R':
-                    d -= 1
-                    if d <= 0:
-                        return 'Radiant'
-                    ch = 'D'
-                elif ch == 'D':
-                    r -= 1
-                    if r <= 0:
-                        return 'Dire'
-                    ch = 'R'
-                else:
-                    continue
+        while r and d:
+            rl = r.popleft()
+            dl = d.popleft()
+            if rl < dl:
+                r.append(rl + len(senate))
+            else:
+                d.append(dl + len(senate))
 
-                for j in xrange(i + 1, len(senate)):
-                    if senate[j] == ch:
-                        senate[j] = 0
-                        break
-
-            senate = filter(lambda a: a != 0, senate)
+        return 'Radiant' if r else 'Dire'
 
 
 class Test(unittest.TestCase):
