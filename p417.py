@@ -11,25 +11,40 @@ class Solution(object):
             return []
 
         result = []
-        dirs = [(-1, 0), (1, 0), (0, -1), (0, 1)]
         rows = len(matrix)
         cols = len(matrix[0])
         state = [[0] * cols for _ in xrange(rows)]
 
-        def dfs(r, c, mask, prev):
-            if r < 0 or r >= rows or c < 0 or c >= cols or state[r][c] & mask or matrix[r][c] < prev:
+        def dfs(r, c, mask):
+            if state[r][c] & mask:
                 return
+
             state[r][c] |= mask
-            for dr, dc in dirs:
-                dfs(r + dr, c + dc, mask, matrix[r][c])
+            height = matrix[r][c]
+
+            r2 = r - 1
+            if r2 >= 0 and matrix[r2][c] >= height:
+                dfs(r2, c, mask)
+
+            r2 = r + 1
+            if r2 < rows and matrix[r2][c] >= height:
+                dfs(r2, c, mask)
+
+            c2 = c - 1
+            if c2 >= 0 and matrix[r][c2] >= height:
+                dfs(r, c2, mask)
+
+            c2 = c + 1
+            if c2 < cols and matrix[r][c2] >= height:
+                dfs(r, c2, mask)
 
         for c in xrange(cols):
-            dfs(0, c, 1, 0)
-            dfs(rows - 1, c, 2, 0)
+            dfs(0, c, 1)
+            dfs(rows - 1, c, 2)
 
         for r in xrange(rows):
-            dfs(r, 0, 1, 0)
-            dfs(r, cols - 1, 2, 0)
+            dfs(r, 0, 1)
+            dfs(r, cols - 1, 2)
 
         for r, row in enumerate(state):
             for c, cell in enumerate(row):
