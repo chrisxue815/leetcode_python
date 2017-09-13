@@ -26,10 +26,12 @@ class Solution(object):
 
 class Test(unittest.TestCase):
     def test(self):
-        root = TreeNode.from_array([1, 2, 3, 4, 5, 6, 7])
-        self.assertEqual(
-            Solution().inorderTraversal(root),
-            [4, 2, 5, 1, 6, 3, 7])
+        self._test([1, 2, 3, 4, 5, 6, 7], [4, 2, 5, 1, 6, 3, 7])
+
+    def _test(self, root, expected):
+        root = TreeNode.from_array(root)
+        actual = Solution().inorderTraversal(root)
+        self.assertEqual(actual, expected)
 
 
 if __name__ == '__main__':
