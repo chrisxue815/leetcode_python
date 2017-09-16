@@ -17,13 +17,13 @@ class Solution(object):
             s = a + nums[i + 1] + nums[i + 2]
             if s >= target:
                 if abs(s - target) < min_diff:
-                    closest = s
+                    return s
                 return closest
 
             s = a + nums[-2] + nums[-1]
-            if s == target:
-                return s
-            if i > 0 and nums[i - 1] == a or s < target:
+            if i > 0 and nums[i - 1] == a or s <= target:
+                if s == target:
+                    return s
                 if abs(s - target) < min_diff:
                     min_diff = abs(s - target)
                     closest = s
@@ -33,15 +33,19 @@ class Solution(object):
             hi = len(nums) - 1
             while lo < hi:
                 s = a + nums[lo] + nums[hi]
-                if s < target:
-                    lo += 1
-                elif s > target:
-                    hi -= 1
-                else:
-                    return s
                 if abs(s - target) < min_diff:
                     min_diff = abs(s - target)
                     closest = s
+                if s < target:
+                    if a + (nums[hi] << 1) < target:
+                        break
+                    lo += 1
+                elif s > target:
+                    if a + (nums[lo] << 1) > target:
+                        break
+                    hi -= 1
+                else:
+                    return s
 
         return closest
 
