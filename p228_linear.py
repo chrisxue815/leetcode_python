@@ -34,7 +34,7 @@ class Test(unittest.TestCase):
 
     def _test(self, nums, expected):
         actual = Solution().summaryRanges(nums)
-        self.assertItemsEqual(actual, expected)
+        self.assertEqual(actual, expected)
 
 
 if __name__ == '__main__':
