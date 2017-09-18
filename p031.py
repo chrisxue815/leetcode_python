@@ -14,12 +14,7 @@ class Solution(object):
         else:
             i = -1
 
-        lo = i + 1
-        hi = len(nums) - 1
-        while lo < hi:
-            nums[lo], nums[hi] = nums[hi], nums[lo]
-            lo += 1
-            hi -= 1
+        nums[i + 1:] = nums[i + 1:][::-1]
 
         if i == -1:
             return
