@@ -11,32 +11,22 @@ class Solution(object):
         if not num:
             return False
 
-        def parse_int(start, end):
-            i = 0
-            while start < end:
-                i = i * 10 + ord(num[start]) - ord('0')
-                start += 1
-            return i
-
         def is_valid_additive(a, b, c_index):
             while True:
                 c = a + b
-                c_str = str(a + b)
+                c_str = str(c)
                 if not num[c_index:].startswith(c_str):
                     return False
                 a, b, c_index = b, c, c_index + len(c_str)
                 if c_index >= len(num):
-                    if c_index == len(num):
-                        return True
-                    else:
-                        return False
+                    return c_index == len(num)
 
         a_max_len = (len(num) - 1) >> 1
         if num[0] == '0':
             a_max_len = min(a_max_len, 1)
 
         for a_len in xrange(1, a_max_len + 1):
-            a = parse_int(0, a_len)
+            a = int(num[:a_len])
             remaining = len(num) - a_len
             b_max_len = min(remaining >> 1, remaining - a_len)
             if num[a_len] == '0':
@@ -44,7 +34,7 @@ class Solution(object):
 
             for b_len in xrange(1, b_max_len + 1):
                 c_index = a_len + b_len
-                b = parse_int(a_len, c_index)
+                b = int(num[a_len:c_index])
                 if is_valid_additive(a, b, c_index):
                     return True
 
