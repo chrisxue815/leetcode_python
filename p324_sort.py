@@ -8,21 +8,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: void Do not return anything, modify nums in-place instead.
         """
-        aux = sorted(nums)
-
-        i = 0
-        hi = len(nums) - 1
-        lo = half = hi >> 1
-
-        while hi > half:
-            nums[i] = aux[lo]
-            nums[i + 1] = aux[hi]
-            i += 2
-            lo -= 1
-            hi -= 1
-
-        if lo >= 0:
-            nums[i] = aux[lo]
+        nums.sort()
+        half = (len(nums) + 1) >> 1
+        nums[::2], nums[1::2] = reversed(nums[:half]), reversed(nums[half:])
 
 
 class Test(unittest.TestCase):
