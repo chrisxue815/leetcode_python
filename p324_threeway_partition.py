@@ -2,7 +2,7 @@ import unittest
 import numpy
 
 
-# O(n) time, O(n) space. Three-way partitioning, math
+# O(n) time, O(1) space. Three-way partitioning, index mapping, math
 class Solution(object):
     def wiggleSort(self, nums):
         """
@@ -14,20 +14,24 @@ class Solution(object):
 
         lo = mid = 0
         hi = n - 1
+        half = (len(nums) - 1) >> 1
+
+        def map_index(i):
+            return (half - i) << 1 if i <= half else ((n - i - 1) << 1) + 1
 
         while mid <= hi:
-            if nums[mid] < median:
-                nums[lo], nums[mid] = nums[mid], nums[lo]
+            vmid = map_index(mid)
+            if nums[vmid] < median:
+                vlo = map_index(lo)
+                nums[vlo], nums[vmid] = nums[vmid], nums[vlo]
                 lo += 1
                 mid += 1
-            elif nums[mid] > median:
-                nums[mid], nums[hi] = nums[hi], nums[mid]
+            elif nums[vmid] > median:
+                vhi = map_index(hi)
+                nums[vmid], nums[vhi] = nums[vhi], nums[vmid]
                 hi -= 1
             else:
                 mid += 1
-
-        half = (len(nums) + 1) >> 1
-        nums[::2], nums[1::2] = reversed(nums[:half]), reversed(nums[half:])
 
 
 class Test(unittest.TestCase):
