@@ -1,15 +1,38 @@
 import unittest
-import numpy
 
 
-# O(n) time, O(1) space. Three-way partitioning, index mapping, math
+def partition(nums, lo, hi):
+    pivot = nums[hi - 1]
+    w = lo
+
+    for r in xrange(lo, hi):
+        if nums[r] < pivot:
+            nums[r], nums[w] = nums[w], nums[r]
+            w += 1
+
+    nums[w], nums[hi - 1] = nums[hi - 1], nums[w]
+    return w
+
+
+def kth_smallest(nums, lo, hi, k):
+    pivot_index = partition(nums, lo, hi)
+    if pivot_index > k:
+        return kth_smallest(nums, lo, pivot_index, k)
+    elif pivot_index < k:
+        return kth_smallest(nums, pivot_index + 1, hi, k)
+    else:
+        return nums[pivot_index]
+
+
+# Best case and average O(n), worst case O(n^2) time. O(1) space.
+# Quickselect, three-way partitioning, index mapping, math
 class Solution(object):
     def wiggleSort(self, nums):
         """
         :type nums: List[int]
         :rtype: void Do not return anything, modify nums in-place instead.
         """
-        median = int(numpy.median(nums))
+        median = kth_smallest(nums, 0, len(nums), len(nums) >> 1)
         n = len(nums)
 
         lo = mid = 0
