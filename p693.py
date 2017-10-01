@@ -11,10 +11,11 @@ class Solution(object):
         prev = n & 1
         n >>= 1
         while n:
-            if n & 1 == prev:
+            if n & 1 ^ prev:
+                prev ^= 1
+                n >>= 1
+            else:
                 return False
-            prev = not prev
-            n >>= 1
         return True
 
 
