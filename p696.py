@@ -8,17 +8,17 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        if not s:
+        if len(s) < 2:
             return 0
         count = 0
         prev_start = 0
         curr_start = 0
         curr = s[0]
-        for i in xrange(1, len(s)):
-            if s[i] != curr:
+        for i, digit in enumerate(s):
+            if digit != curr:
                 count += min(curr_start - prev_start, i - curr_start)
                 prev_start, curr_start = curr_start, i
-                curr = s[i]
+                curr = digit
         return count + min(curr_start - prev_start, len(s) - curr_start)
 
 
