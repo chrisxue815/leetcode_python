@@ -1,7 +1,7 @@
 import unittest
 
 
-# O(n)
+# O(n). Math
 class Solution(object):
     def constructArray(self, n, k):
         """
@@ -9,29 +9,13 @@ class Solution(object):
         :type k: int
         :rtype: List[int]
         """
-        result = [0] * n
-        lo = 1
-        hi = n
-        is_lo = True
+        result = range(1, n - k)
 
-        for i in xrange(k - 1):
-            if is_lo:
-                result[i] = lo
-                lo += 1
+        for i in xrange(k + 1):
+            if i & 1:
+                result.append(n - (i >> 1))
             else:
-                result[i] = hi
-                hi -= 1
-            is_lo ^= 1
-
-        if is_lo:
-            inc = 1
-        else:
-            inc = -1
-            lo = hi
-
-        for i in xrange(k - 1, n):
-            result[i] = lo
-            lo += inc
+                result.append(n - k + (i >> 1))
 
         return result
 
