@@ -16,6 +16,7 @@ class Solution(object):
         n = len(nums)
         product = 1  # [lo, hi)
         hi = 0
+
         for lo, lo_num in enumerate(nums):
             while hi < n:
                 new_product = product * nums[hi]
@@ -23,11 +24,13 @@ class Solution(object):
                     break
                 product = new_product
                 hi += 1
+
             result += hi - lo
             if lo < hi:
                 product /= lo_num
             else:
                 hi += 1
+
         return result
 
 
