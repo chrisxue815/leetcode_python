@@ -2,11 +2,14 @@ import unittest
 
 
 def _set0(grid, i, j):
-    if 0 <= i < len(grid) and 0 <= j < len(grid[0]) and grid[i][j] == '1':
-        grid[i][j] = '0'
+    grid[i][j] = '0'
+    if i >= 1 and grid[i - 1][j] == '1':
         _set0(grid, i - 1, j)
+    if i + 1 < len(grid) and grid[i + 1][j] == '1':
         _set0(grid, i + 1, j)
+    if j >= 1 and grid[i][j - 1] == '1':
         _set0(grid, i, j - 1)
+    if j + 1 < len(grid[0]) and grid[i][j + 1] == '1':
         _set0(grid, i, j + 1)
 
 
