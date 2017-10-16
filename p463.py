@@ -1,6 +1,7 @@
 import unittest
 
 
+# O(n) time. O(1) space.
 class Solution(object):
     def islandPerimeter(self, grid):
         """
@@ -9,19 +10,16 @@ class Solution(object):
         """
         height = len(grid)
         width = len(grid[0])
-        peri = 0
-        for i in xrange(height):
+        islands = neighbors = 0
+        for i, row in enumerate(grid):
             for j in xrange(width):
-                if grid[i][j]:
-                    if not i or not grid[i - 1][j]:
-                        peri += 1
-                    if i == height - 1 or not grid[i + 1][j]:
-                        peri += 1
-                    if not j or not grid[i][j - 1]:
-                        peri += 1
-                    if j == width - 1 or not grid[i][j + 1]:
-                        peri += 1
-        return peri
+                if row[j]:
+                    islands += 1
+                    if i + 1 < height and grid[i + 1][j]:
+                        neighbors += 1
+                    if j + 1 < width and row[j + 1]:
+                        neighbors += 1
+        return islands * 4 - neighbors * 2
 
 
 class Test(unittest.TestCase):
