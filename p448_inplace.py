@@ -1,26 +1,21 @@
 import unittest
 
 
+# O(n) time. O(1) space.
 class Solution(object):
     def findDisappearedNumbers(self, nums):
         """
         :type nums: List[int]
         :rtype: List[int]
         """
-        for num in nums:
-            if num == 0:
-                continue
-
-            i = num - 1
-            next_i = nums[i] - 1
-            while next_i > -1:
-                nums[i] = 0
-                i = next_i
-                next_i = nums[i] - 1
+        for i, num in enumerate(nums):
+            while i != num - 1:
+                i = num - 1
+                num, nums[i] = nums[i], num
 
         result = []
-        for i in xrange(len(nums)):
-            if nums[i] > 0:
+        for i, num in enumerate(nums):
+            if i != num - 1:
                 result.append(i + 1)
 
         return result
