@@ -1,6 +1,24 @@
 import unittest
 
 
+def _count_smaller_or_equal_numbers(num, matrix):
+    count = 0
+    for row in matrix:
+        lo = 0
+        hi = len(row) - 1
+
+        while lo <= hi:
+            mid = lo + ((hi - lo) >> 1)
+            if row[mid] <= num:
+                lo = mid + 1
+            else:
+                hi = mid - 1
+        count += lo
+
+    return count
+
+
+# O(nlog(n)log(n^2)) time. O(1) space. Binary search.
 class Solution(object):
     def kthSmallest(self, matrix, k):
         """
@@ -8,21 +26,12 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        rows = len(matrix)
-        cols = len(matrix[0])
         lo = matrix[0][0]
         hi = matrix[-1][-1]
 
         while lo <= hi:
             mid = lo + ((hi - lo) >> 1)
-            count = 0
-            j = cols - 1
-            for i in xrange(rows):
-                while j >= 0 and matrix[i][j] > mid:
-                    j -= 1
-                if j == -1:
-                    break
-                count += j + 1
+            count = _count_smaller_or_equal_numbers(mid, matrix)
             if count < k:
                 lo = mid + 1
             else:

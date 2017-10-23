@@ -1,7 +1,7 @@
 import unittest
 
 
-def _count_smaller_numbers(num, m, n):
+def _count_smaller_or_equal_numbers(num, m, n):
     count = 0
     for a in xrange(1, m + 1):
         count += min(num // a, n)
@@ -25,7 +25,7 @@ class Solution(object):
 
         while lo <= hi:
             mid = lo + ((hi - lo) >> 1)
-            count = _count_smaller_numbers(mid, m, n)
+            count = _count_smaller_or_equal_numbers(mid, m, n)
             if count < k:
                 lo = mid + 1
             else:
