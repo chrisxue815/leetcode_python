@@ -1,25 +1,6 @@
 import unittest
 
 
-def _dfs(num, target, result, path, lo, val, multi):
-    if lo == len(num):
-        if val == target:
-            result.append(''.join(path))
-        return
-
-    max_hi = lo + 2 if num[lo] == '0' else len(num) + 1
-
-    for hi in xrange(lo + 1, max_hi):
-        curr_str = num[lo:hi]
-        curr_int = int(curr_str)
-        if lo == 0:
-            _dfs(num, target, result, curr_str, hi, curr_int, curr_int)
-        else:
-            _dfs(num, target, result, path + '+' + curr_str, hi, val + curr_int, curr_int)
-            _dfs(num, target, result, path + '-' + curr_str, hi, val - curr_int, -curr_int)
-            _dfs(num, target, result, path + '*' + curr_str, hi, val - multi + multi * curr_int, multi * curr_int)
-
-
 class Solution(object):
     def addOperators(self, num, target):
         """
@@ -27,8 +8,27 @@ class Solution(object):
         :type target: int
         :rtype: List[str]
         """
+
+        def _dfs(path, lo, val, multi):
+            if lo == len(num):
+                if val == target:
+                    result.append(''.join(path))
+                return
+
+            max_hi = lo + 2 if num[lo] == '0' else len(num) + 1
+
+            for hi in xrange(lo + 1, max_hi):
+                curr_str = num[lo:hi]
+                curr_int = int(curr_str)
+                if lo == 0:
+                    _dfs(curr_str, hi, curr_int, curr_int)
+                else:
+                    _dfs(path + '+' + curr_str, hi, val + curr_int, curr_int)
+                    _dfs(path + '-' + curr_str, hi, val - curr_int, -curr_int)
+                    _dfs(path + '*' + curr_str, hi, val - multi + multi * curr_int, multi * curr_int)
+
         result = []
-        _dfs(num, target, result, '', 0, 0, 0)
+        _dfs('', 0, 0, 0)
         return result
 
 
