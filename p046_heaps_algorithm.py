@@ -5,13 +5,15 @@ def _permute(nums, result, n):
     if n == 1:
         result.append(list(nums))
     else:
-        for i in xrange(n):
+        for i in xrange(n - 1):
             _permute(nums, result, n - 1)
 
             if n & 1:
                 nums[0], nums[n - 1] = nums[n - 1], nums[0]
             else:
                 nums[i], nums[n - 1] = nums[n - 1], nums[i]
+
+        _permute(nums, result, n - 1)
 
 
 class Solution(object):
