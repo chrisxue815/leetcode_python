@@ -2,18 +2,20 @@ import unittest
 
 
 def _permute(nums, result, n):
-    if n == 1:
+    n -= 1
+
+    if n == 0:
         result.append(list(nums))
     else:
-        for i in xrange(n - 1):
-            _permute(nums, result, n - 1)
+        for i in xrange(n):
+            _permute(nums, result, n)
 
             if n & 1:
-                nums[0], nums[n - 1] = nums[n - 1], nums[0]
+                nums[i], nums[n] = nums[n], nums[i]
             else:
-                nums[i], nums[n - 1] = nums[n - 1], nums[i]
+                nums[0], nums[n] = nums[n], nums[0]
 
-        _permute(nums, result, n - 1)
+        _permute(nums, result, n)
 
 
 class Solution(object):
