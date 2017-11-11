@@ -2,56 +2,40 @@ import unittest
 import collections
 
 
-# O(nlog(n))
+# O(n) time. O(n) space. Hash table.
 class Solution(object):
     def findShortestSubArray(self, nums):
         """
         :type nums: List[int]
         :rtype: int
         """
-        if not nums:
-            return 0
+        ranges = {}
 
-        counter = collections.Counter(nums)
-        most_common = counter.most_common()
-        degree = most_common[0][1]
-
-        pending = set()
-        for num, count in most_common:
-            if count != degree:
-                break
-            pending.add(num)
-
-        lo = 0
-        hi = len(nums) - 1
-        while True:
-            while nums[lo] not in pending:
-                lo += 1
-            while nums[hi] not in pending:
-                hi -= 1
-            if len(pending) == 1:
-                return hi - lo + 1
-            elif nums[lo] == nums[hi]:
-                pending.remove(nums[lo])
-            elif len(pending) >= 3:
-                pending.remove(nums[lo])
-                pending.remove(nums[hi])
+        for i, num in enumerate(nums):
+            r = ranges.get(num)
+            if r is None:
+                r = [i, i]
+                ranges[num] = r
             else:
-                mid = hi
-                while nums[mid] != nums[lo]:
-                    mid -= 1
-                lo_len = mid - lo
-                mid = lo
-                while nums[mid] != nums[hi]:
-                    mid += 1
-                hi_len = hi - mid
-                return min(lo_len, hi_len) + 1
+                r[1] = i
+
+        min_range = 0x7FFFFFFF
+        counts = collections.Counter(nums)
+        degree = counts.most_common(1)[0][1]
+
+        for num, count in counts.iteritems():
+            if count == degree:
+                r = ranges[num]
+                min_range = min(min_range, r[1] - r[0])
+
+        return min_range + 1
 
 
 class Test(unittest.TestCase):
     def test(self):
         self._test([1, 2, 2, 3, 1], 2)
         self._test([1, 2, 2, 3, 1, 4, 2], 6)
+        self._test([2, 2, 1, 4, 1, 3, 3], 2)
 
     def _test(self, nums, expected):
         actual = Solution().findShortestSubArray(nums)
