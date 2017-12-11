@@ -29,8 +29,8 @@ class Test(unittest.TestCase):
         ]
 
         for test_case in test_cases:
-            actual = Solution().selfDividingNumbers(test_case[0], test_case[1])
-            self.assertEqual(actual, test_case[2])
+            actual = Solution().selfDividingNumbers(*test_case[:-1])
+            self.assertEqual(actual, test_case[-1])
 
 
 if __name__ == '__main__':
