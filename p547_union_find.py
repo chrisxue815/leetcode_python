@@ -4,6 +4,7 @@ import unittest
 class UF(object):
     def __init__(self, n):
         self._id = range(n)
+        self._sz = [1] * n
         self._count = n
 
     def find(self, p):
@@ -18,7 +19,11 @@ class UF(object):
         if p == q:
             return
 
+        if self._sz[p] < self._sz[q]:
+            p, q = q, p
+
         self._id[q] = p
+        self._sz[p] += self._sz[q]
         self._count -= 1
 
     def connected(self, p, q):
