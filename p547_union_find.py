@@ -8,9 +8,14 @@ class UF(object):
         self._count = n
 
     def find(self, p):
-        while p != self._id[p]:
-            p = self._id[p]
-        return p
+        root = p
+        while root != self._id[root]:
+            root = self._id[root]
+
+        while p != root:
+            p, self._id[p] = self._id[p], root
+
+        return root
 
     def union(self, p, q):
         p = self.find(p)
