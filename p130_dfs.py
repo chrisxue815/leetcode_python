@@ -3,7 +3,7 @@ import unittest
 directions = ((-1, 0), (1, 0), (0, -1), (0, 1))
 
 
-# O(n) time. O(n) space. DFS.
+# O(n) time. O(1) space. DFS.
 class Solution(object):
     def solve(self, board):
         """
@@ -15,12 +15,11 @@ class Solution(object):
 
         rows = len(board)
         cols = len(board[0])
-        visited = [[False] * cols for _ in xrange(rows)]
 
         def dfs(r, c):
-            if visited[r][c] or board[r][c] == 'X':
+            if board[r][c] != 'O':
                 return
-            visited[r][c] = True
+            board[r][c] = '1'
 
             for dr, dc in directions:
                 r2, c2 = r + dr, c + dc
@@ -37,8 +36,10 @@ class Solution(object):
 
         for r in xrange(rows):
             for c in xrange(cols):
-                if not visited[r][c] and board[r][c] == 'O':
+                if board[r][c] == 'O':
                     board[r][c] = 'X'
+                elif board[r][c] == '1':
+                    board[r][c] = 'O'
 
 
 class Test(unittest.TestCase):
