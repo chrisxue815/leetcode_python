@@ -78,7 +78,7 @@ class Test(unittest.TestCase):
 
     def _test(self, code, expected):
         actual = Solution().isValid(code)
-        self.assertEquals(actual, expected)
+        self.assertEqual(actual, expected)
 
 
 if __name__ == '__main__':

@@ -25,7 +25,7 @@ class Test(unittest.TestCase):
 
     def _test(self, nums, expected):
         actual = Solution().maximumGap(nums)
-        self.assertEquals(actual, expected)
+        self.assertEqual(actual, expected)
 
 
 if __name__ == '__main__':

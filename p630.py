@@ -35,7 +35,7 @@ class Test(unittest.TestCase):
 
     def _test(self, courses, expected):
         actual = Solution().scheduleCourse(courses)
-        self.assertEquals(actual, expected)
+        self.assertEqual(actual, expected)
 
 
 if __name__ == '__main__':
