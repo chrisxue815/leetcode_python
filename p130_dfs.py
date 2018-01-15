@@ -62,7 +62,7 @@ class Test(unittest.TestCase):
             board = [row.split(' ') for row in case[0]]
             expected = [row.split(' ') for row in case[1]]
             Solution().solve(board)
-            self.assertEqual(board, expected)
+            self.assertEqual(expected, board)
 
 
 if __name__ == '__main__':

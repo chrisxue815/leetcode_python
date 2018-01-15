@@ -33,7 +33,7 @@ class Test(unittest.TestCase):
         t2 = TreeNode.from_array(t2)
         actual = Solution().mergeTrees(t1, t2)
         actual = actual.to_array()
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

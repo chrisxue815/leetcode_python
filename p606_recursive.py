@@ -37,7 +37,7 @@ class Test(unittest.TestCase):
     def _test(self, t, expected):
         t = TreeNode.from_array(t)
         actual = Solution().tree2str(t)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

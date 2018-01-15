@@ -29,7 +29,7 @@ class Test(unittest.TestCase):
     def _test(self, vals, expected):
         root = TreeNode.from_array(vals)
         actual = Solution().invertTree(root)
-        self.assertEqual(actual.to_array(), expected)
+        self.assertEqual(expected, actual.to_array())
 
 
 if __name__ == '__main__':

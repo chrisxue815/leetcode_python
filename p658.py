@@ -31,7 +31,7 @@ class Test(unittest.TestCase):
 
     def _test(self, arr, k, x, expected):
         actual = Solution().findClosestElements(arr, k, x)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

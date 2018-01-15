@@ -79,19 +79,19 @@ class Test(unittest.TestCase):
         self._test_arithmetic(-a, -b)
 
     def _test_arithmetic(self, a, b):
-        self.assertEqual(add(a, b), a + b)
-        self.assertEqual(add(b, a), b + a)
+        self.assertEqual(a + b, add(a, b))
+        self.assertEqual(b + a, add(b, a))
 
-        self.assertEqual(sub(a, b), a - b)
-        self.assertEqual(sub(b, a), b - a)
+        self.assertEqual(a - b, sub(a, b))
+        self.assertEqual(b - a, sub(b, a))
 
-        self.assertEqual(mul(a, b), a * b)
-        self.assertEqual(mul(b, a), b * a)
+        self.assertEqual(a * b, mul(a, b))
+        self.assertEqual(b * a, mul(b, a))
 
         if b:
-            self.assertEqual(div(a, b), int(float(a) / b))
+            self.assertEqual(int(float(a) / b), div(a, b))
         if a:
-            self.assertEqual(div(b, a), int(float(b) / a))
+            self.assertEqual(int(float(b) / a), div(b, a))
 
 
 if __name__ == '__main__':

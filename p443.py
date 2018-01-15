@@ -40,7 +40,7 @@ class Test(unittest.TestCase):
 
     def _test(self, chars, expected):
         actual = Solution().compress(chars)
-        self.assertEqual(chars[:actual], expected)
+        self.assertEqual(expected, chars[:actual])
 
 
 if __name__ == '__main__':

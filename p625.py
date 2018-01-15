@@ -41,7 +41,7 @@ class Test(unittest.TestCase):
 
     def _test(self, a, expected):
         actual = Solution().smallestFactorization(a)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

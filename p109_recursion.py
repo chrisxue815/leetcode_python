@@ -48,7 +48,7 @@ class Test(unittest.TestCase):
 
         actual = Solution().sortedListToBST(linked_list)
         actual = TreeNode.to_array_static(actual)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

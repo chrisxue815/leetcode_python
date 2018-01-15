@@ -31,7 +31,7 @@ class Test(unittest.TestCase):
         self._test('1234567890', 3, '3214569870')
 
     def _test(self, s, k, expected):
-        self.assertEqual(Solution().reverseStr(s, k), expected)
+        self.assertEqual(expected, Solution().reverseStr(s, k))
 
 
 if __name__ == '__main__':

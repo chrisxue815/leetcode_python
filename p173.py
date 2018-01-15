@@ -61,7 +61,7 @@ class Test(unittest.TestCase):
         i, v = BSTIterator(root), []
         while i.hasNext():
             v.append(i.next())
-        self.assertEqual(v, root.to_array_inorder())
+        self.assertEqual(root.to_array_inorder(), v)
 
 
 if __name__ == '__main__':

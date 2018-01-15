@@ -32,7 +32,7 @@ class Test(unittest.TestCase):
 
     def _test(self, s, expected):
         actual = Solution().checkRecord(s)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

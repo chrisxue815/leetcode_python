@@ -51,7 +51,7 @@ class Test(unittest.TestCase):
 
     def _test(self, p1, p2, p3, p4, expected):
         actual = Solution().validSquare(p1, p2, p3, p4)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

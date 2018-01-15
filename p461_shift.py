@@ -25,7 +25,7 @@ class Test(unittest.TestCase):
         self._test(0b1010, 0b1010, 0)
 
     def _test(self, x, y, expected):
-        self.assertEqual(Solution().hammingDistance(x, y), expected)
+        self.assertEqual(expected, Solution().hammingDistance(x, y))
 
 
 if __name__ == '__main__':

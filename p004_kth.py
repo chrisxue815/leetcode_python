@@ -60,7 +60,7 @@ class Test(unittest.TestCase):
 
     def _test(self, nums1, nums2, expected):
         actual = Solution().findMedianSortedArrays(nums1, nums2)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
     def test_kth(self):
         self._test_kth([1, 2, 3], [4, 5, 6], 0, 1)
@@ -71,7 +71,7 @@ class Test(unittest.TestCase):
         self._test_kth([1, 2, 3], [4, 5, 6, 7, 8, 9], 4, 5)
 
     def _test_kth(self, a, b, k, expected):
-        self.assertEqual(_kth(a, b, k), expected)
+        self.assertEqual(expected, _kth(a, b, k))
 
 
 if __name__ == '__main__':

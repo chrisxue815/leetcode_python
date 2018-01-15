@@ -81,7 +81,7 @@ class Test(unittest.TestCase):
 
     def _test(self, points, expected):
         actual = Solution().maxPoints([Point(p[0], p[1]) for p in points])
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

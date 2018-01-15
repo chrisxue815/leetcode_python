@@ -74,10 +74,10 @@ class Test(unittest.TestCase):
     def _test(self, nums):
         it = PeekingIterator(Iterator(nums))
         for num in nums:
-            self.assertEqual(it.hasNext(), True)
-            self.assertEqual(it.peek(), num)
-            self.assertEqual(it.next(), num)
-        self.assertEqual(it.hasNext(), False)
+            self.assertEqual(True, it.hasNext())
+            self.assertEqual(num, it.peek())
+            self.assertEqual(num, it.next())
+        self.assertEqual(False, it.hasNext())
 
 
 if __name__ == '__main__':

@@ -43,7 +43,7 @@ class Test(unittest.TestCase):
 
     def _test(self, m, n, k, expected):
         actual = Solution().findKthNumber(m, n, k)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

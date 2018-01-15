@@ -29,7 +29,7 @@ class Test(unittest.TestCase):
 
     def _test(self, haystack, needle, expected):
         actual = Solution().strStr(haystack, needle)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

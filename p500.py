@@ -24,7 +24,7 @@ class Test(unittest.TestCase):
 
     def _test(self, words, expected):
         actual = Solution().findWords(words)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

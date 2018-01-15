@@ -43,16 +43,16 @@ class Test(unittest.TestCase):
         stack.push(0)
         stack.push(-3)
 
-        self.assertEqual(stack.top(), -3)
-        self.assertEqual(stack.getMin(), -3)
+        self.assertEqual(-3, stack.top())
+        self.assertEqual(-3, stack.getMin())
 
         stack.pop()
-        self.assertEqual(stack.top(), 0)
-        self.assertEqual(stack.getMin(), -2)
+        self.assertEqual(0, stack.top())
+        self.assertEqual(-2, stack.getMin())
 
         stack.pop()
-        self.assertEqual(stack.top(), -2)
-        self.assertEqual(stack.getMin(), -2)
+        self.assertEqual(-2, stack.top())
+        self.assertEqual(-2, stack.getMin())
 
 
 if __name__ == '__main__':

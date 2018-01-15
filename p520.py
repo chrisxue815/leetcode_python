@@ -33,7 +33,7 @@ class Test(unittest.TestCase):
         self._test('uSA', False)
 
     def _test(self, word, expected):
-        self.assertEqual(Solution().detectCapitalUse(word), expected)
+        self.assertEqual(expected, Solution().detectCapitalUse(word))
 
 
 if __name__ == '__main__':

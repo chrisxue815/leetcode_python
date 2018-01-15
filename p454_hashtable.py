@@ -29,7 +29,7 @@ class Test(unittest.TestCase):
 
     def _test(self, a, b, c, d, expected):
         actual = Solution().fourSumCount(a, b, c, d)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

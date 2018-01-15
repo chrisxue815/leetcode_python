@@ -34,10 +34,10 @@ class Test(unittest.TestCase):
         q = TreeNode.from_array(q)
 
         actual = Solution().isSameTree(p, q)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
         actual = Solution().isSameTree(q, p)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

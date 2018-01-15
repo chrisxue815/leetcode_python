@@ -47,7 +47,7 @@ class Test(unittest.TestCase):
 
     def _test(self, x, n, expected):
         actual = Solution().myPow(x, n)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

@@ -49,18 +49,18 @@ class RandomizedSet(object):
 class Test(unittest.TestCase):
     def test(self):
         rand_set = RandomizedSet()
-        self.assertEqual(rand_set.insert(1), True)
-        self.assertEqual(rand_set.remove(2), False)
-        self.assertEqual(rand_set.insert(2), True)
+        self.assertEqual(True, rand_set.insert(1))
+        self.assertEqual(False, rand_set.remove(2))
+        self.assertEqual(True, rand_set.insert(2))
 
         num_samples = 10000
         counter = collections.Counter(rand_set.getRandom() for _ in xrange(num_samples))
         self.assertAlmostEqual(counter[1] / float(num_samples), 0.5, delta=0.01)
 
-        self.assertEqual(rand_set.remove(1), True)
-        self.assertEqual(rand_set.insert(2), False)
+        self.assertEqual(True, rand_set.remove(1))
+        self.assertEqual(False, rand_set.insert(2))
 
-        self.assertEqual(all(rand_set.getRandom() == 2 for _ in xrange(num_samples)), True)
+        self.assertEqual(True, all(rand_set.getRandom() == 2 for _ in xrange(num_samples)))
 
 
 if __name__ == '__main__':

@@ -33,7 +33,7 @@ class Test(unittest.TestCase):
 
     def _test(self, m, n, ops, expected):
         actual = Solution().maxCount(m, n, ops)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

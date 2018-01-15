@@ -50,7 +50,7 @@ class Test(unittest.TestCase):
 
     def _test(self, vals):
         root = TreeNode.from_array(vals)
-        self.assertEqual(Solution().rightSideView(root), [4, 6, 7, 0])
+        self.assertEqual(0], Solution().rightSideView(root), [4, 6, 7)
 
 
 if __name__ == '__main__':

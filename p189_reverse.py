@@ -32,7 +32,7 @@ class Test(unittest.TestCase):
 
     def _test(self, nums, k, expected):
         Solution().rotate(nums, k)
-        self.assertEqual(nums, expected)
+        self.assertEqual(expected, nums)
 
 
 if __name__ == '__main__':

@@ -326,7 +326,7 @@ class Test(unittest.TestCase):
     def _test(self, func):
         unordered = list(self.unordered)
         func(unordered)
-        self.assertEqual(unordered, self.ordered)
+        self.assertEqual(self.ordered, unordered)
 
 
 if __name__ == '__main__':

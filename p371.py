@@ -30,10 +30,10 @@ class Test(unittest.TestCase):
         self._test_arithmetic(b, a)
 
     def _test_arithmetic(self, a, b):
-        self.assertEqual(Solution().getSum(a, b), a + b)
-        self.assertEqual(Solution().getSum(a, -b), a - b)
-        self.assertEqual(Solution().getSum(-a, b), -a + b)
-        self.assertEqual(Solution().getSum(-a, -b), -a - b)
+        self.assertEqual(a + b, Solution().getSum(a, b))
+        self.assertEqual(a - b, Solution().getSum(a, -b))
+        self.assertEqual(-a + b, Solution().getSum(-a, b))
+        self.assertEqual(-a - b, Solution().getSum(-a, -b))
 
 
 if __name__ == '__main__':

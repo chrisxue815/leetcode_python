@@ -29,7 +29,7 @@ class Test(unittest.TestCase):
 
     def _test(self, nums, k, expected):
         actual = Solution().subarraySum(nums, k)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

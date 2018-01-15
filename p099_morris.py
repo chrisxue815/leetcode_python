@@ -77,7 +77,7 @@ class Test(unittest.TestCase):
     def _test(self, vals, expected):
         root = TreeNode.from_array(vals)
         Solution().recoverTree(root)
-        self.assertEqual(root.to_array(), expected)
+        self.assertEqual(expected, root.to_array())
 
 
 if __name__ == '__main__':

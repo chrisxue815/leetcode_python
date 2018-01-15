@@ -34,10 +34,10 @@ class Test(unittest.TestCase):
 
     def _test(self, version1, version2, expected):
         actual = Solution().compareVersion(version1, version2)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
         actual = Solution().compareVersion(version2, version1)
-        self.assertEqual(actual, -expected)
+        self.assertEqual(-expected, actual)
 
 
 if __name__ == '__main__':

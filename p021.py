@@ -34,7 +34,7 @@ class Test(unittest.TestCase):
         l2 = ListNode.from_array(l2)
         actual = Solution().mergeTwoLists(l1, l2)
         actual = ListNode.to_array(actual)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

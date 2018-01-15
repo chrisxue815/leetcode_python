@@ -44,7 +44,7 @@ class Test(unittest.TestCase):
 
     def _test(self, matrix, expected):
         Solution().setZeroes(matrix)
-        self.assertEqual(matrix, expected)
+        self.assertEqual(expected, matrix)
 
 
 if __name__ == '__main__':

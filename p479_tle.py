@@ -45,7 +45,7 @@ class Test(unittest.TestCase):
 
     def _test(self, heights, expected):
         actual = Solution().largestPalindrome(heights)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
     def test_generate_palindromes(self):
         self._test_generate_palindromes(9, [
@@ -60,7 +60,7 @@ class Test(unittest.TestCase):
 
     def _test_generate_palindromes(self, n, expected):
         actual = list(itertools.islice(generate_palindromes(n), len(expected)))
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

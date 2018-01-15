@@ -38,7 +38,7 @@ class Test(unittest.TestCase):
     def _test(self, intervals, expected):
         intervals = [Interval(start, end) for start, end in intervals]
         actual = Solution().eraseOverlapIntervals(intervals)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

@@ -41,7 +41,7 @@ class Test(unittest.TestCase):
 
     def _test(self, nums, expected):
         Solution().nextPermutation(nums)
-        self.assertEqual(nums, expected)
+        self.assertEqual(expected, nums)
 
 
 if __name__ == '__main__':

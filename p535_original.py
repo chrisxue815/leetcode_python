@@ -25,7 +25,7 @@ class Test(unittest.TestCase):
 
     def _test(self, url):
         codec = Codec()
-        self.assertEqual(codec.decode(codec.encode(url)), url)
+        self.assertEqual(url, codec.decode(codec.encode(url)))
 
 
 if __name__ == '__main__':

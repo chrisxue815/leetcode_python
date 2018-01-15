@@ -69,7 +69,7 @@ class Test(unittest.TestCase):
 
     def _test(self, heights, expected):
         actual = Solution().trapRainWater(heights)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

@@ -47,7 +47,7 @@ class Test(unittest.TestCase):
         actual = Solution().reverseBetween(head, m, n)
 
         actual = ListNode.to_array(actual)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

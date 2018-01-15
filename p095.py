@@ -61,9 +61,9 @@ class Test(unittest.TestCase):
 
     def _test(self, n, trees):
         actualtrees = Solution().generateTrees(n)
-        self.assertEqual(len(actualtrees), len(trees))
+        self.assertEqual(len(trees), len(actualtrees))
         for (expected, actual) in zip(trees, actualtrees):
-            self.assertEqual(actual.to_array(), expected)
+            self.assertEqual(expected, actual.to_array())
 
 
 if __name__ == '__main__':

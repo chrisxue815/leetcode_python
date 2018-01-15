@@ -41,7 +41,7 @@ class Test(unittest.TestCase):
         self._test('abcabdabcabd', True)
 
     def _test(self, s, expected):
-        self.assertEqual(Solution().repeatedSubstringPattern(s), expected)
+        self.assertEqual(expected, Solution().repeatedSubstringPattern(s))
 
 
 if __name__ == '__main__':

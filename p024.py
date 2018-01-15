@@ -31,7 +31,7 @@ class Test(unittest.TestCase):
         head = ListNode.from_array(head)
         actual = Solution().swapPairs(head)
         actual = ListNode.to_array(actual)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

@@ -37,7 +37,7 @@ class Test(unittest.TestCase):
         global _bad_version
         _bad_version = n
         actual = Solution().firstBadVersion(n)
-        self.assertEqual(actual, n)
+        self.assertEqual(n, actual)
 
 
 if __name__ == '__main__':

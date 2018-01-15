@@ -65,7 +65,7 @@ class Test(unittest.TestCase):
 
     def _test(self, expression, expected):
         actual = Solution().fractionAddition(expression)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

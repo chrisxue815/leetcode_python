@@ -36,7 +36,7 @@ class Test(unittest.TestCase):
     def _test(self, root, k, expected):
         root = TreeNode.from_array(root)
         actual = Solution().kthSmallest(root, k)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

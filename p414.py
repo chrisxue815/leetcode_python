@@ -36,7 +36,7 @@ class Test(unittest.TestCase):
 
     def _test(self, nums, expected):
         actual = Solution().thirdMax(nums)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

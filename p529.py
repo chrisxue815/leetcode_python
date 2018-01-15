@@ -96,7 +96,7 @@ class Test(unittest.TestCase):
 
     def _test(self, board, click, expected):
         actual = Solution().updateBoard(board, click)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

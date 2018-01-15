@@ -46,7 +46,7 @@ class Test(unittest.TestCase):
         s = TreeNode.from_array(s)
         t = TreeNode.from_array(t)
         actual = Solution().isSubtree(s, t)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

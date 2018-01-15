@@ -41,7 +41,7 @@ class Test(unittest.TestCase):
         global _my_num
         _my_num = expected
         actual = Solution().guessNumber(n)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

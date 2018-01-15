@@ -22,8 +22,8 @@ class Test(unittest.TestCase):
 
     def _test(self, nums, val, expected):
         actual = Solution().removeElement(nums, val)
-        self.assertEqual(actual, len(expected))
-        self.assertEqual(nums[:actual], expected)
+        self.assertEqual(len(expected), actual)
+        self.assertEqual(expected, nums[:actual])
 
 
 if __name__ == '__main__':

@@ -41,7 +41,7 @@ class Test(unittest.TestCase):
 
     def _test(self, dividend, divisor, expected):
         actual = Solution().divide(dividend, divisor)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

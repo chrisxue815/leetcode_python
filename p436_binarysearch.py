@@ -56,7 +56,7 @@ class Test(unittest.TestCase):
     def _test(self, intervals, expected):
         intervals = [Interval(a[0], a[1]) for a in intervals]
         actual = Solution().findRightInterval(intervals)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

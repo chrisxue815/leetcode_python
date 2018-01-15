@@ -50,7 +50,7 @@ class Test(unittest.TestCase):
         Solution().reorderList(head)
 
         actual = ListNode.to_array(head)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

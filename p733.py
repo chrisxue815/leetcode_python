@@ -46,7 +46,7 @@ class Test(unittest.TestCase):
 
         for test_case in test_cases:
             actual = Solution().floodFill(*test_case[:-1])
-            self.assertEqual(actual, test_case[-1])
+            self.assertEqual(test_case[-1], actual)
 
 
 if __name__ == '__main__':

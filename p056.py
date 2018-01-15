@@ -40,7 +40,7 @@ class Test(unittest.TestCase):
         actual = Solution().merge(intervals)
 
         actual = [[interval.start, interval.end] for interval in actual]
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

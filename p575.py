@@ -19,7 +19,7 @@ class Test(unittest.TestCase):
 
     def _test(self, candies, expected):
         actual = Solution().distributeCandies(candies)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

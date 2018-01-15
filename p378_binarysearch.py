@@ -68,7 +68,7 @@ class Test(unittest.TestCase):
 
     def _test(self, matrix, k, expected):
         actual = Solution().kthSmallest(matrix, k)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

@@ -50,7 +50,7 @@ class Test(unittest.TestCase):
 
     def _test(self, num1, num2, expected):
         actual = Solution().addStrings(num1, num2)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

@@ -55,18 +55,18 @@ class Test(unittest.TestCase):
 
     def _test(self, numerator, denominator, expected):
         actual = Solution().fractionToDecimal(numerator, denominator)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
         actual = Solution().fractionToDecimal(-numerator, -denominator)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
         expected = '-' + expected
 
         actual = Solution().fractionToDecimal(-numerator, denominator)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
         actual = Solution().fractionToDecimal(numerator, -denominator)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

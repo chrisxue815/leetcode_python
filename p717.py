@@ -23,7 +23,7 @@ class Test(unittest.TestCase):
 
     def _test(self, bits, expected):
         actual = Solution().isOneBitCharacter(bits)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

@@ -39,7 +39,7 @@ class Test(unittest.TestCase):
 
     def _test(self, flowerbed, n, expected):
         actual = Solution().canPlaceFlowers(flowerbed, n)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

@@ -37,7 +37,7 @@ class Test(unittest.TestCase):
     def _test(self, employees, id, expected):
         employees = [Employee(*employee) for employee in employees]
         actual = Solution().getImportance(employees, id)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

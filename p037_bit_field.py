@@ -84,7 +84,7 @@ class Test(unittest.TestCase):
         Solution().solveSudoku(board)
 
         board = [[int(num) for num in row] for row in board]
-        self.assertEqual(board, expected)
+        self.assertEqual(expected, board)
 
 
 if __name__ == '__main__':

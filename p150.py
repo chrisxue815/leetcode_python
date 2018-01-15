@@ -31,7 +31,7 @@ class Test(unittest.TestCase):
 
     def _test(self, tokens, expected):
         actual = Solution().evalRPN(tokens)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

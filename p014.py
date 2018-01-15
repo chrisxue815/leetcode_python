@@ -33,7 +33,7 @@ class Test(unittest.TestCase):
 
     def _test(self, strs, expected):
         actual = Solution().longestCommonPrefix(strs)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

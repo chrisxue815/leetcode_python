@@ -52,7 +52,7 @@ class Test(unittest.TestCase):
 
     def _test(self, root, p, q, expected):
         actual = Solution().lowestCommonAncestor(root, p, q)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

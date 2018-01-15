@@ -25,7 +25,7 @@ class Test(unittest.TestCase):
 
     def _test(self, m, n, expected):
         actual = Solution().rangeBitwiseAnd(m, n)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

@@ -77,7 +77,7 @@ class Test(unittest.TestCase):
 
     def _test(self, matrix, expected):
         actual = Solution().updateMatrix(matrix)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

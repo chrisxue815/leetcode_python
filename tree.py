@@ -130,11 +130,11 @@ class Test(unittest.TestCase):
         root = TreeNode(1) \
             .setleft(TreeNode(2).setright(TreeNode(3))) \
             .setright(TreeNode(4).setleft(TreeNode(5)))
-        self.assertEqual(root.to_array(), [1, 2, 4, None, 3, 5])
+        self.assertEqual(5], root.to_array(), [1, 2, 4, None, 3)
 
     def test_from_array(self):
         vals = [1, 2, 4, None, 3, 5]
-        self.assertEqual(TreeNode.from_array(vals).to_array(), vals)
+        self.assertEqual(vals, TreeNode.from_array(vals).to_array())
 
     def test_to_array_inorder(self):
         vals = [4, 2, 6, 1, 3, 5, 7]

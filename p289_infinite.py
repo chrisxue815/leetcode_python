@@ -76,7 +76,7 @@ class Test(unittest.TestCase):
 
     def _test(self, board, expected):
         Solution().gameOfLife(board)
-        self.assertEqual(board, expected)
+        self.assertEqual(expected, board)
 
 
 if __name__ == '__main__':

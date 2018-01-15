@@ -31,7 +31,7 @@ class Test(unittest.TestCase):
 
         for case in cases:
             actual = Solution().dominantIndex(*case[:-1])
-            self.assertEqual(actual, case[-1])
+            self.assertEqual(case[-1], actual)
 
 
 if __name__ == '__main__':

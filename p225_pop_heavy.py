@@ -52,22 +52,22 @@ class Test(unittest.TestCase):
         stack.push(2)
         stack.push(3)
 
-        self.assertEqual(stack.pop(), 3)
-        self.assertEqual(stack.top(), 2)
-        self.assertEqual(stack.empty(), False)
+        self.assertEqual(3, stack.pop())
+        self.assertEqual(2, stack.top())
+        self.assertEqual(False, stack.empty())
 
-        self.assertEqual(stack.pop(), 2)
-        self.assertEqual(stack.top(), 1)
-        self.assertEqual(stack.empty(), False)
+        self.assertEqual(2, stack.pop())
+        self.assertEqual(1, stack.top())
+        self.assertEqual(False, stack.empty())
 
         stack.push(4)
 
-        self.assertEqual(stack.pop(), 4)
-        self.assertEqual(stack.top(), 1)
-        self.assertEqual(stack.empty(), False)
+        self.assertEqual(4, stack.pop())
+        self.assertEqual(1, stack.top())
+        self.assertEqual(False, stack.empty())
 
-        self.assertEqual(stack.pop(), 1)
-        self.assertEqual(stack.empty(), True)
+        self.assertEqual(1, stack.pop())
+        self.assertEqual(True, stack.empty())
 
 
 if __name__ == '__main__':

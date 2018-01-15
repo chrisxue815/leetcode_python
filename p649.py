@@ -37,7 +37,7 @@ class Test(unittest.TestCase):
 
     def _test(self, senate, expected):
         actual = Solution().predictPartyVictory(senate)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

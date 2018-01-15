@@ -52,7 +52,7 @@ class Test(unittest.TestCase):
 
     def _test(self, s):
         actual = nested_integer.serialize(Solution().deserialize(s))
-        self.assertEqual(actual, s)
+        self.assertEqual(s, actual)
 
 
 if __name__ == '__main__':

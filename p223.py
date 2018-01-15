@@ -32,7 +32,7 @@ class Test(unittest.TestCase):
 
     def _test(self, A, B, C, D, E, F, G, H, expected):
         actual = Solution().computeArea(A, B, C, D, E, F, G, H)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

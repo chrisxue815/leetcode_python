@@ -35,7 +35,7 @@ class Test(unittest.TestCase):
 
     def _test(self, secret, guess, expected):
         actual = Solution().getHint(secret, guess)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

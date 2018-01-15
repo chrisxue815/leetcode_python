@@ -34,7 +34,7 @@ class Test(unittest.TestCase):
 
     def _test(self, pattern, words, expected):
         actual = Solution().wordPattern(pattern, words)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

@@ -39,7 +39,7 @@ class Test(unittest.TestCase):
 
     def _test(self, vals):
         root = TreeNode.from_array(vals)
-        self.assertEqual(Solution().sumNumbers(root), 25)
+        self.assertEqual(25, Solution().sumNumbers(root))
 
 
 if __name__ == '__main__':

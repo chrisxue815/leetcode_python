@@ -54,7 +54,7 @@ class Test(unittest.TestCase):
         actual = Solution().splitListToParts(root, k)
 
         actual = [ListNode.to_array(node) for node in actual]
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

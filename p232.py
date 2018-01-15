@@ -52,22 +52,22 @@ class Test(unittest.TestCase):
         que.push(2)
         que.push(3)
 
-        self.assertEqual(que.pop(), 1)
-        self.assertEqual(que.peek(), 2)
-        self.assertEqual(que.empty(), False)
+        self.assertEqual(1, que.pop())
+        self.assertEqual(2, que.peek())
+        self.assertEqual(False, que.empty())
 
-        self.assertEqual(que.pop(), 2)
-        self.assertEqual(que.peek(), 3)
-        self.assertEqual(que.empty(), False)
+        self.assertEqual(2, que.pop())
+        self.assertEqual(3, que.peek())
+        self.assertEqual(False, que.empty())
 
         que.push(4)
 
-        self.assertEqual(que.pop(), 3)
-        self.assertEqual(que.peek(), 4)
-        self.assertEqual(que.empty(), False)
+        self.assertEqual(3, que.pop())
+        self.assertEqual(4, que.peek())
+        self.assertEqual(False, que.empty())
 
-        self.assertEqual(que.pop(), 4)
-        self.assertEqual(que.empty(), True)
+        self.assertEqual(4, que.pop())
+        self.assertEqual(True, que.empty())
 
 
 if __name__ == '__main__':

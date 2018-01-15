@@ -40,7 +40,7 @@ class Test(unittest.TestCase):
     def _test(self, root, expected):
         root = TreeNode.from_array(root)
         actual = Solution().diameterOfBinaryTree(root)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

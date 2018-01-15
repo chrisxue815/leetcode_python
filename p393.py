@@ -42,7 +42,7 @@ class Test(unittest.TestCase):
 
     def _test(self, data, expected):
         actual = Solution().validUtf8(data)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

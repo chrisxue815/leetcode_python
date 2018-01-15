@@ -31,7 +31,7 @@ class Test(unittest.TestCase):
         Solution().deleteNode(node)
 
         actual = ListNode.to_array(node)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

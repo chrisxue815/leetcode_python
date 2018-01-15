@@ -39,7 +39,7 @@ class Test(unittest.TestCase):
     def _test(self, vals):
         root = TreeLinkNode.from_array(vals)
         Solution().connect(root)
-        self.assertEqual(root.to_array_bfs_fulltree(), vals)
+        self.assertEqual(vals, root.to_array_bfs_fulltree())
 
 
 if __name__ == '__main__':

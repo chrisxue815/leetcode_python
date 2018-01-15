@@ -69,7 +69,7 @@ class Test(unittest.TestCase):
         while i.hasNext():
             actual.append(i.next())
 
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

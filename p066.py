@@ -28,7 +28,7 @@ class Test(unittest.TestCase):
 
     def _test(self, digits, expected):
         actual = Solution().plusOne(digits)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

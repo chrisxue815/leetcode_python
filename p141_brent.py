@@ -50,7 +50,7 @@ class Test(unittest.TestCase):
             curr.next = loop_start_node
 
         actual = Solution().hasCycle(root)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

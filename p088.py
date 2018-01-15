@@ -37,7 +37,7 @@ class Test(unittest.TestCase):
         n = len(nums2)
         nums1 += [0] * n
         actual = Solution().merge(nums1, m, nums2, n)
-        self.assertEqual(nums1, expected)
+        self.assertEqual(expected, nums1)
 
 
 if __name__ == '__main__':

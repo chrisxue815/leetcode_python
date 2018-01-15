@@ -50,8 +50,8 @@ class Test(unittest.TestCase):
         self._test_gcd_euclid_stein(b, a, gcd)
 
     def _test_gcd_euclid_stein(self, a, b, gcd):
-        self.assertEqual(gcd_euclid(a, b), gcd)
-        self.assertEqual(gcd_stein(a, b), gcd)
+        self.assertEqual(gcd, gcd_euclid(a, b))
+        self.assertEqual(gcd, gcd_stein(a, b))
 
 
 if __name__ == '__main__':

@@ -28,7 +28,7 @@ class Test(unittest.TestCase):
 
     def _test(self, s, nums, expected):
         actual = Solution().minSubArrayLen(s, nums)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

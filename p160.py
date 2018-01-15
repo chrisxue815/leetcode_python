@@ -52,7 +52,7 @@ class Test(unittest.TestCase):
         b_end.next = intersection
 
         actual = Solution().getIntersectionNode(a, b)
-        self.assertEqual(actual, intersection)
+        self.assertEqual(intersection, actual)
 
 
 if __name__ == '__main__':

@@ -49,7 +49,7 @@ class Test(unittest.TestCase):
     def _test(self, grid, expected):
         grid = [list(row) for row in grid]
         actual = Solution().numIslands(grid)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

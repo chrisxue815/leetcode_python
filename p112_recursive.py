@@ -26,7 +26,7 @@ class Test(unittest.TestCase):
     def _test(self, root, sum, expected):
         root = TreeNode.from_array(root)
         actual = Solution().hasPathSum(root, sum)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

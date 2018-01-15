@@ -40,7 +40,7 @@ class Test(unittest.TestCase):
 
     def _test(self, nums1, nums2, result):
         actual = Solution().intersect(nums1, nums2)
-        self.assertEqual(actual, result)
+        self.assertEqual(result, actual)
 
 
 if __name__ == '__main__':

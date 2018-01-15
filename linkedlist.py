@@ -77,7 +77,7 @@ class Test(unittest.TestCase):
         head = ListNode.from_array(head)
         actual = ListNode.reverse_list(head)
         actual = ListNode.to_array(actual)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
     def test_count(self):
         self._test_count([1, 2], 2)
@@ -87,7 +87,7 @@ class Test(unittest.TestCase):
     def _test_count(self, head, expected):
         head = ListNode.from_array(head)
         actual = ListNode.count(head)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
     def test_mid_right(self):
         self._test_mid_right([1, 2, 3], 2)
@@ -97,7 +97,7 @@ class Test(unittest.TestCase):
     def _test_mid_right(self, head, expected):
         head = ListNode.from_array(head)
         actual = ListNode.mid_right(head)
-        self.assertEqual(actual.val if actual else None, expected)
+        self.assertEqual(expected, actual.val if actual else None)
 
     def test_mid_left(self):
         self._test_mid_left([1, 2, 3], 2)
@@ -107,7 +107,7 @@ class Test(unittest.TestCase):
     def _test_mid_left(self, head, expected):
         head = ListNode.from_array(head)
         actual = ListNode.mid_left(head)
-        self.assertEqual(actual.val if actual else None, expected)
+        self.assertEqual(expected, actual.val if actual else None)
 
 
 if __name__ == '__main__':

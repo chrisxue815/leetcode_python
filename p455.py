@@ -29,7 +29,7 @@ class Test(unittest.TestCase):
 
     def _test(self, g, s, expected):
         actual = Solution().findContentChildren(g, s)
-        self.assertEqual(actual, expected)
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':
