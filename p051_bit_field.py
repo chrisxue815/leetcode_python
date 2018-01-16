@@ -54,7 +54,7 @@ class Test(unittest.TestCase):
 
     def _test(self, n, expected):
         actual = Solution().solveNQueens(n)
-        self.assertItemsEqual(actual, expected)
+        self.assertItemsEqual(expected, actual)
 
 
 if __name__ == '__main__':

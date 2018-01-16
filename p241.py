@@ -44,7 +44,7 @@ class Test(unittest.TestCase):
 
     def _test(self, s, expected):
         actual = Solution().diffWaysToCompute(s)
-        self.assertItemsEqual(actual, expected)
+        self.assertItemsEqual(expected, actual)
 
 
 if __name__ == '__main__':

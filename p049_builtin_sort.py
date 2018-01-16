@@ -26,7 +26,7 @@ class Test(unittest.TestCase):
 
     def _test(self, strs, expected):
         actual = Solution().groupAnagrams(strs)
-        self.assertItemsEqual(actual, expected)
+        self.assertItemsEqual(expected, actual)
 
 
 if __name__ == '__main__':

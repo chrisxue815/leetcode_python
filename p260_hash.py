@@ -22,7 +22,7 @@ class Test(unittest.TestCase):
 
     def _test(self, nums, expected):
         actual = Solution().singleNumber(nums)
-        self.assertItemsEqual(actual, expected)
+        self.assertItemsEqual(expected, actual)
 
 
 if __name__ == '__main__':

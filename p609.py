@@ -28,7 +28,7 @@ class Test(unittest.TestCase):
 
     def _test(self, paths, expected):
         actual = Solution().findDuplicate(paths)
-        self.assertItemsEqual(actual, expected)
+        self.assertItemsEqual(expected, actual)
 
 
 if __name__ == '__main__':

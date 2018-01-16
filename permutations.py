@@ -80,7 +80,7 @@ class Test(unittest.TestCase):
             for r in xrange(len(pool) + 2):
                 actual = func(pool, r)
                 expected = itertools.permutations(pool, r)
-                self.assertItemsEqual(actual, expected)
+                self.assertItemsEqual(expected, actual)
 
 
 if __name__ == '__main__':

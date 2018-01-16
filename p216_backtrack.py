@@ -37,7 +37,7 @@ class Test(unittest.TestCase):
 
     def _test(self, k, n, expected):
         actual = Solution().combinationSum3(k, n)
-        self.assertItemsEqual(actual, expected)
+        self.assertItemsEqual(expected, actual)
 
 
 if __name__ == '__main__':

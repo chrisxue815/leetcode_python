@@ -51,7 +51,7 @@ class Test(unittest.TestCase):
 
     def _test(self, candidates, target, expected):
         actual = Solution().combinationSum2(candidates, target)
-        self.assertItemsEqual(actual, expected)
+        self.assertItemsEqual(expected, actual)
 
 
 if __name__ == '__main__':

@@ -37,7 +37,7 @@ class Test(unittest.TestCase):
         points = [Point(x, y) for x, y in points]
         actual = Solution().outerTrees(points)
         actual = [[p.x, p.y] for p in actual]
-        self.assertItemsEqual(actual, expected)
+        self.assertItemsEqual(expected, actual)
 
 
 if __name__ == '__main__':

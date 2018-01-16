@@ -40,7 +40,7 @@ class Test(unittest.TestCase):
 
     def _test(self, n, k, expected):
         actual = Solution().combine(n, k)
-        self.assertItemsEqual(actual, expected)
+        self.assertItemsEqual(expected, actual)
 
 
 if __name__ == '__main__':
