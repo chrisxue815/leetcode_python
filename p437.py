@@ -40,20 +40,14 @@ class Test(unittest.TestCase):
 
     def test(self):
         root = TreeNode.from_array([10, 5, -3, 3, 2, None, 11, 3, -2, None, 1])
-        self.assertEqual(
-            Solution().pathSum(root, 8),
-            3)
+        self.assertEqual(3, Solution().pathSum(root, 8))
 
         root = TreeNode.from_array(
             [5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1])
-        self.assertEqual(
-            Solution().pathSum(root, 22),
-            3)
+        self.assertEqual(3, Solution().pathSum(root, 22))
 
         root = TreeNode.from_array([1])
-        self.assertEqual(
-            Solution().pathSum(root, 1),
-            1)
+        self.assertEqual(1, Solution().pathSum(root, 1))
 
 
 if __name__ == '__main__':

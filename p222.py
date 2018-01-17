@@ -38,9 +38,7 @@ class Test(unittest.TestCase):
 
     def _test(self, vals):
         root = TreeNode.from_array(vals)
-        self.assertEqual(
-            Solution().countNodes(root),
-            len(vals))
+        self.assertEqual(len(vals), Solution().countNodes(root))
 
 
 if __name__ == '__main__':

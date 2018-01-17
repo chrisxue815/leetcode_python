@@ -36,14 +36,10 @@ class Test(unittest.TestCase):
 
     def test(self):
         root = TreeNode.from_array([2, 1, 3])
-        self.assertEqual(
-            Solution().findBottomLeftValue(root),
-            1)
+        self.assertEqual(1, Solution().findBottomLeftValue(root))
 
         root = TreeNode.from_array([1, 2, 3, 4, null, 5, 6, null, null, 7])
-        self.assertEqual(
-            Solution().findBottomLeftValue(root),
-            7)
+        self.assertEqual(7, Solution().findBottomLeftValue(root))
 
 
 if __name__ == '__main__':

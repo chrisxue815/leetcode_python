@@ -67,9 +67,7 @@ class Test(unittest.TestCase):
     def _test(self, vals):
         root = TreeNode.from_array(vals)
         codec = Codec()
-        self.assertEqual(
-            codec.deserialize(codec.serialize(root)).to_array(),
-            vals)
+        self.assertEqual(vals, codec.deserialize(codec.serialize(root)).to_array())
 
 
 if __name__ == '__main__':

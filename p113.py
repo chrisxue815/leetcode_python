@@ -45,9 +45,7 @@ class Test(unittest.TestCase):
 
     def _test(self, vals, sum_, expected):
         root = TreeNode.from_array(vals)
-        self.assertEqual(
-            Solution().pathSum(root, sum_),
-            expected)
+        self.assertEqual(expected, Solution().pathSum(root, sum_))
 
 
 if __name__ == '__main__':

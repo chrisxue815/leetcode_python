@@ -36,9 +36,7 @@ class Test(unittest.TestCase):
 
     def _test(self, vals, expected):
         root = TreeNode.from_array(vals)
-        self.assertEqual(
-            Solution().isValidBST(root),
-            expected)
+        self.assertEqual(expected, Solution().isValidBST(root))
 
 
 if __name__ == '__main__':

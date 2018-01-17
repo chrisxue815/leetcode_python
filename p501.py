@@ -48,14 +48,10 @@ class Test(unittest.TestCase):
 
     def test(self):
         root = TreeNode.from_array([1, None, 2, 2])
-        self.assertEqual(
-            Solution().findMode(root),
-            [2])
+        self.assertEqual([2], Solution().findMode(root))
 
         root = TreeNode.from_array([1, 1, 2, None, None, 2])
-        self.assertEqual(
-            Solution().findMode(root),
-            [1, 2])
+        self.assertEqual([1, 2], Solution().findMode(root))
 
 
 if __name__ == '__main__':

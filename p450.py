@@ -74,9 +74,7 @@ class Test(unittest.TestCase):
 
     def _test(self, vals, key, expected):
         root = TreeNode.from_array(vals)
-        self.assertEqual(
-            Solution().deleteNode(root, key).to_array(),
-            expected)
+        self.assertEqual(expected, Solution().deleteNode(root, key).to_array())
 
 
 if __name__ == '__main__':

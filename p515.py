@@ -42,9 +42,7 @@ class Test(unittest.TestCase):
 
     def test(self):
         root = TreeNode.from_array([1, 3, 2, 5, 3, null, 9])
-        self.assertEqual(
-            Solution().largestValues(root),
-            [1, 3, 9])
+        self.assertEqual([1, 3, 9], Solution().largestValues(root))
 
 
 if __name__ == '__main__':

@@ -44,9 +44,7 @@ class Test(unittest.TestCase):
 
     def _test(self, vals, expected):
         root = TreeNode.from_array(vals)
-        self.assertEqual(
-            Solution().preorderTraversal(root),
-            expected)
+        self.assertEqual(expected, Solution().preorderTraversal(root))
 
 
 if __name__ == '__main__':

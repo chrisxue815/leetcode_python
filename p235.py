@@ -37,9 +37,7 @@ class Test(unittest.TestCase):
 
     def test(self):
         root = TreeNode.from_array([6, 2, 8, 0, 4, 7, 9, null, null, 3, 5])
-        self.assertEqual(
-            Solution().lowestCommonAncestor(root, TreeNode(2), TreeNode(8)).val,
-            6)
+        self.assertEqual(6, Solution().lowestCommonAncestor(root, TreeNode(2), TreeNode(8)).val)
 
 
 if __name__ == '__main__':

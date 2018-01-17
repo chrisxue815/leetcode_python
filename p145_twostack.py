@@ -28,9 +28,7 @@ class Solution(object):
 class Test(unittest.TestCase):
     def test(self):
         root = TreeNode.from_array([1, 2, 3, 4, 5, 6, 7])
-        self.assertEqual(
-            Solution().postorderTraversal(root),
-            [4, 5, 2, 6, 7, 3, 1])
+        self.assertEqual([4, 5, 2, 6, 7, 3, 1], Solution().postorderTraversal(root))
 
 
 if __name__ == '__main__':

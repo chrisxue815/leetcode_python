@@ -43,9 +43,9 @@ class Solution(object):
 class Test(unittest.TestCase):
 
     def test(self):
-        self.assertEqual(
-            Solution().sortedArrayToBST([1, 2, 3, 4, 5, 6]).to_array(),
-            [3, 1, 5, None, 2, 4, 6])
+        expected = [3, 1, 5, None, 2, 4, 6]
+        actual = Solution().sortedArrayToBST([1, 2, 3, 4, 5, 6]).to_array()
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

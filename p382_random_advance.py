@@ -43,7 +43,7 @@ class Test(unittest.TestCase):
             if val == nums[0]:
                 hit += 1
 
-        self.assertAlmostEqual(float(hit) / iteration, 1.0 / len(nums), places=1)
+        self.assertAlmostEqual(1.0 / len(nums), float(hit) / iteration, places=1)
 
 
 if __name__ == '__main__':

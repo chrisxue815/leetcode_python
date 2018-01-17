@@ -43,19 +43,13 @@ class Test(unittest.TestCase):
 
     def test(self):
         root = TreeNode.from_array([3, 2, 3, null, 3, null, 1])
-        self.assertEqual(
-            Solution().rob(root),
-            7)
+        self.assertEqual(7, Solution().rob(root))
 
         root = TreeNode.from_array([3, 4, 5, 1, 3, null, 1])
-        self.assertEqual(
-            Solution().rob(root),
-            9)
+        self.assertEqual(9, Solution().rob(root))
 
         root = TreeNode.from_array([4, 1, null, 2, null, 3])
-        self.assertEqual(
-            Solution().rob(root),
-            7)
+        self.assertEqual(7, Solution().rob(root))
 
 
 if __name__ == '__main__':

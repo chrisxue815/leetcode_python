@@ -35,9 +35,7 @@ class Test(unittest.TestCase):
 
     def test(self):
         root = TreeNode.from_array([1, 2, 3, null, 5])
-        self.assertEqual(
-            Solution().binaryTreePaths(root),
-            ["1->2->5", "1->3"])
+        self.assertEqual(["1->2->5", "1->3"], Solution().binaryTreePaths(root))
 
 
 if __name__ == '__main__':

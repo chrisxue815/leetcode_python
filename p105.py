@@ -46,9 +46,7 @@ class Test(unittest.TestCase):
             [4, 2, 6, 1, 3, 5, 7])
 
     def _test(self, preorder, inorder, levelorder):
-        self.assertEqual(
-            Solution().buildTree(preorder, inorder).to_array(),
-            levelorder)
+        self.assertEqual(levelorder, Solution().buildTree(preorder, inorder).to_array())
 
 
 if __name__ == '__main__':
