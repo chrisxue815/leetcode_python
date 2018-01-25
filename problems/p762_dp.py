@@ -13,7 +13,7 @@ def bit_counts(r):
     return counts
 
 
-# O(n) time. O(1) space. DP.
+# O(n) time. O(n) space. DP.
 class Solution(object):
     def countPrimeSetBits(self, l, r):
         """
