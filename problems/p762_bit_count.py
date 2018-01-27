@@ -1,10 +1,6 @@
 import unittest
 import utils
 
-prime_numbers = {
-    2, 3, 5, 7, 11, 13, 17, 19,
-}
-
 
 def bit_count(x):
     # Hacker's Delight, Figure 5-2
@@ -26,11 +22,9 @@ class Solution(object):
         :type r: int
         :rtype: int
         """
-        count = 0
-        for num in xrange(l, r + 1):
-            if bit_count(num) in prime_numbers:
-                count += 1
-        return count
+        # let n = [2, 3, 5, 7, 11, 13, 17, 19]
+        # the n-th bit of 665772 is set
+        return sum((665772 >> bit_count(num)) & 1 for num in xrange(l, r + 1))
 
 
 class Test(unittest.TestCase):
