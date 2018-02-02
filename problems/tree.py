@@ -130,17 +130,20 @@ class Test(unittest.TestCase):
         root = TreeNode(1) \
             .setleft(TreeNode(2).setright(TreeNode(3))) \
             .setright(TreeNode(4).setleft(TreeNode(5)))
-        self.assertEqual(5], root.to_array(), [1, 2, 4, None, 3)
+        actual = root.to_array()
+        expected = [1, 2, 4, None, 3, 5]
+        self.assertEqual(expected, actual)
 
     def test_from_array(self):
         vals = [1, 2, 4, None, 3, 5]
-        self.assertEqual(vals, TreeNode.from_array(vals).to_array())
+        actual = TreeNode.from_array(vals).to_array()
+        self.assertEqual(vals, actual)
 
     def test_to_array_inorder(self):
         vals = [4, 2, 6, 1, 3, 5, 7]
-        self.assertEqual(
-            TreeNode.from_array(vals).to_array_inorder(),
-            [1, 2, 3, 4, 5, 6, 7])
+        actual = TreeNode.from_array(vals).to_array_inorder()
+        expected = [1, 2, 3, 4, 5, 6, 7]
+        self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':
