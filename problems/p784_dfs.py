@@ -1,11 +1,6 @@
 import unittest
 import utils
 
-upper_a = ord('A')
-upper_z = ord('Z')
-lower_a = ord('a')
-lower_z = ord('z')
-
 
 # O(2^n) time. O(n) space. DFS.
 class Solution(object):
@@ -23,15 +18,16 @@ class Solution(object):
                 return
 
             dfs(index + 1)
-            ch = ord(s[index])
-            if upper_a <= ch <= upper_z:
-                s[index] = chr(ch - upper_a + lower_a)
+
+            ch = s[index]
+            if ch.isupper():
+                s[index] = ch.lower()
                 dfs(index + 1)
-                s[index] = chr(ch)
-            elif lower_a <= ch <= lower_z:
-                s[index] = chr(ch - lower_a + upper_a)
+                s[index] = ch
+            elif ch.islower():
+                s[index] = ch.upper()
                 dfs(index + 1)
-                s[index] = chr(ch)
+                s[index] = ch
 
         dfs(0)
         return result
