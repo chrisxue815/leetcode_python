@@ -16,13 +16,7 @@ class Solution(object):
         :type words: List[str]
         :rtype: int
         """
-        transforms = set()
-
-        for word in words:
-            transform = ''.join(to_morse[ord(ch) - ord('a')] for ch in word)
-            transforms.add(transform)
-
-        return len(transforms)
+        return len({''.join(to_morse[ord(ch) - ord('a')] for ch in word) for word in words})
 
 
 class Test(unittest.TestCase):
