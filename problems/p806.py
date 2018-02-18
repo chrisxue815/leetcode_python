@@ -10,22 +10,19 @@ class Solution(object):
         :type s: str
         :rtype: List[int]
         """
-        if not s:
-            return [0, 0]
-
         num_lines = 1
         max_width = 100
-        curr_width = 0
+        remaining_width = max_width
 
         for ch in s:
             width = widths[ord(ch) - ord('a')]
-            if curr_width + width <= max_width:
-                curr_width += width
-            else:
-                curr_width = width
+            remaining_width -= width
+
+            if remaining_width < 0:
+                remaining_width = max_width - width
                 num_lines += 1
 
-        return [num_lines, curr_width]
+        return [num_lines, max_width - remaining_width]
 
 
 class Test(unittest.TestCase):
