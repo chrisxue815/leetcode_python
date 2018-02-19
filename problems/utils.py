@@ -3,7 +3,7 @@ import json
 
 
 def json_object_hook(d):
-    return collections.namedtuple('X', d.keys())(*d.values())
+    return collections.namedtuple('Json', d.keys())(*d.values())
 
 
 def load_json_from_path(path):
