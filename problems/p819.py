@@ -12,12 +12,11 @@ class Solution(object):
         :type banned: List[str]
         :rtype: str
         """
-        words = re.split(r'\W+', paragraph)
-        counter = collections.Counter(word.lower() for word in words if word)
         banned = set(banned)
-        for word, count in counter.most_common():
-            if word not in banned:
-                return word
+        words = re.split(r'\W+', paragraph)
+        words = (word.lower() for word in words if word and word.lower() not in banned)
+        counter = collections.Counter(words)
+        return counter.most_common(1)[0][0]
 
 
 class Test(unittest.TestCase):
