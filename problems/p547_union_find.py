@@ -1,7 +1,7 @@
 import unittest
 
 
-class UF(object):
+class UnionFind(object):
     def __init__(self, n):
         self._id = range(n)
         self._sz = [1] * n
@@ -22,7 +22,7 @@ class UF(object):
         q = self.find(q)
 
         if p == q:
-            return
+            return False
 
         if self._sz[p] < self._sz[q]:
             p, q = q, p
@@ -30,6 +30,8 @@ class UF(object):
         self._id[q] = p
         self._sz[p] += self._sz[q]
         self._count -= 1
+
+        return True
 
     def connected(self, p, q):
         return self.find(p) == self.find(q)
@@ -45,7 +47,7 @@ class Solution(object):
         :type m: List[List[int]]
         :rtype: int
         """
-        uf = UF(len(m))
+        uf = UnionFind(len(m))
 
         for i, row in enumerate(m):
             for j in xrange(i + 1, len(m)):
