@@ -32,18 +32,18 @@ class Solution(object):
         """
         graph = collections.defaultdict(dict)
 
-        for (a, b), k in zip(equations, values):
-            graph[a][b] = k
-            graph[b][a] = 1 / k
+        for (a, b), a_to_b in zip(equations, values):
+            graph[a][b] = a_to_b
+            graph[b][a] = 1 / a_to_b
 
         result = []
 
         for a, b in queries:
             visited = {a}
-            k = calc(graph, visited, a, b)
-            if k is None:
-                k = -1.0
-            result.append(k)
+            a_to_b = calc(graph, visited, a, b)
+            if a_to_b is None:
+                a_to_b = -1.0
+            result.append(a_to_b)
 
         return result
 
