@@ -1,44 +1,38 @@
 import unittest
 import utils
 
-
-def mark_cycle(graph, in_cycle, visited, in_stack, curr):
-    if in_cycle[curr]:
-        return True
-
-    if in_stack[curr]:
-        in_cycle[curr] = True
-        return True
-
-    if visited[curr]:
-        return False
-
-    visited[curr] = True
-    in_stack[curr] = True
-
-    for outgoing in graph[curr]:
-        if mark_cycle(graph, in_cycle, visited, in_stack, outgoing):
-            in_cycle[curr] = True
-
-    in_stack[curr] = False
-    return in_cycle[curr]
+_NOT_VISITED = 0
+_SAFE = 1
+_UNSAFE = 2
 
 
+# O(V+E) time. O(diameter) space. DFS.
 class Solution(object):
     def eventualSafeNodes(self, graph):
         """
         :type graph: List[List[int]]
         :rtype: List[int]
         """
-        in_cycle = [False] * len(graph)
-        visited = [False] * len(graph)
-        in_stack = [False] * len(graph)
+        states = [_NOT_VISITED] * len(graph)
 
-        for curr in xrange(len(graph)):
-            if not visited[curr]:
-                mark_cycle(graph, in_cycle, visited, in_stack, curr)
+        def is_safe(node):
+            if states[node] != _NOT_VISITED:
+                return states[node] == _SAFE
 
-        return [i for i in xrange(len(graph)) if not in_cycle[i]]
+            states[node] = _UNSAFE
+
+            for outgoing in graph[node]:
+                if not is_safe(outgoing):
+                    return False
+
+            states[node] = _SAFE
+            return True
+
+        for i in xrange(len(graph)):
+            if states[i] == _NOT_VISITED:
+                is_safe(i)
+
+        return [i for i in xrange(len(graph)) if states[i] == _SAFE]
 
 
 class Test(unittest.TestCase):
