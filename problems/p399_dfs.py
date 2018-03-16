@@ -21,7 +21,7 @@ def calc(graph, visited, a, c):
     return None
 
 
-# O(n^2) time. O(n^2) space. DFS.
+# O(V+E) time. O(V) space. DFS.
 class Solution(object):
     def calcEquation(self, equations, values, queries):
         """

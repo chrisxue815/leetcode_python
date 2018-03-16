@@ -6,7 +6,7 @@ _SAFE = 1
 _UNSAFE = 2
 
 
-# O(V+E) time. O(diameter) space. DFS.
+# O(V+E) time. O(V) space. DFS.
 class Solution(object):
     def eventualSafeNodes(self, graph):
         """

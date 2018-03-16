@@ -3,6 +3,7 @@ import unittest
 import utils
 
 
+# O(V+E) time. O(V) space. DFS.
 class Solution(object):
     def isBipartite(self, graph):
         """
