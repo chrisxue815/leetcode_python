@@ -6,6 +6,7 @@ PENDING = 0
 COMPLETE = 1
 
 
+# O(V+E) time. O(V) space. DFS.
 class Solution(object):
     def canFinish(self, num_courses, prerequisites):
         """
