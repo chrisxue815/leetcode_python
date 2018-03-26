@@ -22,3 +22,14 @@ class UndirectedGraphNode:
             node = nodes[label]
             node.neighbors = [nodes[neighbor] for neighbor in group[1:]]
         return nodes
+
+    def __eq__(self, other):
+        def equals(a, b):
+            if a.label != b.label or len(a.neighbors) != len(b.neighbors):
+                return False
+            for a, b in zip(a.neighbors, b.neighbors):
+                if not equals(a, b):
+                    return False
+            return True
+
+        return equals(self, other)
