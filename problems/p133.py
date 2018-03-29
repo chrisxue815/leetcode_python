@@ -3,6 +3,7 @@ import unittest
 import utils
 
 
+# O(V+E) time. O(V) space. DFS.
 class Solution:
     # @param node, a undirected graph node
     # @return a undirected graph node
