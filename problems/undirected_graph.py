@@ -4,7 +4,9 @@ class DefaultDict(dict):
         self.default_factory = default_factory
 
     def __missing__(self, key):
-        return self.default_factory(key)
+        value = self.default_factory(key)
+        self[key] = value
+        return value
 
 
 # Definition for a undirected graph node
