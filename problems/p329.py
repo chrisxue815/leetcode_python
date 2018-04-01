@@ -1,0 +1,57 @@
+import unittest
+import utils
+
+
+# O(n) time. O(n) space. DFS.
+class Solution(object):
+    def longestIncreasingPath(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: int
+        """
+        if not matrix or not matrix[0]:
+            return 0
+
+        rows = len(matrix)
+        cols = len(matrix[0])
+
+        max_lengths = [[0] * cols for _ in xrange(rows)]
+
+        def dfs(row, col):
+            max_length = max_lengths[row][col]
+            if max_length:
+                return max_length
+
+            curr = matrix[row][col]
+            max_length = 0
+
+            if row > 0 and matrix[row - 1][col] > curr:
+                max_length = max(max_length, dfs(row - 1, col))
+
+            if row + 1 < rows and matrix[row + 1][col] > curr:
+                max_length = max(max_length, dfs(row + 1, col))
+
+            if col > 0 and matrix[row][col - 1] > curr:
+                max_length = max(max_length, dfs(row, col - 1))
+
+            if col + 1 < cols and matrix[row][col + 1] > curr:
+                max_length = max(max_length, dfs(row, col + 1))
+
+            max_length += 1
+            max_lengths[row][col] = max_length
+            return max_length
+
+        return max(dfs(row, col) for row in xrange(rows) for col in xrange(cols))
+
+
+class Test(unittest.TestCase):
+    def test(self):
+        cases = utils.load_json_from_path('../leetcode_test_cases/p329.json').test_cases
+
+        for case in cases:
+            actual = Solution().longestIncreasingPath(case.matrix)
+            self.assertEqual(case.expected, actual)
+
+
+if __name__ == '__main__':
+    unittest.main()
