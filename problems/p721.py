@@ -3,9 +3,12 @@ import utils
 
 
 def find_root(parents, node):
-    while node != parents[node]:
-        node = parents[node]
-    return node
+    root = node
+    while root != parents[root]:
+        root = parents[root]
+    while node != root:
+        node, parents[node] = parents[node], root
+    return root
 
 
 # O(nlog(n)) time. O(n) space. Union-find.
