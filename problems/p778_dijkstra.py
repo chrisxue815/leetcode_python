@@ -3,6 +3,7 @@ import unittest
 import utils
 
 
+# O(nlog(n)) time. O(n) space. Dijkstra.
 class Solution(object):
     def swimInWater(self, grid):
         """
