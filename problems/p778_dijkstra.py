@@ -12,29 +12,36 @@ class Solution(object):
         """
         rows = len(grid)
         cols = len(grid[0])
-        visited = [[False] * cols for _ in xrange(rows)]
+
         result = grid[0][0]
         q = [(result, 0, 0)]
 
-        while not visited[rows - 1][cols - 1]:
+        visited = [[False] * cols for _ in xrange(rows)]
+        visited[0][0] = True
+
+        while True:
             depth, row, col = heapq.heappop(q)
-            visited[row][col] = True
             if depth > result:
                 result = depth
 
+            if row == rows - 1 and col == cols - 1:
+                return result
+
             if row >= 1 and not visited[row - 1][col]:
                 heapq.heappush(q, (grid[row - 1][col], row - 1, col))
+                visited[row - 1][col] = True
 
             if row + 1 < rows and not visited[row + 1][col]:
                 heapq.heappush(q, (grid[row + 1][col], row + 1, col))
+                visited[row + 1][col] = True
 
             if col >= 1 and not visited[row][col - 1]:
                 heapq.heappush(q, (grid[row][col - 1], row, col - 1))
+                visited[row][col - 1] = True
 
             if col + 1 < cols and not visited[row][col + 1]:
                 heapq.heappush(q, (grid[row][col + 1], row, col + 1))
-
-        return result
+                visited[row][col + 1] = True
 
 
 class Test(unittest.TestCase):
