@@ -19,10 +19,6 @@ class Solution(object):
 
             stack.append((i, t))
 
-        while stack:
-            prev_i, _ = stack.pop()
-            result[prev_i] = 0
-
         return result
 
 
