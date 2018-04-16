@@ -13,11 +13,11 @@ class Solution(object):
         stack = []
 
         for i, t in enumerate(temperatures):
-            while stack and stack[-1][1] < t:
-                prev_i, _ = stack.pop()
+            while stack and temperatures[stack[-1]] < t:
+                prev_i = stack.pop()
                 result[prev_i] = i - prev_i
 
-            stack.append((i, t))
+            stack.append(i)
 
         return result
 
