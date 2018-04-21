@@ -10,7 +10,7 @@ class Solution(object):
         :type answers: List[int]
         :rtype: int
         """
-        return sum((answer + 1) * ((count - 1) // (answer + 1) + 1) for answer, count in
+        return sum((count + answer) // (answer + 1) * (answer + 1) for answer, count in
                    collections.Counter(answers).iteritems())
 
 
