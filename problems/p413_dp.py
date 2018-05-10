@@ -20,11 +20,10 @@ class Solution(object):
         for distance in xrange(2, len(a)):
             for p in xrange(len(a) - distance):
                 q = p + distance
-                if dp[p][q - 1] == dp[q - 1][q]:
-                    dp[p][q] = dp[p][q - 1]
+                diff = dp[p][q - 1] if dp[p][q - 1] == dp[q - 1][q] else None
+                dp[p][q] = diff
+                if diff is not None:
                     result += 1
-                else:
-                    dp[p][q] = None
 
         return result
 
