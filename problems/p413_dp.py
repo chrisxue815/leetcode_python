@@ -2,7 +2,7 @@ import unittest
 import utils
 
 
-# O(n^2) time. O(n^2) space. DP.
+# O(n^2) time. O(n) space. DP.
 class Solution(object):
     def numberOfArithmeticSlices(self, a):
         """
@@ -10,20 +10,20 @@ class Solution(object):
         :rtype: int
         """
         # Common difference
-        dp = [[None] * len(a) for _ in xrange(len(a))]
+        dp = [0] * len(a)
         result = 0
 
         for p in xrange(len(a) - 1):
             q = p + 1
-            dp[p][q] = a[q] - a[p]
+            dp[p] = a[q] - a[p]
 
         for distance in xrange(2, len(a)):
             for p in xrange(len(a) - distance):
                 q = p + distance
-                diff = dp[p][q - 1] if dp[p][q - 1] == dp[q - 1][q] else None
-                dp[p][q] = diff
-                if diff is not None:
+                if dp[p] == a[q] - a[q - 1]:
                     result += 1
+                else:
+                    dp[p] = None
 
         return result
 
