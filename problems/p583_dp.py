@@ -10,17 +10,17 @@ class Solution(object):
         :type word2: str
         :rtype: int
         """
-        # dp[i][j]: Length of longest common subsequence of word1[:i+1] and word2[:j+1]
-        dp = [[0] * len(word2) for _ in xrange(len(word1))]
+        # dp[i][j]: Length of longest common subsequence of word1[:i] and word2[:j]
+        dp = [[0] * (len(word2) + 1) for _ in xrange(len(word1) + 1)]
         result = 0
 
-        for i in xrange(len(word1)):
-            for j in xrange(len(word2)):
-                if word1[i] == word2[j]:
-                    dp[i][j] = dp[i - 1][j - 1] + 1 if i >= 1 and j >= 1 else 1
+        for i in xrange(1, len(word1) + 1):
+            for j in xrange(1, len(word2) + 1):
+                if word1[i - 1] == word2[j - 1]:
+                    dp[i][j] = dp[i - 1][j - 1] + 1
                     result = max(result, dp[i][j])
                 else:
-                    dp[i][j] = max(dp[i][j - 1] if j >= 1 else 0, dp[i - 1][j] if i >= 1 else 0)
+                    dp[i][j] = max(dp[i][j - 1], dp[i - 1][j])
 
         return len(word1) + len(word2) - result * 2
 
