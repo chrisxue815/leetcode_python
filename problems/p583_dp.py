@@ -2,7 +2,7 @@ import unittest
 import utils
 
 
-# O(n^2) time. O(n^2) space. DP.
+# O(n^2) time. O(n) space. DP.
 class Solution(object):
     def minDistance(self, word1, word2):
         """
@@ -10,19 +10,20 @@ class Solution(object):
         :type word2: str
         :rtype: int
         """
-        # dp[i][j]: Length of longest common subsequence of word1[:i] and word2[:j]
-        dp = [[0] * (len(word2) + 1) for _ in xrange(len(word1) + 1)]
-        result = 0
+        # dp[j]: Length of longest common subsequence of word1[:i] and word2[:j]
+        dp = [0] * (len(word2) + 1)
 
         for i in xrange(1, len(word1) + 1):
+            prev = 0
             for j in xrange(1, len(word2) + 1):
+                curr = dp[j]
                 if word1[i - 1] == word2[j - 1]:
-                    dp[i][j] = dp[i - 1][j - 1] + 1
-                    result = max(result, dp[i][j])
+                    dp[j] = prev + 1
                 else:
-                    dp[i][j] = max(dp[i][j - 1], dp[i - 1][j])
+                    dp[j] = max(curr, dp[j - 1])
+                prev = curr
 
-        return len(word1) + len(word2) - result * 2
+        return len(word1) + len(word2) - dp[-1] * 2
 
 
 class Test(unittest.TestCase):
