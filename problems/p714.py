@@ -12,22 +12,15 @@ class Solution(object):
         """
         result = 0
         lo = 0x7FFFFFFF
-        hi = 0
 
         for price in prices:
-            if price < hi - fee:
-                profit = hi - lo - fee
+            if price < lo:
+                lo = price
+            else:
+                profit = price - lo - fee
                 if profit > 0:
                     result += profit
-                lo = hi = price
-            elif price < lo:
-                lo = hi = price
-            elif price > hi:
-                hi = price
-
-        profit = hi - lo - fee
-        if profit > 0:
-            result += profit
+                    lo = price - fee
 
         return result
 
