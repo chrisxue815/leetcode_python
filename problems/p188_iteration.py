@@ -10,8 +10,10 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
-        if not k:
+        if not k or len(prices) < 2:
             return 0
+
+        k = min(k, len(prices) // 2)
 
         buy = [0x7FFFFFFF] * k
         profit = [0] * k
