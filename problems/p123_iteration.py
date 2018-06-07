@@ -9,14 +9,14 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
-        buy1 = buy2 = 0x7FFFFFFF
+        buy1 = buy2 = -0x80000000
         profit1 = profit2 = 0
 
         for price in prices:
-            buy1 = min(buy1, price)
-            profit1 = max(profit1, price - buy1)
-            buy2 = min(buy2, price - profit1)
-            profit2 = max(profit2, price - buy2)
+            buy1 = max(buy1, -price)
+            profit1 = max(profit1, buy1 + price)
+            buy2 = max(buy2, profit1 - price)
+            profit2 = max(profit2, buy2 + price)
 
         return profit2
 
