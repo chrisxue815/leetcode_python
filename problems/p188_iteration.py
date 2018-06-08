@@ -22,16 +22,16 @@ class Solution(object):
                 prev = price
             return result
 
-        buy = [0x7FFFFFFF] * k
+        buy = [-0x80000000] * k
         profit = [0] * k
 
         for price in prices:
-            buy[0] = min(buy[0], price)
-            profit[0] = max(profit[0], price - buy[0])
+            buy[0] = max(buy[0], -price)
+            profit[0] = max(profit[0], buy[0] + price)
 
             for i in xrange(1, k):
-                buy[i] = min(buy[i], price - profit[i - 1])
-                profit[i] = max(profit[i], price - buy[i])
+                buy[i] = max(buy[i], profit[i - 1] - price)
+                profit[i] = max(profit[i], buy[i] + price)
 
         return profit[-1]
 
