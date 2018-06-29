@@ -2,7 +2,7 @@ import unittest
 import utils
 
 
-# O(nk) time. O(k) space. Iteration.
+# O(nk) time. O(k) space. Space-optimized DP.
 class Solution(object):
     def maxProfit(self, k, prices):
         """
@@ -15,25 +15,19 @@ class Solution(object):
 
         if k * 2 >= len(prices):
             result = 0
-            prev = prices[0]
-            for price in prices:
-                if price > prev:
-                    result += price - prev
-                prev = price
+            for i in xrange(1, len(prices)):
+                result += max(0, prices[i] - prices[i - 1])
             return result
 
-        buy = [-0x80000000] * k
-        profit = [0] * k
+        sell = [0] * (k + 1)
+        buy = [-0x80000000] * (k + 1)
 
         for price in prices:
-            buy[0] = max(buy[0], -price)
-            profit[0] = max(profit[0], buy[0] + price)
+            for i in xrange(1, k + 1):
+                sell[i] = max(sell[i], buy[i] + price)
+                buy[i] = max(buy[i], sell[i - 1] - price)
 
-            for i in xrange(1, k):
-                buy[i] = max(buy[i], profit[i - 1] - price)
-                profit[i] = max(profit[i], buy[i] + price)
-
-        return profit[-1]
+        return sell[-1]
 
 
 class Test(unittest.TestCase):
