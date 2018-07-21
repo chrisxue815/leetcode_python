@@ -2,7 +2,7 @@ import unittest
 import utils
 
 
-# O(n*m^2) time. O(n*m) space. DP.
+# O(n*m) time. O(n*m) space. DP.
 class Solution(object):
     def change(self, amount, coins):
         """
@@ -15,8 +15,11 @@ class Solution(object):
 
         for i in xrange(1, len(coins) + 1):
             coin = coins[i - 1]
-            for j in xrange(amount + 1):
-                dp[i][j] = sum(dp[i - 1][j - k] for k in xrange(0, j + 1, coin))
+            for j in xrange(coin):
+                combinations = 0
+                for k in xrange(j, amount + 1, coin):
+                    combinations += dp[i - 1][k]
+                    dp[i][k] = combinations
 
         return dp[-1][-1]
 
