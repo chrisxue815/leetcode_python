@@ -2,7 +2,7 @@ import unittest
 import utils
 
 
-# O(n*m) time. O(n*m) space. DP.
+# O(n*m) time. O(m) space. Space-optimized DP.
 class Solution(object):
     def change(self, amount, coins):
         """
@@ -10,18 +10,14 @@ class Solution(object):
         :type coins: List[int]
         :rtype: int
         """
-        dp = [[0] * (amount + 1) for _ in xrange(len(coins) + 1)]
-        dp[0][0] = 1
+        dp = [0] * (amount + 1)
+        dp[0] = 1
 
-        for i in xrange(1, len(coins) + 1):
-            coin = coins[i - 1]
-            for j in xrange(coin):
-                combinations = 0
-                for k in xrange(j, amount + 1, coin):
-                    combinations += dp[i - 1][k]
-                    dp[i][k] = combinations
+        for coin in coins:
+            for j in xrange(coin, amount + 1):
+                dp[j] += dp[j - coin]
 
-        return dp[-1][-1]
+        return dp[-1]
 
 
 class Test(unittest.TestCase):
