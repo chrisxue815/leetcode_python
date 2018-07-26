@@ -2,46 +2,30 @@ import unittest
 from tree import TreeNode
 
 
-def peek(stack):
-    if stack:
-        return stack[-1]
-    else:
-        return None
-
-
 class Solution(object):
     def postorderTraversal(self, root):
         """
         :type root: TreeNode
         :rtype: List[int]
         """
-        if not root:
-            return []
-
-        vals = []
+        result = []
         stack = []
-        cur = root
+        curr = root
 
-        while True:
-            while cur:
-                if cur.right:
-                    stack.append(cur.right)
-                stack.append(cur)
-                cur = cur.left
-
-            cur = stack.pop()
-
-            if cur.right and cur.right == peek(stack):
-                stack.pop()
-                stack.append(cur)
-                cur = cur.right
+        while curr or stack:
+            if curr:
+                stack.append(curr)
+                stack.append(curr)
+                curr = curr.left
             else:
-                vals.append(cur.val)
-                cur = None
-                if not stack:
-                    break
+                curr = stack.pop()
+                if stack and stack[-1] is curr:
+                    curr = curr.right
+                else:
+                    result.append(curr.val)
+                    curr = None
 
-        return vals
+        return result
 
 
 class Test(unittest.TestCase):
