@@ -8,20 +8,20 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        vals = []
+        result = []
         stack = []
-        cur = root
+        curr = root
 
-        while cur or stack:
-            if cur:
-                stack.append(cur)
-                cur = cur.left
+        while curr or stack:
+            if curr:
+                stack.append(curr)
+                curr = curr.left
             else:
-                cur = stack.pop()
-                vals.append(cur.val)
-                cur = cur.right
+                curr = stack.pop()
+                result.append(curr.val)
+                curr = curr.right
 
-        return vals
+        return result
 
 
 class Test(unittest.TestCase):
