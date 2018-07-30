@@ -1,4 +1,5 @@
 import unittest
+import utils
 from tree import TreeNode
 
 
@@ -26,12 +27,12 @@ class Solution(object):
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 2, 3, 4, 5, 6, 7], [4, 2, 5, 1, 6, 3, 7])
+        cases = utils.load_json_from_path('../leetcode_test_cases/p094.json').test_cases
 
-    def _test(self, root, expected):
-        root = TreeNode.from_array(root)
-        actual = Solution().inorderTraversal(root)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            root = TreeNode.from_array(case.root)
+            actual = Solution().inorderTraversal(root)
+            self.assertEqual(case.expected, actual)
 
 
 if __name__ == '__main__':
