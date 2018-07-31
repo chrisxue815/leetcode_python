@@ -1,7 +1,9 @@
 import unittest
+import utils
 from tree import TreeNode
 
 
+# O(n) time. O(log(n)) space. Iterative post-order DFS, stack.
 class Solution(object):
     def postorderTraversal(self, root):
         """
@@ -30,8 +32,12 @@ class Solution(object):
 
 class Test(unittest.TestCase):
     def test(self):
-        root = TreeNode.from_array([1, 2, 3, 4, 5, 6, 7])
-        self.assertEqual([4, 5, 2, 6, 7, 3, 1], Solution().postorderTraversal(root))
+        cases = utils.load_json_from_path('../leetcode_test_cases/p145.json').test_cases
+
+        for case in cases:
+            root = TreeNode.from_array(case.root)
+            actual = Solution().postorderTraversal(root)
+            self.assertEqual(case.expected, actual)
 
 
 if __name__ == '__main__':
