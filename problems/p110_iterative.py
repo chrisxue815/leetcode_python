@@ -1,7 +1,9 @@
 import unittest
+import utils
 from tree import TreeNode
 
 
+# O(n) time. O(log(n)) space. Iterative post-order DFS, stack.
 class Solution(object):
     def isBalanced(self, root):
         """
@@ -9,39 +11,36 @@ class Solution(object):
         :rtype: bool
         """
         stack = []
+        curr = root
 
-        while root or stack:
-            if root:
-                if root.right:
-                    stack.append(root.right)
-                stack.append(root)
-                root = root.left
+        while curr or stack:
+            if curr:
+                stack.append(curr)
+                stack.append(curr)
+                curr = curr.left
             else:
-                root = stack.pop()
-                if stack and stack[-1] is root.right:
-                    stack[-1] = root
-                    root = root.right
+                curr = stack.pop()
+                if stack and stack[-1] is curr:
+                    curr = curr.right
                 else:
-                    lh = root.left.height if root.left else 0
-                    rh = root.right.height if root.right else 0
+                    lh = curr.left.height if curr.left else 0
+                    rh = curr.right.height if curr.right else 0
                     if abs(lh - rh) > 1:
                         return False
-                    root.height = max(lh, rh) + 1
-                    root = None
+                    curr.height = max(lh, rh) + 1
+                    curr = None
+
         return True
 
 
 class Test(unittest.TestCase):
-    def test_serialize(self):
-        self._test([1, 2, 3], True)
-        self._test([1, 2, 3, 4], True)
-        self._test([1, 2, 3, 4, None, None, None, 5], False)
-        self._test([1, 2, 3, 4, None, None, 5, 6, None, None, 7], False)
+    def test(self):
+        cases = utils.load_json_from_path('../leetcode_test_cases/p110.json').test_cases
 
-    def _test(self, root, expected):
-        root = TreeNode.from_array(root)
-        actual = Solution().isBalanced(root)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            root = TreeNode.from_array(case.root)
+            actual = Solution().isBalanced(root)
+            self.assertEqual(case.expected, actual)
 
 
 if __name__ == '__main__':
