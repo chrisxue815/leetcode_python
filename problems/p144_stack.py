@@ -3,6 +3,7 @@ import utils
 from tree import TreeNode
 
 
+# O(n) time. O(log(n)) space. Iterative pre-order DFS, stack.
 class Solution(object):
     def preorderTraversal(self, root):
         """
