@@ -1,11 +1,13 @@
 import unittest
+import utils
 from tree import TreeNode
 
 
+# O(n) time. O(log(n)) space. Iterative post-order DFS, stack.
 class Solution(object):
     def diameterOfBinaryTree(self, root):
         """
-        :type curr: TreeNode
+        :type root: TreeNode
         :rtype: int
         """
         if not root:
@@ -13,16 +15,16 @@ class Solution(object):
 
         stack = []
         curr = root
+
         while curr or stack:
             if curr:
-                if curr.right:
-                    stack.append(curr.right)
+                stack.append(curr)
                 stack.append(curr)
                 curr = curr.left
             else:
                 curr = stack.pop()
-                if stack and curr.right is stack[-1]:
-                    curr, stack[-1] = stack[-1], curr
+                if stack and stack[-1] is curr:
+                    curr = curr.right
                 else:
                     lh, ld = (curr.left.height, curr.left.diameter) if curr.left else (0, 0)
                     rh, rd = (curr.right.height, curr.right.diameter) if curr.right else (0, 0)
@@ -35,12 +37,12 @@ class Solution(object):
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 2, 3, 4, 5], 3)
+        cases = utils.load_json_from_path('../leetcode_test_cases/p543.json').test_cases
 
-    def _test(self, root, expected):
-        root = TreeNode.from_array(root)
-        actual = Solution().diameterOfBinaryTree(root)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            root = TreeNode.from_array(case.root)
+            actual = Solution().diameterOfBinaryTree(root)
+            self.assertEqual(case.expected, actual)
 
 
 if __name__ == '__main__':
