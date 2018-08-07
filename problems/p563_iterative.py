@@ -1,7 +1,9 @@
 import unittest
+import utils
 from tree import TreeNode
 
 
+# O(n) time. O(log(n)) space. Iterative post-order DFS, stack.
 class Solution(object):
     def findTilt(self, root):
         """
@@ -13,16 +15,15 @@ class Solution(object):
 
         stack = []
         curr = root
+
         while curr or stack:
             if curr:
-                if curr.right:
-                    stack.append(curr.right)
+                stack.append(curr)
                 stack.append(curr)
                 curr = curr.left
             else:
                 curr = stack.pop()
-                if stack and stack[-1] is curr.right:
-                    stack[-1] = curr
+                if stack and stack[-1] is curr:
                     curr = curr.right
                 else:
                     left_sum, left_tilt = (curr.left.sum, curr.left.tilt) if curr.left else (0, 0)
@@ -36,12 +37,12 @@ class Solution(object):
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 2, 3], 1)
+        cases = utils.load_json_from_path('../leetcode_test_cases/p563.json').test_cases
 
-    def _test(self, vals, expected):
-        root = TreeNode.from_array(vals)
-        actual = Solution().findTilt(root)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            root = TreeNode.from_array(case.root)
+            actual = Solution().findTilt(root)
+            self.assertEqual(case.expected, actual)
 
 
 if __name__ == '__main__':
