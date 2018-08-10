@@ -1,7 +1,9 @@
 import unittest
+import utils
 from linkedlist import ListNode
 
 
+# O(n) time. O(1) space. Iteration.
 class Solution(object):
     def reverseList(self, head):
         """
@@ -19,16 +21,13 @@ class Solution(object):
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 2, 3], [3, 2, 1])
-        self._test([1], [1])
-        self._test([], [])
+        cases = utils.load_json_from_path('../leetcode_test_cases/p206.json').test_cases
 
-    def _test(self, head, expected):
-        head = ListNode.from_array(head)
-
-        actual = Solution().reverseList(head)
-        actual = ListNode.to_array(actual)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            head = ListNode.from_array(case.head)
+            actual = Solution().reverseList(head)
+            actual = ListNode.to_array(actual)
+            self.assertEqual(case.expected, actual)
 
 
 if __name__ == '__main__':
