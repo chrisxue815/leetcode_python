@@ -1,7 +1,9 @@
 import unittest
+import utils
 from linkedlist import ListNode
 
 
+# O(n) time. O(1) space. Iteration.
 class Solution(object):
     def oddEvenList(self, head):
         """
@@ -16,35 +18,30 @@ class Solution(object):
         while True:
             if not head:
                 break
-            right = ListNode(head.val)
-            odd.next = right
-            odd = right
+            odd.next = head
+            odd = head
             head = head.next
 
             if not head:
                 break
-            right = ListNode(head.val)
-            even.next = right
-            even = right
+            even.next = head
+            even = head
             head = head.next
 
         odd.next = even_head.next
+        even.next = None
         return odd_head.next
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 2, 3, 4, 5], [1, 3, 5, 2, 4])
-        self._test([2, 3, 4, 5, 6], [2, 4, 6, 3, 5])
-        self._test([1], [1])
-        self._test([], [])
+        cases = utils.load_json_from_path('../leetcode_test_cases/p328.json').test_cases
 
-    def _test(self, head, expected):
-        head = ListNode.from_array(head)
-
-        actual = Solution().oddEvenList(head)
-        actual = ListNode.to_array(actual)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            head = ListNode.from_array(case.head)
+            actual = Solution().oddEvenList(head)
+            actual = ListNode.to_array(actual)
+            self.assertEqual(case.expected, actual)
 
 
 if __name__ == '__main__':
