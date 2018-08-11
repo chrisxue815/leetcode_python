@@ -1,16 +1,19 @@
 import unittest
+import utils
 from linkedlist import ListNode
 
 
-def _reverse_list(head):
-    if head and head.next:
-        new_head, new_tail = _reverse_list(head.next)
-        new_tail.next = head
-        return new_head, head
-    else:
-        return head, head
+def _reverse_list(curr, prev):
+    next_ = curr.next
+    curr.next = prev
+
+    if not next_:
+        return curr
+
+    return _reverse_list(next_, curr)
 
 
+# O(n) time. O(n) space. Tail recursion.
 class Solution(object):
     def reverseList(self, head):
         """
@@ -19,23 +22,20 @@ class Solution(object):
         """
         if not head:
             return None
-        head, tail = _reverse_list(head)
-        tail.next = None
+
+        head = _reverse_list(head, None)
         return head
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 2, 3], [3, 2, 1])
-        self._test([1], [1])
-        self._test([], [])
+        cases = utils.load_json_from_path('../leetcode_test_cases/p206.json').test_cases
 
-    def _test(self, head, expected):
-        head = ListNode.from_array(head)
-
-        actual = Solution().reverseList(head)
-        actual = ListNode.to_array(actual)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            head = ListNode.from_array(case.head)
+            actual = Solution().reverseList(head)
+            actual = ListNode.to_array(actual)
+            self.assertEqual(case.expected, actual)
 
 
 if __name__ == '__main__':
