@@ -1,6 +1,7 @@
 import unittest
 
 
+# O(n) time. O(1) space. Kadane's algorithm, greedy.
 class Solution(object):
     def maxSubArray(self, nums):
         """
