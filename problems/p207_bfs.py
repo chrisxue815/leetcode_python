@@ -2,10 +2,6 @@ import collections
 import unittest
 import utils
 
-NOT_VISITED = -1
-PENDING = 0
-COMPLETE = 1
-
 
 # O(V+E) time. O(V) space. BFS.
 class Solution(object):
