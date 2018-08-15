@@ -1,4 +1,5 @@
 import unittest
+import utils
 
 
 # O(n) time. O(1) space. Kadane's algorithm, greedy.
@@ -28,12 +29,11 @@ class Solution(object):
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([-2, 1, -3, 4, -1, 2, 1, -5, 4], 6)
-        self._test([-2, -1], -1)
+        cases = utils.load_json_from_path('../leetcode_test_cases/p053.json').test_cases
 
-    def _test(self, nums, expected):
-        actual = Solution().maxSubArray(nums)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            actual = Solution().maxSubArray(case.nums)
+            self.assertEqual(case.expected, actual)
 
 
 if __name__ == '__main__':
