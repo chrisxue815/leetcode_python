@@ -17,7 +17,7 @@ class Solution(object):
         graph = [[] for _ in xrange(num_courses)]
 
         for successor, predecessor in prerequisites:
-            graph[predecessor].append(successor)
+            graph[successor].append(predecessor)
 
         result = []
         visited_nodes = [NOT_VISITED] * num_courses
@@ -41,7 +41,7 @@ class Solution(object):
             if not try_reverse_topological_sort(node):
                 return []
 
-        return result[::-1]
+        return result
 
 
 class Test(unittest.TestCase):
