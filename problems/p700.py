@@ -3,7 +3,7 @@ import utils
 from tree import TreeNode
 
 
-# O(log(n)) time. O(log(n)) space. Recursive pre-order DFS.
+# O(log(n)) time. O(log(n)) space. Tail-call optimized recursive pre-order DFS.
 class Solution(object):
     def searchBST(self, root, val):
         """
@@ -11,15 +11,15 @@ class Solution(object):
         :type val: int
         :rtype: TreeNode
         """
-        if not root:
-            return None
-
-        if root.val == val:
-            return root
-        elif root.val > val:
-            return self.searchBST(root.left, val)
-        else:
-            return self.searchBST(root.right, val)
+        while True:
+            if not root:
+                return None
+            if root.val == val:
+                return root
+            elif root.val > val:
+                root = root.left
+            else:
+                root = root.right
 
 
 class Test(unittest.TestCase):
