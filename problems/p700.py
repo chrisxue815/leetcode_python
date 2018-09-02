@@ -3,7 +3,7 @@ import utils
 from tree import TreeNode
 
 
-# O(log(n)) time. O(log(n)) space. Tail-call optimized recursive pre-order DFS.
+# O(log(n)) time. O(1) space. Tail-call optimized recursive pre-order DFS.
 class Solution(object):
     def searchBST(self, root, val):
         """
