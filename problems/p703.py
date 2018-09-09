@@ -1,4 +1,5 @@
 import heapq
+import inspect
 import unittest
 import utils
 
@@ -36,14 +37,18 @@ class KthLargest(object):
 
 class Test(unittest.TestCase):
     def test(self):
+        functions = {name: func for name, func in inspect.getmembers(KthLargest, predicate=inspect.ismethod)}
         cases = utils.load_json_from_path('../leetcode_test_cases/p703.json').test_cases
 
         for case in cases:
-            obj = KthLargest(case.k, case.nums)
+            obj = None
 
-            for query in case.queries:
-                actual = obj.add(query.val)
-                self.assertEqual(query.expected, actual)
+            for func, parameters, expected in zip(case.functions, case.parameters, case.expected):
+                if func == 'KthLargest':
+                    obj = KthLargest(*parameters)
+                else:
+                    actual = functions[func](obj, *parameters)
+                    self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

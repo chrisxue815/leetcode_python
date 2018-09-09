@@ -1,3 +1,4 @@
+import inspect
 import unittest
 import utils
 
@@ -27,13 +28,18 @@ class NumArray(object):
 
 class Test(unittest.TestCase):
     def test(self):
+        functions = {name: func for name, func in inspect.getmembers(NumArray, predicate=inspect.ismethod)}
         cases = utils.load_json_from_path('../leetcode_test_cases/p303.json').test_cases
 
         for case in cases:
-            obj = NumArray(case.nums)
-            for query in case.queries:
-                actual = obj.sumRange(query.i, query.j)
-                self.assertEqual(query.expected, actual)
+            obj = None
+
+            for func, parameters, expected in zip(case.functions, case.parameters, case.expected):
+                if func == 'NumArray':
+                    obj = NumArray(*parameters)
+                else:
+                    actual = functions[func](obj, *parameters)
+                    self.assertEqual(expected, actual)
 
 
 if __name__ == '__main__':

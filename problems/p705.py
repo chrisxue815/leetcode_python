@@ -1,3 +1,4 @@
+import inspect
 import unittest
 import utils
 
@@ -83,6 +84,7 @@ class MyHashSet(object):
 
 class Test(unittest.TestCase):
     def test(self):
+        functions = {name: func for name, func in inspect.getmembers(MyHashSet, predicate=inspect.ismethod)}
         cases = utils.load_json_from_path('../leetcode_test_cases/p705.json').test_cases
 
         for case in cases:
@@ -91,14 +93,8 @@ class Test(unittest.TestCase):
             for func, parameters, expected in zip(case.functions, case.parameters, case.expected):
                 if func == 'MyHashSet':
                     obj = MyHashSet()
-                if func == 'add':
-                    actual = obj.add(*parameters)
-                    self.assertEqual(expected, actual)
-                elif func == 'remove':
-                    actual = obj.remove(*parameters)
-                    self.assertEqual(expected, actual)
-                elif func == 'contains':
-                    actual = obj.contains(*parameters)
+                else:
+                    actual = functions[func](obj, *parameters)
                     self.assertEqual(expected, actual)
 
 
