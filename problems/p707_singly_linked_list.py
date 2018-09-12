@@ -14,7 +14,7 @@ class MyLinkedList(object):
         """
         Initialize your data structure here.
         """
-        self.dummy = ListNode(0)
+        self.head = None
 
     def get(self, index):
         """
@@ -22,9 +22,12 @@ class MyLinkedList(object):
         :type index: int
         :rtype: int
         """
-        curr = self.dummy
+        if not self.head:
+            return -1
 
-        for _ in xrange(index + 1):
+        curr = self.head
+
+        for _ in xrange(index):
             curr = curr.next
             if not curr:
                 return -1
@@ -37,9 +40,9 @@ class MyLinkedList(object):
         :type val: int
         :rtype: void
         """
-        head = ListNode(val)
-        head.next = self.dummy.next
-        self.dummy.next = head
+        inserted = ListNode(val)
+        inserted.next = self.head
+        self.head = inserted
 
     def addAtTail(self, val):
         """
@@ -47,10 +50,15 @@ class MyLinkedList(object):
         :type val: int
         :rtype: void
         """
-        curr = self.dummy
-        while curr.next:
-            curr = curr.next
-        curr.next = ListNode(val)
+        inserted = ListNode(val)
+
+        if self.head:
+            curr = self.head
+            while curr.next:
+                curr = curr.next
+            curr.next = inserted
+        else:
+            self.head = inserted
 
     def addAtIndex(self, index, val):
         """
@@ -59,16 +67,23 @@ class MyLinkedList(object):
         :type val: int
         :rtype: void
         """
-        curr = self.dummy
+        if index == 0:
+            self.addAtHead(val)
+            return
 
-        for _ in xrange(index):
+        if not self.head:
+            return
+
+        curr = self.head
+
+        for _ in xrange(index - 1):
             curr = curr.next
             if not curr:
-                break
-        else:
-            inserted = ListNode(val)
-            inserted.next = curr.next
-            curr.next = inserted
+                return
+
+        inserted = ListNode(val)
+        inserted.next = curr.next
+        curr.next = inserted
 
     def deleteAtIndex(self, index):
         """
@@ -76,15 +91,20 @@ class MyLinkedList(object):
         :type index: int
         :rtype: void
         """
-        curr = self.dummy
+        if index == 0:
+            if self.head:
+                self.head = self.head.next
+            return
 
-        for _ in xrange(index):
+        curr = self.head
+
+        for _ in xrange(index - 1):
             curr = curr.next
             if not curr:
-                break
-        else:
-            if curr.next:
-                curr.next = curr.next.next
+                return
+
+        if curr.next:
+            curr.next = curr.next.next
 
 
 class Test(unittest.TestCase):
