@@ -14,14 +14,17 @@ class Solution(object):
         stack = []
         curr = root
 
-        while curr or stack:
-            if curr:
+        while True:
+            while curr:
                 stack.append(curr)
                 curr = curr.left
-            else:
-                curr = stack.pop()
-                result.append(curr.val)
-                curr = curr.right
+
+            if not stack:
+                break
+
+            curr = stack.pop()
+            result.append(curr.val)
+            curr = curr.right
 
         return result
 
