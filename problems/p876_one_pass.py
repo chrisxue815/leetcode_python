@@ -3,6 +3,7 @@ import utils
 from linkedlist import ListNode
 
 
+# O(n) time. O(1) space. Iteration.
 class Solution(object):
     def middleNode(self, head):
         """
