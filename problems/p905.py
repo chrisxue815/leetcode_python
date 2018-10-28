@@ -34,13 +34,11 @@ class Test(unittest.TestCase):
         cases = utils.load_json_from_path('../leetcode_test_cases/p905.json').test_cases
 
         for case in cases:
-            actual = Solution().sortArrayByParity(case.a)
+            actual = Solution().sortArrayByParity(list(case.a))
             self.assertItemsEqual(case.a, actual)
 
             i = 0
-            while i < len(actual):
-                if actual[i] & 1:
-                    break
+            while i < len(actual) and actual[i] & 1 == 0:
                 i += 1
 
             for i in xrange(i, len(actual)):
