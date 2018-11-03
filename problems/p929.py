@@ -14,11 +14,7 @@ class Solution(object):
         for email in emails:
             local, domain = email.split('@')
 
-            plus = local.find('+')
-            if plus != -1:
-                local = local[:plus]
-
-            local = local.replace('.', '')
+            local = local.split('+', 1)[0].replace('.', '')
 
             normalized.add(local + '@' + domain)
 
