@@ -88,15 +88,16 @@ class MyHashMap(object):
 
 class Test(unittest.TestCase):
     def test(self):
-        functions = {name: func for name, func in inspect.getmembers(MyHashMap, predicate=inspect.ismethod)}
+        cls = MyHashMap
+        functions = {name: func for name, func in inspect.getmembers(cls, predicate=inspect.ismethod)}
         cases = utils.load_json_from_path('../leetcode_test_cases/p706.json').test_cases
 
         for case in cases:
             obj = None
 
             for func, parameters, expected in zip(case.functions, case.parameters, case.expected):
-                if func == 'MyHashMap':
-                    obj = MyHashMap()
+                if func == cls.__name__:
+                    obj = cls()
                 else:
                     actual = functions[func](obj, *parameters)
                     self.assertEqual(expected, actual)
