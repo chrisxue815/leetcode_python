@@ -2,7 +2,7 @@ import unittest
 import utils
 
 
-# O(n^2) time. O(n^2) space. DP.
+# O(n^2) time. O(n) space. Space-optimized DP.
 class Solution(object):
     def minimumTotal(self, triangle):
         """
@@ -12,21 +12,23 @@ class Solution(object):
         n = len(triangle)
 
         # dp[i][j]: the minimum path sum to reach triangle[i][j]
-        dp = [[0] * (i + 1) for i in xrange(n)]
+        dp = [0] * n
 
         for i in xrange(n):
+            prev = 0x7FFFFFFF
+
             for j in xrange(i + 1):
-                dp[i][j] = triangle[i][j]
+                curr = triangle[i][j]
 
                 if i >= 1:
-                    prev = 0x7FFFFFFF
-                    if j >= 1:
-                        prev = dp[i - 1][j - 1]
                     if j < i:
-                        prev = min(prev, dp[i - 1][j])
-                    dp[i][j] += prev
+                        prev = min(prev, dp[j])
+                    curr += prev
 
-        return min(dp[-1])
+                prev = dp[j]
+                dp[j] = curr
+
+        return min(dp)
 
 
 class Test(unittest.TestCase):
