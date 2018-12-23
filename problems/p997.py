@@ -10,21 +10,23 @@ class Solution(object):
         :type trust: List[List[int]]
         :rtype: int
         """
-        person_to_admirers = [[] for _ in xrange(N + 1)]
+        outgoing = [[] for _ in xrange(N + 1)]
+        incoming = [[] for _ in xrange(N + 1)]
 
         for a, b in trust:
-            person_to_admirers[b].append(a)
+            outgoing[a].append(b)
+            incoming[b].append(a)
 
         judge = 0
 
-        for person, admirers in enumerate(person_to_admirers):
-            if len(admirers) == N - 1:
+        for person, admirers in enumerate(incoming):
+            if len(admirers) == N - 1 and len(outgoing[person]) == 0:
                 if judge == 0:
                     judge = person
                 else:
                     return -1
 
-        return judge if judge != 0 and all(a != judge for a, b in trust) else -1
+        return judge if judge != 0 else -1
 
 
 class Test(unittest.TestCase):
