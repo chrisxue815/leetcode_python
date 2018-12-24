@@ -10,17 +10,17 @@ class Solution(object):
         :type trust: List[List[int]]
         :rtype: int
         """
-        outgoing = [[] for _ in xrange(N + 1)]
-        incoming = [[] for _ in xrange(N + 1)]
+        outgoing = [0] * (N + 1)
+        incoming = [0] * (N + 1)
 
         for a, b in trust:
-            outgoing[a].append(b)
-            incoming[b].append(a)
+            outgoing[a] += 1
+            incoming[b] += 1
 
         judge = 0
 
-        for person, admirers in enumerate(incoming):
-            if len(admirers) == N - 1 and len(outgoing[person]) == 0:
+        for person, num_admirers in enumerate(incoming):
+            if num_admirers == N - 1 and outgoing[person] == 0:
                 if judge == 0:
                     judge = person
                 else:
