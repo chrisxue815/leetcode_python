@@ -10,23 +10,18 @@ class Solution(object):
         :type trust: List[List[int]]
         :rtype: int
         """
-        outgoing = [0] * (N + 1)
-        incoming = [0] * (N + 1)
+        # in-degree - out-degree
+        count = [0] * (N + 1)
 
         for a, b in trust:
-            outgoing[a] += 1
-            incoming[b] += 1
+            count[a] -= 1
+            count[b] += 1
 
-        judge = 0
+        for i in xrange(1, N + 1):
+            if count[i] == N - 1:
+                return i
 
-        for person, num_admirers in enumerate(incoming):
-            if num_admirers == N - 1 and outgoing[person] == 0:
-                if judge == 0:
-                    judge = person
-                else:
-                    return -1
-
-        return judge if judge != 0 else -1
+        return -1
 
 
 class Test(unittest.TestCase):
