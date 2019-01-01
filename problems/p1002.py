@@ -1,5 +1,4 @@
 import collections
-import functools
 import unittest
 import utils
 
@@ -11,15 +10,12 @@ class Solution(object):
         :type A: List[str]
         :rtype: List[str]
         """
-        a = collections.Counter(A[0])
-        strings = iter(A)
-        next(strings)
+        counter = collections.Counter(A[0])
 
-        for s in strings:
-            b = collections.Counter(s)
-            a = {ch: min(count, b[ch]) for ch, count in a.iteritems()}
+        for a in A:
+            counter &= collections.Counter(a)
 
-        return functools.reduce(lambda accum, (ch, count): accum + [ch] * count, a.iteritems(), [])
+        return list(counter.elements())
 
 
 class Test(unittest.TestCase):
