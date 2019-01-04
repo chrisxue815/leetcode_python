@@ -13,20 +13,18 @@ class Solution(object):
         """
         A.sort()
 
-        num_negative = 0
-        for num in A:
-            if num < 0:
-                num_negative += 1
-            else:
+        for i, num in enumerate(A):
+            if i >= K or num >= 0:
                 break
+            A[i] = -num
+        else:
+            i = len(A)
 
-        for i in xrange(min(K, num_negative)):
-            A[i] = -A[i]
+        K -= i
 
-        K -= num_negative
-        if K > 0 and K & 1:
-            smaller_index = num_negative - 1 if A[num_negative - 1] < A[num_negative] else num_negative
-            A[smaller_index] = -A[smaller_index]
+        if K & 1:
+            min_index = i - 1 if i == len(A) or A[i - 1] < A[i] else i
+            A[min_index] = -A[min_index]
 
         return sum(A)
 
