@@ -1,7 +1,5 @@
 import unittest
 
-import numpy as np
-
 import utils
 
 
@@ -13,14 +11,7 @@ class Solution(object):
         :rtype: bool
         """
         a, b, c = points
-
-        if a == b or b == c or a == c:
-            return False
-
-        grad_ab = np.float32(b[1] - a[1]) / (b[0] - a[0])
-        grad_bc = np.float32(c[1] - b[1]) / (c[0] - b[0])
-
-        return not np.isclose(grad_ab, grad_bc)
+        return (b[1] - a[1]) * (c[0] - b[0]) != (b[0] - a[0]) * (c[1] - b[1])
 
 
 class Test(unittest.TestCase):
