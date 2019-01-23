@@ -30,8 +30,8 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            head = ListNode.from_array(case.head)
-            actual = Solution().numComponents(head, case.g)
+            head = ListNode.from_array(case.args.head)
+            actual = Solution().numComponents(head, case.args.g)
             self.assertEqual(case.expected, actual)
 
 

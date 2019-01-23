@@ -29,7 +29,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().numMovesStones(case.a, case.b, case.c)
+            actual = Solution().numMovesStones(**vars(case.args))
             self.assertEqual(case.expected, actual)
 
 

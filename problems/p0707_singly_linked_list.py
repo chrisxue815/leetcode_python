@@ -116,7 +116,7 @@ class Test(unittest.TestCase):
         for case in cases:
             obj = None
 
-            for func, parameters, expected in zip(case.functions, case.parameters, case.expected):
+            for func, parameters, expected in zip(case.functions, case.args, case.expected):
                 if func == cls.__name__:
                     obj = cls()
                 else:

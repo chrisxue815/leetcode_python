@@ -35,8 +35,8 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().sortArrayByParityII(list(case.a))
-            self.assertItemsEqual(case.a, actual)
+            actual = Solution().sortArrayByParityII(**vars(case.args))
+            self.assertItemsEqual(case.args.a, actual)
 
             for i, num in enumerate(actual):
                 self.assertEqual(i & 1, num & 1)

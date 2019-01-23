@@ -45,7 +45,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().backspaceCompare(case.s, case.t)
+            actual = Solution().backspaceCompare(**vars(case.args))
             self.assertEqual(case.expected, actual)
 
 

@@ -50,9 +50,9 @@ class Test(unittest.TestCase):
         magic_dict = MagicDictionary()
 
         for case in cases:
-            magic_dict.buildDict(case.dict)
+            magic_dict.buildDict(case.args.dict)
 
-            for search in case.searches:
+            for search in case.args.searches:
                 actual = magic_dict.search(search.word)
                 self.assertEqual(search.expected, actual)
 

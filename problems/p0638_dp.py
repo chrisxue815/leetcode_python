@@ -64,7 +64,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().shoppingOffers(case.price, case.special, case.needs)
+            actual = Solution().shoppingOffers(**vars(case.args))
             self.assertEqual(case.expected, actual)
 
 

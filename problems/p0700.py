@@ -27,8 +27,8 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            root = TreeNode.from_array(case.root)
-            actual = Solution().searchBST(root, case.val)
+            root = TreeNode.from_array(case.args.root)
+            actual = Solution().searchBST(root, case.args.val)
             actual = actual.to_array()
             self.assertEqual(case.expected, actual)
 

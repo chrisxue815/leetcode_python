@@ -35,7 +35,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            root = TreeNode.from_array(case.root)
+            root = TreeNode.from_array(case.args.root)
             actual = Solution().minDiffInBST(root)
             self.assertEqual(case.expected, actual)
 

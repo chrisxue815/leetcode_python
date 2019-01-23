@@ -27,7 +27,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            head = ListNode.from_array(case.head)
+            head = ListNode.from_array(case.args.head)
             actual = Solution().middleNode(head)
             actual = actual.val
             self.assertEqual(case.expected, actual)

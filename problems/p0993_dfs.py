@@ -33,8 +33,8 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            root = TreeNode.from_array(case.root)
-            actual = Solution().isCousins(root, case.x, case.y)
+            root = TreeNode.from_array(case.args.root)
+            actual = Solution().isCousins(root, case.args.x, case.args.y)
             self.assertEqual(case.expected, actual)
 
 

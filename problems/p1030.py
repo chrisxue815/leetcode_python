@@ -45,7 +45,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().allCellsDistOrder(case.R, case.C, case.r0, case.c0)
+            actual = Solution().allCellsDistOrder(**vars(case.args))
 
             i = 0
             for expected in case.expected:

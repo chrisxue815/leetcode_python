@@ -23,7 +23,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().commonChars(case.A)
+            actual = Solution().commonChars(**vars(case.args))
             self.assertItemsEqual(case.expected, actual)
 
 

@@ -31,7 +31,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            nodes = UndirectedGraphNode.parse(case.graph)
+            nodes = UndirectedGraphNode.parse(case.args.graph)
             for node in nodes.itervalues():
                 actual = Solution().cloneGraph(node)
                 self.assertEqual(node, actual)

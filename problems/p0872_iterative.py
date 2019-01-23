@@ -54,8 +54,8 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            root1 = TreeNode.from_array(case.root1)
-            root2 = TreeNode.from_array(case.root2)
+            root1 = TreeNode.from_array(case.args.root1)
+            root2 = TreeNode.from_array(case.args.root2)
             actual = Solution().leafSimilar(root1, root2)
             self.assertEqual(case.expected, actual)
 

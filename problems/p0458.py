@@ -20,7 +20,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().poorPigs(case.buckets, case.minutesToDie, case.minutesToTest)
+            actual = Solution().poorPigs(**vars(case.args))
             self.assertEqual(case.expected, actual)
 
 

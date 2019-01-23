@@ -21,7 +21,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().isToeplitzMatrix(case.matrix)
+            actual = Solution().isToeplitzMatrix(**vars(case.args))
             self.assertEqual(case.expected, actual)
 
 

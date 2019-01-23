@@ -49,8 +49,8 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().findOrder(case.num_courses, case.prerequisites)
-            self.assertIn(actual, case.expected_results)
+            actual = Solution().findOrder(**vars(case.args))
+            self.assertIn(actual, case.expected)
 
 
 if __name__ == '__main__':

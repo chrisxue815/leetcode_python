@@ -40,8 +40,8 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            root = TreeNode.from_array(case.root)
-            actual = Solution().findTarget(root, case.k)
+            root = TreeNode.from_array(case.args.root)
+            actual = Solution().findTarget(root, case.args.k)
             self.assertEqual(case.expected, actual)
 
 

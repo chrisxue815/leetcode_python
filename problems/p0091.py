@@ -26,7 +26,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().numDecodings(case.s)
+            actual = Solution().numDecodings(**vars(case.args))
             self.assertEqual(case.expected, actual)
 
 

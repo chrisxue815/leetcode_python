@@ -57,7 +57,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().calcEquation(case.equations, case.values, case.queries)
+            actual = Solution().calcEquation(**vars(case.args))
             self.assertEqual(case.expected, actual)
 
 

@@ -48,7 +48,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().accountsMerge(case.accounts)
+            actual = Solution().accountsMerge(**vars(case.args))
             self.assertItemsEqual(case.expected, actual)
 
 

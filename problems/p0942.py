@@ -30,11 +30,11 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().diStringMatch(case.s)
-            self.assertItemsEqual(range(len(case.s) + 1), actual)
+            actual = Solution().diStringMatch(**vars(case.args))
+            self.assertItemsEqual(range(len(case.args.s) + 1), actual)
 
-            for i in xrange(len(case.s)):
-                if case.s[i] == 'I':
+            for i in xrange(len(case.args.s)):
+                if case.args.s[i] == 'I':
                     self.assertLess(actual[i], actual[i + 1])
                 else:
                     self.assertGreater(actual[i], actual[i + 1])

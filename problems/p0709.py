@@ -4,12 +4,12 @@ import utils
 
 # O(n) time. O(1) space. Iteration.
 class Solution(object):
-    def toLowerCase(self, s):
+    def toLowerCase(self, str):
         """
-        :type s: str
+        :type str: str
         :rtype: str
         """
-        return ''.join(chr(ord(ch) - ord('A') + ord('a')) if ord('A') <= ord(ch) <= ord('Z') else ch for ch in s)
+        return ''.join(chr(ord(ch) - ord('A') + ord('a')) if ord('A') <= ord(ch) <= ord('Z') else ch for ch in str)
 
 
 class Test(unittest.TestCase):
@@ -17,7 +17,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().toLowerCase(case.str)
+            actual = Solution().toLowerCase(**vars(case.args))
             self.assertEqual(case.expected, actual)
 
 

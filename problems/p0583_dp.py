@@ -31,7 +31,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().minDistance(case.word1, case.word2)
+            actual = Solution().minDistance(**vars(case.args))
             self.assertEqual(case.expected, actual)
 
 
