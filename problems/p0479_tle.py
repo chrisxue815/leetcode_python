@@ -1,12 +1,15 @@
-import unittest
-import itertools
 import math
+import unittest
+
+import utils
 
 
-def generate_palindromes(hi):
-    for hi in xrange(hi, -1, -1):
-        s = str(hi)
-        yield int(s + s[::-1])
+def reverse(num):
+    result = 0
+    while num > 0:
+        num, r = divmod(num, 10)
+        result = result * 10 + r
+    return result
 
 
 class Solution(object):
@@ -18,49 +21,29 @@ class Solution(object):
         if n == 1:
             return 9
 
-        hi = 10 ** n - 1
+        max_num = 10 ** n - 1
 
-        for p in generate_palindromes(hi):
-            root = int(math.sqrt(p))
+        for hi in xrange(10 ** n - 2, 10 ** (n - 1) - 1, -1):
+            palindrome = hi * 10 ** n + reverse(hi)
+            root = int(math.ceil(math.sqrt(palindrome)))
 
-            for factor in xrange(hi, root - 1, -1):
-                q, r = divmod(p, factor)
+            for factor1 in xrange(max_num, root - 1, -1):
+                factor2, r = divmod(palindrome, factor1)
 
-                if q > hi:
+                if r == 0:
+                    return palindrome % 1337
+                if factor2 > max_num:
                     break
-                if not r:
-                    return p % 1337
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test(1, 9)
-        self._test(2, 987)
-        self._test(3, 123)
-        self._test(4, 597)
-        self._test(5, 677)
-        self._test(6, 1218)
-        self._test(7, 877)
-        self._test(8, 475)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, heights, expected):
-        actual = Solution().largestPalindrome(heights)
-        self.assertEqual(expected, actual)
-
-    def test_generate_palindromes(self):
-        self._test_generate_palindromes(9, [
-            99, 88, 77, 66, 55, 44, 33, 22, 11,
-            0
-        ])
-        self._test_generate_palindromes(999, [
-            999999, 998899, 997799, 996699, 995599, 994499, 993399, 992299, 991199, 990099,
-            989989, 988889, 987789, 986689, 985589, 984489, 983389, 982289, 981189, 980089,
-            979979
-        ])
-
-    def _test_generate_palindromes(self, n, expected):
-        actual = list(itertools.islice(generate_palindromes(n), len(expected)))
-        self.assertEqual(expected, actual)
+        # The last 2 tests are too slow
+        for case in cases[:-2]:
+            actual = Solution().largestPalindrome(**vars(case.args))
+            self.assertEqual(case.expected, actual)
 
 
 if __name__ == '__main__':

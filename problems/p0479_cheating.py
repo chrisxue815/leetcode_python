@@ -1,5 +1,7 @@
 import unittest
 
+import utils
+
 
 class Solution(object):
     def largestPalindrome(self, n):
@@ -12,18 +14,11 @@ class Solution(object):
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test(1, 9)
-        self._test(2, 987)
-        self._test(3, 123)
-        self._test(4, 597)
-        self._test(5, 677)
-        self._test(6, 1218)
-        self._test(7, 877)
-        self._test(8, 475)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, heights, expected):
-        actual = Solution().largestPalindrome(heights)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            actual = Solution().largestPalindrome(**vars(case.args))
+            self.assertEqual(case.expected, actual)
 
 
 if __name__ == '__main__':
