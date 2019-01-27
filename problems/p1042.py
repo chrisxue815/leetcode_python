@@ -26,8 +26,9 @@ class Solution(object):
             graph[x - 1].append(y - 1)
 
         colors = [0] * N
+        colors[0] = 1
 
-        for x in xrange(N):
+        for x in xrange(1, N):
             candidates = 0b11110
             for y in graph[x]:
                 candidates &= ~(1 << colors[y])
