@@ -13,11 +13,10 @@ class Solution(object):
         stack = []
 
         for ch in S:
-            stack.append(ch)
-
-            while len(stack) >= 2 and stack[-1] == stack[-2]:
+            if stack and stack[-1] == ch:
                 stack.pop()
-                stack.pop()
+            else:
+                stack.append(ch)
 
         return ''.join(stack)
 
