@@ -3,14 +3,29 @@ import unittest
 import utils
 
 
-# O(nlog(n)) time. O(n) space. Sort.
+# O(n) time. O(n) space. Counting sort.
 class Solution(object):
     def heightChecker(self, heights):
         """
         :type heights: List[int]
         :rtype: int
         """
-        return sum(a != b for a, b in zip(heights, sorted(heights)))
+        result = 0
+        counts = [0] * 101
+
+        for h in heights:
+            counts[h] += 1
+
+        i = 0
+        for h in xrange(1, 101):
+            bound = i + counts[h]
+
+            while i < bound:
+                if heights[i] != h:
+                    result += 1
+                i += 1
+
+        return result
 
 
 class Test(unittest.TestCase):
