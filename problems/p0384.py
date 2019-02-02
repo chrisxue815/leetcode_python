@@ -45,7 +45,7 @@ class Test(unittest.TestCase):
             if arr == nums:
                 hits += 1
 
-        self.assertAlmostEqual(1.0 / math.factorial(len(nums)), float(hits) / iterations, places=2)
+        self.assertAlmostEqual(1.0 / math.factorial(len(nums)), float(hits) / iterations, places=1)
 
 
 if __name__ == '__main__':
