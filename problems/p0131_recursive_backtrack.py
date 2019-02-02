@@ -58,7 +58,12 @@ class Test(unittest.TestCase):
             ["abba"],
         ])
 
-        self._test("abbab", [])
+        self._test("abbab", [
+            ["a", "b", "b", "a", "b"],
+            ["a", "bb", "a", "b"],
+            ["a", "b", "bab"],
+            ["abba", "b"],
+        ])
 
     def _test(self, s, expected):
         actual = Solution().partition(s)
