@@ -90,7 +90,7 @@ class Test(unittest.TestCase):
 
         # User 1's news feed should return a list with 2 tweet ids -> [6, 5].
         # Tweet id 6 should precede tweet id 5 because it is posted after tweet id 5.
-        self.assertEqual(5], twitter.getNewsFeed(1), [6)
+        self.assertEqual(twitter.getNewsFeed(1), [6, 5])
 
         # User 1 unfollows user 2.
         twitter.unfollow(1, 2)
