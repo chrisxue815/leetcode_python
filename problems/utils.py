@@ -14,5 +14,5 @@ def load_json_from_path(path):
 
 def load_test_json(f):
     f = os.path.splitext(os.path.basename(f))[0]
-    prefix, id = f.split('_', 2)[:2]
-    return load_json_from_path('../leetcode_test_cases/{}_{}.json'.format(prefix, id))
+    prefix, problem_id, *_ = f.split('_', 2)
+    return load_json_from_path('../leetcode_test_cases/{}_{}.json'.format(prefix, problem_id))
