@@ -10,20 +10,20 @@ class Solution(object):
         :rtype: ListNode
         """
         while head and head.val == val:
-            head = head.__next__
+            head = head.next
 
         if not head:
             return None
 
         result = head
         prev = head
-        head = head.__next__
+        head = head.next
         while head:
             if head.val == val:
-                prev.next = head.__next__
+                prev.next = head.next
             else:
                 prev = head
-            head = head.__next__
+            head = head.next
         return result
 
 

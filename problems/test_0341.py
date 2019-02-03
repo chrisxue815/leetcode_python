@@ -39,7 +39,7 @@ class NestedIterator(object):
             else:
                 return None
 
-    def __next__(self):
+    def next(self):
         """
         :rtype: int
         """

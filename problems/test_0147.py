@@ -16,14 +16,14 @@ class Solution(object):
         while head:
             val = head.val
             curr = sorted_head
-            while curr.__next__ and curr.next.val < val:
-                curr = curr.__next__
-            next_ = head.__next__
-            head.next = curr.__next__
+            while curr.next and curr.next.val < val:
+                curr = curr.next
+            next_ = head.next
+            head.next = curr.next
             curr.next = head
             head = next_
 
-        return sorted_head.__next__
+        return sorted_head.next
 
 
 class Test(unittest.TestCase):

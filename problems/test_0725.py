@@ -5,7 +5,7 @@ from linkedlist import ListNode
 def get_count(root):
     count = 0
     while root:
-        root = root.__next__
+        root = root.next
         count += 1
     return count
 
@@ -25,8 +25,8 @@ class Solution(object):
         for i in range(num_large_chunks):
             result[i] = root
             for j in range(small_chunk_size):
-                root = root.__next__
-            new_root = root.__next__
+                root = root.next
+            new_root = root.next
             root.next = None
             root = new_root
 
@@ -34,9 +34,9 @@ class Solution(object):
         for i in range(num_large_chunks, k):
             result[i] = root
             for j in range(small_chunk_size):
-                root = root.__next__
+                root = root.next
             if root:
-                new_root = root.__next__
+                new_root = root.next
                 root.next = None
                 root = new_root
 

@@ -7,7 +7,7 @@ def count(head):
     result = 0
     while head:
         result += 1
-        head = head.__next__
+        head = head.next
     return result
 
 
@@ -15,12 +15,12 @@ def _to_bst(head, length):
     if not length:
         return None, head
     if length == 1:
-        return TreeNode(head.val), head.__next__
+        return TreeNode(head.val), head.next
 
     left_length = length >> 1
     left, head = _to_bst(head, left_length)
     root = TreeNode(head.val)
-    right, head = _to_bst(head.__next__, length - left_length - 1)
+    right, head = _to_bst(head.next, length - left_length - 1)
 
     root.left = left
     root.right = right

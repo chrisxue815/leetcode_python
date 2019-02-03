@@ -10,9 +10,9 @@ class Solution(object):
         """
         curr = head
         while curr:
-            next_ = curr.__next__
+            next_ = curr.next
             while next_ and next_.val == curr.val:
-                next_ = next_.__next__
+                next_ = next_.next
             curr.next = next_
             curr = next_
         return head

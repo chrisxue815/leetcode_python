@@ -23,8 +23,8 @@ class Solution(object):
             sum_.next = node
             sum_ = node
 
-            l1 = l1.__next__
-            l2 = l2.__next__
+            l1 = l1.next
+            l2 = l2.next
 
         if l2:
             l1 = l2
@@ -40,10 +40,10 @@ class Solution(object):
             sum_.next = node
             sum_ = node
 
-            l1 = l1.__next__
+            l1 = l1.next
         if carry:
             sum_.next = ListNode(carry)
-        return sum_root.__next__
+        return sum_root.next
 
 
 class Test(unittest.TestCase):

@@ -4,7 +4,7 @@ from linkedlist import ListNode
 
 
 def _reverse_list(curr, prev):
-    next_ = curr.__next__
+    next_ = curr.next
     curr.next = prev
 
     if not next_:

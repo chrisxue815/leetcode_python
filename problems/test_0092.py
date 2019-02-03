@@ -14,21 +14,21 @@ class Solution(object):
         result.next = head
         head = result
         for _ in range(m - 1):
-            head = head.__next__
+            head = head.next
 
         left = head
         prev = None
-        head = head.__next__
+        head = head.next
         right = head
         for _ in range(n - m + 1):
-            next_ = head.__next__
+            next_ = head.next
             head.next = prev
             prev = head
             head = next_
         left.next = prev
         right.next = head
 
-        return result.__next__
+        return result.next
 
 
 class Test(unittest.TestCase):

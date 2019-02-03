@@ -12,7 +12,7 @@ class Solution(object):
         """
         prev = None
         while head:
-            next_ = head.__next__
+            next_ = head.next
             head.next = prev
             prev = head
             head = next_

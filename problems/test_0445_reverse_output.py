@@ -6,7 +6,7 @@ def count(root):
     result = 0
     while root:
         result += 1
-        root = root.__next__
+        root = root.next
     return result
 
 
@@ -36,15 +36,15 @@ class Solution(object):
             right = ListNode(l1.val)
             right.next = result
             result = right
-            l1 = l1.__next__
+            l1 = l1.next
 
         while l1:
             right = ListNode(l1.val + l2.val)
             right.next = result
             result = right
 
-            l1 = l1.__next__
-            l2 = l2.__next__
+            l1 = l1.next
+            l2 = l2.next
 
         right = None
         carry = 0
@@ -56,12 +56,12 @@ class Solution(object):
             else:
                 carry = 0
 
-            left = result.__next__
+            left = result.next
             result.next = right
             right = result
             result = left
 
-        return result_root if result_root.val else result_root.__next__
+        return result_root if result_root.val else result_root.next
 
 
 class Test(unittest.TestCase):

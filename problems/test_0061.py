@@ -14,9 +14,9 @@ class Solution(object):
 
         length = 1
         tail = head
-        while tail.__next__:
+        while tail.next:
             length += 1
-            tail = tail.__next__
+            tail = tail.next
 
         k %= length
         if not k:
@@ -25,9 +25,9 @@ class Solution(object):
         tail.next = head
 
         for _ in range(length - k - 1):
-            head = head.__next__
+            head = head.next
 
-        new_head = head.__next__
+        new_head = head.next
         head.next = None
         return new_head
 

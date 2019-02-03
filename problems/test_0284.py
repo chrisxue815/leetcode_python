@@ -19,7 +19,7 @@ class Iterator(object):
         """
         return self.curr + 1 < len(self.nums)
 
-    def __next__(self):
+    def next(self):
         """
         Returns the next element in the iteration.
         :rtype: int
@@ -45,7 +45,7 @@ class PeekingIterator(object):
         """
         return self.next_item
 
-    def __next__(self):
+    def next(self):
         """
         :rtype: int
         """

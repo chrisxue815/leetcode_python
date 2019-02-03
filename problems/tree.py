@@ -119,7 +119,7 @@ class TreeLinkNode(TreeNode):
         while prev:
             while curr:
                 vals.append(curr.val)
-                curr = curr.__next__
+                curr = curr.next
             prev = curr = prev.left
 
         return vals

@@ -27,7 +27,7 @@ class BSTIterator(object):
         """
         return len(self.stack) > 0
 
-    def __next__(self):
+    def next(self):
         """
         :rtype: int
         """

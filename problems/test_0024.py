@@ -12,14 +12,14 @@ class Solution(object):
         dummy.next = head
         curr = dummy
 
-        while curr.__next__ and curr.next.__next__:
-            a, b, c = curr.__next__, curr.next.__next__, curr.next.next.__next__
+        while curr.next and curr.next.next:
+            a, b, c = curr.next, curr.next.next, curr.next.next.next
             curr.next = b
             b.next = a
             a.next = c
             curr = a
 
-        return dummy.__next__
+        return dummy.next
 
 
 class Test(unittest.TestCase):

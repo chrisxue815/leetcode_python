@@ -14,15 +14,15 @@ class Solution(object):
         lo = dummy
 
         for _ in range(n):
-            head = head.__next__
+            head = head.next
 
         while head:
-            head = head.__next__
-            lo = lo.__next__
+            head = head.next
+            lo = lo.next
 
-        lo.next = lo.next.__next__
+        lo.next = lo.next.next
 
-        return dummy.__next__
+        return dummy.next
 
 
 class Test(unittest.TestCase):

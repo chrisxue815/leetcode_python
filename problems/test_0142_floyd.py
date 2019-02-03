@@ -15,23 +15,23 @@ class Solution(object):
         h = head
 
         while True:
-            h = h.__next__
+            h = h.next
             if not h:
                 return None
 
-            h = h.__next__
+            h = h.next
             if not h:
                 return None
 
-            t = t.__next__
+            t = t.next
 
             if t is h:
                 break
 
         t = head
         while t is not h:
-            t = t.__next__
-            h = h.__next__
+            t = t.next
+            h = h.next
 
         return t
 
@@ -51,11 +51,11 @@ class Test(unittest.TestCase):
         else:
             loop_start_node = root
             for i in range(loop_start_index):
-                loop_start_node = loop_start_node.__next__
+                loop_start_node = loop_start_node.next
 
             curr = loop_start_node
-            while curr.__next__:
-                curr = curr.__next__
+            while curr.next:
+                curr = curr.next
             curr.next = loop_start_node
 
         actual = Solution().detectCycle(root)

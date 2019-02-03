@@ -19,12 +19,12 @@ class Solution(object):
 
         while curr:
             curr.clone = RandomListNode(curr.label)
-            curr = curr.__next__
+            curr = curr.next
 
         curr = head
         while curr:
-            curr.clone.next = curr.next.clone if curr.__next__ else None
+            curr.clone.next = curr.next.clone if curr.next else None
             curr.clone.random = curr.random.clone if curr.random else None
-            curr = curr.__next__
+            curr = curr.next
 
         return head.clone

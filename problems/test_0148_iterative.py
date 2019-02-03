@@ -6,7 +6,7 @@ def count(head):
     result = 0
     while head:
         result += 1
-        head = head.__next__
+        head = head.next
     return result
 
 
@@ -24,7 +24,7 @@ class Solution(object):
         while True:
             new_sublen = sublen << 1
             prev = parent
-            hi_node = prev.__next__
+            hi_node = prev.next
 
             for lo in range(0, n, new_sublen):
                 lo_end = min(lo + sublen, n)
@@ -33,18 +33,18 @@ class Solution(object):
 
                 lo_node = hi_node
                 for _ in range(hi - lo):
-                    hi_node = hi_node.__next__
+                    hi_node = hi_node.next
 
                 for _ in range(hi_end - lo):
                     if hi >= hi_end or lo < lo_end and lo_node.val <= hi_node.val:
                         prev.next = lo_node
                         prev = lo_node
-                        lo_node = lo_node.__next__
+                        lo_node = lo_node.next
                         lo += 1
                     else:
                         prev.next = hi_node
                         prev = hi_node
-                        hi_node = hi_node.__next__
+                        hi_node = hi_node.next
                         hi += 1
 
             if new_sublen >= n:
@@ -52,7 +52,7 @@ class Solution(object):
             sublen = new_sublen
 
         prev.next = None
-        return parent.__next__
+        return parent.next
 
 
 class Test(unittest.TestCase):

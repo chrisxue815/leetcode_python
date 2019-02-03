@@ -20,7 +20,7 @@ class Solution(object):
             if curr_in_g and not prev_in_g:
                 result += 1
             prev_in_g = curr_in_g
-            head = head.__next__
+            head = head.next
 
         return result
 

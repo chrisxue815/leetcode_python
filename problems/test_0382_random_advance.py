@@ -20,8 +20,8 @@ class Solution(object):
         :rtype: int
         """
         for _ in range(self.rand.randint(0, 4)):
-            if self.curr.__next__:
-                self.curr = self.curr.__next__
+            if self.curr.next:
+                self.curr = self.curr.next
             else:
                 self.curr = self.head
         return self.curr.val

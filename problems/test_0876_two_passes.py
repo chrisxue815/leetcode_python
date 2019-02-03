@@ -14,10 +14,10 @@ class Solution(object):
         curr = head
         while curr:
             length += 1
-            curr = curr.__next__
+            curr = curr.next
 
         for _ in range(length // 2):
-            head = head.__next__
+            head = head.next
 
         return head
 

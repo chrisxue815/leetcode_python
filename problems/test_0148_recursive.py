@@ -3,16 +3,16 @@ from linkedlist import ListNode
 
 
 def _sort(lo):
-    if not lo.__next__:
+    if not lo.next:
         return lo
 
     mid = lo
     tail = lo
-    while tail and tail.__next__ and tail.next.__next__:
-        mid = mid.__next__
-        tail = tail.next.__next__
+    while tail and tail.next and tail.next.next:
+        mid = mid.next
+        tail = tail.next.next
 
-    hi = mid.__next__
+    hi = mid.next
     mid.next = None
 
     lo = _sort(lo)
@@ -24,18 +24,18 @@ def _sort(lo):
         if lo.val <= hi.val:
             prev.next = lo
             prev = lo
-            lo = lo.__next__
+            lo = lo.next
         else:
             prev.next = hi
             prev = hi
-            hi = hi.__next__
+            hi = hi.next
 
     if lo:
         prev.next = lo
     else:
         prev.next = hi
 
-    return dummy.__next__
+    return dummy.next
 
 
 class Solution(object):
