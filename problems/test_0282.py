@@ -42,7 +42,7 @@ class Test(unittest.TestCase):
 
     def _test(self, num, target, expected):
         actual = Solution().addOperators(num, target)
-        self.assertItemsEqual(expected, actual)
+        self.assertCountEqual(expected, actual)
 
 
 if __name__ == '__main__':

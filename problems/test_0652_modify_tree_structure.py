@@ -72,7 +72,7 @@ class Test(unittest.TestCase):
         actual = Solution().findDuplicateSubtrees(root)
 
         actual = [node.to_array() for node in actual]
-        self.assertItemsEqual(expected, actual)
+        self.assertCountEqual(expected, actual)
 
 
 if __name__ == '__main__':

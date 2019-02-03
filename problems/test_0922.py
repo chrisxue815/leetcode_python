@@ -36,7 +36,7 @@ class Test(unittest.TestCase):
 
         for case in cases:
             actual = Solution().sortArrayByParityII(**case.args._asdict())
-            self.assertItemsEqual(case.args.a, actual)
+            self.assertCountEqual(case.args.a, actual)
 
             for i, num in enumerate(actual):
                 self.assertEqual(i & 1, num & 1)

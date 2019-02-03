@@ -39,7 +39,7 @@ class Test(unittest.TestCase):
 
     def _test(self, strs, expected):
         actual = Solution().groupAnagrams(strs)
-        self.assertItemsEqual(expected, actual)
+        self.assertCountEqual(expected, actual)
 
 
 if __name__ == '__main__':

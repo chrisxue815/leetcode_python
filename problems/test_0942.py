@@ -31,7 +31,7 @@ class Test(unittest.TestCase):
 
         for case in cases:
             actual = Solution().diStringMatch(**case.args._asdict())
-            self.assertItemsEqual(list(range(len(case.args.s) + 1)), actual)
+            self.assertCountEqual(list(range(len(case.args.s) + 1)), actual)
 
             for i in range(len(case.args.s)):
                 if case.args.s[i] == 'I':

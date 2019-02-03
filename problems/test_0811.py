@@ -32,7 +32,7 @@ class Test(unittest.TestCase):
 
         for case in cases:
             actual = Solution().subdomainVisits(**case.args._asdict())
-            self.assertItemsEqual(case.expected, actual)
+            self.assertCountEqual(case.expected, actual)
 
 
 if __name__ == '__main__':

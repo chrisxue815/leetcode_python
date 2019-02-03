@@ -34,7 +34,7 @@ class Test(unittest.TestCase):
 
     def _test(self, nums):
         actual = Solution().permuteUnique(nums)
-        self.assertItemsEqual([list(p) for p in set(p for p in itertools.permutations(nums))], actual)
+        self.assertCountEqual([list(p) for p in set(p for p in itertools.permutations(nums))], actual)
 
 
 if __name__ == '__main__':

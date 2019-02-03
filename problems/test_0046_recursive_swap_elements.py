@@ -24,7 +24,7 @@ class Solution(object):
         else:
             next_index = start_index + 1
             self._permute(next_index)
-            
+
             for i in range(next_index, self.n):
                 nums[i], nums[start_index] = nums[start_index], nums[i]
                 self._permute(next_index)
@@ -44,7 +44,7 @@ class Test(unittest.TestCase):
 
     def _test(self, nums, expected):
         actual = Solution().permute(nums)
-        self.assertItemsEqual(expected, actual)
+        self.assertCountEqual(expected, actual)
 
 
 if __name__ == '__main__':

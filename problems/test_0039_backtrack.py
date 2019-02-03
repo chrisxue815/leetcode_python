@@ -46,7 +46,7 @@ class Test(unittest.TestCase):
 
     def _test(self, candidates, target, expected):
         actual = Solution().combinationSum(candidates, target)
-        self.assertItemsEqual(expected, actual)
+        self.assertCountEqual(expected, actual)
 
 
 if __name__ == '__main__':

@@ -87,7 +87,7 @@ class Test(unittest.TestCase):
             for r in range(len(pool) + 2):
                 actual = func(pool, r)
                 expected = itertools.combinations(pool, r)
-                self.assertItemsEqual(expected, actual)
+                self.assertCountEqual(expected, actual)
 
 
 if __name__ == '__main__':

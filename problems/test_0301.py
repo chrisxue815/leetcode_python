@@ -61,7 +61,7 @@ class Test(unittest.TestCase):
 
     def _test(self, s, expected):
         actual = Solution().removeInvalidParentheses(s)
-        self.assertItemsEqual(expected, actual)
+        self.assertCountEqual(expected, actual)
 
 
 if __name__ == '__main__':

@@ -44,10 +44,10 @@ class Test(unittest.TestCase):
 
     def test(self):
         root = TreeNode.from_array([5, 2, -3])
-        self.assertItemsEqual([2, -3, 4], Solution().findFrequentTreeSum(root))
+        self.assertCountEqual([2, -3, 4], Solution().findFrequentTreeSum(root))
 
         root = TreeNode.from_array([5, 2, -5])
-        self.assertItemsEqual([2], Solution().findFrequentTreeSum(root))
+        self.assertCountEqual([2], Solution().findFrequentTreeSum(root))
 
 
 if __name__ == '__main__':

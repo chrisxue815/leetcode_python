@@ -33,7 +33,7 @@ class Test(unittest.TestCase):
 
     def _test(self, nums, expected):
         actual = Solution().findSubsequences(nums)
-        self.assertItemsEqual(expected, actual)
+        self.assertCountEqual(expected, actual)
 
 
 if __name__ == '__main__':

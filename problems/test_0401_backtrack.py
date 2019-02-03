@@ -36,7 +36,7 @@ class Test(unittest.TestCase):
 
     def _test(self, num, expected):
         actual = Solution().readBinaryWatch(num)
-        self.assertItemsEqual(expected, actual)
+        self.assertCountEqual(expected, actual)
 
 
 if __name__ == '__main__':
