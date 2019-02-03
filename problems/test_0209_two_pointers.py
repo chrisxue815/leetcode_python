@@ -12,7 +12,7 @@ class Solution(object):
         lo = 0
         sum_ = 0
 
-        for hi in xrange(len(nums)):
+        for hi in range(len(nums)):
             sum_ += nums[hi]
             if sum_ >= s:
                 while sum_ >= s:

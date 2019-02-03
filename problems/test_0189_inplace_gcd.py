@@ -28,10 +28,10 @@ class Solution(object):
         gcd = gcd_euclid(n, k)
         inner_loops = n / gcd
 
-        for i in xrange(gcd):
+        for i in range(gcd):
             index = i
             prev = nums[index]
-            for j in xrange(inner_loops):
+            for j in range(inner_loops):
                 index = (index + k) % n
                 nums[index], prev = prev, nums[index]
 

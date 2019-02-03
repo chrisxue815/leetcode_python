@@ -13,10 +13,10 @@ class Solution(object):
         :rtype: List[List[str]]
         """
         height = get_height(root)
-        result = [[] for _ in xrange(height)]
+        result = [[] for _ in range(height)]
         que = [root]
 
-        for rownum in xrange(height):
+        for rownum in range(height):
             row = result[rownum]
             side_space = (1 << (height - rownum - 1)) - 1
             mid_space = (side_space << 1) + 1

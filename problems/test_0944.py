@@ -11,8 +11,8 @@ class Solution(object):
         """
         result = 0
 
-        for j in xrange(len(a[0])):
-            for i in xrange(1, len(a)):
+        for j in range(len(a[0])):
+            for i in range(1, len(a)):
                 if a[i - 1][j] > a[i][j]:
                     result += 1
                     break

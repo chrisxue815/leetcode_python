@@ -8,12 +8,12 @@ class Solution(object):
         :rtype: List[int]
         """
         if n <= 9:
-            return range(1, n + 1)
+            return list(range(1, n + 1))
 
         result = [0] * n
         curr = 1
 
-        for i in xrange(n):
+        for i in range(n):
             result[i] = curr
             if curr * 10 <= n:
                 curr *= 10

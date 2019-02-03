@@ -16,7 +16,7 @@ class Solution(object):
         diff1 = -1
         diff2 = -1
 
-        for i in xrange(len(a)):
+        for i in range(len(a)):
             if a[i] != b[i]:
                 if diff1 == -1:
                     diff1 = i

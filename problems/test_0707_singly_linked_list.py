@@ -27,8 +27,8 @@ class MyLinkedList(object):
 
         curr = self.head
 
-        for _ in xrange(index):
-            curr = curr.next
+        for _ in range(index):
+            curr = curr.__next__
             if not curr:
                 return -1
 
@@ -54,8 +54,8 @@ class MyLinkedList(object):
 
         if self.head:
             curr = self.head
-            while curr.next:
-                curr = curr.next
+            while curr.__next__:
+                curr = curr.__next__
             curr.next = inserted
         else:
             self.head = inserted
@@ -76,13 +76,13 @@ class MyLinkedList(object):
 
         curr = self.head
 
-        for _ in xrange(index - 1):
-            curr = curr.next
+        for _ in range(index - 1):
+            curr = curr.__next__
             if not curr:
                 return
 
         inserted = ListNode(val)
-        inserted.next = curr.next
+        inserted.next = curr.__next__
         curr.next = inserted
 
     def deleteAtIndex(self, index):
@@ -93,18 +93,18 @@ class MyLinkedList(object):
         """
         if index == 0:
             if self.head:
-                self.head = self.head.next
+                self.head = self.head.__next__
             return
 
         curr = self.head
 
-        for _ in xrange(index - 1):
-            curr = curr.next
+        for _ in range(index - 1):
+            curr = curr.__next__
             if not curr:
                 return
 
-        if curr.next:
-            curr.next = curr.next.next
+        if curr.__next__:
+            curr.next = curr.next.__next__
 
 
 class Test(unittest.TestCase):

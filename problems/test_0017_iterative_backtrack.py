@@ -17,14 +17,14 @@ class Solution(object):
 
         result = []
         indices = [0] * n
-        result.append(''.join(digit_letters[digits[i]][0] for i in xrange(n)))
+        result.append(''.join(digit_letters[digits[i]][0] for i in range(n)))
 
         while True:
-            for i in xrange(n - 1, -1, -1):
+            for i in range(n - 1, -1, -1):
                 indices[i] += 1
                 j = indices[i]
                 if j < len(digit_letters[digits[i]]):
-                    result.append(''.join(digit_letters[digits[i]][indices[i]] for i in xrange(n)))
+                    result.append(''.join(digit_letters[digits[i]][indices[i]] for i in range(n)))
                     break
                 else:
                     indices[i] = 0

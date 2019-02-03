@@ -10,9 +10,9 @@ class Solution(object):
         result = []
         slen = len(s)
         # [0,p1) [p1,p2) [p2,p3) [p3,slen)
-        for p1 in xrange(1, 4):
-            for p2 in xrange(p1 + 1, p1 + 4):
-                for p3 in xrange(p2 + 1, p2 + 4):
+        for p1 in range(1, 4):
+            for p2 in range(p1 + 1, p1 + 4):
+                for p3 in range(p2 + 1, p2 + 4):
                     l4 = slen - p3
                     if l4 < 1 or l4 > 3:
                         continue

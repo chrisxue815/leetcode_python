@@ -9,7 +9,7 @@ class Solution(object):
         """
         max_ring = 0
         remain = len(nums)
-        for index in xrange(len(nums)):
+        for index in range(len(nums)):
             ring = 0
             while True:
                 num = nums[index]

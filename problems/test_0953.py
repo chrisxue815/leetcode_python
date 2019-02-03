@@ -12,11 +12,11 @@ class Solution(object):
         """
         indices = {ch: i for i, ch in enumerate(order)}
 
-        for i in xrange(1, len(words)):
+        for i in range(1, len(words)):
             a = words[i - 1]
             b = words[i]
 
-            for j in xrange(min(len(a), len(b))):
+            for j in range(min(len(a), len(b))):
                 if a[j] != b[j]:
                     if indices[a[j]] < indices[b[j]]:
                         break

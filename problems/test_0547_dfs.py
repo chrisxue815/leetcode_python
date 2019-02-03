@@ -3,7 +3,7 @@ import unittest
 
 def _set0(m, i):
     m[i][i] = 0
-    for j in xrange(len(m)):
+    for j in range(len(m)):
         if m[j][j] == 0 or m[i][j] == 0:
             continue
         m[j][j] = 0
@@ -19,7 +19,7 @@ class Solution(object):
         :rtype: int
         """
         result = 0
-        for i in xrange(len(m)):
+        for i in range(len(m)):
             if m[i][i] == 0:
                 continue
             result += 1

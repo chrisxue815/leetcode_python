@@ -16,7 +16,7 @@ class Solution(object):
                 next_greater[stack.pop()] = num
             stack.append(num)
 
-        for i in xrange(len(findNums)):
+        for i in range(len(findNums)):
             findNums[i] = next_greater.get(findNums[i]) or -1
 
         return findNums

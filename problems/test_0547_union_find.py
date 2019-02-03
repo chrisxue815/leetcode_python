@@ -3,7 +3,7 @@ import unittest
 
 class UnionFind(object):
     def __init__(self, n):
-        self._id = range(n)
+        self._id = list(range(n))
         self._sz = [1] * n
         self._count = n
 
@@ -50,7 +50,7 @@ class Solution(object):
         uf = UnionFind(len(m))
 
         for i, row in enumerate(m):
-            for j in xrange(i + 1, len(m)):
+            for j in range(i + 1, len(m)):
                 if row[j]:
                     uf.union(i, j)
 

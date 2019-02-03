@@ -32,7 +32,7 @@ class Test(unittest.TestCase):
 
         for case in cases:
             nodes = UndirectedGraphNode.parse(case.args.graph)
-            for node in nodes.itervalues():
+            for node in nodes.values():
                 actual = Solution().cloneGraph(node)
                 self.assertEqual(node, actual)
 

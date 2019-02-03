@@ -14,7 +14,7 @@ class Solution(object):
         if not root:
             return None
 
-        root_parent = TreeNode(sys.maxint)
+        root_parent = TreeNode(sys.maxsize)
         root_parent.left = root
 
         node, parent = self._find_node(root, root_parent, key)

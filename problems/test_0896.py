@@ -11,7 +11,7 @@ class Solution(object):
         """
         increasing = None
 
-        for i in xrange(len(a) - 1):
+        for i in range(len(a) - 1):
             if a[i] < a[i + 1]:
                 if increasing is None:
                     increasing = True

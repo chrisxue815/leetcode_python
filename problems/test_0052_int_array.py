@@ -15,7 +15,7 @@ class Solution(object):
         def dfs(row):
             if row == n:
                 self.result += 1
-            for col in xrange(n):
+            for col in range(n):
                 if cols[col] and forwards[row + col] and backwards[row - col]:
                     cols[col] = forwards[row + col] = backwards[row - col] = 0
                     dfs(row + 1)

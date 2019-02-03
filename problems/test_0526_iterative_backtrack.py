@@ -2,12 +2,12 @@ import unittest
 
 
 def permutations(n):
-    nums = range(1, n + 1)
-    cycles = range(n)
+    nums = list(range(1, n + 1))
+    cycles = list(range(n))
     yield tuple(nums)
 
     while True:
-        for i in xrange(n - 1, -1, -1):
+        for i in range(n - 1, -1, -1):
             cycles[i] += 1
             j = cycles[i]
 

@@ -16,7 +16,7 @@ class Solution(object):
         ret = [0] * size
         topright = 1
         row = col = 0
-        for i in xrange(size):
+        for i in range(size):
             ret[i] = matrix[row][col]
             if topright:
                 if row and col < cols - 1:

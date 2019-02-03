@@ -19,21 +19,21 @@ class ListNode(object):
             parent.next = curr
             parent = curr
 
-        return root_parent.next
+        return root_parent.__next__
 
     @staticmethod
     def to_array(root):
         vals = []
         while root:
             vals.append(root.val)
-            root = root.next
+            root = root.__next__
         return vals
 
     @staticmethod
     def reverse_list(root):
         prev = None
         while root:
-            next_ = root.next
+            next_ = root.__next__
             root.next = prev
             prev = root
             root = next_
@@ -44,25 +44,25 @@ class ListNode(object):
         result = 0
         while root:
             result += 1
-            root = root.next
+            root = root.__next__
         return result
 
     @staticmethod
     def mid_right(head):
         slow = head
         fast = head
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
+        while fast and fast.__next__:
+            slow = slow.__next__
+            fast = fast.next.__next__
         return slow
 
     @staticmethod
     def mid_left(head):
         slow = head
         fast = head
-        while fast and fast.next and fast.next.next:
-            slow = slow.next
-            fast = fast.next.next
+        while fast and fast.__next__ and fast.next.__next__:
+            slow = slow.__next__
+            fast = fast.next.__next__
         return slow
 
 

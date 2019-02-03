@@ -12,7 +12,7 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        graph = [[] for _ in xrange(n + 1)]
+        graph = [[] for _ in range(n + 1)]
 
         for u, v, w in times:
             graph[u].append((v, w))

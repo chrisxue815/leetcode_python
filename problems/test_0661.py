@@ -9,9 +9,9 @@ class Solution(object):
         """
         result = [None] * len(m)
 
-        for i in xrange(len(m)):
+        for i in range(len(m)):
             row = [0] * len(m[0])
-            for j in xrange(len(row)):
+            for j in range(len(row)):
                 s = m[i][j]
                 count = 1
                 if i >= 1:

@@ -13,12 +13,12 @@ class Solution(object):
         dp = [0] * len(a)
         result = 0
 
-        for p in xrange(len(a) - 1):
+        for p in range(len(a) - 1):
             q = p + 1
             dp[p] = a[q] - a[p]
 
-        for distance in xrange(2, len(a)):
-            for p in xrange(len(a) - distance):
+        for distance in range(2, len(a)):
+            for p in range(len(a) - distance):
                 q = p + distance
                 if dp[p] == a[q] - a[q - 1]:
                     result += 1

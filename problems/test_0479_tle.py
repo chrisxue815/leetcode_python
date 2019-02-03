@@ -23,11 +23,11 @@ class Solution(object):
 
         max_num = 10 ** n - 1
 
-        for hi in xrange(10 ** n - 2, 10 ** (n - 1) - 1, -1):
+        for hi in range(10 ** n - 2, 10 ** (n - 1) - 1, -1):
             palindrome = hi * 10 ** n + reverse(hi)
             root = int(math.ceil(math.sqrt(palindrome)))
 
-            for factor1 in xrange(max_num, root - 1, -1):
+            for factor1 in range(max_num, root - 1, -1):
                 factor2, r = divmod(palindrome, factor1)
 
                 if r == 0:

@@ -16,7 +16,7 @@ class Solution(object):
         result = grid[0][0]
         q = [(result, 0, 0)]
 
-        visited = [[False] * cols for _ in xrange(rows)]
+        visited = [[False] * cols for _ in range(rows)]
 
         while True:
             depth, row, col = heapq.heappop(q)

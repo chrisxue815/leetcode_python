@@ -22,7 +22,7 @@ class Solution(object):
         return self.result
 
     def _subsets(self, start):
-        for i in xrange(start, self.n):
+        for i in range(start, self.n):
             if i > start and self.nums[i] == self.nums[i - 1]:
                 continue
             self.combination.append(self.nums[i])

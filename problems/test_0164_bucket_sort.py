@@ -21,7 +21,7 @@ class Solution(object):
         # Smallest possible maximum gap
         bucket_count = len(nums)
         bucket_size = int(math.ceil(float(max_ - min_) / (bucket_count - 1)))
-        buckets = [None for _ in xrange(bucket_count)]
+        buckets = [None for _ in range(bucket_count)]
 
         for num in nums:
             index = (num - min_) // bucket_size

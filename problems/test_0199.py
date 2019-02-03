@@ -1,4 +1,4 @@
-import Queue
+import queue
 import unittest
 from tree import TreeNode, null
 
@@ -21,7 +21,7 @@ class Solution(object):
             return []
 
         right_view = []
-        q = Queue.Queue()
+        q = queue.Queue()
         q.put(root)
 
         while not q.empty():
@@ -29,7 +29,7 @@ class Solution(object):
             node = self._pop_and_push_subtree(q)
             right_view.append(node.val)
 
-            for _ in xrange(qsize):
+            for _ in range(qsize):
                 self._pop_and_push_subtree(q)
 
         return right_view

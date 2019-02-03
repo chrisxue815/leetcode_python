@@ -8,7 +8,7 @@ class Solution(object):
         :rtype: int
         """
         nums.sort()
-        return sum(nums[~i] - nums[i] for i in xrange(len(nums) >> 1))
+        return sum(nums[~i] - nums[i] for i in range(len(nums) >> 1))
 
 
 class Test(unittest.TestCase):

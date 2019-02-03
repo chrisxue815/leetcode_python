@@ -8,9 +8,9 @@ class Solution(object):
         :type k: int
         :rtype: bool
         """
-        for i in xrange(len(nums)):
+        for i in range(len(nums)):
             hi = min(i + k + 1, len(nums))
-            for j in xrange(i + 1, hi):
+            for j in range(i + 1, hi):
                 if nums[i] == nums[j]:
                     return True
         return False

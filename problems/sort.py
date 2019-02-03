@@ -60,8 +60,8 @@ def insertion_sort(a):
     # see OpenJDK
     # http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8u40-b25/java/util/Arrays.java#1345
     n = len(a)
-    for i in xrange(1, n):
-        for j in xrange(i, 0, -1):
+    for i in range(1, n):
+        for j in range(i, 0, -1):
             if a[j - 1] <= a[j]:
                 break
             a[j - 1], a[j] = a[j], a[j - 1]
@@ -69,7 +69,7 @@ def insertion_sort(a):
 
 def insertion_sort_memmove(a):
     n = len(a)
-    for i in xrange(1, n):
+    for i in range(1, n):
         next_val = a[i]
         j = i - 1
         while j >= 0 and a[j] > next_val:
@@ -81,7 +81,7 @@ def insertion_sort_memmove(a):
 
 def binary_insertion_sort(a):
     n = len(a)
-    for i in xrange(1, n):
+    for i in range(1, n):
         binary_insert(a, a[i], 0, i - 1)
 
 
@@ -95,7 +95,7 @@ def _shell_gaps(n):
 def shell_sort(a):
     n = len(a)
     for gap in _shell_gaps(n):
-        for i in xrange(gap, n):
+        for i in range(gap, n):
             to_be_inserted = a[i]
             j = i
             while j >= gap and a[j - gap] > to_be_inserted:
@@ -108,8 +108,8 @@ def shell_sort(a):
 
 def bubble_sort(a):
     n = len(a)
-    for i in xrange(n):
-        for j in xrange(1, n - i):
+    for i in range(n):
+        for j in range(1, n - i):
             if a[j - 1] > a[j]:
                 a[j - 1], a[j] = a[j], a[j - 1]
 
@@ -149,10 +149,10 @@ def quick_sort(a):
 
 def selection_sort(a):
     n = len(a)
-    for i in xrange(n):
+    for i in range(n):
         min_val = a[i]
         min_val_index = i
-        for j in xrange(i + 1, n):
+        for j in range(i + 1, n):
             if a[j] < min_val:
                 min_val = a[j]
                 min_val_index = j
@@ -178,7 +178,7 @@ def _merge_sort(dest, src, low, high):
 
     p = low
     q = mid
-    for i in xrange(low, high):
+    for i in range(low, high):
         if q >= high or p < mid and src[p] < src[q]:
             dest[i] = src[p]
             p += 1
@@ -200,12 +200,12 @@ def merge_sort_iterative(a):
     while True:
         new_sublen = sublen << 1  # new sublist length after merge
 
-        for lo in xrange(0, n, new_sublen):
+        for lo in range(0, n, new_sublen):
             lo_end = min(lo + sublen, n)
             hi = lo_end
             hi_end = min(hi + sublen, n)
 
-            for i in xrange(lo, hi_end):
+            for i in range(lo, hi_end):
                 if hi >= hi_end or lo < lo_end and a[lo] <= a[hi]:
                     aux[i] = a[lo]
                     lo += 1
@@ -251,10 +251,10 @@ def heap_sort(a):
     # https://github.com/python/cpython/blob/master/Lib/heapq.py#L258
     n = len(a)
 
-    for i in xrange(n // 2 - 1, -1, -1):
+    for i in range(n // 2 - 1, -1, -1):
         _down_heap(a, i, n)
 
-    for i in xrange(n - 1, -1, -1):
+    for i in range(n - 1, -1, -1):
         a[0], a[i] = a[i], a[0]
         _down_heap(a, 0, i)
 
@@ -269,11 +269,11 @@ def radix_sort(a):
     for num in a:
         radix = num & 0xFFFF
         count_scratch[radix] += 1
-    for i in xrange(0x10000):
+    for i in range(0x10000):
         tmp = count_scratch[i]
         count_scratch[i] = sum_
         sum_ += tmp
-    for i in xrange(n):
+    for i in range(n):
         num = a[i]
         radix = num & 0xFFFF
         offset = count_scratch[radix]
@@ -285,11 +285,11 @@ def radix_sort(a):
     for num in a:
         radix = (num >> 16) + 0x8000
         count_scratch[radix] += 1
-    for i in xrange(0x10000):
+    for i in range(0x10000):
         tmp = count_scratch[i]
         count_scratch[i] = sum_
         sum_ += tmp
-    for i in xrange(n):
+    for i in range(n):
         num = scratch[i]
         radix = (num >> 16) + 0x8000
         offset = count_scratch[radix]
@@ -303,7 +303,7 @@ class Test(unittest.TestCase):
 
         start = -5
         end = 5
-        self.ordered = list(xrange(start, end))
+        self.ordered = list(range(start, end))
 
         cloned = list(self.ordered)
         random_func = random.Random(1).random

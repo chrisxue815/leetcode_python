@@ -15,17 +15,17 @@ class Solution(object):
         parent.next = head
         head = parent
 
-        while head.next and head.next.next:
+        while head.__next__ and head.next.__next__:
             val = head.next.val
             if head.next.next.val == val:
-                next_ = head.next.next.next
+                next_ = head.next.next.__next__
                 while next_ and next_.val == val:
-                    next_ = next_.next
+                    next_ = next_.__next__
                 head.next = next_
             else:
-                head = head.next
+                head = head.__next__
 
-        return parent.next
+        return parent.__next__
 
 
 class Test(unittest.TestCase):

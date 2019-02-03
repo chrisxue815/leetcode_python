@@ -13,7 +13,7 @@ class Solution(object):
         for s in strs:
             anagrams[''.join((sorted(s)))].append(s)
 
-        return anagrams.values()
+        return list(anagrams.values())
 
 
 class Test(unittest.TestCase):

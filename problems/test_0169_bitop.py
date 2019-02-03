@@ -9,12 +9,12 @@ class Solution(object):
         """
         counts = [0] * 32
         for num in nums:
-            for i in xrange(32):
+            for i in range(32):
                 counts[i] += (num >> i) & 1
 
         num = 0
         half_size = len(nums) >> 1
-        for i in xrange(32):
+        for i in range(32):
             if counts[i] > half_size:
                 num |= 1 << i
 

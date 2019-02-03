@@ -12,7 +12,7 @@ class Solution(object):
         for ch in s:
             counts[ord(ch)] += 1
         chars = []
-        for ch in xrange(n):
+        for ch in range(n):
             if counts[ch]:
                 chars.append((counts[ch], chr(ch)))
         chars.sort(reverse=True)

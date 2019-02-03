@@ -28,11 +28,11 @@ class Solution(object):
             states[node] = _SAFE
             return True
 
-        for i in xrange(len(graph)):
+        for i in range(len(graph)):
             if states[i] == _NOT_VISITED:
                 is_safe(i)
 
-        return [i for i in xrange(len(graph)) if states[i] == _SAFE]
+        return [i for i in range(len(graph)) if states[i] == _SAFE]
 
 
 class Test(unittest.TestCase):

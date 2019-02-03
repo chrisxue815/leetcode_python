@@ -8,7 +8,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        ak = -sys.maxint - 1
+        ak = -sys.maxsize - 1
         stack = []
         for num in reversed(nums):
             if num < ak:

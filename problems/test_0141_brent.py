@@ -12,7 +12,7 @@ class Solution(object):
             return False
 
         tortoise = head
-        hare = head.next
+        hare = head.__next__
         max_loop_length = 1
         loop_length = 1
 
@@ -23,7 +23,7 @@ class Solution(object):
                 tortoise = hare
                 max_loop_length <<= 1
                 loop_length = 0
-            hare = hare.next
+            hare = hare.__next__
             loop_length += 1
         return True
 
@@ -41,12 +41,12 @@ class Test(unittest.TestCase):
 
         if loop_start_index >= 0:
             loop_start_node = root
-            for i in xrange(loop_start_index):
-                loop_start_node = loop_start_node.next
+            for i in range(loop_start_index):
+                loop_start_node = loop_start_node.__next__
 
             curr = loop_start_node
-            while curr.next:
-                curr = curr.next
+            while curr.__next__:
+                curr = curr.__next__
             curr.next = loop_start_node
 
         actual = Solution().hasCycle(root)

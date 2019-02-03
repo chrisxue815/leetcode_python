@@ -31,9 +31,9 @@ class Test(unittest.TestCase):
 
         for case in cases:
             actual = Solution().diStringMatch(**vars(case.args))
-            self.assertItemsEqual(range(len(case.args.s) + 1), actual)
+            self.assertItemsEqual(list(range(len(case.args.s) + 1)), actual)
 
-            for i in xrange(len(case.args.s)):
+            for i in range(len(case.args.s)):
                 if case.args.s[i] == 'I':
                     self.assertLess(actual[i], actual[i + 1])
                 else:

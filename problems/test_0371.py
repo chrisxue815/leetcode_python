@@ -21,8 +21,8 @@ class Solution(object):
 
 class Test(unittest.TestCase):
     def test(self):
-        for i in xrange(20):
-            for j in xrange(20):
+        for i in range(20):
+            for j in range(20):
                 self._test(i, j)
 
     def _test(self, a, b):

@@ -6,7 +6,7 @@ import heapq
 
 class User(object):
     def __init__(self):
-        self.followees = set([self])
+        self.followees = {self}
         self.tweets = collections.deque()
 
 
@@ -40,7 +40,7 @@ class Twitter(object):
         """
         user = self.users[userId]
         tweets = heapq.merge(*(followee.tweets for followee in user.followees))
-        return map(lambda x: x[1], itertools.islice(tweets, 10))
+        return [x[1] for x in itertools.islice(tweets, 10)]
 
     def follow(self, followerId, followeeId):
         """

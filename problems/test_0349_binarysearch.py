@@ -37,7 +37,7 @@ class Solution(object):
 
         # binary insertion sort nums1
         sorted_len = 1
-        for i in xrange(1, len(nums1)):
+        for i in range(1, len(nums1)):
             next_val = nums1[i]
             index = binary_search(nums1, next_val, 0, sorted_len - 1)
             if next_val < nums1[index]:

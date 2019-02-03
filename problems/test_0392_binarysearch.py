@@ -23,8 +23,8 @@ class Solution(object):
         :rtype: bool
         """
         base = ord('a')
-        index_map = [[] for i in xrange(26)]
-        for i in xrange(len(t)):
+        index_map = [[] for i in range(26)]
+        for i in range(len(t)):
             index_map[ord(t[i]) - base].append(i)
 
         index = 0

@@ -7,7 +7,7 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        s = map(ord, s)
+        s = list(map(ord, s))
         stack = []
         counts = [0] * (ord('z') + 1)
         visited = list(counts)

@@ -14,7 +14,7 @@ class Solution(object):
         total_len = word_len * len(words)
         words = collections.Counter(words)
 
-        for lo in xrange(word_len):
+        for lo in range(word_len):
             curr = lo
 
             while True:

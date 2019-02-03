@@ -13,7 +13,7 @@ class Solution(object):
         result = []
         min_len = min(len(s) for s in strs)
 
-        for i in xrange(min_len):
+        for i in range(min_len):
             ch = strs[0][i]
             if all(s[i] == ch for s in strs):
                 result.append(ch)

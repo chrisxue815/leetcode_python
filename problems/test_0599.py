@@ -13,7 +13,7 @@ class Solution(object):
         for index1, rest in enumerate(list1):
             indices[rest] = index1
         common = []
-        min_sum = sys.maxint
+        min_sum = sys.maxsize
         for index2, rest in enumerate(list2):
             index1 = indices.get(rest, -1)
             if index1 != -1:

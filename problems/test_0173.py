@@ -27,7 +27,7 @@ class BSTIterator(object):
         """
         return len(self.stack) > 0
 
-    def next(self):
+    def __next__(self):
         """
         :rtype: int
         """
@@ -60,7 +60,7 @@ class Test(unittest.TestCase):
         root = TreeNode.from_array(vals)
         i, v = BSTIterator(root), []
         while i.hasNext():
-            v.append(i.next())
+            v.append(next(i))
         self.assertEqual(root.to_array_inorder(), v)
 
 

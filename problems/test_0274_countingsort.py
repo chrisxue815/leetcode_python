@@ -17,7 +17,7 @@ class Solution(object):
                 counts[citation] += 1
 
         h = 0
-        for i in xrange(n, -1, -1):
+        for i in range(n, -1, -1):
             h += counts[i]
             if h >= i:
                 return i

@@ -9,7 +9,7 @@ class Solution(object):
         :rtype: int
         """
         # Naive string search algorithm
-        for haystack_start in xrange(len(haystack) - len(needle) + 1):
+        for haystack_start in range(len(haystack) - len(needle) + 1):
             for needle_index, needle_char in enumerate(needle):
                 if needle_char != haystack[haystack_start + needle_index]:
                     break

@@ -61,10 +61,10 @@ class Solution(object):
         result = []
         heap = []
 
-        for i in xrange(len(nums1)):
+        for i in range(len(nums1)):
             heap.append((nums1[i] + nums2[0], i, 0))
 
-        for i in xrange(k):
+        for i in range(k):
             if not heap:
                 break
 

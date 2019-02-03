@@ -13,7 +13,7 @@ class Solution(object):
 
         lo = mid = 0
 
-        for hi in xrange(len(nums)):
+        for hi in range(len(nums)):
             num = nums[hi]
             nums[hi] = 2
             if num < 2:

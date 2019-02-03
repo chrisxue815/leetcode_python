@@ -23,14 +23,14 @@ class Solution(object):
 
         while lists:
             curr.next = ListNode(lists[0].val)
-            curr = curr.next
+            curr = curr.__next__
 
-            if lists[0].next:
-                heapq.heapreplace(lists, lists[0].next)
+            if lists[0].__next__:
+                heapq.heapreplace(lists, lists[0].__next__)
             else:
                 heapq.heappop(lists)
 
-        return dummy.next
+        return dummy.__next__
 
 
 class Test(unittest.TestCase):

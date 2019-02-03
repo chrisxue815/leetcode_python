@@ -23,7 +23,7 @@ class Solution(object):
         counts = collections.Counter(nums)
         degree = counts.most_common(1)[0][1]
 
-        for num, count in counts.iteritems():
+        for num, count in counts.items():
             if count == degree:
                 r = ranges[num]
                 min_range = min(min_range, r[1] - r[0])

@@ -27,7 +27,7 @@ class Solution(object):
         min_lo = 0
         min_len = len(s) + 1
 
-        for hi in xrange(lo, len(s)):
+        for hi in range(lo, len(s)):
             ch = ord(s[hi])
 
             counts[ch] -= 1

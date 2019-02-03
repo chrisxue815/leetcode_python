@@ -8,7 +8,7 @@ class Solution(object):
         :rtype: List[List[str]]
         """
         result = []
-        board = [['.'] * n for _ in xrange(n)]
+        board = [['.'] * n for _ in range(n)]
         self.cols = -1
         self.forwards = -1
         self.backwards = -1
@@ -17,7 +17,7 @@ class Solution(object):
             if row == n:
                 result.append([''.join(r) for r in board])
 
-            for col in xrange(n):
+            for col in range(n):
                 col_mask = 1 << col
                 forward_mask = 1 << (row + col)
                 backward_mask = 1 << (row - col + n)

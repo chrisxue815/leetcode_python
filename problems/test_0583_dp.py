@@ -13,9 +13,9 @@ class Solution(object):
         # dp[j]: Length of longest common subsequence of word1[:i] and word2[:j]
         dp = [0] * (len(word2) + 1)
 
-        for i in xrange(1, len(word1) + 1):
+        for i in range(1, len(word1) + 1):
             prev = 0
-            for j in xrange(1, len(word2) + 1):
+            for j in range(1, len(word2) + 1):
                 curr = dp[j]
                 if word1[i - 1] == word2[j - 1]:
                     dp[j] = prev + 1

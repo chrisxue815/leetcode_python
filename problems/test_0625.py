@@ -11,7 +11,7 @@ class Solution(object):
             return a
 
         counts = [0] * 10
-        for factor in xrange(9, 1, -1):
+        for factor in range(9, 1, -1):
             while a != 1:
                 q, r = divmod(a, factor)
                 if r:
@@ -24,8 +24,8 @@ class Solution(object):
             return 0
 
         result = 0
-        for factor in xrange(2, 10):
-            for _ in xrange(counts[factor]):
+        for factor in range(2, 10):
+            for _ in range(counts[factor]):
                 # Note: how to check integer add and mul overflow in other languages
                 result = result * 10 + factor
 

@@ -14,7 +14,7 @@ class Solution(object):
         dp[0] = 1
 
         for coin in coins:
-            for j in xrange(coin, amount + 1):
+            for j in range(coin, amount + 1):
                 dp[j] += dp[j - coin]
 
         return dp[-1]

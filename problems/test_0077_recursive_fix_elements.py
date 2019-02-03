@@ -21,7 +21,7 @@ class Solution(object):
         if k == 0:
             self.result.append(list(self.combination))
         elif start < self.end:
-            for i in xrange(start, self.end):
+            for i in range(start, self.end):
                 self.combination.append(i)
                 self._combine(k - 1, i + 1)
                 self.combination.pop()

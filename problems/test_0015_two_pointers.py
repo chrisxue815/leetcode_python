@@ -10,7 +10,7 @@ class Solution(object):
         nums.sort()
         result = []
 
-        for i in xrange(len(nums) - 2):
+        for i in range(len(nums) - 2):
             a = nums[i]
             if a + nums[i + 1] + nums[i + 2] > 0:
                 break

@@ -14,13 +14,13 @@ class Solution(object):
         fast = head
 
         while fast:
-            fast = fast.next
+            fast = fast.__next__
             if fast:
-                fast = fast.next
+                fast = fast.__next__
             else:
                 break
 
-            slow = slow.next
+            slow = slow.__next__
 
         return slow
 

@@ -8,9 +8,9 @@ class Solution(object):
         :rtype: List[int]
         """
         result = [0]
-        for i in xrange(n):
+        for i in range(n):
             prefix = 1 << i
-            for j in xrange(len(result) - 1, -1, -1):
+            for j in range(len(result) - 1, -1, -1):
                 result.append(prefix + result[j])
         return result
 

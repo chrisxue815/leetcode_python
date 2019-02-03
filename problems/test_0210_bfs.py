@@ -11,7 +11,7 @@ class Solution(object):
         :type prerequisites: List[List[int]]
         :rtype: List[int]
         """
-        graph = [[] for _ in xrange(num_courses)]
+        graph = [[] for _ in range(num_courses)]
         in_degrees = [0] * num_courses
 
         for successor, predecessor in prerequisites:

@@ -18,7 +18,7 @@ class Solution(object):
             result.append(s[i])
             i += (n << 1) - 2
 
-        for row in xrange(1, n - 1):
+        for row in range(1, n - 1):
             i = row
             while i < len(s):
                 result.append(s[i])

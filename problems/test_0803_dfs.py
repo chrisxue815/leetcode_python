@@ -40,12 +40,12 @@ class Solution(object):
         for hit_row, hit_col in hits:
             grid[hit_row][hit_col] -= 1
 
-        for top_col in xrange(cols):
+        for top_col in range(cols):
             mark_live(0, top_col)
 
         result = [0] * len(hits)
 
-        for i in xrange(len(hits) - 1, -1, -1):
+        for i in range(len(hits) - 1, -1, -1):
             hit_row, hit_col = hits[i]
 
             if grid[hit_row][hit_col] != 0:

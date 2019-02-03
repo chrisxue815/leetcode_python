@@ -10,7 +10,7 @@ class Solution(object):
         result = [-1] * len(nums)
         stack = []
 
-        for i in xrange(len(nums)):
+        for i in range(len(nums)):
             num = nums[i]
             while stack and num > nums[stack[-1]]:
                 result[stack.pop()] = num

@@ -4,7 +4,7 @@ import utils
 
 def bit_counts(r):
     counts = [0] * (r + 1)
-    for x in xrange(1, r + 1):
+    for x in range(1, r + 1):
         counts[x] = counts[x >> 1] + (x & 1)
     return counts
 
@@ -20,7 +20,7 @@ class Solution(object):
         counts = bit_counts(r)
         # let n = [2, 3, 5, 7, 11, 13, 17, 19]
         # the n-th bit of 665772 is set
-        return sum((665772 >> counts[num]) & 1 for num in xrange(l, r + 1))
+        return sum((665772 >> counts[num]) & 1 for num in range(l, r + 1))
 
 
 class Test(unittest.TestCase):

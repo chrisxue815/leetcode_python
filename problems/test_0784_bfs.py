@@ -18,7 +18,7 @@ class Solution(object):
 
             new_ch = ch.lower() if ch.isupper() else ch.upper()
 
-            for j in xrange(len(result)):
+            for j in range(len(result)):
                 clone = list(result[j])
                 clone[i] = new_ch
                 result.append(clone)

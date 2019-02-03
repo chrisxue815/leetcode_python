@@ -1,4 +1,4 @@
-import Queue
+import queue
 import unittest
 
 null = None
@@ -29,7 +29,7 @@ class TreeNode(object):
         :rtype: List[int or None]
         """
         vals = []
-        que = Queue.Queue()
+        que = queue.Queue()
         que.put(self)
 
         while not que.empty():
@@ -62,7 +62,7 @@ class TreeNode(object):
         :rtype: TreeNode
         """
         root_parent = cls(0)
-        que = Queue.Queue()
+        que = queue.Queue()
         que.put((root_parent, 'l'))
 
         for val in vals:
@@ -119,7 +119,7 @@ class TreeLinkNode(TreeNode):
         while prev:
             while curr:
                 vals.append(curr.val)
-                curr = curr.next
+                curr = curr.__next__
             prev = curr = prev.left
 
         return vals

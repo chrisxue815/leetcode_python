@@ -22,7 +22,7 @@ def _permutations_recursive(pool, r, result, start_index):
         next_index = start_index + 1
         _permutations_recursive(pool, r, result, next_index)
 
-        for i in xrange(next_index, len(pool)):
+        for i in range(next_index, len(pool)):
             pool[i], pool[start_index] = pool[start_index], pool[i]
             _permutations_recursive(pool, r, result, next_index)
             pool[i], pool[start_index] = pool[start_index], pool[i]
@@ -39,13 +39,13 @@ def permutations_iterative(pool, r=None):
     elif r > n:
         return
 
-    indices = range(n)
-    cycles = range(r)
+    indices = list(range(n))
+    cycles = list(range(r))
     yield tuple(pool[i] for i in indices[:r])
 
     while True:
         # Find the last index
-        for i in xrange(r - 1, -1, -1):
+        for i in range(r - 1, -1, -1):
             cycles[i] += 1
             j = cycles[i]
 
@@ -68,7 +68,7 @@ class Test(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.pools = [
-            range(5),
+            list(range(5)),
         ]
 
     def test_permutations(self):
@@ -77,7 +77,7 @@ class Test(unittest.TestCase):
 
     def _test_permutations(self, func):
         for pool in Test.pools:
-            for r in xrange(len(pool) + 2):
+            for r in range(len(pool) + 2):
                 actual = func(pool, r)
                 expected = itertools.permutations(pool, r)
                 self.assertItemsEqual(expected, actual)

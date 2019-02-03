@@ -9,7 +9,7 @@ class Solution(object):
         """
         n = len(nums)
         total = 0
-        for i in xrange(32):
+        for i in range(32):
             mask = 1 << i
             count = 0
             for num in nums:

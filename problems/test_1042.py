@@ -4,7 +4,7 @@ import utils
 
 
 def to_color(candidates):
-    for i in xrange(1, 5):
+    for i in range(1, 5):
         candidates >>= 1
         if candidates & 1:
             return i
@@ -18,7 +18,7 @@ class Solution(object):
         :type paths: List[List[int]]
         :rtype: List[int]
         """
-        graph = [[] for _ in xrange(N)]
+        graph = [[] for _ in range(N)]
 
         for x, y in paths:
             if x < y:
@@ -28,7 +28,7 @@ class Solution(object):
         colors = [0] * N
         colors[0] = 1
 
-        for x in xrange(1, N):
+        for x in range(1, N):
             candidates = 0b11110
             for y in graph[x]:
                 candidates &= ~(1 << colors[y])

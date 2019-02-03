@@ -10,7 +10,7 @@ class Solution(object):
         nums.sort()
         result = 0
 
-        for i in xrange(len(nums) - 1, 1, -1):
+        for i in range(len(nums) - 1, 1, -1):
             side = nums[i]
             lo = 0
             hi = i - 1

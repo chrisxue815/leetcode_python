@@ -8,9 +8,9 @@ class Solution(object):
         :rtype: List[int]
         """
         prev = [1]
-        for i in xrange(1, rowIndex + 1):
+        for i in range(1, rowIndex + 1):
             row = [1] * (i + 1)
-            for j in xrange(1, i):
+            for j in range(1, i):
                 row[j] = prev[j - 1] + prev[j]
             prev = row
         return prev

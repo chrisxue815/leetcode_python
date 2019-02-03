@@ -25,7 +25,7 @@ class Solution(object):
         :rtype: List[int]
         """
         nums = self.nums
-        for i in xrange(len(nums) - 1, -1, -1):
+        for i in range(len(nums) - 1, -1, -1):
             j = self.rand.randint(0, i)
             nums[i], nums[j] = nums[j], nums[i]
         return nums
@@ -40,7 +40,7 @@ class Test(unittest.TestCase):
 
         iterations = 10000
         hits = 0
-        for _ in xrange(iterations):
+        for _ in range(iterations):
             arr = solution.shuffle()
             if arr == nums:
                 hits += 1

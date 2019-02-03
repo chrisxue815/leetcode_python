@@ -58,7 +58,7 @@ def div(a, b):
         b = - b
 
     result = 0
-    for i in xrange(31, -1, -1):
+    for i in range(31, -1, -1):
         if a >> i >= b:
             result += 1 << i
             a -= b << i
@@ -68,8 +68,8 @@ def div(a, b):
 
 class Test(unittest.TestCase):
     def test(self):
-        for i in xrange(20):
-            for j in xrange(20):
+        for i in range(20):
+            for j in range(20):
                 self._test(i, j)
 
     def _test(self, a, b):

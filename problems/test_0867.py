@@ -9,10 +9,10 @@ class Solution(object):
         :type a: List[List[int]]
         :rtype: List[List[int]]
         """
-        b = [[0] * len(a) for _ in xrange(len(a[0]))]
+        b = [[0] * len(a) for _ in range(len(a[0]))]
 
-        for i in xrange(len(b)):
-            for j in xrange(len(b[0])):
+        for i in range(len(b)):
+            for j in range(len(b[0])):
                 b[i][j] = a[j][i]
 
         return b

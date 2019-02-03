@@ -24,7 +24,7 @@ class Solution(object):
                 self.result.append(combination + [n])
         else:
             end = min(10, n)
-            for i in xrange(start, end):
+            for i in range(start, end):
                 combination.append(i)
                 self._combine(combination, k - 1, i + 1, n - i)
                 combination.pop()

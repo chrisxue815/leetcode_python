@@ -11,7 +11,7 @@ class Solution(object):
         nums.sort()
 
         gap = 0
-        for i in xrange(len(nums) - 1):
+        for i in range(len(nums) - 1):
             gap = max(gap, nums[i + 1] - nums[i])
 
         return gap

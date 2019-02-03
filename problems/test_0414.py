@@ -8,7 +8,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        minint = -sys.maxint - 1
+        minint = -sys.maxsize - 1
         a = b = c = minint
         
         for num in nums:

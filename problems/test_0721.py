@@ -18,7 +18,7 @@ class Solution(object):
         :type accounts: List[List[str]]
         :rtype: List[List[str]]
         """
-        parents = range(len(accounts))
+        parents = list(range(len(accounts)))
         email_to_id = {}
 
         for i, account in enumerate(accounts):
@@ -40,7 +40,7 @@ class Solution(object):
             for email in account[1:]:
                 merged[1].add(email)
 
-        return [[name] + list(sorted(emails)) for name, emails in id_to_account.itervalues()]
+        return [[name] + list(sorted(emails)) for name, emails in id_to_account.values()]
 
 
 class Test(unittest.TestCase):

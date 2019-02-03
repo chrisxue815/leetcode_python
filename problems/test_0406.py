@@ -7,7 +7,7 @@ class Solution(object):
         :type people: List[List[int]]
         :rtype: List[List[int]]
         """
-        people.sort(key=lambda (h, k): (-h, k))
+        people.sort(key=lambda h_k: (-h_k[0], h_k[1]))
 
         r = []
         for p in people:

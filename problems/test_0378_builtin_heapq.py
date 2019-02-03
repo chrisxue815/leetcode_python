@@ -14,7 +14,7 @@ class Solution(object):
         for row in matrix:
             heapq.heappush(heap, (row[0], row, 0))
 
-        for _ in xrange(k - 1):
+        for _ in range(k - 1):
             _, row, i = heap[0]
             i += 1
             if i < len(row):

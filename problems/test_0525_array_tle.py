@@ -27,7 +27,7 @@ class Solution(object):
         n = len(nums)
         sums = [0] * (n + 1)
         sum_ = 0
-        for i in xrange(n):
+        for i in range(n):
             sum_ += nums[i]
             sums[i + 1] = sum_
         return max_length(sums, 0, n)

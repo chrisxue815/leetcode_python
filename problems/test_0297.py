@@ -1,4 +1,4 @@
-import Queue
+import queue
 import unittest
 from tree import TreeNode, null
 
@@ -11,7 +11,7 @@ class Codec:
         :rtype: str
         """
         vals = []
-        que = Queue.Queue()
+        que = queue.Queue()
         que.put(root)
 
         while not que.empty():
@@ -33,7 +33,7 @@ class Codec:
         :rtype: TreeNode
         """
         root_parent = TreeNode(0)
-        que = Queue.Queue()
+        que = queue.Queue()
         que.put((root_parent, 'l'))
 
         for val in data.split(' '):

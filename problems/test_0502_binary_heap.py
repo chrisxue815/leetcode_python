@@ -18,7 +18,7 @@ class Solution(object):
         for i, capital in enumerate(capitals):
             heapq.heappush(capital_queue, (capital, i))
 
-        for _ in xrange(k):
+        for _ in range(k):
             while capital_queue and capital_queue[0][0] <= w:
                 _, i = heapq.heappop(capital_queue)
                 heapq.heappush(profit_queue, -profits[i])

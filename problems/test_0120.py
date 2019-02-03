@@ -14,10 +14,10 @@ class Solution(object):
         # dp[i][j]: the minimum path sum to reach triangle[i][j]
         dp = [0] * n
 
-        for i in xrange(n):
+        for i in range(n):
             prev = 0x7FFFFFFF
 
-            for j in xrange(i + 1):
+            for j in range(i + 1):
                 curr = triangle[i][j]
 
                 if i >= 1:

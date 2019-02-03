@@ -11,7 +11,7 @@ class Solution(object):
         """
         start = total = curr = 0
 
-        for i in xrange(len(gas)):
+        for i in range(len(gas)):
             diff = gas[i] - cost[i]
             total += diff
             curr += diff

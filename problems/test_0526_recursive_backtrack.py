@@ -3,7 +3,7 @@ import unittest
 
 def permutations(n):
     result = []
-    _permutations(n, result, range(1, n + 1), 0)
+    _permutations(n, result, list(range(1, n + 1)), 0)
     return result
 
 
@@ -14,7 +14,7 @@ def _permutations(n, result, p, start):
         next_index = start + 1
         _permutations(n, result, p, next_index)
 
-        for i in xrange(next_index, n):
+        for i in range(next_index, n):
             p[i], p[start] = p[start], p[i]
             _permutations(n, result, p, next_index)
             p[i], p[start] = p[start], p[i]

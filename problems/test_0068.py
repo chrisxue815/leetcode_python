@@ -12,7 +12,7 @@ class Solution(object):
         lo = 0
         line_len = len(words[0])
 
-        for hi in xrange(1, len(words)):
+        for hi in range(1, len(words)):
             word = words[hi]
             new_len = line_len + len(word)
 

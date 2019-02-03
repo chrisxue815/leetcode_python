@@ -5,7 +5,7 @@ def partition(nums, lo, hi):
     pivot = nums[hi - 1]
     w = lo
 
-    for r in xrange(lo, hi):
+    for r in range(lo, hi):
         if nums[r] > pivot:
             nums[r], nums[w] = nums[w], nums[r]
             w += 1

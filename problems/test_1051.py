@@ -17,7 +17,7 @@ class Solution(object):
             counts[h] += 1
 
         i = 0
-        for h in xrange(1, 101):
+        for h in range(1, 101):
             bound = i + counts[h]
 
             while i < bound:

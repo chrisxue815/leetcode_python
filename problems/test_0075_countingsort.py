@@ -12,7 +12,7 @@ class Solution(object):
             counts[num] += 1
 
         sum_ = 0
-        for i in xrange(3):
+        for i in range(3):
             count = counts[i]
             nums[sum_: sum_ + count] = [i] * count
             sum_ += count

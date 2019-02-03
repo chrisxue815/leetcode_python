@@ -11,7 +11,7 @@ class Solution(object):
         max_len = 0
         lo = 0
 
-        for hi in xrange(len(s)):
+        for hi in range(len(s)):
             hi_ch = ord(s[hi])
             counts[hi_ch] += 1
 

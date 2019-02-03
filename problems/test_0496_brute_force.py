@@ -8,10 +8,10 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        for i in xrange(len(findNums)):
+        for i in range(len(findNums)):
             x = findNums[i]
             index = nums.index(x)
-            for j in xrange(index + 1, len(nums)):
+            for j in range(index + 1, len(nums)):
                 if nums[j] > x:
                     findNums[i] = nums[j]
                     break

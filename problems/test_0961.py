@@ -9,7 +9,7 @@ class Solution(object):
         :type a: List[int]
         :rtype: int
         """
-        for i in xrange(2, len(a)):
+        for i in range(2, len(a)):
             if a[i - 2] == a[i] or a[i - 1] == a[i]:
                 return a[i]
 

@@ -24,7 +24,7 @@ class Solution(object):
         """
         # let n = [2, 3, 5, 7, 11, 13, 17, 19]
         # the n-th bit of 665772 is set
-        return sum((665772 >> bit_count(num)) & 1 for num in xrange(l, r + 1))
+        return sum((665772 >> bit_count(num)) & 1 for num in range(l, r + 1))
 
 
 class Test(unittest.TestCase):

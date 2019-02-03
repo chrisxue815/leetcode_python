@@ -29,7 +29,7 @@ class Solution(object):
                 candidate_b_index = index
                 break
 
-        parents = range(len(edges) + 1)
+        parents = list(range(len(edges) + 1))
 
         for index, (parent, child) in enumerate(edges):
             if index == candidate_b_index:

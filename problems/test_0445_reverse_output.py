@@ -6,7 +6,7 @@ def count(root):
     result = 0
     while root:
         result += 1
-        root = root.next
+        root = root.__next__
     return result
 
 
@@ -32,19 +32,19 @@ class Solution(object):
         result_root = ListNode(0)
         result = result_root
 
-        for i in xrange(len1 - len2):
+        for i in range(len1 - len2):
             right = ListNode(l1.val)
             right.next = result
             result = right
-            l1 = l1.next
+            l1 = l1.__next__
 
         while l1:
             right = ListNode(l1.val + l2.val)
             right.next = result
             result = right
 
-            l1 = l1.next
-            l2 = l2.next
+            l1 = l1.__next__
+            l2 = l2.__next__
 
         right = None
         carry = 0
@@ -56,12 +56,12 @@ class Solution(object):
             else:
                 carry = 0
 
-            left = result.next
+            left = result.__next__
             result.next = right
             right = result
             result = left
 
-        return result_root if result_root.val else result_root.next
+        return result_root if result_root.val else result_root.__next__
 
 
 class Test(unittest.TestCase):

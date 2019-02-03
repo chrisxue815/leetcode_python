@@ -11,7 +11,7 @@ class Solution(object):
         result = [last]
         visited = set(result)
         while True:
-            for i in xrange(n):
+            for i in range(n):
                 curr = last ^ (1 << i)
                 if curr not in visited:
                     visited.add(curr)

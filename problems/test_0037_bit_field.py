@@ -34,7 +34,7 @@ class Solution(object):
 
             blocknum = rownum // 3 * 3 + colnum // 3
 
-            for num in xrange(1, 10):
+            for num in range(1, 10):
                 mask = 1 << num
 
                 if rows[rownum] & mask and cols[colnum] & mask and blocks[blocknum] & mask:

@@ -9,8 +9,8 @@ class Solution(object):
         """
         n = len(m)
         end = n - 1
-        for i in xrange(n + 1 >> 1):
-            for j in xrange(n >> 1):
+        for i in range(n + 1 >> 1):
+            for j in range(n >> 1):
                 m[i][j], m[j][end - i], m[end - i][end - j], m[end - j][i] = \
                     m[end - j][i], m[i][j], m[j][end - i], m[end - i][end - j]
 

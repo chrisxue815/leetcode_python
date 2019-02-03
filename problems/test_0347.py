@@ -14,7 +14,7 @@ class Solution(object):
             return nums
         counts = collections.Counter(nums)
         heap = []
-        for num, count in counts.items():
+        for num, count in list(counts.items()):
             if len(heap) < k:
                 heapq.heappush(heap, (count, num))
             elif count > heap[0][0]:

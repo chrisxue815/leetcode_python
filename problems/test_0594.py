@@ -10,7 +10,7 @@ class Solution(object):
         """
         max_len = 0
         counter = collections.Counter(nums)
-        for num, count1 in counter.items():
+        for num, count1 in list(counter.items()):
             count2 = counter[num + 1]
             if count2:
                 length = count1 + count2

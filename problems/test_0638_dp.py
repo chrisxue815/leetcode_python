@@ -10,7 +10,7 @@ def compute_index(sizes):
 
 
 def iter_sizes(lo, hi):
-    if all(lo[i] <= hi[i] for i in xrange(len(lo))):
+    if all(lo[i] <= hi[i] for i in range(len(lo))):
         sizes = list(lo)
         yield sizes
 
@@ -40,12 +40,12 @@ class Solution(object):
         dp = [0] * (compute_index(needs) + 1)
 
         for sizes in iter_sizes([0] * n, needs):
-            market_price = sum(price[i] * sizes[i] for i in xrange(n))
+            market_price = sum(price[i] * sizes[i] for i in range(n))
             dp[compute_index(sizes)] = market_price
 
         for offer in special:
             offer_price = offer[-1]
-            market_price = sum(price[i] * offer[i] for i in xrange(n))
+            market_price = sum(price[i] * offer[i] for i in range(n))
             if market_price <= offer_price:
                 continue
 

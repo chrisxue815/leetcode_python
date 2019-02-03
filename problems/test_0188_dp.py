@@ -15,7 +15,7 @@ class Solution(object):
 
         if k * 2 >= len(prices):
             result = 0
-            for i in xrange(1, len(prices)):
+            for i in range(1, len(prices)):
                 result += max(0, prices[i] - prices[i - 1])
             return result
 
@@ -23,7 +23,7 @@ class Solution(object):
         buy = [-0x80000000] * (k + 1)
 
         for price in prices:
-            for i in xrange(1, k + 1):
+            for i in range(1, k + 1):
                 sell[i] = max(sell[i], buy[i] + price)
                 buy[i] = max(buy[i], sell[i - 1] - price)
 

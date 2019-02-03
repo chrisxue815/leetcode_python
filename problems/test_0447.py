@@ -16,7 +16,7 @@ class Solution(object):
                 dy = a[1] - b[1]
                 dist = dx * dx + dy * dy
                 distances[dist] += 1
-            for count in distances.values():
+            for count in list(distances.values()):
                 if count >= 2:
                     ret += count * (count - 1)
             distances.clear()

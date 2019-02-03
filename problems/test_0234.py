@@ -6,7 +6,7 @@ def count(head):
     result = 0
     while head:
         result += 1
-        head = head.next
+        head = head.__next__
     return result
 
 
@@ -22,18 +22,18 @@ class Solution(object):
         length = count(head)
         prev = None
 
-        for _ in xrange(length >> 1):
-            next_ = head.next
+        for _ in range(length >> 1):
+            next_ = head.__next__
             head.next = prev
             prev = head
             head = next_
 
         if length & 1:
-            head = head.next
+            head = head.__next__
 
         while prev and prev.val == head.val:
-            prev = prev.next
-            head = head.next
+            prev = prev.__next__
+            head = head.__next__
         return not prev
 
 

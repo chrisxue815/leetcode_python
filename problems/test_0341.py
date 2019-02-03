@@ -39,7 +39,7 @@ class NestedIterator(object):
             else:
                 return None
 
-    def next(self):
+    def __next__(self):
         """
         :rtype: int
         """
@@ -68,7 +68,7 @@ class Test(unittest.TestCase):
         i = NestedIterator(nested_list)
         actual = []
         while i.hasNext():
-            actual.append(i.next())
+            actual.append(next(i))
 
         self.assertEqual(expected, actual)
 

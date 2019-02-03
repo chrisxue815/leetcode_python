@@ -11,7 +11,7 @@ class Solution(object):
         """
         result = 0
 
-        for i in xrange(1, len(prices)):
+        for i in range(1, len(prices)):
             result += max(0, prices[i] - prices[i - 1])
 
         return result

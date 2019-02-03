@@ -23,7 +23,7 @@ class MagicDictionary(object):
             words = self.dict[len(word)]
             words[word] += 1
 
-            for i in xrange(len(word)):
+            for i in range(len(word)):
                 words[word[:i] + '_' + word[i + 1:]] += 1
 
     def search(self, word):
@@ -36,7 +36,7 @@ class MagicDictionary(object):
         if not words:
             return False
 
-        for i in xrange(len(word)):
+        for i in range(len(word)):
             count = words[word[:i] + '_' + word[i + 1:]]
             if count > 1 or count == 1 and word not in words:
                 return True

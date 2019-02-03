@@ -22,13 +22,13 @@ class Solution(object):
                 curr_max = num
             left_max[i] = curr_max
 
-        for i in xrange(len(nums) - 1, -1, -1):
+        for i in range(len(nums) - 1, -1, -1):
             num = nums[i]
             if curr_max < num or i % k == k - 1:
                 curr_max = num
             right_max[i] = curr_max
 
-        for i in xrange(len(result)):
+        for i in range(len(result)):
             result[i] = max(right_max[i], left_max[i + k - 1])
 
         return result

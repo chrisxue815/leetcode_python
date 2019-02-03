@@ -13,7 +13,7 @@ class NumArray(object):
         self.sums = [0] * len(nums)
         sum_ = 0
 
-        for i in xrange(len(nums)):
+        for i in range(len(nums)):
             sum_ += nums[i]
             self.sums[i] = sum_
 

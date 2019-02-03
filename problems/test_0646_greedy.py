@@ -16,7 +16,7 @@ class Solution(object):
         result = 1
         prev = pairs[0][1]
 
-        for i in xrange(1, len(pairs)):
+        for i in range(1, len(pairs)):
             if prev < pairs[i][0]:
                 prev = pairs[i][1]
                 result += 1

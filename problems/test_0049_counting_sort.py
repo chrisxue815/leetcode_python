@@ -10,7 +10,7 @@ def _count_sort(s):
         counts[ord(ch) - _a] += 1
 
     s = ''
-    for i in xrange(26):
+    for i in range(26):
         s += chr(i + _a) * counts[i]
     return s
 
@@ -26,7 +26,7 @@ class Solution(object):
         for s in strs:
             anagrams[_count_sort(s)].append(s)
 
-        return anagrams.values()
+        return list(anagrams.values())
 
 
 class Test(unittest.TestCase):

@@ -10,14 +10,14 @@ class Solution(object):
         :rtype: ListNode
         """
         while head and head.val == val:
-            head = head.next
+            head = head.__next__
 
         result = head
-        while head and head.next:
+        while head and head.__next__:
             if head.next.val == val:
-                head.next = head.next.next
+                head.next = head.next.__next__
             else:
-                head = head.next
+                head = head.__next__
         return result
 
 

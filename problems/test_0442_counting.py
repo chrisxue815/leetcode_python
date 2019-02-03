@@ -14,7 +14,7 @@ class Solution(object):
             counts[num] += 1
 
         duplicates = []
-        for i in xrange(1, n + 1):
+        for i in range(1, n + 1):
             if counts[i] == 2:
                 duplicates.append(i)
 

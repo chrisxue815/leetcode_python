@@ -15,7 +15,7 @@ class Solution(object):
         dp[0] = 0
 
         for coin in coins:
-            for curr_amount in xrange(coin, amount + 1):
+            for curr_amount in range(coin, amount + 1):
                 dp[curr_amount] = min(dp[curr_amount], dp[curr_amount - coin] + 1)
 
         return dp[-1] if dp[-1] < max_num_coins else -1

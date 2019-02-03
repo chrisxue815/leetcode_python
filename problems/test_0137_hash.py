@@ -9,7 +9,7 @@ class Solution(object):
         :rtype: int
         """
         counter = collections.Counter(nums)
-        for k, v in counter.items():
+        for k, v in list(counter.items()):
             if v == 1:
                 return k
 

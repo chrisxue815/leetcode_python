@@ -13,7 +13,7 @@ class Solution(object):
         distances = [0] * len(s)
         hi = s.find(c)
 
-        for i in xrange(hi):
+        for i in range(hi):
             distances[i] = hi - i
 
         while True:
@@ -25,13 +25,13 @@ class Solution(object):
 
             mid = lo + ((hi - lo + 1) >> 1)
 
-            for i in xrange(lo + 1, mid):
+            for i in range(lo + 1, mid):
                 distances[i] = i - lo
 
-            for i in xrange(mid, hi):
+            for i in range(mid, hi):
                 distances[i] = hi - i
 
-        for i in xrange(lo + 1, len(s)):
+        for i in range(lo + 1, len(s)):
             distances[i] = i - lo
 
         return distances

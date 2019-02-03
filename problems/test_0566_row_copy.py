@@ -16,7 +16,7 @@ class Solution(object):
         i = j = 0
 
         result = []
-        for _ in xrange(r):
+        for _ in range(r):
             row = []
             r = c
             while cols - j < r:

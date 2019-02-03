@@ -15,7 +15,7 @@ class Solution(object):
         count = 0
         w = 0
 
-        for r in xrange(len(chars) + 1):
+        for r in range(len(chars) + 1):
             ch = chars[r] if r < len(chars) else '\0'
             if ch == prev:
                 count += 1

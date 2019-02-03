@@ -12,12 +12,12 @@ class Solution(object):
         """
         trees = collections.defaultdict(list)
         bsts = []
-        for num_nodes in xrange(1, n + 1):
-            for rootval in xrange(1, n + 1):
+        for num_nodes in range(1, n + 1):
+            for rootval in range(1, n + 1):
                 if num_nodes < n:
-                    leftrange = xrange(0, num_nodes)
+                    leftrange = range(0, num_nodes)
                 else:
-                    leftrange = xrange(rootval - 1, rootval)
+                    leftrange = range(rootval - 1, rootval)
 
                 for num_left_nodes in leftrange:
                     num_right_nodes = num_nodes - num_left_nodes - 1

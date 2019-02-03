@@ -10,11 +10,11 @@ class Solution(object):
         n = len(nums)
         result = []
 
-        cycles = range(n)
+        cycles = list(range(n))
         result.append(list(nums))
 
         while True:
-            for i in xrange(n - 1, -1, -1):
+            for i in range(n - 1, -1, -1):
                 cycles[i] += 1
                 j = cycles[i]
 

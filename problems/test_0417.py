@@ -13,7 +13,7 @@ class Solution(object):
         result = []
         rows = len(matrix)
         cols = len(matrix[0])
-        state = [[0] * cols for _ in xrange(rows)]
+        state = [[0] * cols for _ in range(rows)]
 
         def dfs(r, c, mask):
             if state[r][c] & mask:
@@ -38,11 +38,11 @@ class Solution(object):
             if c2 < cols and matrix[r][c2] >= height:
                 dfs(r, c2, mask)
 
-        for c in xrange(cols):
+        for c in range(cols):
             dfs(0, c, 1)
             dfs(rows - 1, c, 2)
 
-        for r in xrange(rows):
+        for r in range(rows):
             dfs(r, 0, 1)
             dfs(r, cols - 1, 2)
 

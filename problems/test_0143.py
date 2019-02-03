@@ -13,25 +13,25 @@ class Solution(object):
 
         mid = head
         tail = head
-        while tail and tail.next and tail.next.next:
-            mid = mid.next
-            tail = tail.next.next
+        while tail and tail.__next__ and tail.next.__next__:
+            mid = mid.__next__
+            tail = tail.next.__next__
 
-        curr = mid.next
+        curr = mid.__next__
         mid.next = None
         tail = None
         while curr:
-            next_ = curr.next
+            next_ = curr.__next__
             curr.next = tail
             tail = curr
             curr = next_
 
         while tail:
-            head_next = head.next
+            head_next = head.__next__
             head.next = tail
             head = head_next
 
-            tail_next = tail.next
+            tail_next = tail.__next__
             tail.next = head_next
             tail = tail_next
 

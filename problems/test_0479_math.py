@@ -21,7 +21,7 @@ class Solution(object):
         if n == 1:
             return 9
 
-        for z in xrange(2, 9 * 10 ** (n - 1)):
+        for z in range(2, 9 * 10 ** (n - 1)):
             hi = 10 ** n - z
             lo = reverse(hi)
 

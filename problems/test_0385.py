@@ -15,7 +15,7 @@ class Solution(object):
         stack = []
         curr = NestedInteger()
         lo = 0
-        for hi in xrange(len(s)):
+        for hi in range(len(s)):
             ch = s[hi]
             if ch == '[':
                 child = NestedInteger()

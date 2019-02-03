@@ -21,11 +21,11 @@ class Solution(object):
             else:
                 large_curr.next = head
                 large_curr = head
-            head = head.next
+            head = head.__next__
 
-        small_curr.next = large_head.next
+        small_curr.next = large_head.__next__
         large_curr.next = None
-        return small_head.next
+        return small_head.__next__
 
 
 class Test(unittest.TestCase):

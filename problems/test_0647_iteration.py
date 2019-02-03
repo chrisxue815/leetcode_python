@@ -17,7 +17,7 @@ class Solution(object):
                 hi += 1
             return (hi - lo + 1) // 2 - 1
 
-        for i in xrange(len(s)):
+        for i in range(len(s)):
             result += extendPalindrome(i - 1, i + 1)
             result += extendPalindrome(i - 1, i)
 

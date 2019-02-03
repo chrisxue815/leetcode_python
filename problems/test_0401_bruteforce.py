@@ -17,8 +17,8 @@ class Solution(object):
         :rtype: List[str]
         """
         result = []
-        for hour in xrange(12):
-            for minute in xrange(60):
+        for hour in range(12):
+            for minute in range(60):
                 if count_ones(hour) + count_ones(minute) == num:
                     result.append('{}:{:02d}'.format(hour, minute))
         return result

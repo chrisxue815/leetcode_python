@@ -21,9 +21,9 @@ class Solution(object):
         :rtype: int
         """
         result = 0
-        for i in xrange(len(grid)):
+        for i in range(len(grid)):
             row = grid[i]
-            for j in xrange(len(row)):
+            for j in range(len(row)):
                 if row[j] == '1':
                     result += 1
                     _set0(grid, i, j)

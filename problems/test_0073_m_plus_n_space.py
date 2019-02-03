@@ -18,12 +18,12 @@ class Solution(object):
 
         for row, num in enumerate(rows):
             if num:
-                for j in xrange(len(matrix[0])):
+                for j in range(len(matrix[0])):
                     matrix[row][j] = 0
 
         for col, num in enumerate(cols):
             if num:
-                for i in xrange(len(matrix)):
+                for i in range(len(matrix)):
                     matrix[i][col] = 0
 
 

@@ -10,13 +10,13 @@ class Solution(object):
         result = []
         slen = len(s)
         # [0,p1) [p1,p2) [p2,p3) [p3,slen)
-        for p1 in xrange(max(1, slen - 9), min(4, slen - 2)):
+        for p1 in range(max(1, slen - 9), min(4, slen - 2)):
             if p1 > 1 and s[0] == '0':
                 break
-            for p2 in xrange(max(p1 + 1, slen - 6), min(p1 + 4, slen - 1)):
+            for p2 in range(max(p1 + 1, slen - 6), min(p1 + 4, slen - 1)):
                 if p2 - p1 > 1 and s[p1] == '0':
                     break
-                for p3 in xrange(max(p2 + 1, slen - 3), min(p2 + 4, slen)):
+                for p3 in range(max(p2 + 1, slen - 3), min(p2 + 4, slen)):
                     if p3 - p2 > 1 and s[p2] == '0':
                         break
                     if slen - p3 > 1 and s[p3] == '0':

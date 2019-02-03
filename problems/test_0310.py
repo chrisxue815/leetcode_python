@@ -12,7 +12,7 @@ class Solution(object):
         :type edges: List[List[int]]
         :rtype: List[int]
         """
-        graph = [set() for _ in xrange(n)]
+        graph = [set() for _ in range(n)]
 
         for u, v in edges:
             graph[u].add(v)

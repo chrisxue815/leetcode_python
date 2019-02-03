@@ -14,7 +14,7 @@ class Solution(object):
         rows = len(matrix)
         cols = len(matrix[0])
         q = []
-        pending = [[True] * cols for _ in xrange(rows)]
+        pending = [[True] * cols for _ in range(rows)]
 
         for r, row in enumerate(matrix):
             for c, cell in enumerate(row):

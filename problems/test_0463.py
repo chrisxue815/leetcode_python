@@ -12,7 +12,7 @@ class Solution(object):
         width = len(grid[0])
         islands = neighbors = 0
         for i, row in enumerate(grid):
-            for j in xrange(width):
+            for j in range(width):
                 if row[j]:
                     islands += 1
                     if i + 1 < height and grid[i + 1][j]:

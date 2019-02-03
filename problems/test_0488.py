@@ -27,11 +27,11 @@ def _dfs(board, hand, inserted, num_inserted, min_num_inserted):
     if num_inserted >= min_num_inserted:
         return min_num_inserted
 
-    for ball, num_balls in hand.iteritems():
+    for ball, num_balls in hand.items():
         if inserted[ball] >= num_balls:
             continue
 
-        for i in xrange(len(board)):
+        for i in range(len(board)):
             if board[i] != ball:
                 continue
             if i + 1 < len(board) and board[i] == board[i + 1]:

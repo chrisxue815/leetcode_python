@@ -15,7 +15,7 @@ class Solution(object):
             node.left = root
             return node
         q = [root]
-        for _ in xrange(d - 2):
+        for _ in range(d - 2):
             q = [child for node in q for child in (node.left, node.right) if child]
         for node in q:
             child = TreeNode(v)

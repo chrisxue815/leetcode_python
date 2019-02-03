@@ -13,9 +13,9 @@ class Solution(object):
         is_file = False
         stack = []
 
-        for hi in xrange(len(input) + 1):
+        for hi in range(len(input) + 1):
             if hi == len(input) or input[hi] == '\n':
-                for _ in xrange(prev_indent - indent + 1):
+                for _ in range(prev_indent - indent + 1):
                     path_len -= stack.pop()
 
                 curr_len = hi - lo

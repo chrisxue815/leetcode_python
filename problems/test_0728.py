@@ -10,7 +10,7 @@ class Solution(object):
         """
         result = []
 
-        for num in xrange(left, right + 1):
+        for num in range(left, right + 1):
             quotient = num
             while quotient:
                 quotient, digit = divmod(quotient, 10)

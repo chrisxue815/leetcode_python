@@ -11,16 +11,16 @@ class Solution(object):
         :rtype: int
         """
         # dp[i][j]: edit distance between word1[:i] and word2[:j]
-        dp = [[0] * (len(word2) + 1) for _ in xrange(len(word1) + 1)]
+        dp = [[0] * (len(word2) + 1) for _ in range(len(word1) + 1)]
 
-        for i in xrange(len(word1) + 1):
+        for i in range(len(word1) + 1):
             dp[i][0] = i
 
-        for j in xrange(len(word2) + 1):
+        for j in range(len(word2) + 1):
             dp[0][j] = j
 
-        for i in xrange(1, len(word1) + 1):
-            for j in xrange(1, len(word2) + 1):
+        for i in range(1, len(word1) + 1):
+            for j in range(1, len(word2) + 1):
                 if word1[i - 1] == word2[j - 1]:
                     dp[i][j] = dp[i - 1][j - 1]
                 else:

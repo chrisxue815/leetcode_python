@@ -24,7 +24,7 @@ class MyStack(object):
         Removes the element on top of the stack and returns that element.
         :rtype: int
         """
-        for i in xrange(len(self._que) - 2):
+        for i in range(len(self._que) - 2):
             self._que.append(self._que.popleft())
         self._top = self._que.popleft()
         self._que.append(self._top)

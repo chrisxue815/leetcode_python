@@ -10,11 +10,11 @@ class Solution(object):
         :rtype: int
         """
         # Is palindrome?
-        dp = [[False] * len(s) for _ in xrange(len(s))]
+        dp = [[False] * len(s) for _ in range(len(s))]
         result = len(s)
 
-        for distance in xrange(1, len(s)):
-            for p in xrange(len(s) - distance):
+        for distance in range(1, len(s)):
+            for p in range(len(s) - distance):
                 q = p + distance
                 if s[p] == s[q] and (distance <= 2 or dp[p + 1][q - 1]):
                     dp[p][q] = True

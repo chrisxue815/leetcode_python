@@ -3,7 +3,7 @@ import unittest
 
 def _find_max_possible_index(s, count, counts):
     counts = list(counts)
-    for i in xrange(len(s) - 1, -1, -1):
+    for i in range(len(s) - 1, -1, -1):
         ch = ord(s[i])
         if counts[ch]:
             counts[ch] = 0
@@ -28,10 +28,10 @@ class Solution(object):
         hi = _find_max_possible_index(s, count, counts)
         lo = 0
 
-        for _ in xrange(count):
+        for _ in range(count):
             min_ch = 256
             min_i = 0
-            for i in xrange(lo, hi + 1):
+            for i in range(lo, hi + 1):
                 ch = ord(s[i])
                 if counts[ch] and ch < min_ch:
                     min_ch = ch

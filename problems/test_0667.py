@@ -9,9 +9,9 @@ class Solution(object):
         :type k: int
         :rtype: List[int]
         """
-        result = range(1, n - k)
+        result = list(range(1, n - k))
 
-        for i in xrange(k + 1):
+        for i in range(k + 1):
             if i & 1:
                 result.append(n - (i >> 1))
             else:

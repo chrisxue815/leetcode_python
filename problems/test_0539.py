@@ -15,7 +15,7 @@ class Solution(object):
             if minutes[minute] > 1:
                 return 0
 
-        for i in xrange(n):
+        for i in range(n):
             if minutes[i] == 1:
                 break
 
@@ -23,7 +23,7 @@ class Solution(object):
         prev = i
         min_gap = n
 
-        for i in xrange(i + 1, n):
+        for i in range(i + 1, n):
             if minutes[i] == 1:
                 gap = i - prev
                 if gap < min_gap:

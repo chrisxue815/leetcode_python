@@ -8,7 +8,7 @@ class Solution(object):
         :rtype: int
         """
         ret = 0
-        for i in xrange(31, -1, -1):
+        for i in range(31, -1, -1):
             ret <<= 1
             prefixes = set(num >> i for num in nums)
             candidate = ret | 1

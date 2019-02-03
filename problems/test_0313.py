@@ -14,7 +14,7 @@ class Solution(object):
         n -= 2
         q = [(primes[0], 0)]
 
-        for _ in xrange(n):
+        for _ in range(n):
             curr, i = q[0]
             heapq.heapreplace(q, (curr * primes[i], i))
             if i + 1 < len(primes):

@@ -3,13 +3,13 @@ import unittest
 
 def _dfs_left_to_right(s, start, last_deleted, results):
     counter = 0
-    for i in xrange(start, len(s)):
+    for i in range(start, len(s)):
         if s[i] == '(':
             counter += 1
         elif s[i] == ')':
             counter -= 1
             if counter < 0:
-                for j in xrange(last_deleted, i + 1):
+                for j in range(last_deleted, i + 1):
                     if s[j] == ')' and (j == last_deleted or s[j - 1] != ')'):
                         _dfs_left_to_right(s[:j] + s[j + 1:], i, j, results)
                 return
@@ -19,13 +19,13 @@ def _dfs_left_to_right(s, start, last_deleted, results):
 
 def _dfs_right_to_left(s, start, last_deleted, results):
     counter = 0
-    for i in xrange(start, -1, -1):
+    for i in range(start, -1, -1):
         if s[i] == ')':
             counter -= 1
         elif s[i] == '(':
             counter += 1
             if counter > 0:
-                for j in xrange(last_deleted, i - 1, -1):
+                for j in range(last_deleted, i - 1, -1):
                     if s[j] == '(' and (j == last_deleted or s[j + 1] != '('):
                         _dfs_right_to_left(s[:j] + s[j + 1:], i - 1, j - 1, results)
                 return

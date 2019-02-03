@@ -23,7 +23,7 @@ class Solution(object):
             else:
                 hi_end = min(lo + 4, len(s) + 1)
 
-            for hi in xrange(hi_start, hi_end):
+            for hi in range(hi_start, hi_end):
                 byte = int(s[lo:hi])
                 if byte >= 256:
                     continue

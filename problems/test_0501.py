@@ -6,7 +6,7 @@ from tree import TreeNode
 class Solution(object):
 
     def __init__(self):
-        self.prev_val = -sys.maxint - 1  # assuming minint is not in the tree
+        self.prev_val = -sys.maxsize - 1  # assuming minint is not in the tree
         self.prev_count = -1
         self.max_vals = []
         self.max_count = 0

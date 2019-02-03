@@ -23,7 +23,7 @@ class Solution(object):
 
         products = []
         last = n - 1
-        for i in xrange(n):
+        for i in range(n):
             left = left_products[i]
             right = right_products[last - i]
             products.append(left * right)

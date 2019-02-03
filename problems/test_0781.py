@@ -11,7 +11,7 @@ class Solution(object):
         :rtype: int
         """
         return sum((count + answer) // (answer + 1) * (answer + 1) for answer, count in
-                   collections.Counter(answers).iteritems())
+                   collections.Counter(answers).items())
 
 
 class Test(unittest.TestCase):

@@ -30,7 +30,7 @@ class Solution(object):
             else:
                 offset = directions[direction]
 
-                for _ in xrange(command):
+                for _ in range(command):
                     new_position = (position[0] + offset[0], position[1] + offset[1])
                     if new_position in obstacles:
                         break

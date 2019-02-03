@@ -30,7 +30,7 @@ class Solution(object):
 
 class Test(unittest.TestCase):
     def test(self):
-        for n in xrange(1, 10):
+        for n in range(1, 10):
             self._test(n)
 
     def _test(self, n):

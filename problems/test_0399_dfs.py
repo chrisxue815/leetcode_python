@@ -13,7 +13,7 @@ def calc(graph, visited, a, c):
     if a_to_c is not None:
         return a_to_c
 
-    for b, a_to_b in successors.iteritems():
+    for b, a_to_b in successors.items():
         b_to_c = calc(graph, visited, b, c)
         if b_to_c is not None:
             return a_to_b * b_to_c

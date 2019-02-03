@@ -12,7 +12,7 @@ class Solution(object):
             return num
         n = len(num)
         stack = []
-        for i in xrange(n):
+        for i in range(n):
             digit = num[i]
             while k and stack and ord(digit) < ord(stack[-1]):
                 stack.pop()

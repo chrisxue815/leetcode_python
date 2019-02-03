@@ -1,4 +1,4 @@
-import Queue
+import queue
 import sys
 import unittest
 from tree import TreeNode, null
@@ -15,14 +15,14 @@ class Solution(object):
             return []
 
         max_vals = []
-        que = Queue.Queue()
+        que = queue.Queue()
         que.put(root)
 
         while not que.empty():
             level_nodes = que.qsize()
-            level_max = -sys.maxint - 1
+            level_max = -sys.maxsize - 1
 
-            for _ in xrange(level_nodes):
+            for _ in range(level_nodes):
                 node = que.get()
 
                 if level_max < node.val:

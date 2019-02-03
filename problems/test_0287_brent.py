@@ -22,7 +22,7 @@ class Solution(object):
 
         t = 0
         h = 0
-        for i in xrange(loop_length):
+        for i in range(loop_length):
             h = nums[h]
 
         while t != h:

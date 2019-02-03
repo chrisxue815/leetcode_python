@@ -18,7 +18,7 @@ class Solution(object):
         max_count = 0
         max_tree_sums = []
 
-        for sum_, count in self.counts.items():
+        for sum_, count in list(self.counts.items()):
             if max_count < count:
                 max_count = count
                 del max_tree_sums[:]

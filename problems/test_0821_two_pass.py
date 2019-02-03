@@ -13,7 +13,7 @@ class Solution(object):
         distances = [0] * len(s)
         prev = -len(s)
 
-        for i in xrange(len(s)):
+        for i in range(len(s)):
             if s[i] == c:
                 prev = i
             else:
@@ -21,7 +21,7 @@ class Solution(object):
 
         prev = len(s) << 1
 
-        for i in xrange(len(s) - 1, -1, -1):
+        for i in range(len(s) - 1, -1, -1):
             if s[i] == c:
                 prev = i
             else:

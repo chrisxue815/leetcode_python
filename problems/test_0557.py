@@ -10,7 +10,7 @@ class Solution(object):
         n = len(s)
         s = list(s)
         lo = 0
-        for hi in xrange(n):
+        for hi in range(n):
             if s[hi] == ' ':
                 s[lo:hi] = reversed(s[lo:hi])
                 lo = hi + 1

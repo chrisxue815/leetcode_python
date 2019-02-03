@@ -36,12 +36,12 @@ class Solution(object):
 
         product = [0] * (n1 + n2)
 
-        for i in xrange(n1):
-            for j in xrange(n2):
+        for i in range(n1):
+            for j in range(n2):
                 product[i + j] += num1[i] * num2[j]
 
         carry = 0
-        for i in xrange(len(product)):
+        for i in range(len(product)):
             num = product[i] + carry
             carry, product[i] = divmod(num, 10)
 

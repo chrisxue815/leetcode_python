@@ -17,7 +17,7 @@ class Solution(object):
             count[a] -= 1
             count[b] += 1
 
-        for i in xrange(1, N + 1):
+        for i in range(1, N + 1):
             if count[i] == N - 1:
                 return i
 

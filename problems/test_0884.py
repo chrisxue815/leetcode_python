@@ -22,11 +22,11 @@ class Solution(object):
 
         result = []
 
-        for word, count in count_a.iteritems():
+        for word, count in count_a.items():
             if count == 1 and word not in count_b:
                 result.append(word)
 
-        for word, count in count_b.iteritems():
+        for word, count in count_b.items():
             if count == 1 and word not in count_a:
                 result.append(word)
 

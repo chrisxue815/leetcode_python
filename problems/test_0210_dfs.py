@@ -14,7 +14,7 @@ class Solution(object):
         :type prerequisites: List[List[int]]
         :rtype: List[int]
         """
-        graph = [[] for _ in xrange(num_courses)]
+        graph = [[] for _ in range(num_courses)]
 
         for successor, predecessor in prerequisites:
             graph[successor].append(predecessor)
@@ -37,7 +37,7 @@ class Solution(object):
 
             return True
 
-        for node in xrange(num_courses):
+        for node in range(num_courses):
             if not try_reverse_topological_sort(node):
                 return []
 

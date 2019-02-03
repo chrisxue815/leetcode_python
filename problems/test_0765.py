@@ -15,7 +15,7 @@ class Solution(object):
 
         count = 0
 
-        for seat_a in xrange(0, len(row), 2):
+        for seat_a in range(0, len(row), 2):
             person_a = row[seat_a]
             person_b = row[seat_a + 1]
             person_c = ((person_b >> 1) << 2) + 1 - person_b

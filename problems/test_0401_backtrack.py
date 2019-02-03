@@ -19,7 +19,7 @@ class Solution(object):
             if hour < 12 and minute < 60:
                 self.result.append('{}:{:02d}'.format(hour, minute))
         elif num > 0:
-            for i in xrange(start_index, 11 - num):
+            for i in range(start_index, 11 - num):
                 if i < 4:
                     self._read(num - 1, hour + (1 << i), minute, i + 1)
                 else:

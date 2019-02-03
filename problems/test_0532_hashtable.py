@@ -19,7 +19,7 @@ class Solution(object):
 
         num_pairs = 0
         if k == 0:
-            for num, count in counter.items():
+            for num, count in list(counter.items()):
                 if count >= 2:
                     num_pairs += 1
         else:

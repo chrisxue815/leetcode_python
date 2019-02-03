@@ -35,7 +35,7 @@ class Solution(object):
                 slope_to_count[slope] = slope_to_count.get(slope, 0) + 1
 
             if slope_to_count:
-                max_count += max(slope_to_count.itervalues())
+                max_count += max(slope_to_count.values())
             if max_count > result:
                 result = max_count
         return result

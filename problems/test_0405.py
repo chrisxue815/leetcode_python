@@ -11,7 +11,7 @@ class Solution(object):
             return '0'
 
         result = []
-        for i in xrange(8):
+        for i in range(8):
             if num == 0:
                 break
             digit = num & 15

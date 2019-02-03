@@ -11,10 +11,10 @@ class Solution(object):
             return 0
         is_composite = [False] * n
         count = 0
-        for i in xrange(3, n, 2):
+        for i in range(3, n, 2):
             if not is_composite[i]:
                 count += 1
-                for j in xrange(2, (n - 1) // i + 1):
+                for j in range(2, (n - 1) // i + 1):
                     is_composite[i * j] = True
         return count + 1
 

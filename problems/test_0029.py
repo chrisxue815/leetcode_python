@@ -22,7 +22,7 @@ class Solution(object):
             divisor = -divisor
 
         result = 0
-        for i in xrange(31, -1, -1):
+        for i in range(31, -1, -1):
             if dividend >> i >= divisor:
                 dividend -= divisor << i
                 result += 1 << i
@@ -32,8 +32,8 @@ class Solution(object):
 
 class Test(unittest.TestCase):
     def test(self):
-        for i in xrange(100):
-            for j in xrange(1, 100):
+        for i in range(100):
+            for j in range(1, 100):
                 self._test(i, j, int(float(i) / j))
 
         self._test(1, 0, float('inf'))

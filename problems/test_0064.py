@@ -13,20 +13,20 @@ class Solution(object):
         n = len(grid[0])
 
         # dp[i][j]: the minimal sum of path to reach (i, j)
-        dp = [[0] * n for _ in xrange(m)]
+        dp = [[0] * n for _ in range(m)]
 
         sum_ = 0
-        for i in xrange(m):
+        for i in range(m):
             sum_ += grid[i][0]
             dp[i][0] = sum_
 
         sum_ = 0
-        for j in xrange(n):
+        for j in range(n):
             sum_ += grid[0][j]
             dp[0][j] = sum_
 
-        for i in xrange(1, m):
-            for j in xrange(1, n):
+        for i in range(1, m):
+            for j in range(1, n):
                 dp[i][j] = min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j]
 
         return dp[-1][-1]

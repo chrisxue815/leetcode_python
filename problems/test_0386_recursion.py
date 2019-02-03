@@ -8,18 +8,18 @@ class Solution(object):
         :rtype: List[int]
         """
         if n <= 9:
-            return range(1, n + 1)
+            return list(range(1, n + 1))
 
         result = []
 
         def add(base):
-            for base in xrange(base, base + 10):
+            for base in range(base, base + 10):
                 if base > n:
                     return
                 result.append(base)
                 add(base * 10)
 
-        for i in xrange(1, 10):
+        for i in range(1, 10):
             result.append(i)
             add(i * 10)
 

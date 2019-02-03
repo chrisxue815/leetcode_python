@@ -13,7 +13,7 @@ class Solution(object):
         a.sort()
         result = a[-1] - a[0]
 
-        for i in xrange(0, len(a) - 1):
+        for i in range(0, len(a) - 1):
             result = min(result, max(a[-1] - k, a[i] + k) - min(a[0] + k, a[i + 1] - k))
 
         return result

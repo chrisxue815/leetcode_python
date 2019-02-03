@@ -11,7 +11,7 @@ class Solution(object):
         """
         max_ending_here = max_so_far = 0
 
-        for i in xrange(1, len(prices)):
+        for i in range(1, len(prices)):
             diff = prices[i] - prices[i - 1]
             max_ending_here = max(diff, max_ending_here + diff)
             max_so_far = max(max_so_far, max_ending_here)

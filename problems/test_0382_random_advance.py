@@ -19,9 +19,9 @@ class Solution(object):
         Returns a random node's value.
         :rtype: int
         """
-        for _ in xrange(self.rand.randint(0, 4)):
-            if self.curr.next:
-                self.curr = self.curr.next
+        for _ in range(self.rand.randint(0, 4)):
+            if self.curr.__next__:
+                self.curr = self.curr.__next__
             else:
                 self.curr = self.head
         return self.curr.val
@@ -38,7 +38,7 @@ class Test(unittest.TestCase):
         iteration = 1000
         hit = 0
 
-        for _ in xrange(iteration):
+        for _ in range(iteration):
             val = solution.getRandom()
             if val == nums[0]:
                 hit += 1

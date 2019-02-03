@@ -14,7 +14,7 @@ class Solution(object):
         counter = collections.Counter(deck)
         gcd = None
 
-        for count in counter.itervalues():
+        for count in counter.values():
             gcd = fractions.gcd(gcd, count) if gcd else count
 
             if gcd == 1:

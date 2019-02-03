@@ -15,9 +15,9 @@ class Solution(object):
         if not a:
             return True
 
-        for start in xrange(len(a)):
+        for start in range(len(a)):
             i = start - len(a)
-            for j in xrange(len(a)):
+            for j in range(len(a)):
                 if a[i] != b[j]:
                     break
                 i += 1

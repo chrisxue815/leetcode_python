@@ -13,20 +13,20 @@ class Solution(object):
         n = len(obstacleGrid[0])
 
         # dp[i][j]: the number of unique paths to reach (i, j)
-        dp = [[0] * n for _ in xrange(m)]
+        dp = [[0] * n for _ in range(m)]
 
-        for i in xrange(m):
+        for i in range(m):
             if obstacleGrid[i][0] == 1:
                 break
             dp[i][0] = 1
 
-        for j in xrange(n):
+        for j in range(n):
             if obstacleGrid[0][j] == 1:
                 break
             dp[0][j] = 1
 
-        for i in xrange(1, m):
-            for j in xrange(1, n):
+        for i in range(1, m):
+            for j in range(1, n):
                 if obstacleGrid[i][j] == 0:
                     dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
 

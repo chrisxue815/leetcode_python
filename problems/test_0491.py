@@ -11,7 +11,7 @@ class Solution(object):
         stack = []
 
         def dfs(i):
-            for i in xrange(i, len(nums)):
+            for i in range(i, len(nums)):
                 if not stack or nums[i] >= stack[-1]:
                     stack.append(nums[i])
                     if len(stack) > 1:

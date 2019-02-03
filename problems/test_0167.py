@@ -22,7 +22,7 @@ class Solution(object):
         :rtype: List[int]
         """
         n = len(numbers)
-        for i in xrange(n):
+        for i in range(n):
             x = target - numbers[i]
             j = _index_of(numbers, x, i + 1, n - 1)
             if j != -1:

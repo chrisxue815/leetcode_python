@@ -26,7 +26,7 @@ class Solution(object):
         :rtype: int
         """
         count = 0
-        for num in xrange(1, n + 1):
+        for num in range(1, n + 1):
             if is_good(num):
                 count += 1
         return count

@@ -15,7 +15,7 @@ class Solution(object):
         carry = 0
         i1 = len(num1) - 1
         i2 = len(num2) - 1
-        for i in xrange(len(num2)):
+        for i in range(len(num2)):
             digit = carry + ord(num1[i1]) + ord(num2[i2]) - ord('0') * 2
             if digit >= 10:
                 digit -= 10
@@ -26,7 +26,7 @@ class Solution(object):
             i1 -= 1
             i2 -= 1
 
-        for i in xrange(len(num1) - len(num2) - 1, -1, -1):
+        for i in range(len(num1) - len(num2) - 1, -1, -1):
             digit = carry + ord(num1[i]) - ord('0')
             if digit >= 10:
                 digit -= 10

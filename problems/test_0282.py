@@ -17,7 +17,7 @@ class Solution(object):
 
             max_hi = lo + 2 if num[lo] == '0' else len(num) + 1
 
-            for hi in xrange(lo + 1, max_hi):
+            for hi in range(lo + 1, max_hi):
                 curr_str = num[lo:hi]
                 curr_int = int(curr_str)
                 if lo == 0:

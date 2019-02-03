@@ -20,7 +20,7 @@ class Solution(object):
             next_index = start + 1
             self._permute(nums, result, next_index)
 
-            for i in xrange(next_index, len(nums)):
+            for i in range(next_index, len(nums)):
                 if nums[i] == nums[start]:
                     continue
                 nums[i], nums[start] = nums[start], nums[i]

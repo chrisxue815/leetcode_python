@@ -20,17 +20,17 @@ class Solution(object):
                 break
             odd.next = head
             odd = head
-            head = head.next
+            head = head.__next__
 
             if not head:
                 break
             even.next = head
             even = head
-            head = head.next
+            head = head.__next__
 
-        odd.next = even_head.next
+        odd.next = even_head.__next__
         even.next = None
-        return odd_head.next
+        return odd_head.__next__
 
 
 class Test(unittest.TestCase):

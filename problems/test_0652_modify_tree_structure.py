@@ -31,7 +31,7 @@ class Solution(object):
             id = 1
             while dups:
                 new_dups = collections.defaultdict(list)
-                for nodes in dups.itervalues():
+                for nodes in dups.values():
                     if len(nodes) < 2:
                         continue
                     result.append(nodes[0])

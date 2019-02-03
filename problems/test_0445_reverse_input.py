@@ -5,7 +5,7 @@ from linkedlist import ListNode
 def reverse_list(root):
     prev = None
     while root:
-        next_ = root.next
+        next_ = root.__next__
         root.next = prev
         prev = root
         root = next_
@@ -36,8 +36,8 @@ class Solution(object):
             sum_.next = node
             sum_ = node
 
-            l1 = l1.next
-            l2 = l2.next
+            l1 = l1.__next__
+            l2 = l2.__next__
 
         if l2:
             l1 = l2
@@ -53,10 +53,10 @@ class Solution(object):
             sum_.next = node
             sum_ = node
 
-            l1 = l1.next
+            l1 = l1.__next__
         if carry:
             sum_.next = ListNode(carry)
-        return reverse_list(sum_root.next)
+        return reverse_list(sum_root.__next__)
 
 
 class Test(unittest.TestCase):

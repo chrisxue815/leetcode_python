@@ -12,23 +12,23 @@ class Solution(object):
         result = 0
 
         def is_magic(ci, cj):
-            if not all(1 <= grid[i][j] <= 9 for i in xrange(ci - 1, ci + 2) for j in xrange(cj - 1, cj + 2)):
+            if not all(1 <= grid[i][j] <= 9 for i in range(ci - 1, ci + 2) for j in range(cj - 1, cj + 2)):
                 return False
-            for i in xrange(ci - 1, ci + 2):
-                if sum(grid[i][j] for j in xrange(cj - 1, cj + 2)) != 15:
+            for i in range(ci - 1, ci + 2):
+                if sum(grid[i][j] for j in range(cj - 1, cj + 2)) != 15:
                     return False
-            for j in xrange(cj - 1, cj + 2):
-                if sum(grid[i][j] for i in xrange(ci - 1, ci + 2)) != 15:
+            for j in range(cj - 1, cj + 2):
+                if sum(grid[i][j] for i in range(ci - 1, ci + 2)) != 15:
                     return False
-            if sum(grid[ci + d][cj + d] for d in xrange(-1, 2)) != 15:
+            if sum(grid[ci + d][cj + d] for d in range(-1, 2)) != 15:
                 return False
-            if sum(grid[ci - d][cj + d] for d in xrange(-1, 2)) != 15:
+            if sum(grid[ci - d][cj + d] for d in range(-1, 2)) != 15:
                 return False
 
             return True
 
-        for ci in xrange(1, len(grid) - 1):
-            for cj in xrange(1, len(grid[0]) - 1):
+        for ci in range(1, len(grid) - 1):
+            for cj in range(1, len(grid[0]) - 1):
                 if is_magic(ci, cj):
                     result += 1
 

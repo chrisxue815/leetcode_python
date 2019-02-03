@@ -54,13 +54,13 @@ class Test(unittest.TestCase):
         self.assertEqual(True, rand_set.insert(2))
 
         num_samples = 10000
-        counter = collections.Counter(rand_set.getRandom() for _ in xrange(num_samples))
+        counter = collections.Counter(rand_set.getRandom() for _ in range(num_samples))
         self.assertAlmostEqual(counter[1] / float(num_samples), 0.5, delta=0.01)
 
         self.assertEqual(True, rand_set.remove(1))
         self.assertEqual(False, rand_set.insert(2))
 
-        self.assertEqual(True, all(rand_set.getRandom() == 2 for _ in xrange(num_samples)))
+        self.assertEqual(True, all(rand_set.getRandom() == 2 for _ in range(num_samples)))
 
 
 if __name__ == '__main__':

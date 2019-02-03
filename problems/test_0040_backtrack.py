@@ -23,7 +23,7 @@ class Solution(object):
         return self.result
 
     def _combine(self, target, start_index):
-        for i in xrange(start_index, self.num_candidates):
+        for i in range(start_index, self.num_candidates):
             candidate = self.candidates[i]
 
             if i > start_index and candidate == self.candidates[i - 1]:

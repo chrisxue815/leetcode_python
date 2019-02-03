@@ -25,14 +25,14 @@ class Solution(object):
         if num[0] == '0':
             a_max_len = min(a_max_len, 1)
 
-        for a_len in xrange(1, a_max_len + 1):
+        for a_len in range(1, a_max_len + 1):
             a = int(num[:a_len])
             remaining = len(num) - a_len
             b_max_len = min(remaining >> 1, remaining - a_len)
             if num[a_len] == '0':
                 b_max_len = min(b_max_len, 1)
 
-            for b_len in xrange(1, b_max_len + 1):
+            for b_len in range(1, b_max_len + 1):
                 c_index = a_len + b_len
                 b = int(num[a_len:c_index])
                 if is_valid_additive(a, b, c_index):

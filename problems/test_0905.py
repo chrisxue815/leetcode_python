@@ -41,7 +41,7 @@ class Test(unittest.TestCase):
             while i < len(actual) and actual[i] & 1 == 0:
                 i += 1
 
-            for i in xrange(i, len(actual)):
+            for i in range(i, len(actual)):
                 self.assertEqual(1, actual[i] & 1)
 
 

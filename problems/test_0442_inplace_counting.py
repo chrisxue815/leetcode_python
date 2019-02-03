@@ -10,7 +10,7 @@ class Solution(object):
         n = len(nums)
         duplicates = []
 
-        for i in xrange(n):
+        for i in range(n):
             num = nums[i]
             if num <= 0:
                 continue

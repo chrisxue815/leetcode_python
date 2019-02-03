@@ -13,7 +13,7 @@ class Solution(object):
             counts[ord(ch)] += 1
         for ch in s:
             counts[ord(ch)] -= 1
-        for i in xrange(ord('a'), ord('z') + 1):
+        for i in range(ord('a'), ord('z') + 1):
             if counts[i]:
                 return chr(i)
 

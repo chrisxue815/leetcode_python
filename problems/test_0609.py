@@ -17,7 +17,7 @@ class Solution(object):
                 file_parts = file.split('(')
                 d[file_parts[1]].append(dir + '/' + file_parts[0])
 
-        return [files for files in d.itervalues() if len(files) > 1]
+        return [files for files in d.values() if len(files) > 1]
 
 
 class Test(unittest.TestCase):

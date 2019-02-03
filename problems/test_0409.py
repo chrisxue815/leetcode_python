@@ -11,7 +11,7 @@ class Solution(object):
         counts = collections.Counter(s)
         odd = 0
         length = 0
-        for count in counts.values():
+        for count in list(counts.values()):
             odd |= count & 1
             length += count & -2
         return length + odd

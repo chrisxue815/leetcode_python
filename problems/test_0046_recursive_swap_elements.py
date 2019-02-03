@@ -25,7 +25,7 @@ class Solution(object):
             next_index = start_index + 1
             self._permute(next_index)
             
-            for i in xrange(next_index, self.n):
+            for i in range(next_index, self.n):
                 nums[i], nums[start_index] = nums[start_index], nums[i]
                 self._permute(next_index)
                 nums[i], nums[start_index] = nums[start_index], nums[i]

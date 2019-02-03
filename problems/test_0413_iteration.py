@@ -10,7 +10,7 @@ class Solution(object):
         :rtype: int
         """
         result = curr = 0
-        for i in xrange(len(a) - 2):
+        for i in range(len(a) - 2):
             if a[i + 1] - a[i] == a[i + 2] - a[i + 1]:
                 curr += 1
                 result += curr

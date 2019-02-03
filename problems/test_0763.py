@@ -17,7 +17,7 @@ class Solution(object):
         lo_ch = ord(s[0])
         rightmost_index = [-1] * (ord('z') + 1)
 
-        for hi in xrange(len(s) - 1, -1, -1):
+        for hi in range(len(s) - 1, -1, -1):
             hi_ch = ord(s[hi])
             if rightmost_index[hi_ch] == -1:
                 rightmost_index[hi_ch] = hi

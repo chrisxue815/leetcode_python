@@ -7,7 +7,7 @@ class Solution(object):
         :type digits: List[int]
         :rtype: List[int]
         """
-        for i in xrange(len(digits) - 1, -1, -1):
+        for i in range(len(digits) - 1, -1, -1):
             digit = digits[i] + 1
             if digit >= 10:
                 digits[i] = digit - 10

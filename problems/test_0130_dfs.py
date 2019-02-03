@@ -26,16 +26,16 @@ class Solution(object):
                 if 0 <= r2 < rows and 0 <= c2 < cols:
                     dfs(r2, c2)
 
-        for r in xrange(rows):
+        for r in range(rows):
             dfs(r, 0)
             dfs(r, cols - 1)
 
-        for c in xrange(cols):
+        for c in range(cols):
             dfs(0, c)
             dfs(rows - 1, c)
 
-        for r in xrange(rows):
-            for c in xrange(cols):
+        for r in range(rows):
+            for c in range(cols):
                 if board[r][c] == 'O':
                     board[r][c] = 'X'
                 elif board[r][c] == '1':

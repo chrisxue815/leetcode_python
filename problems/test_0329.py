@@ -15,7 +15,7 @@ class Solution(object):
         rows = len(matrix)
         cols = len(matrix[0])
 
-        max_lengths = [[0] * cols for _ in xrange(rows)]
+        max_lengths = [[0] * cols for _ in range(rows)]
 
         def dfs(row, col):
             max_length = max_lengths[row][col]
@@ -41,7 +41,7 @@ class Solution(object):
             max_lengths[row][col] = max_length
             return max_length
 
-        return max(dfs(row, col) for row in xrange(rows) for col in xrange(cols))
+        return max(dfs(row, col) for row in range(rows) for col in range(cols))
 
 
 class Test(unittest.TestCase):

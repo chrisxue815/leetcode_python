@@ -12,13 +12,13 @@ class Solution(object):
             n, r = divmod(n, 10)
             digits.append(r)
 
-        for i in xrange(1, len(digits)):
+        for i in range(1, len(digits)):
             if digits[i] < digits[i - 1]:
                 break
         else:
             return -1
 
-        for j in xrange(i):
+        for j in range(i):
             if digits[j] > digits[i]:
                 break
 

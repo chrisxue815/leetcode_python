@@ -14,25 +14,25 @@ class Solution(object):
         n = len(price)
 
         def market_price(sizes):
-            return sum(price[i] * sizes[i] for i in xrange(n))
+            return sum(price[i] * sizes[i] for i in range(n))
 
         def not_overbuying(a, b):
-            return all(a[i] <= b[i] for i in xrange(n))
+            return all(a[i] <= b[i] for i in range(n))
 
         special = [offer for offer in special
                    if offer[-1] < market_price(offer) and not_overbuying(offer, needs)]
 
         def add_to_needs(sizes):
-            for i in xrange(n):
+            for i in range(n):
                 needs[i] += sizes[i]
 
         def remove_from_needs(sizes):
-            for i in xrange(n):
+            for i in range(n):
                 needs[i] -= sizes[i]
 
                 if needs[i] < 0:
                     # Revert
-                    for i in xrange(i + 1):
+                    for i in range(i + 1):
                         needs[i] += sizes[i]
                     return False
 
@@ -41,7 +41,7 @@ class Solution(object):
         def dfs(start, prev_cost):
             min_cost = prev_cost + market_price(needs)
 
-            for i in xrange(start, len(special)):
+            for i in range(start, len(special)):
                 offer = special[i]
 
                 if remove_from_needs(offer):

@@ -11,7 +11,7 @@ class Solution(object):
         nums.sort()
         result = []
 
-        for i in xrange(len(nums) - 3):
+        for i in range(len(nums) - 3):
             a = nums[i]
             if a + nums[i + 1] + nums[i + 2] + nums[i + 3] > target:
                 break
@@ -19,7 +19,7 @@ class Solution(object):
                 continue
             target_a = target - a
 
-            for j in xrange(i + 1, len(nums) - 2):
+            for j in range(i + 1, len(nums) - 2):
                 b = nums[j]
                 if b + nums[j + 1] + nums[j + 2] > target_a:
                     break

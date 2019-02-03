@@ -16,7 +16,7 @@ class Solution(object):
         for row in nums:
             result += row
 
-        return [result[i:i + c] for i in xrange(0, len(result), c)]
+        return [result[i:i + c] for i in range(0, len(result), c)]
 
 
 class Test(unittest.TestCase):

@@ -19,7 +19,7 @@ class Iterator(object):
         """
         return self.curr + 1 < len(self.nums)
 
-    def next(self):
+    def __next__(self):
         """
         Returns the next element in the iteration.
         :rtype: int
@@ -36,7 +36,7 @@ class PeekingIterator(object):
         """
         self.it = iterator
         # We need to introduce a hasNext variable if None is a valid item in the iterator
-        self.next_item = iterator.next() if iterator.hasNext() else None
+        self.next_item = next(iterator) if iterator.hasNext() else None
 
     def peek(self):
         """
@@ -45,12 +45,12 @@ class PeekingIterator(object):
         """
         return self.next_item
 
-    def next(self):
+    def __next__(self):
         """
         :rtype: int
         """
         next_item = self.next_item
-        self.next_item = self.it.next() if self.it.hasNext() else None
+        self.next_item = next(self.it) if self.it.hasNext() else None
         return next_item
 
     def hasNext(self):
@@ -76,7 +76,7 @@ class Test(unittest.TestCase):
         for num in nums:
             self.assertEqual(True, it.hasNext())
             self.assertEqual(num, it.peek())
-            self.assertEqual(num, it.next())
+            self.assertEqual(num, next(it))
         self.assertEqual(False, it.hasNext())
 
 

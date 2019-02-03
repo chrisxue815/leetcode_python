@@ -9,8 +9,8 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: bool
         """
-        for row in xrange(len(matrix) - 1):
-            for col in xrange(len(matrix[0]) - 1):
+        for row in range(len(matrix) - 1):
+            for col in range(len(matrix[0]) - 1):
                 if matrix[row][col] != matrix[row + 1][col + 1]:
                     return False
         return True

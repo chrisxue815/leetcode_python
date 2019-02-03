@@ -13,22 +13,22 @@ class Solution(object):
         result = ListNode(0)
         result.next = head
         head = result
-        for _ in xrange(m - 1):
-            head = head.next
+        for _ in range(m - 1):
+            head = head.__next__
 
         left = head
         prev = None
-        head = head.next
+        head = head.__next__
         right = head
-        for _ in xrange(n - m + 1):
-            next_ = head.next
+        for _ in range(n - m + 1):
+            next_ = head.__next__
             head.next = prev
             prev = head
             head = next_
         left.next = prev
         right.next = head
 
-        return result.next
+        return result.__next__
 
 
 class Test(unittest.TestCase):

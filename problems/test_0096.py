@@ -8,9 +8,9 @@ class Solution(object):
         :rtype: int
         """
         f = [1, 1]
-        for i in xrange(2, n + 1):
+        for i in range(2, n + 1):
             fi = 0
-            for j in xrange(1, i + 1):
+            for j in range(1, i + 1):
                 fi += f[j - 1] * f[i - j]
             f.append(fi)
 

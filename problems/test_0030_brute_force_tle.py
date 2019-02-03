@@ -14,9 +14,9 @@ class Solution(object):
         total_len = sub_len * len(words)
         words = collections.Counter(words)
 
-        for i in xrange(len(s) - total_len + 1):
+        for i in range(len(s) - total_len + 1):
             pending = words.copy()
-            for j in xrange(i, i + total_len, sub_len):
+            for j in range(i, i + total_len, sub_len):
                 sub = s[j:j + sub_len]
                 if pending[sub] == 0:
                     break

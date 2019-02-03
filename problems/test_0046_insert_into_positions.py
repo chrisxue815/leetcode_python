@@ -10,9 +10,9 @@ class Solution(object):
         result = [[]]
         for num in nums:
             num_permutations = len(result)
-            for i in xrange(num_permutations):
+            for i in range(num_permutations):
                 permutation = result[i]
-                for j in xrange(len(permutation)):
+                for j in range(len(permutation)):
                     clone = list(permutation)
                     clone.insert(j, num)
                     result.append(clone)

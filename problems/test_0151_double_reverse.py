@@ -44,7 +44,7 @@ class Solution(object):
 
         # reverse back each word
         lo = 0
-        for hi in xrange(n):
+        for hi in range(n):
             if s[hi] == ' ':
                 s[lo:hi] = reversed(s[lo:hi])
                 lo = hi + 1

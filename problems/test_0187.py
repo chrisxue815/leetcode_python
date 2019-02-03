@@ -21,7 +21,7 @@ class Solution(object):
             num = num << 2 | nums[ord(ch) - ord('A')]
 
         dupes = set()
-        existing = set([num])
+        existing = {num}
         for ch in s[10:]:
             num = num >> 2 | nums[ord(ch) - ord('A')] << 18
             if num in existing:
@@ -32,7 +32,7 @@ class Solution(object):
         i = 0
         for num in dupes:
             s = []
-            for _ in xrange(10):
+            for _ in range(10):
                 s.append(chars[num & 3])
                 num >>= 2
             result[i] = ''.join(s)

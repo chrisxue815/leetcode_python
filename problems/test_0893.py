@@ -14,9 +14,9 @@ class Solution(object):
         for s in a:
             even_count = [0] * 26
             odd_count = [0] * 26
-            for i in xrange(0, len(s), 2):
+            for i in range(0, len(s), 2):
                 even_count[ord(s[i]) - ord('a')] += 1
-            for i in xrange(1, len(s), 2):
+            for i in range(1, len(s), 2):
                 odd_count[ord(s[i]) - ord('a')] += 1
             groups.add(tuple(even_count + odd_count))
 

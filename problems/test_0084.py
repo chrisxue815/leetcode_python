@@ -10,7 +10,7 @@ class Solution(object):
         n = len(heights)
         max_ = 0
         stack = []
-        for i in xrange(n):
+        for i in range(n):
             height = heights[i]
             left_index = i
             while stack and stack[-1][0] >= height:

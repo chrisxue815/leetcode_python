@@ -7,9 +7,9 @@ class Solution(object):
         :type board: List[List[str]]
         :rtype: bool
         """
-        rows = [[0] * 9 for _ in xrange(9)]
-        cols = [[0] * 9 for _ in xrange(9)]
-        boxes = [[0] * 9 for _ in xrange(9)]
+        rows = [[0] * 9 for _ in range(9)]
+        cols = [[0] * 9 for _ in range(9)]
+        boxes = [[0] * 9 for _ in range(9)]
 
         for i, row in enumerate(board):
             for j, num in enumerate(row):

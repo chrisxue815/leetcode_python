@@ -24,7 +24,7 @@ class Solution(object):
 
         root_val = self.preorder[preorder_index]
 
-        for i in xrange(inorder_left, inorder_right):
+        for i in range(inorder_left, inorder_right):
             if self.inorder[i] == root_val:
                 break
 

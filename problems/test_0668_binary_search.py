@@ -3,7 +3,7 @@ import unittest
 
 def _count_smaller_or_equal_numbers(num, m, n):
     count = 0
-    for a in xrange(1, m + 1):
+    for a in range(1, m + 1):
         count += min(num // a, n)
     return count
 

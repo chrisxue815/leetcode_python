@@ -12,12 +12,12 @@ class Solution(object):
 
         product = 1
         products = [1] * n
-        for i in xrange(last):
+        for i in range(last):
             product *= nums[i]
             products[i + 1] = product
 
         product = 1
-        for i in xrange(last, 0, -1):
+        for i in range(last, 0, -1):
             product *= nums[i]
             products[i - 1] *= product
 

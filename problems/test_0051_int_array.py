@@ -8,7 +8,7 @@ class Solution(object):
         :rtype: List[List[str]]
         """
         result = []
-        board = [['.'] * n for _ in xrange(n)]
+        board = [['.'] * n for _ in range(n)]
         cols = [1] * n
         forwards = [1] * (n + n - 1)
         backwards = [1] * (n + n - 1)
@@ -16,7 +16,7 @@ class Solution(object):
         def dfs(row):
             if row == n:
                 result.append([''.join(r) for r in board])
-            for col in xrange(n):
+            for col in range(n):
                 if cols[col] and forwards[row + col] and backwards[row - col]:
                     cols[col] = forwards[row + col] = backwards[row - col] = 0
                     board[row][col] = 'Q'

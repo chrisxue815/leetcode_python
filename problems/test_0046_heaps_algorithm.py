@@ -7,7 +7,7 @@ def _permute(nums, result, n):
     if n == 0:
         result.append(list(nums))
     else:
-        for i in xrange(n):
+        for i in range(n):
             _permute(nums, result, n)
 
             if n & 1:

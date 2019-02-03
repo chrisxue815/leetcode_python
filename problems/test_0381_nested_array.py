@@ -62,7 +62,7 @@ class Test(unittest.TestCase):
         self.assertEqual(True, rand_collection.insert(3))
 
         num_samples = 10000
-        counter = collections.Counter(rand_collection.getRandom() for _ in xrange(num_samples))
+        counter = collections.Counter(rand_collection.getRandom() for _ in range(num_samples))
         self.assertAlmostEqual(counter[1] / float(num_samples), 0.4, delta=0.01)
 
         self.assertEqual(True, rand_collection.remove(1))
@@ -71,7 +71,7 @@ class Test(unittest.TestCase):
         self.assertEqual(True, rand_collection.remove(3))
         self.assertEqual(False, rand_collection.remove(3))
 
-        self.assertEqual(True, all(rand_collection.getRandom() == 2 for _ in xrange(num_samples)))
+        self.assertEqual(True, all(rand_collection.getRandom() == 2 for _ in range(num_samples)))
 
 
 if __name__ == '__main__':

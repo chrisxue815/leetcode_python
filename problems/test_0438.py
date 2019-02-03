@@ -21,7 +21,7 @@ class Solution(object):
         if cs == cp:
             ret.append(0)
         lo = 0
-        for hi in xrange(np, len(s)):
+        for hi in range(np, len(s)):
             cs[ord(s[lo]) - _a] -= 1
             cs[ord(s[hi]) - _a] += 1
             lo += 1

@@ -13,7 +13,7 @@ class Solution(object):
         result = []
         lo = 0
 
-        for hi in xrange(1, len(s)):
+        for hi in range(1, len(s)):
             if s[hi] != s[lo]:
                 if hi - lo >= 3:
                     result.append([lo, hi - 1])

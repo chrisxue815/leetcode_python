@@ -7,10 +7,10 @@ class Solution(object):
         :type n: int
         :rtype: List[List[int]]
         """
-        m = [[0] * n for _ in xrange(n)]
+        m = [[0] * n for _ in range(n)]
         i, j, di, dj = 0, 0, 0, 1
 
-        for num in xrange(1, n * n + 1):
+        for num in range(1, n * n + 1):
             m[i][j] = num
             if m[(i + di) % n][(j + dj) % n]:
                 di, dj = dj, -di

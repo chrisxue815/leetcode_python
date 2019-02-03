@@ -29,7 +29,7 @@ class Test(unittest.TestCase):
         self._test(['A', 'A', 'B', 'C', 'D', 'E'], 1, 6)
         self._test(['A', 'A', 'B', 'B', 'C', 'C'], 1, 6)
         self._test(['A', 'A', 'B', 'B', 'C', 'C', 'D', 'D'], 1, 8)
-        self._test([chr(i + ord('A')) for i in xrange(26)] * 2, 26, 53)
+        self._test([chr(i + ord('A')) for i in range(26)] * 2, 26, 53)
 
     def _test(self, tasks, n, expected):
         actual = Solution().leastInterval(tasks, n)

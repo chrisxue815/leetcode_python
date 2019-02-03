@@ -12,7 +12,7 @@ class Solution(object):
         def list_len(x):
             result = 0
             while x:
-                x = x.next
+                x = x.__next__
                 result += 1
             return result
 
@@ -20,15 +20,15 @@ class Solution(object):
         b_len = list_len(b)
 
         if a_len > b_len:
-            for _ in xrange(a_len - b_len):
-                a = a.next
+            for _ in range(a_len - b_len):
+                a = a.__next__
         else:
-            for _ in xrange(b_len - a_len):
-                b = b.next
+            for _ in range(b_len - a_len):
+                b = b.__next__
 
         while a is not b:
-            a = a.next
-            b = b.next
+            a = a.__next__
+            b = b.__next__
 
         return a
 
@@ -42,12 +42,12 @@ class Test(unittest.TestCase):
         b = ListNode.from_array(b_before_intersection)
 
         intersection = a
-        for _ in xrange(a_len_before_intersection):
-            intersection = intersection.next
+        for _ in range(a_len_before_intersection):
+            intersection = intersection.__next__
 
         b_end = b
-        while b_end.next:
-            b_end = b_end.next
+        while b_end.__next__:
+            b_end = b_end.__next__
 
         b_end.next = intersection
 

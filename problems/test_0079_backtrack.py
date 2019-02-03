@@ -11,8 +11,8 @@ class Solution(object):
         if not board or not board[0] or not word:
             return False
 
-        for row in xrange(len(board)):
-            for col in xrange(len(board[0])):
+        for row in range(len(board)):
+            for col in range(len(board[0])):
                 if self._dfs(board, word, 0, row, col):
                     return True
                 

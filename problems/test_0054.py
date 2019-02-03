@@ -24,25 +24,25 @@ class Solution(object):
         while True:
             if i >= n:
                 break
-            for col in xrange(col, right + 1):
+            for col in range(col, right + 1):
                 result[i] = matrix[row][col]
                 i += 1
 
             if i >= n:
                 break
-            for row in xrange(row + 1, bottom + 1):
+            for row in range(row + 1, bottom + 1):
                 result[i] = matrix[row][col]
                 i += 1
 
             if i >= n:
                 break
-            for col in xrange(col - 1, left - 1, -1):
+            for col in range(col - 1, left - 1, -1):
                 result[i] = matrix[row][col]
                 i += 1
 
             if i >= n:
                 break
-            for row in xrange(row - 1, top, -1):
+            for row in range(row - 1, top, -1):
                 result[i] = matrix[row][col]
                 i += 1
 

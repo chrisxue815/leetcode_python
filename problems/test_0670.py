@@ -5,7 +5,7 @@ def find_max(digits, start):
     max_digit_index = start
     max_digit = digits[start]
 
-    for i in xrange(start - 1, -1, -1):
+    for i in range(start - 1, -1, -1):
         if digits[i] >= max_digit:
             max_digit_index = i
             max_digit = digits[i]
@@ -26,7 +26,7 @@ class Solution(object):
             q, r = divmod(q, 10)
             digits.append(r)
 
-        for i in xrange(len(digits) - 1, 0, -1):
+        for i in range(len(digits) - 1, 0, -1):
             if digits[i] < digits[i - 1]:
                 break
         else:

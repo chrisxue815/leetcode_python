@@ -24,9 +24,9 @@ class Solution(object):
         while next_level:
             while curr:
                 curr.left.next = curr.right
-                if curr.next:
+                if curr.__next__:
                     curr.right.next = curr.next.left
-                curr = curr.next
+                curr = curr.__next__
             curr = next_level
             next_level = curr.left
 

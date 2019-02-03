@@ -12,7 +12,7 @@ class Solution(object):
         """
         a.reverse()
 
-        for i in xrange(len(a)):
+        for i in range(len(a)):
             k, a[i] = divmod(a[i] + k, 10)
 
         while k > 0:

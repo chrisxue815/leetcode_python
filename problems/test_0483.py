@@ -10,7 +10,7 @@ class Solution(object):
         """
         n = int(n)
         max_m = int(math.log(n, 2))
-        for m in xrange(max_m, 1, -1):
+        for m in range(max_m, 1, -1):
             k = int(n ** (1.0 / m))
             if (k ** (m + 1) - 1) // (k - 1) == n:
                 return str(k)

@@ -7,7 +7,7 @@ class Solution(object):
         :type n: int
         :rtype: List[int]
         """
-        return [i ^ (i >> 1) for i in xrange(1 << n)]
+        return [i ^ (i >> 1) for i in range(1 << n)]
 
 
 class Test(unittest.TestCase):

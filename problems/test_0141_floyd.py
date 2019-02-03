@@ -11,13 +11,13 @@ class Solution(object):
         if not head:
             return False
         tortoise = head
-        hare = head.next
+        hare = head.__next__
         while tortoise is not hare:
-            if not hare or not hare.next:
+            if not hare or not hare.__next__:
                 return False
-            hare = hare.next.next
+            hare = hare.next.__next__
 
-            tortoise = tortoise.next
+            tortoise = tortoise.__next__
         return True
 
 
@@ -34,12 +34,12 @@ class Test(unittest.TestCase):
 
         if loop_start_index >= 0:
             loop_start_node = root
-            for i in xrange(loop_start_index):
-                loop_start_node = loop_start_node.next
+            for i in range(loop_start_index):
+                loop_start_node = loop_start_node.__next__
 
             curr = loop_start_node
-            while curr.next:
-                curr = curr.next
+            while curr.__next__:
+                curr = curr.__next__
             curr.next = loop_start_node
 
         actual = Solution().hasCycle(root)

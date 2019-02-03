@@ -14,8 +14,8 @@ class Solution(object):
         # dp[j]: Length of the longest pair chain in pairs[0:i+1] that contains pairs[j]
         dp = [1] * len(pairs)
 
-        for i in xrange(len(pairs)):
-            for j in xrange(i):
+        for i in range(len(pairs)):
+            for j in range(i):
                 dp[i] = max(dp[i], dp[j] + 1 if pairs[j][1] < pairs[i][0] else dp[j])
 
         return dp[-1]

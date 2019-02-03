@@ -18,7 +18,7 @@ class Solution(object):
         carry = 0
         i = len(a) - 1
 
-        for j in xrange(len(b) - 1, -1, -1):
+        for j in range(len(b) - 1, -1, -1):
             digit = ord(a[i]) + ord(b[j]) + carry - _offset
             if digit >= 2:
                 digit -= 2
@@ -28,7 +28,7 @@ class Solution(object):
             result.append(str(digit))
             i -= 1
 
-        for i in xrange(i, -1, -1):
+        for i in range(i, -1, -1):
             digit = ord(a[i]) + carry - ord('0')
             if digit == 2:
                 digit = 0

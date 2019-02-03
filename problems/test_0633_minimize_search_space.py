@@ -8,7 +8,7 @@ class Solution(object):
         :type c: int
         :rtype: bool
         """
-        for a in xrange(int(math.sqrt(c / 2)), int(math.sqrt(c)) + 1):
+        for a in range(int(math.sqrt(c / 2)), int(math.sqrt(c)) + 1):
             if math.sqrt(c - a * a).is_integer():
                 return True
         return False

@@ -25,7 +25,7 @@ class Solution(object):
             level_stack = []
             level_vals = []
 
-            for _ in xrange(size):
+            for _ in range(size):
                 node = stack.pop()
                 level_vals.append(node.val)
 

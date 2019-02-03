@@ -21,7 +21,7 @@ class Solution(object):
         return self.result
 
     def _subsets(self, start):
-        for i in xrange(start, self.n):
+        for i in range(start, self.n):
             self.combination.append(self.nums[i])
             self.result.append(list(self.combination))
             self._subsets(i + 1)

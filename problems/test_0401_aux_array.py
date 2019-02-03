@@ -16,16 +16,16 @@ class Solution(object):
         :type num: int
         :rtype: List[str]
         """
-        one_count_to_hours = [[] for _ in xrange(11)]
-        for i in xrange(12):
+        one_count_to_hours = [[] for _ in range(11)]
+        for i in range(12):
             one_count_to_hours[count_ones(i)].append(i)
 
         one_count_to_minutes = [list(hours) for hours in one_count_to_hours]
-        for i in xrange(12, 60):
+        for i in range(12, 60):
             one_count_to_minutes[count_ones(i)].append(i)
 
         result = []
-        for hour_ones in xrange(num + 1):
+        for hour_ones in range(num + 1):
             minute_ones = num - hour_ones
             for hour in one_count_to_hours[hour_ones]:
                 for minute in one_count_to_minutes[minute_ones]:

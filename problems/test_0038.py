@@ -9,7 +9,7 @@ class Solution(object):
         """
         result = [1]
 
-        for _ in xrange(n - 1):
+        for _ in range(n - 1):
             next_ = []
             curr = result[0]
             count = 0

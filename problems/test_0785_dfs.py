@@ -27,7 +27,7 @@ class Solution(object):
                     return False
             return True
 
-        for i in xrange(len(graph)):
+        for i in range(len(graph)):
             if groups[i] == -1 and not dfs(i, 0):
                 return False
 

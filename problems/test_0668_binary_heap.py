@@ -15,10 +15,10 @@ class Solution(object):
             m, n = n, m
 
         heap = []
-        for i in xrange(1, m + 1):
+        for i in range(1, m + 1):
             heapq.heappush(heap, (i, i, 1))
 
-        for _ in xrange(k - 1):
+        for _ in range(k - 1):
             _, i, j = heap[0]
             if j < n:
                 heapq.heapreplace(heap, (i * (j + 1), i, j + 1))

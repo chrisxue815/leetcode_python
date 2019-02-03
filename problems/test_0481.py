@@ -22,7 +22,7 @@ class Solution(object):
         next_ = 1
 
         for r in itertools.islice(s, 2, len(s)):
-            for _ in xrange(r):
+            for _ in range(r):
                 s[w] = next_
                 w += 1
             if next_ == 1:

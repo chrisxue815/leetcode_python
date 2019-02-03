@@ -22,7 +22,7 @@ class Solution(object):
         if len(self.permutations) == self.n:
             self.result.append(list(self.permutations))
         else:
-            for i in xrange(self.n):
+            for i in range(self.n):
                 if self.nums[i] in self.permutations:
                     continue
                 self.permutations.append(self.nums[i])

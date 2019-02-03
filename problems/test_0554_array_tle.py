@@ -15,9 +15,9 @@ class Solution(object):
         max_num_edges = 0
 
         while True:
-            next_min_width = sys.maxint
+            next_min_width = sys.maxsize
             num_edges = 0
-            for i in xrange(n):
+            for i in range(n):
                 if widths[i] == min_width:
                     num_edges += 1
                     row = wall[i]

@@ -13,7 +13,7 @@ class Solution(object):
             visited[num - 1] = 1
 
         result = []
-        for i in xrange(len(visited)):
+        for i in range(len(visited)):
             if visited[i] == 0:
                 result.append(i + 1)
 

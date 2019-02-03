@@ -23,7 +23,7 @@ class Solution(object):
             if mid_val < right:
                 lo = mid + 1
             else:
-                left = nums[mid - 1] if mid >= 1 else -sys.maxint - 1
+                left = nums[mid - 1] if mid >= 1 else -sys.maxsize - 1
                 if mid_val > left:
                     return mid
                 else:

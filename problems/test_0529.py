@@ -48,10 +48,10 @@ class Solution(object):
 
         rows = len(board)
         cols = len(board[0])
-        digits = [[0] * cols for _ in xrange(rows)]
+        digits = [[0] * cols for _ in range(rows)]
 
-        for i in xrange(rows):
-            for j in xrange(cols):
+        for i in range(rows):
+            for j in range(cols):
                 if board[i][j] == 'M':
                     for ni, nj in _eight_neighbors(i, j, rows, cols):
                         digits[ni][nj] += 1

@@ -14,7 +14,7 @@ class Solution(object):
         sum_ = 1
         sqrt = int(math.sqrt(num))
 
-        for divisor in xrange(2, sqrt + 1):
+        for divisor in range(2, sqrt + 1):
             if not num % divisor:
                 sum_ += divisor + num // divisor
 

@@ -16,7 +16,7 @@ class Solution(object):
         curr = head
         while curr:
             length += 1
-            curr = curr.next
+            curr = curr.__next__
 
         if k > length:
             return head
@@ -26,9 +26,9 @@ class Solution(object):
 
         while length >= k:
             prev = next_tail = curr
-            curr = curr.next
-            for _ in xrange(k - 1):
-                next_ = curr.next
+            curr = curr.__next__
+            for _ in range(k - 1):
+                next_ = curr.__next__
                 curr.next = prev
                 prev = curr
                 curr = next_

@@ -11,7 +11,7 @@ class Solution(object):
         """
         a.sort(reverse=True)
 
-        for i in xrange(2, len(a)):
+        for i in range(2, len(a)):
             u = a[i - 2]
             v = a[i - 1]
             w = a[i]

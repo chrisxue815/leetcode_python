@@ -51,10 +51,10 @@ class Solution(object):
         heap = []
         row0 = matrix[0]
         # Optimization: append the first row on demand
-        for j in xrange(cols):
+        for j in range(cols):
             heap.append((row0[j], 0, j))
 
-        for _ in xrange(k):
+        for _ in range(k):
             (val, i, j) = heap[0]
             if i == rows - 1:
                 heap[0], heap[-1] = heap[-1], heap[0]
@@ -84,10 +84,10 @@ class Solution(object):
         heap = []
         row0 = matrix[-1]
         # Optimization: append the first row on demand
-        for j in xrange(cols - 1, -1, -1):
+        for j in range(cols - 1, -1, -1):
             heap.append((row0[j], rows - 1, j))
 
-        for _ in xrange(k):
+        for _ in range(k):
             (val, i, j) = heap[0]
             if i == 0:
                 heap[0], heap[-1] = heap[-1], heap[0]

@@ -11,13 +11,13 @@ class Solution(object):
         self.cols = -1
         self.forwards = -1
         self.backwards = -1
-        board = [['.'] * n for _ in xrange(n)]
+        board = [['.'] * n for _ in range(n)]
 
         def dfs(row):
             if row == n:
                 self.result += 1
 
-            for col in xrange(n):
+            for col in range(n):
                 col_mask = 1 << col
                 forward_mask = 1 << (row + col)
                 backward_mask = 1 << (row - col + n)

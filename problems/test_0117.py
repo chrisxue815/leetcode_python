@@ -35,13 +35,13 @@ class Solution(object):
                 prev.next = curr.right
                 prev = curr.right
 
-            curr = curr.next
+            curr = curr.__next__
 
             if not curr:
-                if not phantom.next:
+                if not phantom.__next__:
                     break
                 prev = phantom
-                curr = phantom.next
+                curr = phantom.__next__
                 phantom.next = None
 
 

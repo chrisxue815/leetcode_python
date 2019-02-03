@@ -13,7 +13,7 @@ def _combinations_fix_elements(pool, r, result, combination, start_index):
     if r == 0:
         result.append(tuple(combination))
     elif r > 0:
-        for i in xrange(start_index, len(pool)):
+        for i in range(start_index, len(pool)):
             combination.append(pool[i])
             _combinations_fix_elements(pool, r - 1, result, combination, i + 1)
             combination.pop()
@@ -50,12 +50,12 @@ def combinations_iterative(pool, r=None):
     elif r > n:
         return
 
-    indices = range(r)
+    indices = list(range(r))
     yield tuple(pool[i] for i in indices)
 
     while True:
         # Find the last index
-        for i in xrange(r - 1, -1, -1):
+        for i in range(r - 1, -1, -1):
             # which is not the greatest possible at its position
             if indices[i] != n - r + i:
                 break
@@ -64,7 +64,7 @@ def combinations_iterative(pool, r=None):
             return
 
         indices[i] += 1
-        for j in xrange(i + 1, r):
+        for j in range(i + 1, r):
             indices[j] = indices[j - 1] + 1
 
         yield tuple(pool[i] for i in indices)
@@ -74,7 +74,7 @@ class Test(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.pools = [
-            range(5),
+            list(range(5)),
         ]
 
     def test_combinations(self):
@@ -84,7 +84,7 @@ class Test(unittest.TestCase):
 
     def _test_combinations(self, func):
         for pool in Test.pools:
-            for r in xrange(len(pool) + 2):
+            for r in range(len(pool) + 2):
                 actual = func(pool, r)
                 expected = itertools.combinations(pool, r)
                 self.assertItemsEqual(expected, actual)

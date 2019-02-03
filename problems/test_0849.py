@@ -16,7 +16,7 @@ class Solution(object):
 
         result = lo
 
-        for hi in xrange(lo + 1, len(seats)):
+        for hi in range(lo + 1, len(seats)):
             if seats[hi] == 1:
                 if seats[hi - 1] == 0:
                     result = max(result, (hi - lo) >> 1)

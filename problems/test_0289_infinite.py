@@ -13,8 +13,8 @@ class Solution(object):
 
         live_cells = set((i, j) for i, row in enumerate(board) for j, cell in enumerate(row) if cell)
 
-        for i in xrange(rows):
-            for j in xrange(cols):
+        for i in range(rows):
+            for j in range(cols):
                 board[i][j] = 0
 
         for i, j in self.gameOfLifeInfinite(live_cells):
@@ -26,7 +26,7 @@ class Solution(object):
 
         num_live_neighbors = collections.Counter((i + di, j + dj) for i, j in live_cells for di, dj in neighbors)
 
-        return (pos for pos, num_neighbors in num_live_neighbors.iteritems() if
+        return (pos for pos, num_neighbors in num_live_neighbors.items() if
                 num_neighbors == 3 or num_neighbors == 2 and pos in live_cells)
 
 

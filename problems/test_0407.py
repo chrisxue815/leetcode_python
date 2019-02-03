@@ -14,15 +14,15 @@ class Solution(object):
         res = 0
         rows = len(heightMap)
         cols = len(heightMap[0])
-        visited = [[False] * cols for _ in xrange(rows)]
+        visited = [[False] * cols for _ in range(rows)]
         q = []
 
-        for row in xrange(rows):
+        for row in range(rows):
             visited[row][0] = True
             visited[row][cols - 1] = True
             heapq.heappush(q, (heightMap[row][0], row, 0))
             heapq.heappush(q, (heightMap[row][cols - 1], row, cols - 1))
-        for col in xrange(cols):
+        for col in range(cols):
             visited[0][col] = True
             visited[rows - 1][col] = True
             heapq.heappush(q, (heightMap[0][col], 0, col))

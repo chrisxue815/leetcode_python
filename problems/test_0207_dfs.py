@@ -14,7 +14,7 @@ class Solution(object):
         :type prerequisites: List[List[int]]
         :rtype: bool
         """
-        graph = [[] for _ in xrange(num_courses)]
+        graph = [[] for _ in range(num_courses)]
 
         for successor, predecessor in prerequisites:
             graph[predecessor].append(successor)
@@ -37,7 +37,7 @@ class Solution(object):
 
             return False
 
-        return not any(has_cycle(node) for node in xrange(num_courses))
+        return not any(has_cycle(node) for node in range(num_courses))
 
 
 class Test(unittest.TestCase):

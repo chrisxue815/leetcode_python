@@ -33,7 +33,7 @@ class Solution(object):
             if heater_index < len(heaters):
                 radius = heaters[heater_index] - house
             else:
-                radius = sys.maxint
+                radius = sys.maxsize
 
             if heater_index > 0:
                 radius = min(radius, house - heaters[heater_index - 1])

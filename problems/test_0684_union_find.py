@@ -4,7 +4,7 @@ import utils
 
 class UnionFind(object):
     def __init__(self, n):
-        self._id = range(n)
+        self._id = list(range(n))
         self._sz = [1] * n
         self._count = n
 

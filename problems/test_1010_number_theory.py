@@ -17,7 +17,7 @@ class Solution(object):
 
         result = count[0] * (count[0] - 1) // 2 + count[30] * (count[30] - 1) // 2
 
-        for t in xrange(1, 30):
+        for t in range(1, 30):
             result += count[t] * count[60 - t]
 
         return result

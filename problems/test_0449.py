@@ -30,7 +30,7 @@ class Codec(object):
         :type data: str
         :rtype: TreeNode
         """
-        rootParent = TreeNode(sys.maxint)
+        rootParent = TreeNode(sys.maxsize)
         parent = rootParent
         stack = []
 

@@ -19,7 +19,7 @@ class Solution(object):
 
         j = 1
 
-        for i in xrange(1, len(name)):
+        for i in range(1, len(name)):
             if name[i] != name[i - 1]:
                 while j < len(typed) and typed[j] == name[i - 1]:
                     j += 1

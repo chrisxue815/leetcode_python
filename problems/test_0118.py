@@ -9,13 +9,13 @@ class Solution(object):
         """
         if not numRows:
             return []
-        triangle = [[1] * i for i in xrange(1, numRows + 1)]
+        triangle = [[1] * i for i in range(1, numRows + 1)]
 
-        for i in xrange(3, numRows + 1):
+        for i in range(3, numRows + 1):
             prev = triangle[i - 2]
             curr = triangle[i - 1]
 
-            for j in xrange(1, i - 1):
+            for j in range(1, i - 1):
                 curr[j] = prev[j - 1] + prev[j]
 
         return triangle

@@ -21,7 +21,7 @@ class Solution(object):
         :type num: int
         :rtype: List[int]
         """
-        return [bit_count(x) for x in xrange(num + 1)]
+        return [bit_count(x) for x in range(num + 1)]
 
 
 class Test(unittest.TestCase):

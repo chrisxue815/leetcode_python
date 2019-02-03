@@ -13,16 +13,16 @@ class Solution(object):
         dummy.next = head
         lo = dummy
 
-        for _ in xrange(n):
-            head = head.next
+        for _ in range(n):
+            head = head.__next__
 
         while head:
-            head = head.next
-            lo = lo.next
+            head = head.__next__
+            lo = lo.__next__
 
-        lo.next = lo.next.next
+        lo.next = lo.next.__next__
 
-        return dummy.next
+        return dummy.__next__
 
 
 class Test(unittest.TestCase):

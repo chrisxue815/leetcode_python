@@ -16,10 +16,10 @@ class Solution(object):
         :rtype: List[int]
         """
         result = []
-        for i in xrange(len(intervals)):
+        for i in range(len(intervals)):
             min_index = -1
-            min_val = sys.maxint
-            for j in xrange(len(intervals)):
+            min_val = sys.maxsize
+            for j in range(len(intervals)):
                 if i == j:
                     continue
                 if intervals[i].end <= intervals[j].start < min_val:

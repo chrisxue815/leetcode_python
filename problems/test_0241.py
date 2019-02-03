@@ -28,7 +28,7 @@ class Solution(object):
             if start + 1 == end:
                 yield tokens[start]
             else:
-                for i in xrange(start + 1, end, 2):
+                for i in range(start + 1, end, 2):
                     op = tokens[i]
                     for a in dfs(start, i):
                         for b in dfs(i + 1, end):

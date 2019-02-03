@@ -12,7 +12,7 @@ class Solution(object):
         closest = 0
         nums.sort()
 
-        for i in xrange(len(nums) - 2):
+        for i in range(len(nums) - 2):
             a = nums[i]
             s = a + nums[i + 1] + nums[i + 2]
             if s >= target:

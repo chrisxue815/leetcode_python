@@ -15,7 +15,7 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         result = []
-        visited = [[False] * C for _ in xrange(R)]
+        visited = [[False] * C for _ in range(R)]
         q = collections.deque()
         q.append((r0, c0))
 

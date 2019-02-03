@@ -15,7 +15,7 @@ class Solution(object):
         while left < l:
             reverse_len = min(k, l - left)
             right = left + reverse_len - 1
-            for i in xrange(reverse_len // 2):
+            for i in range(reverse_len // 2):
                 chars[left + i], chars[right - i] = chars[right - i], chars[left + i]
             left = right + 1 + k
 

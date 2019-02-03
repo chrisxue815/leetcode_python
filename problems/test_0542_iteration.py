@@ -25,8 +25,8 @@ class Solution(object):
                     else:
                         matrix[r][c] = 10000
 
-        for r in xrange(rows - 1, -1, -1):
-            for c in xrange(cols - 1, -1, -1):
+        for r in range(rows - 1, -1, -1):
+            for c in range(cols - 1, -1, -1):
                 if matrix[r][c]:
                     if r + 1 < rows and c + 1 < cols:
                         matrix[r][c] = min(matrix[r + 1][c] + 1, matrix[r][c + 1] + 1, matrix[r][c])

@@ -16,7 +16,7 @@ class MyStack(object):
         :rtype: void
         """
         self._que.append(x)
-        for i in xrange(len(self._que) - 1):
+        for i in range(len(self._que) - 1):
             self._que.append(self._que.popleft())
 
     def pop(self):

@@ -22,8 +22,8 @@ class Solution(object):
                 lengths[mask] = len(word)
 
         return max(len0 * len1 if not mask0 & mask1 else 0
-                   for mask1, len1 in lengths.items()
-                   for mask0, len0 in lengths.items())
+                   for mask1, len1 in list(lengths.items())
+                   for mask0, len0 in list(lengths.items()))
 
 
 class Test(unittest.TestCase):

@@ -19,8 +19,8 @@ class Solution(object):
             else:
                 return 0
 
-        for row in xrange(rows):
-            for col in xrange(cols):
+        for row in range(rows):
+            for col in range(cols):
                 area = dfs(row, col)
                 if area > result:
                     result = area

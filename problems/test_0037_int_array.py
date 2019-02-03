@@ -7,9 +7,9 @@ class Solution(object):
         :type board: List[List[str]]
         :rtype: void Do not return anything, modify board in-place instead.
         """
-        rows = [[1] * 10 for _ in xrange(9)]
-        cols = [[1] * 10 for _ in xrange(9)]
-        blocks = [[1] * 10 for _ in xrange(9)]
+        rows = [[1] * 10 for _ in range(9)]
+        cols = [[1] * 10 for _ in range(9)]
+        blocks = [[1] * 10 for _ in range(9)]
 
         for rownum, row in enumerate(board):
             for colnum, num in enumerate(row):
@@ -32,7 +32,7 @@ class Solution(object):
             row = rows[rownum]
             col = cols[colnum]
             block = blocks[rownum // 3 * 3 + colnum // 3]
-            for num in xrange(1, 10):
+            for num in range(1, 10):
                 if row[num] and col[num] and block[num]:
                     row[num] = col[num] = block[num] = 0
                     if dfs(rownum, colnum):

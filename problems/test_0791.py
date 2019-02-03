@@ -21,7 +21,7 @@ class Solution(object):
             result += ch * counts[ord(ch)]
             counts[ord(ch)] = 0
 
-        for ch in xrange(ord('a'), ord('z') + 1):
+        for ch in range(ord('a'), ord('z') + 1):
             result += chr(ch) * counts[ch]
 
         return result

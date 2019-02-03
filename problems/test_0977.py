@@ -25,10 +25,10 @@ class Solution(object):
                 result.append(a[hi] * a[hi])
                 hi += 1
 
-        for lo in xrange(lo, -1, -1):
+        for lo in range(lo, -1, -1):
             result.append(a[lo] * a[lo])
 
-        for hi in xrange(hi, len(a)):
+        for hi in range(hi, len(a)):
             result.append(a[hi] * a[hi])
 
         return result

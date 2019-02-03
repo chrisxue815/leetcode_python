@@ -13,7 +13,7 @@ class Solution(object):
         prev = nums[0]
         i = 1
 
-        for i in xrange(i, len(nums)):
+        for i in range(i, len(nums)):
             curr = nums[i]
             if curr < prev:
                 lo, hi, max_num, min_num = i - 1, i, prev, curr
@@ -25,7 +25,7 @@ class Solution(object):
             return 0
 
         while True:
-            for i in xrange(i, len(nums)):
+            for i in range(i, len(nums)):
                 curr = nums[i]
                 if curr >= max_num:
                     hi = i - 1
@@ -39,7 +39,7 @@ class Solution(object):
             else:
                 return len(nums) - 1 - lo
 
-            for i in xrange(i, len(nums)):
+            for i in range(i, len(nums)):
                 curr = nums[i]
                 if curr < prev:
                     hi, max_num = i, prev

@@ -11,15 +11,15 @@ class Solution(object):
         rows = len(board)
         cols = len(board[0])
 
-        for row in xrange(rows):
-            for col in xrange(cols):
+        for row in range(rows):
+            for col in range(cols):
                 live_neighbors = sum(board[row + dr][col + dc] & 1 for dr, dc in neighbors if
                                      0 <= row + dr < rows and 0 <= col + dc < cols)
                 if live_neighbors == 3 or live_neighbors == 2 and board[row][col] & 1:
                     board[row][col] |= 2
 
-        for row in xrange(rows):
-            for col in xrange(cols):
+        for row in range(rows):
+            for col in range(cols):
                 board[row][col] >>= 1
 
 

@@ -23,7 +23,7 @@ class Solution(object):
                     break
                 domain = domain[index + 1:]
 
-        return ['{} {}'.format(count, domain) for domain, count in counter.iteritems()]
+        return ['{} {}'.format(count, domain) for domain, count in counter.items()]
 
 
 class Test(unittest.TestCase):

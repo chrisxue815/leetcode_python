@@ -14,7 +14,7 @@ class Solution(object):
                 return True
             visited.add(num)
 
-        for i in xrange(k + 1, len(nums)):
+        for i in range(k + 1, len(nums)):
             visited.remove(nums[i - k - 1])
             if nums[i] in visited:
                 return True

@@ -16,13 +16,13 @@ class Solution(object):
             if l1.val < l2.val:
                 prev.next = l1
                 prev = l1
-                l1 = l1.next
+                l1 = l1.__next__
             else:
                 prev.next = l2
                 prev = l2
-                l2 = l2.next
+                l2 = l2.__next__
         prev.next = l1 if l1 else l2
-        return dummy.next
+        return dummy.__next__
 
 
 class Test(unittest.TestCase):

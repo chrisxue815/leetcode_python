@@ -13,7 +13,7 @@ class Solution(object):
         group_len = alphanum_len % k or k
         r = 0
 
-        for w in xrange(len(result)):
+        for w in range(len(result)):
             while s[r] == '-':
                 r += 1
             if group_len:

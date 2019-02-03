@@ -21,7 +21,7 @@ class Solution(object):
         :rtype: int
         """
         self.n = n
-        self._count(range(1, n + 1), n - 1)
+        self._count(list(range(1, n + 1)), n - 1)
         return self.count
 
     def _count(self, nums, start):
@@ -33,7 +33,7 @@ class Solution(object):
             if is_beautiful(index, nums[start]):
                 self._count(nums, next_index)
 
-            for i in xrange(next_index, -1, -1):
+            for i in range(next_index, -1, -1):
                 if is_beautiful(index, nums[i]):
                     nums[i], nums[start] = nums[start], nums[i]
                     self._count(nums, next_index)

@@ -14,7 +14,7 @@ def _read_num(s, i):
 
     num = ord(s[i]) - ord('0')
 
-    for i in xrange(i + 1, len(s)):
+    for i in range(i + 1, len(s)):
         ch = s[i]
         if not ch.isdigit():
             return sign * num, i
