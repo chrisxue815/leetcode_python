@@ -28,7 +28,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().largestPerimeter(**vars(case.args))
+            actual = Solution().largestPerimeter(**case.args._asdict())
             self.assertEqual(case.expected, actual)
 
 

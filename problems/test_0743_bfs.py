@@ -44,7 +44,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for i, case in enumerate(cases):
-            actual = Solution().networkDelayTime(**vars(case.args))
+            actual = Solution().networkDelayTime(**case.args._asdict())
             self.assertEqual(case.expected, actual, "i={0}".format(i))
 
 

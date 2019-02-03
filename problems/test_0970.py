@@ -39,7 +39,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().powerfulIntegers(**vars(case.args))
+            actual = Solution().powerfulIntegers(**case.args._asdict())
             self.assertItemsEqual(case.expected, actual)
 
 

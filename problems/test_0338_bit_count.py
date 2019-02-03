@@ -29,7 +29,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().countBits(**vars(case.args))
+            actual = Solution().countBits(**case.args._asdict())
             self.assertEqual(case.expected, actual)
 
 

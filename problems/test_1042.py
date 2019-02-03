@@ -42,7 +42,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().gardenNoAdj(**vars(case.args))
+            actual = Solution().gardenNoAdj(**case.args._asdict())
             self.check_answer(actual, case.args.paths)
 
     def check_answer(self, colors, paths):

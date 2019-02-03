@@ -42,7 +42,7 @@ class Test(unittest.TestCase):
 
         # The last 2 tests are too slow
         for case in cases[:-2]:
-            actual = Solution().largestPalindrome(**vars(case.args))
+            actual = Solution().largestPalindrome(**case.args._asdict())
             self.assertEqual(case.expected, actual)
 
 

@@ -30,7 +30,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().diStringMatch(**vars(case.args))
+            actual = Solution().diStringMatch(**case.args._asdict())
             self.assertItemsEqual(list(range(len(case.args.s) + 1)), actual)
 
             for i in range(len(case.args.s)):
