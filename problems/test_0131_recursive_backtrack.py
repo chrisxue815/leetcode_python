@@ -1,5 +1,7 @@
 import unittest
 
+import utils
+
 
 class Solution(object):
     def __init__(self):
@@ -42,32 +44,11 @@ class Solution(object):
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test("aab", [
-            ["a", "a", "b"],
-            ["aa", "b"],
-        ])
+        cases = utils.load_test_json(__file__).test_cases
 
-        self._test("aba", [
-            ["a", "b", "a"],
-            ["aba"],
-        ])
-
-        self._test("abba", [
-            ["a", "b", "b", "a"],
-            ["a", "bb", "a"],
-            ["abba"],
-        ])
-
-        self._test("abbab", [
-            ["a", "b", "b", "a", "b"],
-            ["a", "bb", "a", "b"],
-            ["a", "b", "bab"],
-            ["abba", "b"],
-        ])
-
-    def _test(self, s, expected):
-        actual = Solution().partition(s)
-        self.assertCountEqual(expected, actual)
+        for case in cases:
+            actual = Solution().partition(**case.args._asdict())
+            self.assertCountEqual(case.expected, actual)
 
 
 if __name__ == '__main__':
