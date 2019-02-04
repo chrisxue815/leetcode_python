@@ -26,7 +26,7 @@ class Solution(object):
             k += n
 
         gcd = gcd_euclid(n, k)
-        inner_loops = n / gcd
+        inner_loops = n // gcd
 
         for i in range(gcd):
             index = i

@@ -35,7 +35,7 @@ class Solution(object):
         const -= side * sign * num
 
         if coeff:
-            return 'x=' + str(const / coeff)
+            return 'x=' + str(const // coeff)
         return 'No solution' if const else 'Infinite solutions'
 
 

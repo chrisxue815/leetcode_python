@@ -21,7 +21,7 @@ class Solution(object):
                 continue
             if self._repeated(s, repeated_len):
                 return True
-            elif self._repeated(s, l / repeated_len):
+            elif self._repeated(s, l // repeated_len):
                 return True
         return False
 
