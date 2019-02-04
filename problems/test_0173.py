@@ -60,7 +60,7 @@ class Test(unittest.TestCase):
         root = TreeNode.from_array(vals)
         i, v = BSTIterator(root), []
         while i.hasNext():
-            v.append(next(i))
+            v.append(i.next())
         self.assertEqual(root.to_array_inorder(), v)
 
 

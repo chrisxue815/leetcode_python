@@ -1,6 +1,6 @@
 import unittest
 
-import p0385
+import test_0385
 
 
 class NestedIterator(object):
@@ -63,12 +63,12 @@ class Test(unittest.TestCase):
         self._test('[[]]', [])
 
     def _test(self, nested_list, expected):
-        nested_list = p0385.Solution().deserialize(nested_list).getList()
+        nested_list = test_0385.Solution().deserialize(nested_list).getList()
 
         i = NestedIterator(nested_list)
         actual = []
         while i.hasNext():
-            actual.append(next(i))
+            actual.append(i.next())
 
         self.assertEqual(expected, actual)
 
