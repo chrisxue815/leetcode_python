@@ -1,6 +1,6 @@
 import heapq
-import inspect
 import unittest
+
 import utils
 
 
@@ -38,7 +38,6 @@ class KthLargest(object):
 class Test(unittest.TestCase):
     def test(self):
         cls = KthLargest
-        functions = {name: func for name, func in inspect.getmembers(cls, predicate=inspect.ismethod)}
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
@@ -48,7 +47,7 @@ class Test(unittest.TestCase):
                 if func == cls.__name__:
                     obj = cls(*parameters)
                 else:
-                    actual = functions[func](obj, *parameters)
+                    actual = getattr(obj, func)(*parameters)
                     self.assertEqual(expected, actual)
 
 
