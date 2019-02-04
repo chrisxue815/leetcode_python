@@ -1,4 +1,4 @@
-import sys
+import functools
 import unittest
 
 
@@ -21,7 +21,7 @@ class Solution(object):
         for i, interval in enumerate(intervals):
             starts.append((interval.start, i))
 
-        starts.sort(lambda x, y: x[0] - y[0])
+        starts.sort()
 
         for i in intervals:
             lo = 0

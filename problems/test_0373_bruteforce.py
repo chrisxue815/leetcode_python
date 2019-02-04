@@ -1,3 +1,4 @@
+import functools
 import unittest
 
 
@@ -14,7 +15,7 @@ class Solution(object):
             for j in nums2:
                 tuples.append([i, j])
 
-        tuples.sort(lambda x, y: x[0] + x[1] - y[0] - y[1])
+        tuples.sort(key=functools.cmp_to_key(lambda x, y: x[0] + x[1] - y[0] - y[1]))
         return tuples[0:k]
 
 

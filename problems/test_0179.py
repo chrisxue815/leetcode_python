@@ -1,4 +1,9 @@
+import functools
 import unittest
+
+
+def cmp(a, b):
+    return (a > b) - (a < b)
 
 
 # O(nlog(n)). Sorting
@@ -8,7 +13,7 @@ class Solution:
     def largestNumber(self, nums):
         nums = [str(num) for num in nums]
 
-        nums.sort(cmp=lambda x, y: cmp(y + x, x + y))
+        nums.sort(key=functools.cmp_to_key(lambda x, y: cmp(y + x, x + y)))
 
         result = ''.join(nums).lstrip('0')
         return result if result else '0'

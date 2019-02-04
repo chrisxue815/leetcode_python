@@ -1,3 +1,4 @@
+import functools
 import unittest
 
 
@@ -22,7 +23,7 @@ class Solution(object):
         :type d: List[str]
         :rtype: str
         """
-        d.sort(_compare)
+        d.sort(key=functools.cmp_to_key(_compare))
         for b in d:
             if len(a) < len(b):
                 continue

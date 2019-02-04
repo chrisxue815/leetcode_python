@@ -1,6 +1,7 @@
-import unittest
-from linkedlist import ListNode
 import heapq
+import unittest
+
+from linkedlist import ListNode
 
 
 class Solution(object):
@@ -12,9 +13,7 @@ class Solution(object):
         if not lists:
             return None
 
-        ListNode.__cmp__ = lambda x, y: x.val - y.val
-
-        lists = [head for head in lists if head]
+        lists = [(head.val, head) for head in lists if head]
 
         heapq.heapify(lists)
 
@@ -22,11 +21,12 @@ class Solution(object):
         curr = dummy
 
         while lists:
-            curr.next = ListNode(lists[0].val)
+            val, prev = lists[0]
+            curr.next = ListNode(val)
             curr = curr.next
 
-            if lists[0].next:
-                heapq.heapreplace(lists, lists[0].next)
+            if prev.next:
+                heapq.heapreplace(lists, (prev.next.val, prev.next))
             else:
                 heapq.heappop(lists)
 
