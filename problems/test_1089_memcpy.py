@@ -28,18 +28,20 @@ class Solution:
         hi = lo + 1
         write_hi = len(arr)
 
-        while lo >= 0:
-            if arr[lo] == 0:
-                write_lo = write_hi - hi + lo
-                arr[write_lo:write_hi] = arr[lo:hi]
-                if half_out:
-                    write_hi = write_lo
-                    half_out = False
-                else:
-                    write_hi = write_lo - 1
-                    arr[write_hi] = 0
-                hi = lo
-            lo -= 1
+        for lo in range(lo, -1, -1):
+            if arr[lo]:
+                continue
+
+            write_lo = write_hi - hi + lo
+            arr[write_lo:write_hi] = arr[lo:hi]
+            hi = lo
+
+            if half_out:
+                write_hi = write_lo
+                half_out = False
+            else:
+                write_hi = write_lo - 1
+                arr[write_hi] = 0
 
 
 class Test(unittest.TestCase):
