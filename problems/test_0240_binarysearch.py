@@ -11,10 +11,10 @@ class Solution(object):
         if not matrix:
             return False
 
-        rows = len(matrix)
-        cols = len(matrix[0])
+        height = len(matrix)
+        width = len(matrix[0])
         top = 0
-        right = cols - 1
+        right = width - 1
 
         while True:
             row = matrix[top]
@@ -32,7 +32,7 @@ class Solution(object):
             if right < 0:
                 return False
 
-            bottom = rows - 1
+            bottom = height - 1
             while top <= bottom:
                 mid = top + ((bottom - top) >> 1)
                 mid_val = matrix[mid][right]
@@ -43,7 +43,7 @@ class Solution(object):
                 else:
                     return True
 
-            if top >= rows:
+            if top >= height:
                 return False
 
 

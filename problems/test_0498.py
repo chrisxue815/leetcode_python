@@ -10,31 +10,31 @@ class Solution(object):
         if not matrix:
             return []
 
-        rows = len(matrix)
-        cols = len(matrix[0])
-        size = rows * cols
+        height = len(matrix)
+        width = len(matrix[0])
+        size = height * width
         ret = [0] * size
         topright = 1
         row = col = 0
         for i in range(size):
             ret[i] = matrix[row][col]
             if topright:
-                if row and col < cols - 1:
+                if row and col < width - 1:
                     row -= 1
                     col += 1
                 else:
                     topright = 0
-                    if col < cols - 1:
+                    if col < width - 1:
                         col += 1
                     else:
                         row += 1
             else:
-                if col and row < rows - 1:
+                if col and row < height - 1:
                     row += 1
                     col -= 1
                 else:
                     topright = 1
-                    if row < rows - 1:
+                    if row < height - 1:
                         row += 1
                     else:
                         col += 1

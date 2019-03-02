@@ -13,8 +13,8 @@ class Solution(object):
         if not board or not board[0]:
             return
 
-        rows = len(board)
-        cols = len(board[0])
+        height = len(board)
+        width = len(board[0])
 
         def dfs(r, c):
             if board[r][c] != 'O':
@@ -23,19 +23,19 @@ class Solution(object):
 
             for dr, dc in directions:
                 r2, c2 = r + dr, c + dc
-                if 0 <= r2 < rows and 0 <= c2 < cols:
+                if 0 <= r2 < height and 0 <= c2 < width:
                     dfs(r2, c2)
 
-        for r in range(rows):
+        for r in range(height):
             dfs(r, 0)
-            dfs(r, cols - 1)
+            dfs(r, width - 1)
 
-        for c in range(cols):
+        for c in range(width):
             dfs(0, c)
-            dfs(rows - 1, c)
+            dfs(height - 1, c)
 
-        for r in range(rows):
-            for c in range(cols):
+        for r in range(height):
+            for c in range(width):
                 if board[r][c] == 'O':
                     board[r][c] = 'X'
                 elif board[r][c] == '1':

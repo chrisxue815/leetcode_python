@@ -12,16 +12,16 @@ class Solution(object):
         if not nums or len(nums) * len(nums[0]) != r * c:
             return nums
 
-        cols = len(nums[0])
+        width = len(nums[0])
         i = j = 0
 
         result = []
         for _ in range(r):
             row = []
             r = c
-            while cols - j < r:
+            while width - j < r:
                 row += nums[i][j:]
-                r -= cols - j
+                r -= width - j
                 i += 1
                 j = 0
             row += nums[i][j:j + r]

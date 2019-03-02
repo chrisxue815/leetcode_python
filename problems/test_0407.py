@@ -1,5 +1,5 @@
-import unittest
 import heapq
+import unittest
 
 
 class Solution(object):
@@ -12,21 +12,21 @@ class Solution(object):
             return 0
 
         res = 0
-        rows = len(heightMap)
-        cols = len(heightMap[0])
-        visited = [[False] * cols for _ in range(rows)]
+        height = len(heightMap)
+        width = len(heightMap[0])
+        visited = [[False] * width for _ in range(height)]
         q = []
 
-        for row in range(rows):
+        for row in range(height):
             visited[row][0] = True
-            visited[row][cols - 1] = True
+            visited[row][width - 1] = True
             heapq.heappush(q, (heightMap[row][0], row, 0))
-            heapq.heappush(q, (heightMap[row][cols - 1], row, cols - 1))
-        for col in range(cols):
+            heapq.heappush(q, (heightMap[row][width - 1], row, width - 1))
+        for col in range(width):
             visited[0][col] = True
-            visited[rows - 1][col] = True
+            visited[height - 1][col] = True
             heapq.heappush(q, (heightMap[0][col], 0, col))
-            heapq.heappush(q, (heightMap[rows - 1][col], rows - 1, col))
+            heapq.heappush(q, (heightMap[height - 1][col], height - 1, col))
 
         dirs = ((-1, 0), (1, 0), (0, -1), (0, 1))
         while q:
@@ -34,11 +34,11 @@ class Solution(object):
             for delta_row, delta_col in dirs:
                 row = prev_row + delta_row
                 col = prev_col + delta_col
-                if 0 <= row < rows and 0 <= col < cols and not visited[row][col]:
+                if 0 <= row < height and 0 <= col < width and not visited[row][col]:
                     visited[row][col] = True
-                    height = heightMap[row][col]
-                    water_level = max(prev_height, height)
-                    res += water_level - height
+                    h = heightMap[row][col]
+                    water_level = max(prev_height, h)
+                    res += water_level - h
                     heapq.heappush(q, (water_level, row, col))
 
         return res

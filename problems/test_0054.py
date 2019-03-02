@@ -11,15 +11,15 @@ class Solution(object):
         if not matrix or not matrix[0]:
             return []
 
-        rows = len(matrix)
-        cols = len(matrix[0])
-        n = rows * cols
+        height = len(matrix)
+        width = len(matrix[0])
+        n = height * width
 
         result = [0] * n
 
         top = left = row = col = i = 0
-        bottom = rows - 1
-        right = cols - 1
+        bottom = height - 1
+        right = width - 1
 
         while True:
             if i >= n:

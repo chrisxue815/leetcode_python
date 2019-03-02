@@ -1,22 +1,22 @@
 import unittest
 
 
-def _eight_neighbors(i, j, rows, cols):
+def _eight_neighbors(i, j, height, width):
     if i > 0:
         yield i - 1, j
         if j > 0:
             yield i - 1, j - 1
-        if j < cols - 1:
+        if j < width - 1:
             yield i - 1, j + 1
-    if i < rows - 1:
+    if i < height - 1:
         yield i + 1, j
         if j > 0:
             yield i + 1, j - 1
-        if j < cols - 1:
+        if j < width - 1:
             yield i + 1, j + 1
     if j > 0:
         yield i, j - 1
-    if j < cols - 1:
+    if j < width - 1:
         yield i, j + 1
 
 
@@ -46,14 +46,14 @@ class Solution(object):
             board[ci][cj] = 'X'
             return board
 
-        rows = len(board)
-        cols = len(board[0])
-        digits = [[0] * cols for _ in range(rows)]
+        height = len(board)
+        width = len(board[0])
+        digits = [[0] * width for _ in range(height)]
 
-        for i in range(rows):
-            for j in range(cols):
+        for i in range(height):
+            for j in range(width):
                 if board[i][j] == 'M':
-                    for ni, nj in _eight_neighbors(i, j, rows, cols):
+                    for ni, nj in _eight_neighbors(i, j, height, width):
                         digits[ni][nj] += 1
 
         _reveal(board, digits, ci, cj)

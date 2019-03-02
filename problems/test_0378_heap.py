@@ -41,22 +41,22 @@ class Solution(object):
         :rtype: int
         """
         k -= 1
-        rows = len(matrix)
-        cols = len(matrix[0])
+        height = len(matrix)
+        width = len(matrix[0])
 
-        n = rows * cols
+        n = height * width
         if k > n // 2:
             return self.kthLargest(matrix, n - k)
 
         heap = []
         row0 = matrix[0]
         # Optimization: append the first row on demand
-        for j in range(cols):
+        for j in range(width):
             heap.append((row0[j], 0, j))
 
         for _ in range(k):
             (val, i, j) = heap[0]
-            if i == rows - 1:
+            if i == height - 1:
                 heap[0], heap[-1] = heap[-1], heap[0]
                 _down_minheap(heap, 0, len(heap) - 1)
                 heap.pop()
@@ -74,18 +74,18 @@ class Solution(object):
         :rtype: int
         """
         k -= 1
-        rows = len(matrix)
-        cols = len(matrix[0])
+        height = len(matrix)
+        width = len(matrix[0])
 
-        n = rows * cols
+        n = height * width
         if k > n // 2:
             return self.kthSmallest(matrix, n - k)
 
         heap = []
         row0 = matrix[-1]
         # Optimization: append the first row on demand
-        for j in range(cols - 1, -1, -1):
-            heap.append((row0[j], rows - 1, j))
+        for j in range(width - 1, -1, -1):
+            heap.append((row0[j], height - 1, j))
 
         for _ in range(k):
             (val, i, j) = heap[0]

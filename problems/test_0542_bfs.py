@@ -11,10 +11,10 @@ class Solution(object):
         if not matrix or not matrix[0]:
             return matrix
 
-        rows = len(matrix)
-        cols = len(matrix[0])
+        height = len(matrix)
+        width = len(matrix[0])
         q = []
-        pending = [[True] * cols for _ in range(rows)]
+        pending = [[True] * width for _ in range(height)]
 
         for r, row in enumerate(matrix):
             for c, cell in enumerate(row):
@@ -33,7 +33,7 @@ class Solution(object):
                 heapq.heappush(q, (distance, r2, c))
 
             r2 = r + 1
-            if r2 < rows and pending[r2][c]:
+            if r2 < height and pending[r2][c]:
                 pending[r2][c] = False
                 matrix[r2][c] = distance
                 heapq.heappush(q, (distance, r2, c))
@@ -45,7 +45,7 @@ class Solution(object):
                 heapq.heappush(q, (distance, r, c2))
 
             c2 = c + 1
-            if c2 < cols and pending[r][c2]:
+            if c2 < width and pending[r][c2]:
                 pending[r][c2] = False
                 matrix[r][c2] = distance
                 heapq.heappush(q, (distance, r, c2))

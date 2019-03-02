@@ -8,17 +8,17 @@ class Solution(object):
         :type board: List[List[int]]
         :rtype: void Do not return anything, modify board in-place instead.
         """
-        rows = len(board)
-        cols = len(board[0])
+        height = len(board)
+        width = len(board[0])
 
         live_cells = set((i, j) for i, row in enumerate(board) for j, cell in enumerate(row) if cell)
 
-        for i in range(rows):
-            for j in range(cols):
+        for i in range(height):
+            for j in range(width):
                 board[i][j] = 0
 
         for i, j in self.gameOfLifeInfinite(live_cells):
-            if 0 <= i < rows and 0 <= j < cols:
+            if 0 <= i < height and 0 <= j < width:
                 board[i][j] = 1
 
     def gameOfLifeInfinite(self, live_cells):

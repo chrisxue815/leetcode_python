@@ -8,18 +8,18 @@ class Solution(object):
         :rtype: void Do not return anything, modify board in-place instead.
         """
         neighbors = ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1))
-        rows = len(board)
-        cols = len(board[0])
+        height = len(board)
+        width = len(board[0])
 
-        for row in range(rows):
-            for col in range(cols):
+        for row in range(height):
+            for col in range(width):
                 live_neighbors = sum(board[row + dr][col + dc] & 1 for dr, dc in neighbors if
-                                     0 <= row + dr < rows and 0 <= col + dc < cols)
+                                     0 <= row + dr < height and 0 <= col + dc < width)
                 if live_neighbors == 3 or live_neighbors == 2 and board[row][col] & 1:
                     board[row][col] |= 2
 
-        for row in range(rows):
-            for col in range(cols):
+        for row in range(height):
+            for col in range(width):
                 board[row][col] >>= 1
 
 

@@ -10,8 +10,8 @@ class Solution(object):
         if not matrix or not matrix[0]:
             return matrix
 
-        rows = len(matrix)
-        cols = len(matrix[0])
+        height = len(matrix)
+        width = len(matrix[0])
 
         for r, row in enumerate(matrix):
             for c, cell in enumerate(row):
@@ -25,14 +25,14 @@ class Solution(object):
                     else:
                         matrix[r][c] = 10000
 
-        for r in range(rows - 1, -1, -1):
-            for c in range(cols - 1, -1, -1):
+        for r in range(height - 1, -1, -1):
+            for c in range(width - 1, -1, -1):
                 if matrix[r][c]:
-                    if r + 1 < rows and c + 1 < cols:
+                    if r + 1 < height and c + 1 < width:
                         matrix[r][c] = min(matrix[r + 1][c] + 1, matrix[r][c + 1] + 1, matrix[r][c])
-                    elif r + 1 < rows:
+                    elif r + 1 < height:
                         matrix[r][c] = min(matrix[r + 1][c] + 1, matrix[r][c])
-                    elif c + 1 < cols:
+                    elif c + 1 < width:
                         matrix[r][c] = min(matrix[r][c + 1] + 1, matrix[r][c])
 
         return matrix

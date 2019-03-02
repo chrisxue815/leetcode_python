@@ -11,9 +11,9 @@ class Solution(object):
             return []
 
         result = []
-        rows = len(matrix)
-        cols = len(matrix[0])
-        state = [[0] * cols for _ in range(rows)]
+        height = len(matrix)
+        width = len(matrix[0])
+        state = [[0] * width for _ in range(height)]
 
         def dfs(r, c, mask):
             if state[r][c] & mask:
@@ -27,7 +27,7 @@ class Solution(object):
                 dfs(r2, c, mask)
 
             r2 = r + 1
-            if r2 < rows and matrix[r2][c] >= height:
+            if r2 < height and matrix[r2][c] >= height:
                 dfs(r2, c, mask)
 
             c2 = c - 1
@@ -35,16 +35,16 @@ class Solution(object):
                 dfs(r, c2, mask)
 
             c2 = c + 1
-            if c2 < cols and matrix[r][c2] >= height:
+            if c2 < width and matrix[r][c2] >= height:
                 dfs(r, c2, mask)
 
-        for c in range(cols):
+        for c in range(width):
             dfs(0, c, 1)
-            dfs(rows - 1, c, 2)
+            dfs(height - 1, c, 2)
 
-        for r in range(rows):
+        for r in range(height):
             dfs(r, 0, 1)
-            dfs(r, cols - 1, 2)
+            dfs(r, width - 1, 2)
 
         for r, row in enumerate(state):
             for c, cell in enumerate(row):

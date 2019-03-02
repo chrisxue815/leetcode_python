@@ -10,8 +10,8 @@ class Solution(object):
         :type hits: List[List[int]]
         :rtype: List[int]
         """
-        rows = len(grid)
-        cols = len(grid[0])
+        height = len(grid)
+        width = len(grid[0])
 
         def mark_live(row, col):
             if grid[row][col] != 1:
@@ -22,25 +22,25 @@ class Solution(object):
 
             if row >= 1:
                 count += mark_live(row - 1, col)
-            if row + 1 < rows:
+            if row + 1 < height:
                 count += mark_live(row + 1, col)
             if col >= 1:
                 count += mark_live(row, col - 1)
-            if col + 1 < cols:
+            if col + 1 < width:
                 count += mark_live(row, col + 1)
 
             return count
 
         def is_live(row, col):
             return row == 0 or grid[row - 1][col] == 2 \
-                   or row + 1 < rows and grid[row + 1][col] == 2 \
+                   or row + 1 < height and grid[row + 1][col] == 2 \
                    or col >= 1 and grid[row][col - 1] == 2 \
-                   or col + 1 < cols and grid[row][col + 1] == 2
+                   or col + 1 < width and grid[row][col + 1] == 2
 
         for hit_row, hit_col in hits:
             grid[hit_row][hit_col] -= 1
 
-        for top_col in range(cols):
+        for top_col in range(width):
             mark_live(0, top_col)
 
         result = [0] * len(hits)

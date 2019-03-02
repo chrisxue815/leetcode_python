@@ -13,8 +13,8 @@ class Solution(object):
         :type grid: List[List[int]]
         :rtype: int
         """
-        rows = len(grid)
-        cols = len(grid[0])
+        height = len(grid)
+        width = len(grid[0])
         q = [(r, c) for r, row in enumerate(grid) for c, cell in enumerate(row) if cell == ROTTEN]
         result = 0
 
@@ -29,11 +29,11 @@ class Solution(object):
             for r, c in q:
                 if r >= 1:
                     rot(r - 1, c)
-                if r + 1 < rows:
+                if r + 1 < height:
                     rot(r + 1, c)
                 if c >= 1:
                     rot(r, c - 1)
-                if c + 1 < cols:
+                if c + 1 < width:
                     rot(r, c + 1)
 
             if new_q:

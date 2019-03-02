@@ -12,10 +12,10 @@ class Solution(object):
         if not matrix or not matrix[0]:
             return 0
 
-        rows = len(matrix)
-        cols = len(matrix[0])
+        height = len(matrix)
+        width = len(matrix[0])
 
-        max_lengths = [[0] * cols for _ in range(rows)]
+        max_lengths = [[0] * width for _ in range(height)]
 
         def dfs(row, col):
             max_length = max_lengths[row][col]
@@ -28,20 +28,20 @@ class Solution(object):
             if row > 0 and matrix[row - 1][col] > curr:
                 max_length = max(max_length, dfs(row - 1, col))
 
-            if row + 1 < rows and matrix[row + 1][col] > curr:
+            if row + 1 < height and matrix[row + 1][col] > curr:
                 max_length = max(max_length, dfs(row + 1, col))
 
             if col > 0 and matrix[row][col - 1] > curr:
                 max_length = max(max_length, dfs(row, col - 1))
 
-            if col + 1 < cols and matrix[row][col + 1] > curr:
+            if col + 1 < width and matrix[row][col + 1] > curr:
                 max_length = max(max_length, dfs(row, col + 1))
 
             max_length += 1
             max_lengths[row][col] = max_length
             return max_length
 
-        return max(dfs(row, col) for row in range(rows) for col in range(cols))
+        return max(dfs(row, col) for row in range(height) for col in range(width))
 
 
 class Test(unittest.TestCase):

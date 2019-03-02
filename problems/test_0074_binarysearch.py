@@ -11,14 +11,14 @@ class Solution(object):
         if not matrix or not matrix[0]:
             return False
 
-        rows = len(matrix)
-        cols = len(matrix[0])
-        n = rows * cols
+        height = len(matrix)
+        width = len(matrix[0])
+        n = height * width
         lo = 0
         hi = n - 1
         while lo <= hi:
             mid = lo + ((hi - lo) >> 1)
-            row, col = divmod(mid, cols)
+            row, col = divmod(mid, width)
             mid_val = matrix[row][col]
             if mid_val < target:
                 lo = mid + 1

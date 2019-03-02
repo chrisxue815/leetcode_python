@@ -9,18 +9,18 @@ class Solution(object):
         :rtype: int
         """
         result = 0
-        rows = len(grid)
-        cols = len(grid[0])
+        height = len(grid)
+        width = len(grid[0])
 
         def dfs(row, col):
-            if 0 <= row < rows and 0 <= col < cols and grid[row][col]:
+            if 0 <= row < height and 0 <= col < width and grid[row][col]:
                 grid[row][col] = 0
                 return 1 + dfs(row - 1, col) + dfs(row + 1, col) + dfs(row, col - 1) + dfs(row, col + 1)
             else:
                 return 0
 
-        for row in range(rows):
-            for col in range(cols):
+        for row in range(height):
+            for col in range(width):
                 area = dfs(row, col)
                 if area > result:
                     result = area

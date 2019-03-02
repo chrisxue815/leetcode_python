@@ -9,15 +9,15 @@ class Solution(object):
         :type board: List[List[str]]
         :rtype: int
         """
-        rows = len(board)
-        cols = len(board[0])
+        height = len(board)
+        width = len(board[0])
 
         def move_up(r, c):
             for r in range(r - 1, -1, -1):
                 yield r, c
 
         def move_down(r, c):
-            for r in range(r + 1, rows):
+            for r in range(r + 1, height):
                 yield r, c
 
         def move_left(r, c):
@@ -25,7 +25,7 @@ class Solution(object):
                 yield r, c
 
         def move_right(r, c):
-            for c in range(c + 1, cols):
+            for c in range(c + 1, width):
                 yield r, c
 
         rock_row, rock_col = next((r, c) for r, row in enumerate(board) for c, cell in enumerate(row) if cell == 'R')

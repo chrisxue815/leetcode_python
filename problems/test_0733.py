@@ -15,11 +15,11 @@ class Solution(object):
         if old_color == new_color:
             return image
 
-        rows = len(image)
-        cols = len(image[0])
+        height = len(image)
+        width = len(image[0])
 
         def dfs(r, c):
-            if 0 <= r < rows and 0 <= c < cols and image[r][c] == old_color:
+            if 0 <= r < height and 0 <= c < width and image[r][c] == old_color:
                 image[r][c] = new_color
                 dfs(r - 1, c)
                 dfs(r + 1, c)
