@@ -1,3 +1,5 @@
 [submodule "leetcode_test_cases"]
 	path = leetcode_test_cases
 	url = https://github.com/chrisxue815/leetcode_test_cases.git
+	branch = master
+	update = rebase
