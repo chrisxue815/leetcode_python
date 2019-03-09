@@ -4,7 +4,7 @@ import unittest
 import utils
 
 
-# O(?) time. O(?) space. Heap.
+# O(nlog(?)) time. O(?) space. Heap.
 class Solution:
     def nthUglyNumber(self, n: int) -> int:
         curr = 0
