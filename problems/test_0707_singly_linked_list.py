@@ -117,7 +117,7 @@ class Test(unittest.TestCase):
 
             for func, parameters, expected in zip(case.functions, case.args, case.expected):
                 if func == cls.__name__:
-                    obj = cls()
+                    obj = cls(*parameters)
                 else:
                     actual = getattr(obj, func)(*parameters)
                     self.assertEqual(expected, actual)
