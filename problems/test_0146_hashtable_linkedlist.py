@@ -60,19 +60,22 @@ class LinkedList:
         return head
 
 
-# O(1) time. O(n) space. Hash table, linked list.
+# O(capacity) space. Hash table, linked list.
 class LRUCache:
+    # O(1) time. O(1) space.
     def __init__(self, capacity: int):
         self.capacity = capacity
         self.node_list = LinkedList()
         self.node_dict = {}
 
+    # O(1) time. O(1) space.
     def get(self, key: int) -> int:
-        curr = self.get_node(key)
+        curr = self._get_node(key)
         return curr.val if curr else -1
 
+    # O(1) time. O(1) space.
     def put(self, key: int, value: int) -> None:
-        curr = self.get_node(key)
+        curr = self._get_node(key)
 
         if curr:
             curr.val = value
@@ -85,7 +88,8 @@ class LRUCache:
                 head = self.node_list.popleft()
                 del self.node_dict[head.key]
 
-    def get_node(self, key):
+    # O(1) time. O(1) space.
+    def _get_node(self, key):
         curr = self.node_dict.get(key)
         if not curr:
             return None

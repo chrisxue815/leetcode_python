@@ -3,9 +3,10 @@ import unittest
 import utils
 
 
-# O(1) time. O(n) space. Memorization.
+# DP, prefix.
 class NumArray(object):
 
+    # O(n) time. O(n) space.
     def __init__(self, nums):
         """
         :type nums: List[int]
@@ -17,6 +18,7 @@ class NumArray(object):
             sum_ += nums[i]
             self.sums[i] = sum_
 
+    # O(1) time. O(1) space.
     def sumRange(self, i, j):
         """
         :type i: int

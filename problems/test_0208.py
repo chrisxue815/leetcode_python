@@ -29,20 +29,23 @@ class TrieNode:
         return curr
 
 
+# O(total length of words) space.
 class Trie:
-
+    # O(1) time. O(1) space.
     def __init__(self):
         """
         Initialize your data structure here.
         """
         self.root = TrieNode()
 
+    # O(n) time. O(n) space.
     def insert(self, word: str) -> None:
         """
         Inserts a word into the trie.
         """
         self.root.search(word, True).value = True
 
+    # O(n) time. O(1) space.
     def search(self, word: str) -> bool:
         """
         Returns if the word is in the trie.
@@ -50,6 +53,7 @@ class Trie:
         leaf = self.root.search(word, False)
         return leaf is not None and leaf.value
 
+    # O(n) time. O(1) space.
     def startsWith(self, prefix: str) -> bool:
         """
         Returns if there is any word in the trie that starts with the given prefix.

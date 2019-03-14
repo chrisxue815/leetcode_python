@@ -4,7 +4,7 @@ from typing import List
 import utils
 
 
-# DP.
+# DP, prefix.
 class NumMatrix:
 
     # O(n) time. O(n) space.

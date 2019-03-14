@@ -4,12 +4,14 @@ import unittest
 import utils
 
 
-# O(1) time. O(n) space. Hash table, linked list.
+# O(capacity) space. Hash table, linked list.
 class LRUCache:
+    # O(1) time. O(1) space.
     def __init__(self, capacity: int):
         self.capacity = capacity
         self.cache = collections.OrderedDict()
 
+    # O(1) time. O(1) space.
     def get(self, key: int) -> int:
         val = self.cache.get(key)
         if val is None:
@@ -19,6 +21,7 @@ class LRUCache:
 
         return val
 
+    # O(1) time. O(1) space.
     def put(self, key: int, value: int) -> None:
         self.cache[key] = value
         self.cache.move_to_end(key)
