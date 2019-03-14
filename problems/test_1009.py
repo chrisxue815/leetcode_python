@@ -13,19 +13,19 @@ class Solution(object):
         tmp = N
         shift = 0
 
-        if tmp > 0xffff:
+        if tmp >= 1 << 16:
             tmp >>= 16
             shift += 16
-        if tmp > 0xff:
+        if tmp >= 1 << 8:
             tmp >>= 8
             shift += 8
-        if tmp > 0xf:
+        if tmp >= 1 << 4:
             tmp >>= 4
             shift += 4
-        if tmp > 3:
+        if tmp >= 1 << 2:
             tmp >>= 2
             shift += 2
-        if tmp > 1:
+        if tmp >= 1 << 1:
             tmp >>= 1
             shift += 1
 
