@@ -8,10 +8,9 @@ def lowest_bit(val):
     return val & (-val)
 
 
-# Binary indexed tree.
+# O(n) space. Binary indexed tree, prefix.
 class NumArray:
-
-    # O(nlog(n) time. O(n) space.
+    # O(nlog(n)) time. O(1) space.
     def __init__(self, nums: List[int]):
         self.nums = nums
         self.tree = [0] * (len(nums) + 1)
