@@ -40,7 +40,7 @@ def _combinations_include_exclude(pool, r, result, combination, index):
 
 
 def combinations_iterative(pool, r=None):
-    # See CPython:
+    # See CPython itertools.combinations():
     # https://docs.python.org/2/library/itertools.html#itertools.combinations
     # https://github.com/python/cpython/blob/bf623ae8843dc30b28c574bec8d29fc14be59d86/Modules/itertoolsmodule.c#L2465
     pool = tuple(pool)

@@ -1,4 +1,5 @@
 import unittest
+
 import utils
 
 NOT_VISITED = -1
@@ -21,8 +22,8 @@ class Solution(object):
 
         visited_nodes = [NOT_VISITED] * num_courses
 
-        # See Guava Graphs.hasCycle:
-        # https://github.com/google/guava/blob/master/guava/src/com/google/common/graph/Graphs.java
+        # See Guava Graphs.hasCycle():
+        # https://github.com/google/guava/blob/674148d9d7a99c450fec9751edb9f826bc3f5784/guava/src/com/google/common/graph/Graphs.java#L56
         def has_cycle(node):
             if visited_nodes[node] != NOT_VISITED:
                 return visited_nodes[node] == PENDING

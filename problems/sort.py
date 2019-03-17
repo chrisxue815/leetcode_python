@@ -7,12 +7,12 @@ def binary_search(a, x, lo=0, hi=-1):
     if hi < 0:
         hi += n
 
-    # OpenJDK:
-    # http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8u40-b25/java/util/Arrays.java#1906
-    # CoreCLR:
-    # https://github.com/dotnet/coreclr/blob/master/src/classlibnative/bcltype/arrayhelpers.h#L62
-    # CPython:
-    # https://github.com/python/cpython/blob/master/Lib/bisect.py#L22
+    # See OpenJDK Arrays.binarySearch0():
+    # https://github.com/openjdk/jdk/blob/f37d9c8abca50b65ed232831a06d60c1d015013f/src/java.base/share/classes/java/util/Arrays.java#L1829
+    # See CoreCLR ArrayHelpers::BinarySearchBitwiseEquals():
+    # https://github.com/dotnet/coreclr/blob/310c1903838f048afc66121212342e0d55b50d11/src/classlibnative/bcltype/arrayhelpers.h#L62
+    # See CPython bisect.bisect_right():
+    # https://github.com/python/cpython/blob/898318b53d921298d1f1fcfa0f415844afbeb318/Lib/bisect.py#L15
     while lo <= hi:
         mid = lo + ((hi - lo) >> 1)
         mid_val = a[mid]
@@ -57,8 +57,10 @@ def binary_insert(a, x, left=0, right=-1):
 # Insertion
 
 def insertion_sort(a):
-    # see OpenJDK
-    # http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8u40-b25/java/util/Arrays.java#1345
+    # See OpenJDK Arrays.mergeSort(), Insertion sort on smallest arrays:
+    # https://github.com/openjdk/jdk/blob/f37d9c8abca50b65ed232831a06d60c1d015013f/src/java.base/share/classes/java/util/Arrays.java#L1349
+    # See CoreCLR ArrayHelpers::InsertionSort():
+    # https://github.com/dotnet/coreclr/blob/310c1903838f048afc66121212342e0d55b50d11/src/classlibnative/bcltype/arrayhelpers.h#L282
     n = len(a)
     for i in range(1, n):
         for j in range(i, 0, -1):
@@ -134,8 +136,9 @@ def _quick_sort(a, left, right):
         j -= 1
 
     # Optimization: tail call
-    # see CLR
+    # See CLR ArrayHelpers::QuickSort():
     # https://github.com/kasicass/sscli20/blob/dc64e12c9b835d4d373aa04978c0e8f1763b2e1b/clr/src/vm/comarrayhelpers.h#L77
+    # See CLR ArraySortHelper.QuickSort():
     # https://github.com/kasicass/sscli20/blob/dc64e12c9b835d4d373aa04978c0e8f1763b2e1b/clr/src/bcl/system/collections/generic/arraysorthelper.cs#L70
     _quick_sort(a, left, j)
     _quick_sort(a, i, right)
@@ -163,8 +166,8 @@ def selection_sort(a):
 
 def _merge_sort(dest, src, low, high):
     # Optimization: using insertion sort on smallest arrays (length < 7)
-    # see OpenJDK
-    # http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8u40-b25/java/util/Arrays.java#1338
+    # See OpenJDK Arrays.mergeSort():
+    # https://github.com/openjdk/jdk/blob/f37d9c8abca50b65ed232831a06d60c1d015013f/src/java.base/share/classes/java/util/Arrays.java#L1342
     if low >= high - 1:
         return
 
@@ -241,14 +244,12 @@ def _down_heap(a, root, n):
 
 
 def heap_sort(a):
-    # see CoreCLR:
-    # https://github.com/dotnet/coreclr/blob/master/src/classlibnative/bcltype/arrayhelpers.h#L242
-    # see OpenJDK:
-    # http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8u40-b25/java/util/PriorityQueue.java#712
-    # http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/8u40-b25/java/util/PriorityQueue.java#665
-    # see CPython:
-    # https://github.com/python/cpython/blob/master/Lib/heapq.py#L205
-    # https://github.com/python/cpython/blob/master/Lib/heapq.py#L258
+    # See CoreCLR ArrayHelpers::Heapsort():
+    # https://github.com/dotnet/coreclr/blob/310c1903838f048afc66121212342e0d55b50d11/src/classlibnative/bcltype/arrayhelpers.h#L242
+    # See OpenJDK PriorityQueue.heapify():
+    # https://github.com/openjdk/jdk/blob/f37d9c8abca50b65ed232831a06d60c1d015013f/src/java.base/share/classes/java/util/PriorityQueue.java#L724
+    # See CPython heapq.heapify():
+    # https://github.com/python/cpython/blob/898318b53d921298d1f1fcfa0f415844afbeb318/Lib/heapq.py#L168
     n = len(a)
 
     for i in range(n // 2 - 1, -1, -1):
@@ -260,8 +261,8 @@ def heap_sort(a):
 
 
 def radix_sort(a):
-    # see com.indeed.util.core.sort.RadixSort
-    # http://grepcode.com/file/repo1.maven.org/maven2/com.indeed/util-core/1.0.14/com/indeed/util/core/sort/RadixSort.java#7
+    # See com.indeed.util.core.sort.RadixSort.radixSort():
+    # https://github.com/indeedeng/util/blob/2e640a121abfcc6fad6947baeb7adecee1dc50ca/util-core/src/main/java/com/indeed/util/core/sort/RadixSort.java#L7
     n = len(a)
     count_scratch = [0] * 0x10000
     scratch = [0] * n

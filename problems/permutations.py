@@ -29,7 +29,7 @@ def _permutations_recursive(pool, r, result, start_index):
 
 
 def permutations_iterative(pool, r=None):
-    # See CPython:
+    # See CPython itertools.permutations():
     # https://docs.python.org/2/library/itertools.html#itertools.permutations
     # https://github.com/python/cpython/blob/bf623ae8843dc30b28c574bec8d29fc14be59d86/Modules/itertoolsmodule.c#L3153
     pool = tuple(pool)

@@ -1,4 +1,5 @@
 import unittest
+
 import utils
 
 
@@ -15,7 +16,7 @@ class Solution(object):
 
         a += a
 
-        # CPython fast search
+        # See CPython fast search
         # https://github.com/python/cpython/blob/master/Objects/stringlib/fastsearch.h
         return b in a
 
