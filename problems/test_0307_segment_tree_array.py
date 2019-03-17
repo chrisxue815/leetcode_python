@@ -31,7 +31,6 @@ class NumArray:
 
         self.nums = nums
         self.num_leaves = num_leaves
-        self.leaf_start = leaf_start
         self.tree = tree
 
     # O(log(n)) time. O(1) space.
