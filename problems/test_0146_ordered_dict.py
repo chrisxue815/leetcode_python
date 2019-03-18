@@ -4,7 +4,7 @@ import unittest
 import utils
 
 
-# O(capacity) space. Hash table, linked list.
+# O(capacity) space. Hash table, linked list, ordered dict.
 class LRUCache:
     # O(1) time. O(1) space.
     def __init__(self, capacity: int):
