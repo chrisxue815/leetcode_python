@@ -12,6 +12,7 @@ class Solution:
 
         prev = nums[0]
         i = 1
+
         while i < len(nums):
             if nums[i] != prev:
                 break
@@ -21,24 +22,16 @@ class Solution:
 
         result = 2
         inc = prev < nums[i]
-        prev = nums[i]
 
-        for i in range(i, len(nums)):
-            num = nums[i]
+        for i in range(i + 1, len(nums)):
             if inc:
-                if num < prev:
+                if nums[i - 1] > nums[i]:
                     result += 1
-                    prev = num
                     inc = not inc
-                else:
-                    prev = num
             else:
-                if num > prev:
+                if nums[i - 1] < nums[i]:
                     result += 1
-                    prev = num
                     inc = not inc
-                else:
-                    prev = num
 
         return result
 
