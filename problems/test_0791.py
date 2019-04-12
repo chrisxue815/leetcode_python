@@ -33,7 +33,7 @@ class Test(unittest.TestCase):
 
         for case in cases:
             actual = Solution().customSortString(**case.args._asdict())
-            self.assertEqual(case.expected, actual)
+            self.assertEqual(case.expected, actual, msg=case.args)
 
 
 if __name__ == '__main__':

@@ -40,7 +40,7 @@ class Test(unittest.TestCase):
         for case in cases:
             root = TreeNode.from_array(case.args.root)
             actual = Solution().isBalanced(root)
-            self.assertEqual(case.expected, actual)
+            self.assertEqual(case.expected, actual, msg=case.args)
 
 
 if __name__ == '__main__':

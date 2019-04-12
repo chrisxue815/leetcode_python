@@ -32,7 +32,7 @@ class Test(unittest.TestCase):
         for case in cases:
             head = ListNode.from_array(case.args.head)
             actual = Solution().numComponents(head, case.args.g)
-            self.assertEqual(case.expected, actual)
+            self.assertEqual(case.expected, actual, msg=case.args)
 
 
 if __name__ == '__main__':

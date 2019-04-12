@@ -1,4 +1,5 @@
 import unittest
+
 import utils
 
 
@@ -31,13 +32,13 @@ class Test(unittest.TestCase):
 
         for case in cases:
             actual = Solution().diStringMatch(**case.args._asdict())
-            self.assertCountEqual(list(range(len(case.args.s) + 1)), actual)
+            self.assertCountEqual(list(range(len(case.args.s) + 1)), actual, msg=case.args)
 
             for i in range(len(case.args.s)):
                 if case.args.s[i] == 'I':
-                    self.assertLess(actual[i], actual[i + 1])
+                    self.assertLess(actual[i], actual[i + 1], msg=case.args)
                 else:
-                    self.assertGreater(actual[i], actual[i + 1])
+                    self.assertGreater(actual[i], actual[i + 1], msg=case.args)
 
 
 if __name__ == '__main__':

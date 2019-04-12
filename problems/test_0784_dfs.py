@@ -39,7 +39,7 @@ class Test(unittest.TestCase):
 
         for case in cases:
             actual = Solution().letterCasePermutation(**case.args._asdict())
-            self.assertCountEqual(case.expected, actual)
+            self.assertCountEqual(case.expected, actual, msg=case.args)
 
 
 if __name__ == '__main__':

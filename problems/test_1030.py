@@ -49,7 +49,7 @@ class Test(unittest.TestCase):
 
             i = 0
             for expected in case.expected:
-                self.assertCountEqual(expected, actual[i:i + len(expected)])
+                self.assertCountEqual(expected, actual[i:i + len(expected)], msg=case.args)
                 i += len(expected)
 
 

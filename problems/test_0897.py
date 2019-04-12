@@ -38,7 +38,7 @@ class Test(unittest.TestCase):
             root = TreeNode.from_array(case.args.root)
             actual = Solution().increasingBST(root)
             actual = actual.to_array()
-            self.assertEqual(case.expected, actual)
+            self.assertEqual(case.expected, actual, msg=case.args)
 
 
 if __name__ == '__main__':

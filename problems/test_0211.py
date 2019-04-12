@@ -61,7 +61,7 @@ class Test(unittest.TestCase):
                     obj = cls(*parameters)
                 else:
                     actual = getattr(obj, func)(*parameters)
-                    self.assertEqual(expected, actual)
+                    self.assertEqual(expected, actual, msg=case.args)
 
 
 if __name__ == '__main__':

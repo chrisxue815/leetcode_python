@@ -36,7 +36,7 @@ class Test(unittest.TestCase):
             root = TreeNode.from_array(case.args.root)
             actual = Solution().pruneTree(root)
             actual = TreeNode.to_array_static(actual)
-            self.assertEqual(case.expected, actual)
+            self.assertEqual(case.expected, actual, msg=case.args)
 
 
 if __name__ == '__main__':

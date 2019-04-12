@@ -43,11 +43,11 @@ class Test(unittest.TestCase):
 
         for case in cases:
             actual = Solution().gardenNoAdj(**case.args._asdict())
-            self.check_answer(actual, case.args.paths)
+            self.check_answer(actual, case)
 
-    def check_answer(self, colors, paths):
-        for x, y in paths:
-            self.assertNotEqual(colors[x - 1], colors[y - 1])
+    def check_answer(self, actual, case):
+        for x, y in case.args.path:
+            self.assertNotEqual(actual[x - 1], actual[y - 1], msg=case.args)
 
 
 if __name__ == '__main__':

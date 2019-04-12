@@ -54,7 +54,7 @@ class Test(unittest.TestCase):
 
             for search in case.args.searches:
                 actual = magic_dict.search(search.word)
-                self.assertEqual(search.expected, actual)
+                self.assertEqual(search.expected, actual, msg=case.args)
 
 
 if __name__ == '__main__':

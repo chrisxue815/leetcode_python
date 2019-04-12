@@ -50,7 +50,7 @@ class Test(unittest.TestCase):
 
         for case in cases:
             actual = Solution().findOrder(**case.args._asdict())
-            self.assertIn(actual, case.expected)
+            self.assertIn(actual, case.expected, msg=case.args)
 
 
 if __name__ == '__main__':

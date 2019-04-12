@@ -1,6 +1,7 @@
-from undirected_graph import *
 import unittest
+
 import utils
+from undirected_graph import *
 
 
 # O(V+E) time. O(V) space. DFS.
@@ -34,7 +35,7 @@ class Test(unittest.TestCase):
             nodes = UndirectedGraphNode.parse(case.args.graph)
             for node in nodes.values():
                 actual = Solution().cloneGraph(node)
-                self.assertEqual(node, actual)
+                self.assertEqual(node, actual, msg=case.args)
 
 
 if __name__ == '__main__':

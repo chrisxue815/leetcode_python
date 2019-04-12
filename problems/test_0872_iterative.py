@@ -57,7 +57,7 @@ class Test(unittest.TestCase):
             root1 = TreeNode.from_array(case.args.root1)
             root2 = TreeNode.from_array(case.args.root2)
             actual = Solution().leafSimilar(root1, root2)
-            self.assertEqual(case.expected, actual)
+            self.assertEqual(case.expected, actual, msg=case.args)
 
 
 if __name__ == '__main__':

@@ -45,7 +45,7 @@ class Test(unittest.TestCase):
 
         for i, case in enumerate(cases):
             actual = Solution().networkDelayTime(**case.args._asdict())
-            self.assertEqual(case.expected, actual, "i={0}".format(i))
+            self.assertEqual(case.expected, actual, msg=case.args)
 
 
 if __name__ == '__main__':

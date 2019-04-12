@@ -60,7 +60,7 @@ class Test(unittest.TestCase):
 
         _, actual = self.run_with_mock_stdout(start_all_threads)
 
-        self.assertEqual(case.expected, actual)
+        self.assertEqual(case.expected, actual, msg=case.thread_order)
 
     @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
     def run_with_mock_stdout(self, func, mock_stdout):

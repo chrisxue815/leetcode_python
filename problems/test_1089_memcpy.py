@@ -50,7 +50,7 @@ class Test(unittest.TestCase):
 
         for case in cases:
             Solution().duplicateZeros(**case.args._asdict())
-            self.assertEqual(case.expected, case.args.arr)
+            self.assertEqual(case.expected, case.args.arr, msg=case.args)
 
 
 if __name__ == '__main__':

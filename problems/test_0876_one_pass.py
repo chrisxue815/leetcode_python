@@ -33,7 +33,7 @@ class Test(unittest.TestCase):
             head = ListNode.from_array(case.args.head)
             actual = Solution().middleNode(head)
             actual = actual.val
-            self.assertEqual(case.expected, actual)
+            self.assertEqual(case.expected, actual, msg=case.args)
 
 
 if __name__ == '__main__':

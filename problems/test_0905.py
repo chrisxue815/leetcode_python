@@ -1,4 +1,5 @@
 import unittest
+
 import utils
 
 
@@ -35,14 +36,14 @@ class Test(unittest.TestCase):
 
         for case in cases:
             actual = Solution().sortArrayByParity(**case.args._asdict())
-            self.assertCountEqual(case.args.a, actual)
+            self.assertCountEqual(case.args.a, actual, msg=case.args)
 
             i = 0
             while i < len(actual) and actual[i] & 1 == 0:
                 i += 1
 
             for i in range(i, len(actual)):
-                self.assertEqual(1, actual[i] & 1)
+                self.assertEqual(1, actual[i] & 1, msg=case.args)
 
 
 if __name__ == '__main__':
