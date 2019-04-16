@@ -35,7 +35,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().sortArrayByParity(**case.args._asdict())
+            actual = Solution().sortArrayByParity(**case.args.__dict__)
             self.assertCountEqual(case.args.a, actual, msg=case.args)
 
             i = 0

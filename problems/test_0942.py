@@ -31,7 +31,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().diStringMatch(**case.args._asdict())
+            actual = Solution().diStringMatch(**case.args.__dict__)
             self.assertCountEqual(list(range(len(case.args.s) + 1)), actual, msg=case.args)
 
             for i in range(len(case.args.s)):

@@ -42,11 +42,11 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().gardenNoAdj(**case.args._asdict())
+            actual = Solution().gardenNoAdj(**case.args.__dict__)
             self.check_answer(actual, case)
 
     def check_answer(self, actual, case):
-        for x, y in case.args.path:
+        for x, y in case.args.paths:
             self.assertNotEqual(actual[x - 1], actual[y - 1], msg=case.args)
 
 

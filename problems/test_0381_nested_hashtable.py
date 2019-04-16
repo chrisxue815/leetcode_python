@@ -64,7 +64,7 @@ class Test(unittest.TestCase):
 
         num_samples = 10000
         counter = collections.Counter(rand_collection.getRandom() for _ in range(num_samples))
-        self.assertAlmostEqual(counter[1] / float(num_samples), 0.4, delta=0.01)
+        self.assertAlmostEqual(counter[1] / float(num_samples), 0.4, delta=0.1)
 
         self.assertEqual(True, rand_collection.remove(1))
         self.assertEqual(True, rand_collection.remove(1))

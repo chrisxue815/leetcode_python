@@ -45,7 +45,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
-            actual = Solution().findMinHeightTrees(**case.args._asdict())
+            actual = Solution().findMinHeightTrees(**case.args.__dict__)
             self.assertEqual(case.expected, actual, msg=case.args)
 
 
