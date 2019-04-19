@@ -5,7 +5,7 @@ from typing import List
 import utils
 
 
-# O(n^2) time. O(n) space. Graph, BFS.
+# O(n) time. O(n) space. Graph, BFS.
 class Solution:
     def minMutation(self, start: str, end: str, bank: List[str]) -> int:
         bank = set(bank)
@@ -17,27 +17,22 @@ class Solution:
 
         while q:
             curr, distance = q.popleft()
-            successors = []
 
-            for nxt in bank:
-                diff = 0
-
-                for a, b in zip(curr, nxt):
-                    if a == b:
+            for i in range(len(curr)):
+                for c in 'ATCG':
+                    if c == curr[i]:
                         continue
-                    if diff == 0:
-                        diff += 1
-                    elif diff == 1:
-                        break
-                else:
-                    if diff == 1:
-                        if nxt == end:
-                            return distance + 1
-                        successors.append(nxt)
 
-            bank.difference_update(successors)
-            for nxt in successors:
-                q.append((nxt, distance + 1))
+                    nxt = curr[:i] + c + curr[i + 1:]
+
+                    if nxt not in bank:
+                        continue
+
+                    if nxt == end:
+                        return distance + 1
+
+                    bank.remove(nxt)
+                    q.append((nxt, distance + 1))
 
         return -1
 
