@@ -31,14 +31,15 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
+            args = str(case.args)
             actual = Solution().diStringMatch(**case.args.__dict__)
-            self.assertCountEqual(list(range(len(case.args.s) + 1)), actual, msg=case.args)
+            self.assertCountEqual(list(range(len(case.args.s) + 1)), actual, msg=args)
 
             for i in range(len(case.args.s)):
                 if case.args.s[i] == 'I':
-                    self.assertLess(actual[i], actual[i + 1], msg=case.args)
+                    self.assertLess(actual[i], actual[i + 1], msg=args)
                 else:
-                    self.assertGreater(actual[i], actual[i + 1], msg=case.args)
+                    self.assertGreater(actual[i], actual[i + 1], msg=args)
 
 
 if __name__ == '__main__':

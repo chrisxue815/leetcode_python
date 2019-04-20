@@ -45,11 +45,12 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
+            args = str(case.args)
             actual = Solution().allCellsDistOrder(**case.args.__dict__)
 
             i = 0
             for expected in case.expected:
-                self.assertCountEqual(expected, actual[i:i + len(expected)], msg=case.args)
+                self.assertCountEqual(expected, actual[i:i + len(expected)], msg=args)
                 i += len(expected)
 
 

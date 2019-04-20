@@ -35,10 +35,11 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
+            args = str(case.args)
             root = TreeNode.from_array(case.args.root)
             actual = Solution().increasingBST(root)
             actual = actual.to_array()
-            self.assertEqual(case.expected, actual, msg=case.args)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':

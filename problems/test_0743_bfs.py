@@ -44,8 +44,9 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for i, case in enumerate(cases):
+            args = str(case.args)
             actual = Solution().networkDelayTime(**case.args.__dict__)
-            self.assertEqual(case.expected, actual, msg=case.args)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':

@@ -35,15 +35,16 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
+            args = str(case.args)
             actual = Solution().sortArrayByParity(**case.args.__dict__)
-            self.assertCountEqual(case.args.a, actual, msg=case.args)
+            self.assertCountEqual(case.args.a, actual, msg=args)
 
             i = 0
             while i < len(actual) and actual[i] & 1 == 0:
                 i += 1
 
             for i in range(i, len(actual)):
-                self.assertEqual(1, actual[i] & 1, msg=case.args)
+                self.assertEqual(1, actual[i] & 1, msg=args)
 
 
 if __name__ == '__main__':

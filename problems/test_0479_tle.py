@@ -42,8 +42,9 @@ class Test(unittest.TestCase):
 
         # The last 2 tests are too slow
         for case in cases[:-2]:
+            args = str(case.args)
             actual = Solution().largestPalindrome(**case.args.__dict__)
-            self.assertEqual(case.expected, actual, msg=case.args)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':

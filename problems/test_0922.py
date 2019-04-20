@@ -36,11 +36,12 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
+            args = str(case.args)
             actual = Solution().sortArrayByParityII(**case.args.__dict__)
-            self.assertCountEqual(case.args.a, actual, msg=case.args)
+            self.assertCountEqual(case.args.a, actual, msg=args)
 
             for i, num in enumerate(actual):
-                self.assertEqual(i & 1, num & 1, msg=case.args)
+                self.assertEqual(i & 1, num & 1, msg=args)
 
 
 if __name__ == '__main__':

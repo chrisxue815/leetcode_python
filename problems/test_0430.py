@@ -92,10 +92,11 @@ class Test(unittest.TestCase):
             utils.solve_references(case.args.head)
             utils.solve_references(case.expected)
 
+            args = str(case.args)
             actual = Solution().flatten(**case.args.__dict__)
 
-            self.assertEqual(Node.encode(case.expected), Node.encode(actual), msg=case.args)
-            Node.assert_equal(self, case.expected, actual, msg=case.args)
+            self.assertEqual(Node.encode(case.expected), Node.encode(actual), msg=args)
+            Node.assert_equal(self, case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':

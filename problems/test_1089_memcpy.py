@@ -49,8 +49,9 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
+            args = str(case.args)
             Solution().duplicateZeros(**case.args.__dict__)
-            self.assertEqual(case.expected, case.args.arr, msg=case.args)
+            self.assertEqual(case.expected, case.args.arr, msg=args)
 
 
 if __name__ == '__main__':

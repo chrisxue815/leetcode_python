@@ -67,6 +67,7 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
+            args = str(case.args)
             obj = None
 
             for func, parameters, expected in zip(case.functions, case.args, case.expected):
@@ -74,7 +75,7 @@ class Test(unittest.TestCase):
                     obj = cls(*parameters)
                 else:
                     actual = getattr(obj, func)(*parameters)
-                    self.assertEqual(expected, actual, msg=case.args)
+                    self.assertEqual(expected, actual, msg=args)
 
 
 if __name__ == '__main__':

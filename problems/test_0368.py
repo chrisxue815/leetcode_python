@@ -46,8 +46,9 @@ class Test(unittest.TestCase):
         cases = utils.load_test_json(__file__).test_cases
 
         for case in cases:
+            args = str(case.args)
             actual = Solution().largestDivisibleSubset(**case.args.__dict__)
-            self.assertIn(actual, case.expected, msg=case.args)
+            self.assertIn(actual, case.expected, msg=args)
 
 
 if __name__ == '__main__':
