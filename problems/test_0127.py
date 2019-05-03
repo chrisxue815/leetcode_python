@@ -1,12 +1,11 @@
 import collections
-import heapq
 import unittest
 from typing import List
 
 import utils
 
 
-# O(n) time. O(n) space. Graph.
+# O(n) time. O(n) space. BFS.
 class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
         if endWord not in wordList:
@@ -19,10 +18,11 @@ class Solution:
                 graph[wildcard].add(word)
 
         visited = set()
-        q = [(1, beginWord)]
+        q = collections.deque()
+        q.append((1, beginWord))
 
         while q:
-            distance, curr = heapq.heappop(q)
+            distance, curr = q.pop()
             if curr in visited:
                 continue
             visited.add(curr)
@@ -35,7 +35,7 @@ class Solution:
                     if nxt == endWord:
                         return distance
                     if nxt not in visited:
-                        heapq.heappush(q, (distance, nxt))
+                        q.append((distance, nxt))
 
         return 0
 
