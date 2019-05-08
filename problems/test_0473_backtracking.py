@@ -16,18 +16,19 @@ class Solution:
         if r:
             return False
 
-        sums = [0] * 4
+        nums.sort(reverse=True)  # TLE without this line
+        targets = [side] * 4
 
         def dfs(index):
             if index == len(nums):
                 return True
 
             for i in range(4):
-                if sums[i] + nums[index] <= side:
-                    sums[i] += nums[index]
+                if targets[i] >= nums[index]:
+                    targets[i] -= nums[index]
                     if dfs(index + 1):
                         return True
-                    sums[i] -= nums[index]
+                    targets[i] += nums[index]
 
             return False
 
