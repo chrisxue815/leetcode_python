@@ -1,13 +1,12 @@
 import unittest
+from typing import List
+
+import utils
 
 
+# O(n^2) time. O(1) space. Brute-force.
 class Solution(object):
-    def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
         for i, a in enumerate(nums):
             for j, b in enumerate(nums[i + 1:]):
                 if a + b == target:
@@ -16,13 +15,12 @@ class Solution(object):
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([2, 7, 11, 15], 9, [0, 1])
-        self._test([11, 2, 7, 15], 9, [1, 2])
-        self._test([2, 7, 11, 7, 15], 14, [1, 3])
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, nums, target, expected):
-        actual = Solution().twoSum(nums, target)
-        self.assertCountEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().twoSum(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
