@@ -1,4 +1,7 @@
 import unittest
+from typing import List
+
+import utils
 
 
 def _index_of(a, x, lo, hi):
@@ -14,13 +17,9 @@ def _index_of(a, x, lo, hi):
     return -1
 
 
+# O(nlog(n)) time. O(1) space. Binary search.
 class Solution(object):
-    def twoSum(self, numbers, target):
-        """
-        :type numbers: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
         n = len(numbers)
         for i in range(n):
             x = target - numbers[i]
@@ -31,12 +30,12 @@ class Solution(object):
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([2, 7, 11, 15], 9, [1, 2])
-        self._test([-5, -2, 7, 11, 15], 9, [2, 4])
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, numbers, target, expected):
-        actual = Solution().twoSum(numbers, target)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().twoSum(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
