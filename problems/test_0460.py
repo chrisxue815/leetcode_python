@@ -38,7 +38,7 @@ class LinkedList:
         self.sentinel.prev = self.sentinel
         self.sentinel.next = self.sentinel
 
-    def add_first(self, curr):
+    def add_head(self, curr):
         self.sentinel.add_after(curr)
 
     def head(self):
@@ -69,7 +69,7 @@ class LFUCache:
             self._increment(curr)
         elif self.capacity:
             if len(self.keys) >= self.capacity:
-                self._remove_first()
+                self._remove_head()
 
             curr = ListNode(key, value)
             self.keys[key] = curr
@@ -99,7 +99,7 @@ class LFUCache:
         else:
             del self.counts[curr.count]
 
-    def _remove_first(self):
+    def _remove_head(self):
         curr = self.queue.head()
         del self.keys[curr.key]
         self._remove_from_counts(curr)
@@ -110,7 +110,7 @@ class LFUCache:
         if tail:
             tail.add_after(curr)
         else:
-            self.queue.add_first(curr)
+            self.queue.add_head(curr)
 
         self.counts[curr.count] = curr
 
