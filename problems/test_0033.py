@@ -1,13 +1,11 @@
 import unittest
+from typing import List
+
+import utils
 
 
-class Solution(object):
-    def search(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: int
-        """
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
         lo = 0
         hi = len(nums) - 1
 
@@ -21,29 +19,28 @@ class Solution(object):
             lo_val = nums[lo]
             hi_val = nums[hi]
 
-            if mid_val >= lo_val:
-                if target > mid_val or target < lo_val:
-                    lo = mid + 1
-                else:
-                    hi = mid - 1
-            elif mid_val < lo_val:
-                if target < mid_val or target > hi_val:
+            if lo_val <= mid_val:
+                if lo_val <= target <= mid_val:
                     hi = mid - 1
                 else:
                     lo = mid + 1
+            else:
+                if mid_val <= target <= hi_val:
+                    lo = mid + 1
+                else:
+                    hi = mid - 1
 
         return -1
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([4, 5, 6, 7, 0, 1, 2], 3, -1)
-        self._test([4, 5, 6, 7, 0, 1, 2], 5, 1)
-        self._test([1, 3], 2, -1)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, nums, target, expected):
-        actual = Solution().search(nums, target)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().search(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
