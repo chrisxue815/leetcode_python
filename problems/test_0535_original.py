@@ -1,5 +1,7 @@
 import unittest
 
+import utils
+
 
 class Codec:
     def encode(self, longUrl):
@@ -21,11 +23,13 @@ class Codec:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test('https://leetcode.com/problems/design-tinyurl')
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, url):
-        codec = Codec()
-        self.assertEqual(url, codec.decode(codec.encode(url)))
+        for case in cases:
+            args = str(case.args)
+            codec = Codec()
+            actual = codec.decode(codec.encode(**case.args.__dict__))
+            self.assertEqual(case.args.longUrl, actual, msg=args)
 
 
 if __name__ == '__main__':
