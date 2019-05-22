@@ -1,13 +1,12 @@
 import unittest
+
+import utils
 from tree import TreeNode
 
 
-class Solution(object):
-    def invertTree(self, root):
-        """
-        :type root: TreeNode
-        :rtype: TreeNode
-        """
+# O(n) time. O(log(n)) space. Recursive DFS.
+class Solution:
+    def invertTree(self, root: TreeNode) -> TreeNode:
         if not root:
             return None
 
@@ -16,13 +15,15 @@ class Solution(object):
 
 
 class Test(unittest.TestCase):
-    def test_serialize(self):
-        self._test([4, 2, 7, 1, 3, 6, 9], [4, 7, 2, 9, 6, 3, 1])
+    def test(self):
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, vals, expected):
-        root = TreeNode.from_array(vals)
-        actual = Solution().invertTree(root)
-        self.assertEqual(expected, actual.to_array())
+        for case in cases:
+            args = str(case.args)
+            root = TreeNode.from_array(case.args.root)
+            actual = Solution().invertTree(root)
+            actual = TreeNode.to_array(actual)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
