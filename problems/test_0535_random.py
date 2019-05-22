@@ -11,7 +11,6 @@ CHOICES = ''.join(
 
 class Codec:
     def __init__(self):
-
         self.short_to_long = {}
 
     def encode(self, longUrl):
