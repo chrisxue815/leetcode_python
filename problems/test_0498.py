@@ -1,57 +1,56 @@
 import unittest
+from typing import List
+
+import utils
 
 
-class Solution(object):
-    def findDiagonalOrder(self, matrix):
-        """
-        :type matrix: List[List[int]]
-        :rtype: List[int]
-        """
-        if not matrix:
+class Solution:
+    def findDiagonalOrder(self, matrix: List[List[int]]) -> List[int]:
+        if not matrix or not matrix[0]:
             return []
 
-        height = len(matrix)
-        width = len(matrix[0])
-        size = height * width
-        ret = [0] * size
-        topright = 1
-        row = col = 0
-        for i in range(size):
-            ret[i] = matrix[row][col]
-            if topright:
-                if row and col < width - 1:
-                    row -= 1
-                    col += 1
+        m = len(matrix)
+        n = len(matrix[0])
+        result = [0] * (m * n)
+        r = 0
+        c = 0
+        top_right = True
+
+        for i in range(m * n):
+            result[i] = matrix[r][c]
+
+            if top_right:
+                if c == n - 1:
+                    r += 1
+                    top_right = False
+                elif r == 0:
+                    c += 1
+                    top_right = False
                 else:
-                    topright = 0
-                    if col < width - 1:
-                        col += 1
-                    else:
-                        row += 1
+                    r -= 1
+                    c += 1
             else:
-                if col and row < height - 1:
-                    row += 1
-                    col -= 1
+                if r == m - 1:
+                    c += 1
+                    top_right = True
+                elif c == 0:
+                    r += 1
+                    top_right = True
                 else:
-                    topright = 1
-                    if row < height - 1:
-                        row += 1
-                    else:
-                        col += 1
-        return ret
+                    r += 1
+                    c -= 1
+
+        return result
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([
-            [1, 2, 3],
-            [4, 5, 6],
-            [7, 8, 9],
-        ], [1, 2, 4, 7, 5, 3, 6, 8, 9])
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, matrix, expected):
-        actual = Solution().findDiagonalOrder(matrix)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().findDiagonalOrder(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
