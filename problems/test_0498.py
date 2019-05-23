@@ -14,31 +14,26 @@ class Solution:
         result = [0] * (m * n)
         r = 0
         c = 0
-        top_right = True
 
         for i in range(m * n):
             result[i] = matrix[r][c]
 
-            if top_right:
-                if c == n - 1:
-                    r += 1
-                    top_right = False
-                elif r == 0:
-                    c += 1
-                    top_right = False
-                else:
-                    r -= 1
-                    c += 1
-            else:
+            if (r + c) & 1:
                 if r == m - 1:
                     c += 1
-                    top_right = True
                 elif c == 0:
                     r += 1
-                    top_right = True
                 else:
                     r += 1
                     c -= 1
+            else:
+                if c == n - 1:
+                    r += 1
+                elif r == 0:
+                    c += 1
+                else:
+                    r -= 1
+                    c += 1
 
         return result
 
