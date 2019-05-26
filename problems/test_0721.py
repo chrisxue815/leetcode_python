@@ -1,14 +1,6 @@
 import unittest
+
 import utils
-
-
-def find_root(parents, node):
-    root = node
-    while root != parents[root]:
-        root = parents[root]
-    while node != root:
-        node, parents[node] = parents[node], root
-    return root
 
 
 # O(nlog(n)) time. O(n) space. Union-find.
@@ -19,28 +11,35 @@ class Solution(object):
         :rtype: List[List[str]]
         """
         parents = list(range(len(accounts)))
-        email_to_id = {}
+        owners = {}
+        unions = {}
 
-        for i, account in enumerate(accounts):
-            for email in account[1:]:
-                j = email_to_id.get(email, -1)
-                if j == -1:
-                    email_to_id[email] = i
+        def find_root(node):
+            root = node
+            while root != parents[root]:
+                root = parents[root]
+            while node != root:
+                node, parents[node] = parents[node], root
+            return root
+
+        for curr, emails in enumerate(accounts):
+            for email in emails[1:]:
+                prev = owners.get(email, -1)
+                if prev == -1:
+                    owners[email] = curr
                 else:
-                    root = find_root(parents, j)
-                    parents[root] = i
+                    root = find_root(prev)
+                    parents[root] = curr
 
-        id_to_account = {}
+        for curr, emails in enumerate(accounts):
+            root = find_root(curr)
+            union = unions.get(root)
+            if not union:
+                unions[root] = union = (emails[0], set())
+            for email in emails[1:]:
+                union[1].add(email)
 
-        for i, account in enumerate(accounts):
-            root = find_root(parents, i)
-            merged = id_to_account.get(root, None)
-            if not merged:
-                id_to_account[root] = merged = (account[0], set())
-            for email in account[1:]:
-                merged[1].add(email)
-
-        return [[name] + list(sorted(emails)) for name, emails in id_to_account.values()]
+        return [[name] + list(sorted(emails)) for name, emails in unions.values()]
 
 
 class Test(unittest.TestCase):
