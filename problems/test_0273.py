@@ -58,7 +58,7 @@ def _to_words(words, nums):
     return before_len != len(words)
 
 
-class Solution(object):
+class Solution:
     def numberToWords(self, num):
         """
         :type num: int

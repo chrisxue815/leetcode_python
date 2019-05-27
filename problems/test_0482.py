@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def licenseKeyFormatting(self, s, k):
         """
         :type s: str

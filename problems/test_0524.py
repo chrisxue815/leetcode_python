@@ -16,7 +16,7 @@ def _compare(a, b):
         return 0
 
 
-class Solution(object):
+class Solution:
     def findLongestWord(self, a, d):
         """
         :type a: str

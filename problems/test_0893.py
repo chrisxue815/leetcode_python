@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(n) space. Hash table.
-class Solution(object):
+class Solution:
     def numSpecialEquivGroups(self, a):
         """
         :type a: List[str]

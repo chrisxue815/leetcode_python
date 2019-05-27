@@ -5,7 +5,7 @@ from tree import TreeNode
 
 
 # O(log(n)) time. O(1) space. Iterative pre-order DFS.
-class Solution(object):
+class Solution:
     def closestValue(self, root: TreeNode, target: float) -> float:
         result = 0
 

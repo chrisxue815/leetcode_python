@@ -2,7 +2,7 @@ import unittest
 
 
 # O(n) time. O(1) space. Induction.
-class Solution(object):
+class Solution:
     def spiralOrder(self, matrix):
         """
         :type matrix: List[List[int]]

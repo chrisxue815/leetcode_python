@@ -3,7 +3,7 @@ import unittest
 _offset = ord('0') << 1
 
 
-class Solution(object):
+class Solution:
     def addBinary(self, a, b):
         """
         :type a: str

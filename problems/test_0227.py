@@ -15,7 +15,7 @@ def scan_int(s, i):
     return i - 1, num
 
 
-class Solution(object):
+class Solution:
     def calculate(self, s):
         """
         :type s: str

@@ -3,7 +3,7 @@ import utils
 
 
 # O(nlog(n)) time. O(1) space. Greedy.
-class Solution(object):
+class Solution:
     def smallestRangeII(self, a, k):
         """
         :type a: List[int]

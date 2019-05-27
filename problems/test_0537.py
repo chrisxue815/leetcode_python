@@ -8,7 +8,7 @@ def _separate_re_im(x):
     return re, im
 
 
-class Solution(object):
+class Solution:
     def complexNumberMultiply(self, a, b):
         """
         :type a: str

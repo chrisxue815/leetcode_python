@@ -2,7 +2,7 @@ import unittest
 
 
 # O(n^2). Array slicing
-class Solution(object):
+class Solution:
     def isAdditiveNumber(self, num):
         """
         :type num: str

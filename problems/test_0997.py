@@ -3,7 +3,7 @@ import utils
 
 
 # O(T + N) time. O(N) space. Graph.
-class Solution(object):
+class Solution:
     def findJudge(self, N, trust):
         """
         :type N: int

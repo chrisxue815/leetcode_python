@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(1) space.
-class Solution(object):
+class Solution:
     def repeatedNTimes(self, a):
         """
         :type a: List[int]

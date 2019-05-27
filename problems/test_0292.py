@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def canWinNim(self, n):
         """
         :type n: int

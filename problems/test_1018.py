@@ -4,7 +4,7 @@ import utils
 
 
 # O(n) time. O(1) space. Bit manipulation.
-class Solution(object):
+class Solution:
     def prefixesDivBy5(self, A):
         """
         :type A: List[int]

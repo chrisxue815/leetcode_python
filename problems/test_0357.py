@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(1) space. DP.
-class Solution(object):
+class Solution:
     def countNumbersWithUniqueDigits(self, n):
         """
         :type n: int

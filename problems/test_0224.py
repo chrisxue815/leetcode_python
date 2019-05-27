@@ -3,7 +3,7 @@ import unittest
 _zero = ord('0')
 
 
-class Solution(object):
+class Solution:
     def calculate(self, s):
         """
         :type s: str

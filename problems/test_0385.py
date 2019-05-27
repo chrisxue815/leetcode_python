@@ -3,7 +3,7 @@ import nested_integer
 from nested_integer import NestedInteger
 
 
-class Solution(object):
+class Solution:
     def deserialize(self, s):
         """
         :type s: str

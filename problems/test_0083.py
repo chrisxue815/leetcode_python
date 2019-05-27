@@ -2,7 +2,7 @@ import unittest
 from linkedlist import ListNode
 
 
-class Solution(object):
+class Solution:
     def deleteDuplicates(self, head):
         """
         :type curr: ListNode

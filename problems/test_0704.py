@@ -3,7 +3,7 @@ import utils
 
 
 # O(log(n)) time. O(1) space. Binary search.
-class Solution(object):
+class Solution:
     def search(self, nums, target):
         """
         :type nums: List[int]

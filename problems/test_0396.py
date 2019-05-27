@@ -2,7 +2,7 @@ import unittest
 import itertools
 
 
-class Solution(object):
+class Solution:
     def maxRotateFunction(self, A):
         """
         :type A: List[int]

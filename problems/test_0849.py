@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(1) space. Iteration.
-class Solution(object):
+class Solution:
     def maxDistToClosest(self, seats):
         """
         :type seats: List[int]

@@ -15,7 +15,7 @@ def _palindrome(s, lo, hi, tolerate):
 
 
 # O(n). Two pointers, backtracking.
-class Solution(object):
+class Solution:
     def validPalindrome(self, s):
         """
         :type s: str

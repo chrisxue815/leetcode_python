@@ -5,7 +5,7 @@ import utils
 
 
 # O(n) time. O(n) space. Queue.
-class RecentCounter(object):
+class RecentCounter:
     def __init__(self):
         self.q = collections.deque()
 

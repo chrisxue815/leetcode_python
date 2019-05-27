@@ -21,7 +21,7 @@ def _stop_morris(root):
         root = root.right
 
 
-class Solution(object):
+class Solution:
     def recoverTree(self, root):
         """
         :type root: TreeNode

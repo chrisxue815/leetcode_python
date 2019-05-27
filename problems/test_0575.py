@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def distributeCandies(self, candies):
         """
         :type candies: List[int]

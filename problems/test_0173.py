@@ -2,14 +2,14 @@ import unittest
 from tree import TreeNode, null
 
 # Definition for a  binary tree node
-# class TreeNode(object):
+# class TreeNode:
 #     def __init__(self, x):
 #         self.val = x
 #         self.left = None
 #         self.right = None
 
 
-class BSTIterator(object):
+class BSTIterator:
 
     def __init__(self, root):
         """

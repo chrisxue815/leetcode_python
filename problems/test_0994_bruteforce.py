@@ -7,7 +7,7 @@ ROTTEN = 2
 
 
 # O(n^2) time. O(n) space. Brute-force.
-class Solution(object):
+class Solution:
     def orangesRotting(self, grid):
         """
         :type grid: List[List[int]]

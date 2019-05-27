@@ -4,7 +4,7 @@ import utils
 
 
 # DP, prefix.
-class NumArray(object):
+class NumArray:
 
     # O(n) time. O(n) space.
     def __init__(self, nums):

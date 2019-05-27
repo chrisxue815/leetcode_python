@@ -2,7 +2,7 @@ import unittest
 import collections
 
 
-class Solution(object):
+class Solution:
     def gameOfLife(self, board):
         """
         :type board: List[List[int]]

@@ -14,7 +14,7 @@ def remove_backspace(s):
 
 
 # O(n) time. O(n) space. Stack.
-class Solution(object):
+class Solution:
     def backspaceCompare(self, s, t):
         """
         :type s: str

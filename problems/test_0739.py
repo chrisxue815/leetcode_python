@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(n) space. Stack.
-class Solution(object):
+class Solution:
     def dailyTemperatures(self, temperatures):
         """
         :type temperatures: List[int]

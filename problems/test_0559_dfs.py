@@ -1,4 +1,4 @@
-class Node(object):
+class Node:
     """
     # Definition for a Node.
     """
@@ -9,7 +9,7 @@ class Node(object):
 
 
 # O(V) time. O(depth) space. Recursive DFS.
-class Solution(object):
+class Solution:
     def maxDepth(self, root):
         """
         :type root: Node

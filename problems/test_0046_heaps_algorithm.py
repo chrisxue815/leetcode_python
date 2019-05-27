@@ -18,7 +18,7 @@ def _permute(nums, result, n):
         _permute(nums, result, n)
 
 
-class Solution(object):
+class Solution:
     def permute(self, nums):
         """
         :type nums: List[int]

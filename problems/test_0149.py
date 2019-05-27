@@ -5,7 +5,7 @@ import numpy as np
 _inf = float('inf')
 
 
-class Solution(object):
+class Solution:
     def maxPoints(self, points):
         """
         :type points: List[Point]
@@ -42,7 +42,7 @@ class Solution(object):
 
 
 # Definition for a point.
-class Point(object):
+class Point:
     def __init__(self, a=0, b=0):
         self.x = a
         self.y = b

@@ -5,7 +5,7 @@ import utils
 
 
 # O(n^2) time. O(1) space. Brute-force.
-class Solution(object):
+class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         for i, a in enumerate(nums):
             for j, b in enumerate(nums[i + 1:]):

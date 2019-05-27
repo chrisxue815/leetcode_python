@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def nextGreaterElement(self, findNums, nums):
         """
         :type findNums: List[int]

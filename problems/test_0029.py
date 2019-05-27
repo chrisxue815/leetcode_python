@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def divide(self, dividend, divisor):
         """
         :type dividend: int

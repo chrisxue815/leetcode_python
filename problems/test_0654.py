@@ -2,7 +2,7 @@ import unittest
 from tree import TreeNode
 
 
-class Solution(object):
+class Solution:
     def constructMaximumBinaryTree(self, nums):
         """
         :type nums: List[int]

@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def frequencySort(self, s):
         """
         :type s: str

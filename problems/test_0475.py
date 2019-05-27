@@ -17,7 +17,7 @@ def _binary_search(a, x):
     return lo
 
 
-class Solution(object):
+class Solution:
     def findRadius(self, houses, heaters):
         """
         :type houses: List[int]

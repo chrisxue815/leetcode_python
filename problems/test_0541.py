@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def reverseStr(self, s, k):
         """
         :type s: str

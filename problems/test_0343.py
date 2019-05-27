@@ -3,7 +3,7 @@ import utils
 
 
 # O(1) time. O(1) space. Math.
-class Solution(object):
+class Solution:
     def integerBreak(self, n):
         """
         :type n: int

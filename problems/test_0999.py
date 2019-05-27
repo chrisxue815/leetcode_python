@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(1) space. Iteration.
-class Solution(object):
+class Solution:
     def numRookCaptures(self, board):
         """
         :type board: List[List[str]]

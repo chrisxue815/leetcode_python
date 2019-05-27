@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def __init__(self):
         self.num = 0
         self.result = []

@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def combine(self, n, k):
         """
         :type n: int

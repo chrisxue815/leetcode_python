@@ -3,7 +3,7 @@ import utils
 
 
 # O(n^2) time. O(n) space. DP.
-class Solution(object):
+class Solution:
     def minimumDeleteSum(self, s1, s2):
         """
         :type s1: str

@@ -2,7 +2,7 @@ import unittest
 
 
 # O(n) time. O(1) space. Greedy.
-class Solution(object):
+class Solution:
     def minPatches(self, nums, n):
         """
         :type nums: List[int]

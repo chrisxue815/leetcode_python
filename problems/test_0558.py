@@ -1,4 +1,4 @@
-class Node(object):
+class Node:
     """
     # Definition for a QuadTree node.
     """
@@ -13,7 +13,7 @@ class Node(object):
 
 
 # O(n^2) time. O(n) space. Recursion.
-class Solution(object):
+class Solution:
     def intersect(self, a, b):
         """
         :type a: Node

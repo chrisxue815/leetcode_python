@@ -4,7 +4,7 @@ from tree import TreeNode
 
 
 # O(n) time. O(log(n)) space. Iterative in-order DFS, stack.
-class Solution(object):
+class Solution:
     def inorderTraversal(self, root):
         """
         :type root: TreeNode

@@ -3,7 +3,7 @@ import heapq
 
 
 # O(klog(n)) time. O(n) space. Binary heap.
-class Solution(object):
+class Solution:
     def findMaximizedCapital(self, k, w, profits, capitals):
         """
         :type k: int

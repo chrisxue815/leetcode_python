@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def solveSudoku(self, board):
         """
         :type board: List[List[str]]

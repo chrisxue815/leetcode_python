@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def addOperators(self, num, target):
         """
         :type num: str

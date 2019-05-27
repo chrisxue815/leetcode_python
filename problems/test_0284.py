@@ -3,7 +3,7 @@ import unittest
 
 # Below is the interface for Iterator, which is already defined for you.
 
-class Iterator(object):
+class Iterator:
     def __init__(self, nums):
         """
         Initializes an iterator object to the beginning of a list.
@@ -28,7 +28,7 @@ class Iterator(object):
         return self.nums[self.curr]
 
 
-class PeekingIterator(object):
+class PeekingIterator:
     def __init__(self, iterator):
         """
         Initialize your data structure here.

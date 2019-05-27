@@ -41,7 +41,7 @@ def _kth(a, b, k):
             return (max_of_left + min_of_right) / 2.0
 
 
-class Solution(object):
+class Solution:
     def findMedianSortedArrays(self, a, b):
         k = (len(a) + len(b) - 1) / 2.0
         return _kth(a, b, k)

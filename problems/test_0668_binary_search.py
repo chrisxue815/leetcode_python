@@ -9,7 +9,7 @@ def _count_smaller_or_equal_numbers(num, m, n):
 
 
 # O(min(m, n) * log(mn) time. O(1) space. Binary search.
-class Solution(object):
+class Solution:
     def findKthNumber(self, m, n, k):
         """
         :type m: int

@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def convert(self, s, n):
         """
         :type s: str

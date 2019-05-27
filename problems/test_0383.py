@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def canConstruct(self, ransomNote, magazine):
         """
         :type ransomNote: str

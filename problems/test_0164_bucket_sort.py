@@ -3,7 +3,7 @@ import math
 
 
 # O(n) time. O(n) space. Bucket sort.
-class Solution(object):
+class Solution:
     def maximumGap(self, nums):
         """
         :type nums: List[int]

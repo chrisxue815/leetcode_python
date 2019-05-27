@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def exclusiveTime(self, n, logs):
         """
         :type n: int

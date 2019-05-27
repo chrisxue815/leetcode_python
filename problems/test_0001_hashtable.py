@@ -5,7 +5,7 @@ import utils
 
 
 # O(n) time. O(n) space. Hash table.
-class Solution(object):
+class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         num_to_index = {}
 

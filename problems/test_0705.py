@@ -5,14 +5,14 @@ import utils
 CAPACITY = 10103
 
 
-class Entry(object):
+class Entry:
     def __init__(self, h, key, n):
         self.h = h  # hash
         self.key = key
         self.n = n  # next
 
 
-class MyHashSet(object):
+class MyHashSet:
     def __init__(self):
         """
         Initialize your data structure here.

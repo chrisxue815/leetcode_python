@@ -4,7 +4,7 @@ import unittest
 from tree import TreeNode, null
 
 
-class Solution(object):
+class Solution:
 
     def largestValues(self, root):
         """

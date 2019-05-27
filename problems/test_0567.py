@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def checkInclusion(self, s1, s2):
         """
         :type s1: str

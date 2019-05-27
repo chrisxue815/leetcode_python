@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def __init__(self):
         self.candidates = None
         self.num_candidates = 0

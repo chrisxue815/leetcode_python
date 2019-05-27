@@ -3,7 +3,7 @@ import utils
 
 
 # O(mn) time. O(n) space. DFS.
-class Solution(object):
+class Solution:
     def hitBricks(self, grid, hits):
         """
         :type grid: List[List[int]]

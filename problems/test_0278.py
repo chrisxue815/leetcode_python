@@ -10,7 +10,7 @@ def isBadVersion(version):
     return version == _bad_version
 
 
-class Solution(object):
+class Solution:
     def firstBadVersion(self, n):
         """
         :type n: int

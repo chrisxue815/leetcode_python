@@ -47,7 +47,7 @@ def heappop(heap):
         return last
 
 
-class Solution(object):
+class Solution:
     def kSmallestPairs(self, nums1, nums2, k):
         """
         :type nums1: List[int]

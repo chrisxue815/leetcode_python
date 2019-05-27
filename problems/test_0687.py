@@ -3,7 +3,7 @@ from tree import TreeNode
 
 
 # O(n). Recursive post-order DFS.
-class Solution(object):
+class Solution:
     def longestUnivaluePath(self, root):
         """
         :type root: TreeNode

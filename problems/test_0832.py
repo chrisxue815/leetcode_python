@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(1) space. Array.
-class Solution(object):
+class Solution:
     def flipAndInvertImage(self, a):
         """
         :type a: List[List[int]]

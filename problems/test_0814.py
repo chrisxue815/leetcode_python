@@ -4,7 +4,7 @@ from tree import TreeNode
 
 
 # O(n) time. O(log(n)) space. Recursive post-order DFS.
-class Solution(object):
+class Solution:
     def pruneTree(self, root):
         """
         :type root: TreeNode

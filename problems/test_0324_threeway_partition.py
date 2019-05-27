@@ -26,7 +26,7 @@ def kth_smallest(nums, lo, hi, k):
 
 # Best case and average O(n), worst case O(n^2) time. O(1) space.
 # Quickselect, three-way partitioning, index mapping, math
-class Solution(object):
+class Solution:
     def wiggleSort(self, nums):
         """
         :type nums: List[int]

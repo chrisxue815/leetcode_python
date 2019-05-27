@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(1) space. Iteration.
-class Solution(object):
+class Solution:
     def toGoatLatin(self, s):
         """
         :type s: str

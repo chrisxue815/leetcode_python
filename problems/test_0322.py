@@ -3,7 +3,7 @@ import utils
 
 
 # O(nm) time. O(m) space. Space-optimized DP.
-class Solution(object):
+class Solution:
     def coinChange(self, coins, amount):
         """
         :type coins: List[int]

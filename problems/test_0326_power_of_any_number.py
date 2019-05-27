@@ -2,7 +2,7 @@ import unittest
 import math
 
 
-class Solution(object):
+class Solution:
     def isPowerOfThree(self, n):
         """
         :type n: int

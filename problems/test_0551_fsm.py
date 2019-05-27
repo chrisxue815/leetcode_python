@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def checkRecord(self, s):
         """
         :type s: str

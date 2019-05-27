@@ -5,7 +5,7 @@ _CDATA_CLOSE = ']]>'
 
 
 # O(n) time. O(n) space.
-class Solution(object):
+class Solution:
     def isValid(self, code):
         """
         :type code: str

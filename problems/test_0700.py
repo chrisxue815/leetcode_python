@@ -4,7 +4,7 @@ from tree import TreeNode
 
 
 # O(log(n)) time. O(1) space. Tail-call optimized recursive pre-order DFS.
-class Solution(object):
+class Solution:
     def searchBST(self, root, val):
         """
         :type root: TreeNode

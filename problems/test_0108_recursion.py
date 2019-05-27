@@ -14,7 +14,7 @@ def bst(nums, left, right):
     return node
 
 
-class Solution(object):
+class Solution:
 
     def sortedArrayToBST(self, nums):
         """

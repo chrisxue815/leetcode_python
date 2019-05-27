@@ -28,7 +28,7 @@ def iter_sizes(lo, hi):
 
 
 # O(n*m^n) time. O(2^(3*m)) space. Space-optimized DP.
-class Solution(object):
+class Solution:
     def shoppingOffers(self, price, special, needs):
         """
         :type price: List[int]

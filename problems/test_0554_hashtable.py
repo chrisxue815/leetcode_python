@@ -2,7 +2,7 @@ import unittest
 import collections
 
 
-class Solution(object):
+class Solution:
     def leastBricks(self, wall):
         """
         :type wall: List[List[int]]

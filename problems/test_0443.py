@@ -2,7 +2,7 @@ import unittest
 
 
 # O(n) time. O(1) space.
-class Solution(object):
+class Solution:
     def compress(self, chars):
         """
         :type chars: List[str]

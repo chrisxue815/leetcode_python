@@ -3,7 +3,7 @@ import heapq
 
 
 # O(nlog(h)) time. O(h) space. Binary heap.
-class Solution(object):
+class Solution:
     def smallestRange(self, nums):
         """
         :type nums: List[List[int]]

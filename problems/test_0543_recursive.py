@@ -10,7 +10,7 @@ def _height_and_diameter(root):
     return max(lh, rh) + 1, max(ld, rd, lh + rh)
 
 
-class Solution(object):
+class Solution:
     def diameterOfBinaryTree(self, root):
         """
         :type root: TreeNode

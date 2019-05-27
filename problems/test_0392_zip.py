@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def isSubsequence(self, s, t):
         """
         :type s: str

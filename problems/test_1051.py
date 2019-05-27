@@ -4,7 +4,7 @@ import utils
 
 
 # O(n) time. O(n) space. Counting sort.
-class Solution(object):
+class Solution:
     def heightChecker(self, heights):
         """
         :type heights: List[int]

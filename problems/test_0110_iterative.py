@@ -4,7 +4,7 @@ from tree import TreeNode
 
 
 # O(n) time. O(log(n)) space. Iterative post-order DFS, stack.
-class Solution(object):
+class Solution:
     def isBalanced(self, root):
         """
         :type root: TreeNode

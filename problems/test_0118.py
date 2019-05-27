@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def generate(self, numRows):
         """
         :type numRows: int

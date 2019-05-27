@@ -1,4 +1,4 @@
-class Node(object):
+class Node:
     """
     # Definition for a Node.
     """
@@ -9,7 +9,7 @@ class Node(object):
 
 
 # O(V) time. O(max number of nodes on the same level) space. BFS.
-class Solution(object):
+class Solution:
     def maxDepth(self, root):
         """
         :type root: Node

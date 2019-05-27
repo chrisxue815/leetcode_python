@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def exist(self, board, word):
         """
         :type board: List[List[str]]

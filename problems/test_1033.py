@@ -4,7 +4,7 @@ import utils
 
 
 # O(1) time. O(1) space. Logic.
-class Solution(object):
+class Solution:
     def numMovesStones(self, a, b, c):
         """
         :type a: int

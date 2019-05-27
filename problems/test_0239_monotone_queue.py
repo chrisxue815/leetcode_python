@@ -2,7 +2,7 @@ import unittest
 import collections
 
 
-class MaxQueue(object):
+class MaxQueue:
     def __init__(self):
         self.queue = collections.deque()
 
@@ -24,7 +24,7 @@ class MaxQueue(object):
 
 
 # O(n) time. O(n) space. Monotone priority queue.
-class Solution(object):
+class Solution:
     def maxSlidingWindow(self, nums, k):
         """
         :type nums: List[int]

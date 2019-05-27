@@ -3,7 +3,7 @@ import collections
 from tree import TreeNode
 
 
-class Solution(object):
+class Solution:
     def findDuplicateSubtrees(self, root):
         """
         :type root: TreeNode

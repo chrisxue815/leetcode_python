@@ -3,7 +3,7 @@ import utils
 
 
 # O(nlog(n)) time. O(1) space. Geometry, sorting.
-class Solution(object):
+class Solution:
     def largestPerimeter(self, a):
         """
         :type a: List[int]

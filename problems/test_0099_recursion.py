@@ -2,7 +2,7 @@ import unittest
 from tree import TreeNode
 
 
-class Solution(object):
+class Solution:
     def __init__(self):
         self.prev = None
         self.error1 = None

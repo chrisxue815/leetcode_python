@@ -2,7 +2,7 @@ import unittest
 import collections
 
 
-class Solution(object):
+class Solution:
     def longestPalindrome(self, s):
         """
         :type s: str

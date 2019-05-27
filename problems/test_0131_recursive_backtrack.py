@@ -3,7 +3,7 @@ import unittest
 import utils
 
 
-class Solution(object):
+class Solution:
     def __init__(self):
         self.s = None
         self.n = 0

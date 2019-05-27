@@ -16,7 +16,7 @@ def bit_count(x):
 
 
 # O(n) time. O(1) space. Bit count.
-class Solution(object):
+class Solution:
     def countPrimeSetBits(self, l, r):
         """
         :type l: int

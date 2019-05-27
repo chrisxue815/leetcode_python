@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def trap(self, heights):
         """
         :type heights: List[int]

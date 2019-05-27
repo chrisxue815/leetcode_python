@@ -3,7 +3,7 @@ import math
 import random
 
 
-class Solution(object):
+class Solution:
     def __init__(self, nums):
         """
         :type nums: List[int]

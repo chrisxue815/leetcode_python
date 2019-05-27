@@ -3,7 +3,7 @@ from tree import TreeNode
 
 
 # O(n). BFS.
-class Solution(object):
+class Solution:
     def findSecondMinimumValue(self, root):
         """
         :type root: TreeNode

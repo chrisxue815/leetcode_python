@@ -2,7 +2,7 @@ import unittest
 
 
 # O(n). Mathematical modelling and reasoning
-class Solution(object):
+class Solution:
     def canCompleteCircuit(self, gas, cost):
         """
         :type gas: List[int]

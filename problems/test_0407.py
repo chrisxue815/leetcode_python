@@ -2,7 +2,7 @@ import heapq
 import unittest
 
 
-class Solution(object):
+class Solution:
     def trapRainWater(self, heightMap):
         """
         :type heightMap: List[List[int]]

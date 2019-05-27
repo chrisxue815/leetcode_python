@@ -3,7 +3,7 @@ import unittest
 _a = ord('a')
 
 
-class Solution(object):
+class Solution:
     def maxProduct(self, words):
         """
         :type words: List[str]

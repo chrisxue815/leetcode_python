@@ -2,7 +2,7 @@ import unittest
 from tree import TreeNode
 
 
-class Solution(object):
+class Solution:
     def countNodes(self, root):
         if not root:
             return 0

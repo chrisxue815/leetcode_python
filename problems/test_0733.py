@@ -2,7 +2,7 @@ import unittest
 
 
 # O(n) time. O(sqrt(n)) space. DFS.
-class Solution(object):
+class Solution:
     def floodFill(self, image, sr, sc, new_color):
         """
         :type image: List[List[int]]

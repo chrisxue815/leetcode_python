@@ -12,7 +12,7 @@ def _balanced(root):
     return rb and abs(lh - rh) <= 1, max(lh, rh) + 1
 
 
-class Solution(object):
+class Solution:
     def isBalanced(self, root):
         """
         :type root: TreeNode

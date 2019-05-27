@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def __init__(self):
         self.nums = None
         self.n = 0

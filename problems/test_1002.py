@@ -4,7 +4,7 @@ import utils
 
 
 # O(n) time. O(1) space. Hash table.
-class Solution(object):
+class Solution:
     def commonChars(self, A):
         """
         :type A: List[str]

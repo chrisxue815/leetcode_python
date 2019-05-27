@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def pacificAtlantic(self, matrix):
         """
         :type matrix: List[List[int]]

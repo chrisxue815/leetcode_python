@@ -3,7 +3,7 @@ import unittest
 import utils
 
 
-class Solution(object):
+class Solution:
     def largestPalindrome(self, n):
         """
         :type n: int

@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(n) space. DP.
-class Solution(object):
+class Solution:
     def rob(self, nums):
         """
         :type nums: List[int]

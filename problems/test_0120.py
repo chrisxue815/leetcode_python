@@ -3,7 +3,7 @@ import utils
 
 
 # O(n^2) time. O(n) space. Space-optimized DP.
-class Solution(object):
+class Solution:
     def minimumTotal(self, triangle):
         """
         :type triangle: List[List[int]]

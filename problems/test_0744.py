@@ -2,7 +2,7 @@ import unittest
 
 
 # O(log(n)) time. O(1) space. Binary search.
-class Solution(object):
+class Solution:
     def nextGreatestLetter(self, letters, target):
         """
         :type letters: List[str]

@@ -13,7 +13,7 @@ def _perpendicular(a, b):
     return not a[0] * a[1] + b[0] * b[1]
 
 
-class Solution(object):
+class Solution:
     def validSquare(self, p1, p2, p3, p4):
         """
         :type p1: List[int]

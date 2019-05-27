@@ -8,7 +8,7 @@ def _has_sum(root, sum):
            or root.right and _has_sum(root.right, sum - root.val)
 
 
-class Solution(object):
+class Solution:
     def hasPathSum(self, root, sum):
         """
         :type root: TreeNode

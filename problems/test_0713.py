@@ -2,7 +2,7 @@ import unittest
 
 
 # O(n). Two pointers.
-class Solution(object):
+class Solution:
     def numSubarrayProductLessThanK(self, nums, k):
         """
         :type nums: List[int]

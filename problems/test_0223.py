@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def computeArea(self, A, B, C, D, E, F, G, H):
         """
         :type A: int

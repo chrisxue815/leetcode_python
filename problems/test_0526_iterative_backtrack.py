@@ -31,7 +31,7 @@ def is_beautiful(index, num):
         return num % index == 0
 
 
-class Solution(object):
+class Solution:
     def countArrangement(self, n):
         """
         :type n: int

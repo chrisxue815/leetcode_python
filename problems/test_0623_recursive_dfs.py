@@ -17,7 +17,7 @@ def add_row(root, v, d):
         root.right = node
 
 
-class Solution(object):
+class Solution:
     def addOneRow(self, root, v, d):
         """
         :type root: TreeNode

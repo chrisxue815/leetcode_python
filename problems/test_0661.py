@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def imageSmoother(self, m):
         """
         :type m: List[List[int]]

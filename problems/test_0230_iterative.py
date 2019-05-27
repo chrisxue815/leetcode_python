@@ -4,7 +4,7 @@ from tree import TreeNode
 
 # O(n) time. O(h) space. Iterative in-order traversal.
 # Optimization: self-balancing BST
-class Solution(object):
+class Solution:
     def kthSmallest(self, root, k):
         """
         :type root: TreeNode

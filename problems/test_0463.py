@@ -2,7 +2,7 @@ import unittest
 
 
 # O(n) time. O(1) space.
-class Solution(object):
+class Solution:
     def islandPerimeter(self, grid):
         """
         :type grid: List[List[int]]

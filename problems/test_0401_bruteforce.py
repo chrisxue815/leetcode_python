@@ -10,7 +10,7 @@ def count_ones(num):
     return count
 
 
-class Solution(object):
+class Solution:
     def readBinaryWatch(self, num):
         """
         :type num: int

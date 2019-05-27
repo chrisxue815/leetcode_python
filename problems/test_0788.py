@@ -19,7 +19,7 @@ def is_good(num):
 
 
 # O(n) time. O(1) space. Math, hash table.
-class Solution(object):
+class Solution:
     def rotatedDigits(self, n):
         """
         :type n: int

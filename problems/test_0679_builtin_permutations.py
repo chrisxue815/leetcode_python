@@ -22,7 +22,7 @@ def _dfs(nums):
 
 
 # n! * (n-1)! * ... * 1! * 4^n time. O(1) space. Backtracking.
-class Solution(object):
+class Solution:
     def judgePoint24(self, nums):
         """
         :type nums: List[int]

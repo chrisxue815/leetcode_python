@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def smallestFactorization(self, a):
         """
         :type a: int

@@ -18,7 +18,7 @@ def _index_of(a, x, lo, hi):
 
 
 # O(nlog(n)) time. O(1) space. Binary search.
-class Solution(object):
+class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         n = len(numbers)
         for i in range(n):

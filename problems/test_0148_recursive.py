@@ -38,7 +38,7 @@ def _sort(lo):
     return dummy.next
 
 
-class Solution(object):
+class Solution:
     def sortList(self, head):
         """
         :type head: ListNode

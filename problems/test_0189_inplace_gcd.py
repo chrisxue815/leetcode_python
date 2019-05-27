@@ -9,7 +9,7 @@ def gcd_euclid(a, b):
     return a
 
 
-class Solution(object):
+class Solution:
     def rotate(self, nums, k):
         """
         :type nums: List[int]

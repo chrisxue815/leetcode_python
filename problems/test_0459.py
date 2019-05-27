@@ -2,7 +2,7 @@ import math
 import unittest
 
 
-class Solution(object):
+class Solution:
     def repeatedSubstringPattern(self, s):
         """
         :type s: str

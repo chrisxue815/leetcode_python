@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(1) space. Greedy.
-class Solution(object):
+class Solution:
     def maxProfit(self, prices, fee):
         """
         :type prices: List[int]

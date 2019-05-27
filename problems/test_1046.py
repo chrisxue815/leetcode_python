@@ -5,7 +5,7 @@ import utils
 
 
 # O(nlog(n)) time. O(n) space. Heap.
-class Solution(object):
+class Solution:
     def lastStoneWeight(self, stones):
         """
         :type stones: List[int]

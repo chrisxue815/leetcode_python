@@ -8,7 +8,7 @@ def abs_determinant(x, y, z):
 
 
 # O(n^3) time. O(1) space. Math.
-class Solution(object):
+class Solution:
     def largestTriangleArea(self, points):
         """
         :type points: List[List[int]]

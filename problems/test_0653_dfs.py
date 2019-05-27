@@ -4,7 +4,7 @@ from tree import TreeNode
 
 
 # O(nlog(n)) time. O(log(n)) space. Recursive pre-order traversal.
-class Solution(object):
+class Solution:
     def findTarget(self, root, k):
         """
         :type root: TreeNode

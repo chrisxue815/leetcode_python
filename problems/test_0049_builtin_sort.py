@@ -2,7 +2,7 @@ import collections
 import unittest
 
 
-class Solution(object):
+class Solution:
     def groupAnagrams(self, strs):
         """
         :type strs: List[str]

@@ -4,7 +4,7 @@ import utils
 
 
 # Built-in string searching.
-class Solution(object):
+class Solution:
     def rotateString(self, a, b):
         """
         :type a: str

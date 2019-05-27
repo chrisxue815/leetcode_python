@@ -3,7 +3,7 @@ import utils
 
 
 # O(mn) time. O(m+n) space. Array.
-class Solution(object):
+class Solution:
     def maxIncreaseKeepingSkyline(self, grid):
         """
         :type grid: List[List[int]]

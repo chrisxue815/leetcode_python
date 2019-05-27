@@ -2,7 +2,7 @@ import unittest
 from functools import reduce
 
 
-class Solution(object):
+class Solution:
     def singleNumber(self, nums):
         """
         :type nums: List[int]

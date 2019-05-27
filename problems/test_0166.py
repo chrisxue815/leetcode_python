@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def fractionToDecimal(self, numerator, denominator):
         """
         :type numerator: int

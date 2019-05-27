@@ -11,7 +11,7 @@ def get_count(root):
 
 
 # O(n). Math.
-class Solution(object):
+class Solution:
     def splitListToParts(self, root, k):
         """
         :type root: ListNode

@@ -2,7 +2,7 @@ import unittest
 from linkedlist import ListNode
 
 
-class Solution(object):
+class Solution:
     def getIntersectionNode(self, a, b):
         """
         :type head1, head1: ListNode

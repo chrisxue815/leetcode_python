@@ -2,7 +2,7 @@ import unittest
 
 
 # O(n).
-class Solution(object):
+class Solution:
     def pivotIndex(self, nums):
         """
         :type nums: List[int]

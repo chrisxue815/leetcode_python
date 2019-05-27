@@ -11,7 +11,7 @@ def _find_comment(line):
 
 
 # O(n) time. O(1) space.
-class Solution(object):
+class Solution:
     def removeComments(self, source):
         """
         :type source: List[str]

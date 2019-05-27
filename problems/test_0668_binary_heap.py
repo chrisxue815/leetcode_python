@@ -3,7 +3,7 @@ import heapq
 
 
 # O(mnlog(m)) time. O(m) space. Binary heap. TLE.
-class Solution(object):
+class Solution:
     def findKthNumber(self, m, n, k):
         """
         :type m: int

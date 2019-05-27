@@ -3,7 +3,7 @@ from linkedlist import ListNode
 import random
 
 
-class Solution(object):
+class Solution:
     def __init__(self, head):
         """
         @param head The linked list's head.

@@ -2,7 +2,7 @@ import unittest
 from linkedlist import ListNode
 
 
-class Solution(object):
+class Solution:
     def rotateRight(self, head, k):
         """
         :type head: ListNode

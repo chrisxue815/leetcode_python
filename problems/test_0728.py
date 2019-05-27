@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def selfDividingNumbers(self, left, right):
         """
         :type left: int

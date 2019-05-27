@@ -4,7 +4,7 @@ import utils
 
 
 # O(n) time. O(n * len(word)) space. Hash table.
-class MagicDictionary(object):
+class MagicDictionary:
     def __init__(self):
         """
         Initialize your data structure here.

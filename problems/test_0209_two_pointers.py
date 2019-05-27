@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def minSubArrayLen(self, s, nums):
         """
         :type s: int

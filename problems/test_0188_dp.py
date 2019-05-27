@@ -3,7 +3,7 @@ import utils
 
 
 # O(nk) time. O(k) space. Space-optimized DP.
-class Solution(object):
+class Solution:
     def maxProfit(self, k, prices):
         """
         :type k: int

@@ -2,7 +2,7 @@ import unittest
 from tree import TreeNode
 
 
-class Solution(object):
+class Solution:
     def mergeTrees(self, t1, t2):
         """
         :type t1: TreeNode

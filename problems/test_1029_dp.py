@@ -4,7 +4,7 @@ import utils
 
 
 # O(n^2) time. O(n^2) space. DP.
-class Solution(object):
+class Solution:
     def twoCitySchedCost(self, costs):
         """
         :type costs: List[List[int]]

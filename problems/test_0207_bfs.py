@@ -4,7 +4,7 @@ import utils
 
 
 # O(V+E) time. O(V) space. BFS.
-class Solution(object):
+class Solution:
     def canFinish(self, num_courses, prerequisites):
         """
         :type num_courses: int

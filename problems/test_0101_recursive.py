@@ -8,7 +8,7 @@ def _symmetric(left, right):
     return left.val == right.val and _symmetric(left.left, right.right) and _symmetric(left.right, right.left)
 
 
-class Solution(object):
+class Solution:
     def isSymmetric(self, root):
         """
         :type root: TreeNode

@@ -3,7 +3,7 @@ import utils
 
 
 # DFS.
-class Solution(object):
+class Solution:
     def shoppingOffers(self, price, special, needs):
         """
         :type price: List[int]

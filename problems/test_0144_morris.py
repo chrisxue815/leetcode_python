@@ -13,7 +13,7 @@ def _find_predecessor(root):
     return cur
 
 
-class Solution(object):
+class Solution:
     def preorderTraversal(self, root):
         """
         :type root: TreeNode

@@ -3,7 +3,7 @@ import unittest
 
 # O(n), three-way partitioning
 # https://en.wikipedia.org/wiki/Dutch_national_flag_problem
-class Solution(object):
+class Solution:
     def sortColors(self, nums):
         """
         :type nums: List[int]

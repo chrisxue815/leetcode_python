@@ -1,7 +1,7 @@
 import unittest
 
 
-class MyQueue(object):
+class MyQueue:
     def __init__(self):
         """
         Initialize your data structure here.

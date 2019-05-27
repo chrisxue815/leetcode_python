@@ -24,7 +24,7 @@ def _kth_smallest(nums, k):
     return heap[0]
 
 
-class Solution(object):
+class Solution:
     def findKthLargest(self, nums, k):
         """
         :type nums: List[int]

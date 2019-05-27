@@ -6,7 +6,7 @@ import utils
 
 
 # O(n) time. O(1) space. Two pointers.
-class Solution(object):
+class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         lo = 0
         hi = bisect.bisect_left(numbers, target - numbers[0], lo=1, hi=len(numbers) - 1)

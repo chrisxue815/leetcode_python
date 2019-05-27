@@ -2,7 +2,7 @@ import sys
 import unittest
 
 
-class Solution(object):
+class Solution:
     def thirdMax(self, nums):
         """
         :type nums: List[int]

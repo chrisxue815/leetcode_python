@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(n) space. DP.
-class Solution(object):
+class Solution:
     def numDecodings(self, s):
         """
         :type s: str

@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def isAnagram(self, s, t):
         """
         :type s: str

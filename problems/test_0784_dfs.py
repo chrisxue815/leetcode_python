@@ -3,7 +3,7 @@ import utils
 
 
 # O(2^n) time. O(n) space. DFS.
-class Solution(object):
+class Solution:
     def letterCasePermutation(self, s):
         """
         :type s: str

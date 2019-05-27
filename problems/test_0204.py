@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def countPrimes(self, n):
         """
         :type n: int

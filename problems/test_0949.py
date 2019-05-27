@@ -4,7 +4,7 @@ import utils
 
 
 # O(n!) time. O(n) space. Backtracking.
-class Solution(object):
+class Solution:
     def largestTimeFromDigits(self, a):
         """
         :type a: List[int]

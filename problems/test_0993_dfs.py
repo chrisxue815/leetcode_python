@@ -3,7 +3,7 @@ import utils
 from tree import TreeNode
 
 # O(n) time. O(log(n)) space. Recursive pre-order DFS.
-class Solution(object):
+class Solution:
     def isCousins(self, root, x, y):
         """
         :type root: TreeNode

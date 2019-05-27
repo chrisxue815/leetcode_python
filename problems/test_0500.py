@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def findWords(self, words):
         """
         :type words: List[str]

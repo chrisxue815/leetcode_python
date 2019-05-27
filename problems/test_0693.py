@@ -2,7 +2,7 @@ import unittest
 
 
 # O(1). Bit manipulation.
-class Solution(object):
+class Solution:
     def hasAlternatingBits(self, n):
         """
         :type n: int

@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(n) space. Hash table.
-class Solution(object):
+class Solution:
     def numJewelsInStones(self, j, s):
         """
         :type j: str

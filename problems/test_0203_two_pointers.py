@@ -2,7 +2,7 @@ import unittest
 from linkedlist import ListNode
 
 
-class Solution(object):
+class Solution:
     def removeElements(self, head, val):
         """
         :type head: ListNode

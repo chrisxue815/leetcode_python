@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(1) space. Hash table.
-class Solution(object):
+class Solution:
     def isAlienSorted(self, words, order):
         """
         :type words: List[str]

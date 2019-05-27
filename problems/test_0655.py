@@ -6,7 +6,7 @@ def get_height(root):
     return max(get_height(root.left), get_height(root.right)) + 1 if root else 0
 
 
-class Solution(object):
+class Solution:
     def printTree(self, root):
         """
         :type root: TreeNode

@@ -14,7 +14,7 @@ def _set0(grid, i, j):
 
 
 # O(n) time. O(1) space. DFS.
-class Solution(object):
+class Solution:
     def numIslands(self, grid):
         """
         :type grid: List[List[str]]

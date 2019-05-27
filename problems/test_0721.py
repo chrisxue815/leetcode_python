@@ -4,7 +4,7 @@ import utils
 
 
 # O(nlog(n)) time. O(n) space. Union-find.
-class Solution(object):
+class Solution:
     def accountsMerge(self, accounts):
         """
         :type accounts: List[List[str]]

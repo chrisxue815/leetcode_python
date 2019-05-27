@@ -7,7 +7,7 @@ def _edge_len_sq(a, b):
     return x * x + y * y
 
 
-class Solution(object):
+class Solution:
     def validSquare(self, p1, p2, p3, p4):
         """
         :type p1: List[int]

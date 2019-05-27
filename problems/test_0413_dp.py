@@ -3,7 +3,7 @@ import utils
 
 
 # O(n^2) time. O(n) space. DP.
-class Solution(object):
+class Solution:
     def numberOfArithmeticSlices(self, a):
         """
         :type a: List[int]

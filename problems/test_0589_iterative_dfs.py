@@ -1,4 +1,4 @@
-class Node(object):
+class Node:
     """
     # Definition for a Node.
     """
@@ -8,7 +8,7 @@ class Node(object):
         self.children = children
 
 
-class Solution(object):
+class Solution:
     def preorder(self, root):
         """
         :type root: Node

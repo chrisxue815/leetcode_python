@@ -4,7 +4,7 @@ import utils
 
 
 # O(1) time. O(1) space. Geometry.
-class Solution(object):
+class Solution:
     def isBoomerang(self, points):
         """
         :type points: List[List[int]]

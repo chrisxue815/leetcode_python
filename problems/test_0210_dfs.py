@@ -7,7 +7,7 @@ COMPLETE = 1
 
 
 # O(V+E) time. O(V) space. DFS.
-class Solution(object):
+class Solution:
     def findOrder(self, num_courses, prerequisites):
         """
         :type num_courses: int

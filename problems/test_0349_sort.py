@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def intersection(self, nums1, nums2):
         """
         :type nums1: List[int]

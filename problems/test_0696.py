@@ -2,7 +2,7 @@ import unittest
 
 
 # O(n)
-class Solution(object):
+class Solution:
     def countBinarySubstrings(self, s):
         """
         :type s: str

@@ -4,7 +4,7 @@ import utils
 
 
 # O(1) time. O(1) space. Number theory, mathematical induction.
-class Solution(object):
+class Solution:
     def divisorGame(self, N):
         """
         :type N: int

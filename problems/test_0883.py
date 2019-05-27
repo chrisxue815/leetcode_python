@@ -3,7 +3,7 @@ import utils
 
 
 # O(n^2) time. O(n) space. Iteration.
-class Solution(object):
+class Solution:
     def projectionArea(self, grid):
         """
         :type grid: List[List[int]]

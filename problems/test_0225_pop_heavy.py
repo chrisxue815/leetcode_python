@@ -2,7 +2,7 @@ import unittest
 from collections import deque
 
 
-class MyStack(object):
+class MyStack:
     def __init__(self):
         """
         Initialize your data structure here.

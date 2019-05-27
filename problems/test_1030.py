@@ -5,7 +5,7 @@ import utils
 
 
 # O(R * C) time. O(R + C) space. BFS.
-class Solution(object):
+class Solution:
     def allCellsDistOrder(self, R, C, r0, c0):
         """
         :type R: int

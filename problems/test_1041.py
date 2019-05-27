@@ -6,7 +6,7 @@ DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
 
 
 # O(n) time. O(1) space. Logic.
-class Solution(object):
+class Solution:
     def isRobotBounded(self, instructions):
         """
         :type instructions: str

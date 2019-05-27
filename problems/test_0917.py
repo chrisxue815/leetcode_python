@@ -5,7 +5,7 @@ import utils
 
 
 # O(n) time. O(1) space. Two pointers.
-class Solution(object):
+class Solution:
     def reverseOnlyLetters(self, s):
         """
         :type s: str

@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(n) space. DP.
-class Solution(object):
+class Solution:
     def countBits(self, num):
         """
         :type num: int

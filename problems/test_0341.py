@@ -3,7 +3,7 @@ import unittest
 import test_0385
 
 
-class NestedIterator(object):
+class NestedIterator:
     def __init__(self, nestedList):
         """
         Initialize your data structure here.

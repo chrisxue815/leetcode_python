@@ -12,7 +12,7 @@ def _find_max_possible_index(s, count, counts):
                 return i
 
 
-class Solution(object):
+class Solution:
     def removeDuplicateLetters(self, s):
         """
         :type s: str

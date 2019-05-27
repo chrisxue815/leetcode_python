@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(1) space. Iteration.
-class Solution(object):
+class Solution:
     def isToeplitzMatrix(self, matrix):
         """
         :type matrix: List[List[int]]

@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def isUgly(self, num):
         """
         :type num: int

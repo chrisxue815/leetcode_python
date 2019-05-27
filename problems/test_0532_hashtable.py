@@ -2,7 +2,7 @@ import collections
 import unittest
 
 
-class Solution(object):
+class Solution:
     def findPairs(self, nums, k):
         """
         :type nums: List[int]

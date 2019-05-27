@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def findMinArrowShots(self, points):
         """
         :type points: List[List[int]]

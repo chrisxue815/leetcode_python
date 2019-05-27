@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def wordPattern(self, pattern, words):
         """
         :type pattern: str

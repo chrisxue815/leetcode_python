@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def lexicalOrder(self, n):
         """
         :type n: int

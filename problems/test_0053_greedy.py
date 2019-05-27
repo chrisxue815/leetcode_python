@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(1) space. Kadane's algorithm, greedy.
-class Solution(object):
+class Solution:
     def maxSubArray(self, nums):
         """
         :type nums: List[int]

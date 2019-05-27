@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def findMaxAverage(self, nums, k):
         """
         :type nums: List[int]

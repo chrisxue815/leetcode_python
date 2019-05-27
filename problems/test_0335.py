@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def isSelfCrossing(self, x):
         """
         :type x: List[int]

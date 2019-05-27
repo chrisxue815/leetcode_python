@@ -23,7 +23,7 @@ def _to_roman(num, roman, radix, one, five, ten):
     return num, roman
 
 
-class Solution(object):
+class Solution:
     def intToRoman(self, num):
         """
         :type num: int

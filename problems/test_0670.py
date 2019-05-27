@@ -14,7 +14,7 @@ def find_max(digits, start):
 
 
 # O(n). Math.
-class Solution(object):
+class Solution:
     def maximumSwap(self, num):
         """
         :type num: int

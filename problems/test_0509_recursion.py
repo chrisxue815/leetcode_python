@@ -3,7 +3,7 @@ import utils
 
 
 # O(2^n) time. O(n) space. Recursion.
-class Solution(object):
+class Solution:
     def fib(self, n):
         """
         :type n: int

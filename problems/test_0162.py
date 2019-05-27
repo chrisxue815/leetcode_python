@@ -2,7 +2,7 @@ import sys
 import unittest
 
 
-class Solution(object):
+class Solution:
     def findPeakElement(self, nums):
         """
         :type nums: List[int]

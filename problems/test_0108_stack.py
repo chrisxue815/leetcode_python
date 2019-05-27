@@ -2,7 +2,7 @@ import unittest
 from tree import TreeNode
 
 
-class StackFrame(object):
+class StackFrame:
 
     def __init__(self, left, right, parent, leftOrRight):
         self.left = left
@@ -11,7 +11,7 @@ class StackFrame(object):
         self.leftOrRight = leftOrRight
 
 
-class Solution(object):
+class Solution:
 
     def sortedArrayToBST(self, nums):
         """

@@ -4,7 +4,7 @@ import utils
 
 
 # O(nlog(n)) time. O(n) space. Greedy, intuition, deductive reasoning, sort.
-class Solution(object):
+class Solution:
     def twoCitySchedCost(self, costs):
         """
         :type costs: List[List[int]]

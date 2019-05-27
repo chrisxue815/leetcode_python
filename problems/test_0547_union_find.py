@@ -1,7 +1,7 @@
 import unittest
 
 
-class UnionFind(object):
+class UnionFind:
     def __init__(self, n):
         self._id = list(range(n))
         self._sz = [1] * n
@@ -41,7 +41,7 @@ class UnionFind(object):
 
 
 # O(nlog(n)) time. O(n) space. Union-find.
-class Solution(object):
+class Solution:
     def findCircleNum(self, m):
         """
         :type m: List[List[int]]

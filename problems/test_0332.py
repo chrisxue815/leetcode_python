@@ -5,7 +5,7 @@ import utils
 
 
 # O(V+E) time. O(V) space. Hierholzer, DFS.
-class Solution(object):
+class Solution:
     def findItinerary(self, tickets):
         """
         :type tickets: List[List[str]]

@@ -7,7 +7,7 @@ ROTTEN = 2
 
 
 # O(n) time. O(n) space. BFS.
-class Solution(object):
+class Solution:
     def orangesRotting(self, grid):
         """
         :type grid: List[List[int]]

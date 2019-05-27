@@ -4,7 +4,7 @@ import utils
 
 
 # O(n) time. O(1) space. Space-optimized stack.
-class Solution(object):
+class Solution:
     def removeOuterParentheses(self, S):
         """
         :type S: str

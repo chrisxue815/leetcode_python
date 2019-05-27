@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def compareVersion(self, version1, version2):
         """
         :type version1: str

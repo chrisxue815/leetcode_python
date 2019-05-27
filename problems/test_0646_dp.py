@@ -3,7 +3,7 @@ import utils
 
 
 # O(n^2) time. O(n) space. DP.
-class Solution(object):
+class Solution:
     def findLongestChain(self, pairs):
         """
         :type pairs: List[List[int]]

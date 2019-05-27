@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def reconstructQueue(self, people):
         """
         :type people: List[List[int]]

@@ -13,7 +13,7 @@ def _dfs(root, depth, result):
     _dfs(root.right, depth + 1, result)
 
 
-class Solution(object):
+class Solution:
     def levelOrderBottom(self, root):
         """
         :type root: TreeNode

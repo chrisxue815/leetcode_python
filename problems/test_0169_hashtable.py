@@ -2,7 +2,7 @@ import unittest
 import collections
 
 
-class Solution(object):
+class Solution:
     def majorityElement(self, nums):
         """
         :type nums: List[int]

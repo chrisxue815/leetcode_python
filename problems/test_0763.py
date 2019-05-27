@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(1) space. Two pointers, greedy.
-class Solution(object):
+class Solution:
     def partitionLabels(self, s):
         """
         :type s: str

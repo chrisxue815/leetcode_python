@@ -20,7 +20,7 @@ def next_leaf(root, stack):
 
 
 # O(n) time. O(log(n)) space. Iterative DFS.
-class Solution(object):
+class Solution:
     def leafSimilar(self, root1, root2):
         """
         :type root1: TreeNode

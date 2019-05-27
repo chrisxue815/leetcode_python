@@ -3,7 +3,7 @@ import utils
 
 
 # O(log_x^{bound} * log_y^{bound}) time. O(log_x^{bound} * log_y^{bound}) space. Hash table.
-class Solution(object):
+class Solution:
     def powerfulIntegers(self, x, y, bound):
         """
         :type x: int

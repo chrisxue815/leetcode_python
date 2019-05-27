@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def removeElement(self, nums, val):
         """
         :type nums: List[int]

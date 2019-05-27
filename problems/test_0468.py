@@ -27,7 +27,7 @@ def check_ipv6(ip):
     return len(parts) == 8 and all(valid_part(part) for part in parts)
 
 
-class Solution(object):
+class Solution:
     def validIPAddress(self, IP):
         """
         :type IP: str

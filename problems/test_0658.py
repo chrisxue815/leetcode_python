@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def findClosestElements(self, arr, k, x):
         """
         :type arr: List[int]

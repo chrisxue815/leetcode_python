@@ -4,13 +4,13 @@ import itertools
 import heapq
 
 
-class User(object):
+class User:
     def __init__(self):
         self.followees = {self}
         self.tweets = collections.deque()
 
 
-class Twitter(object):
+class Twitter:
     def __init__(self):
         """
         Initialize your data structure here.

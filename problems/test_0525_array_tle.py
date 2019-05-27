@@ -18,7 +18,7 @@ def max_length(sums, lo, hi):
         return max(max_length(sums, lo + 1, hi), max_length(sums, lo, hi - 1))
 
 
-class Solution(object):
+class Solution:
     def findMaxLength(self, nums):
         """
         :type nums: List[int]

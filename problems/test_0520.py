@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def detectCapitalUse(self, word):
         """
         :type word: str

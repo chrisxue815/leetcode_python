@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def maxCount(self, m, n, ops):
         """
         :type m: int

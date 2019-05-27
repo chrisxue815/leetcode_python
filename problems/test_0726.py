@@ -49,7 +49,7 @@ def _count(stack):
 
 
 # O(n) time. O(n) space. Iteration.
-class Solution(object):
+class Solution:
     def countOfAtoms(self, formula):
         """
         :type formula: str

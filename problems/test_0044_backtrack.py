@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def isMatch(self, s, p):
         si = 0
         pi = 0

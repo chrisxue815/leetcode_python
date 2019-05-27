@@ -3,7 +3,7 @@ import utils
 
 
 # O(n^2) time. O(1) space. Iteration.
-class Solution(object):
+class Solution:
     def countSubstrings(self, s):
         """
         :type s: str

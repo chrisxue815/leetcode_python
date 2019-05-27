@@ -19,7 +19,7 @@ def _kth(node, k, index):
 
 # O(n) time. O(h) space. Recursive, pure functional, in-order traversal.
 # Optimization: self-balancing BST
-class Solution(object):
+class Solution:
     def kthSmallest(self, root, k):
         """
         :type root: TreeNode

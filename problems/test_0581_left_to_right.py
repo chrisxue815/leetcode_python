@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def findUnsortedSubarray(self, nums):
         """
         :type nums: List[int]

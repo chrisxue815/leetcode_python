@@ -15,7 +15,7 @@ def _binary_search(a, x, lo, hi):
     return lo
 
 
-class Solution(object):
+class Solution:
     def isSubsequence(self, s, t):
         """
         :type s: str

@@ -2,7 +2,7 @@ import unittest
 import heapq
 
 
-class Solution(object):
+class Solution:
     def isPossible(self, nums):
         """
         :type nums: List[int]

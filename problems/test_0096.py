@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def numTrees(self, n):
         """
         :type n: int

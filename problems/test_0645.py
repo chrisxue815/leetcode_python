@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def findErrorNums(self, nums):
         """
         :type nums: List[int]

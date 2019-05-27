@@ -7,7 +7,7 @@ _UNSAFE = 2
 
 
 # O(V+E) time. O(V) space. DFS.
-class Solution(object):
+class Solution:
     def eventualSafeNodes(self, graph):
         """
         :type graph: List[List[int]]

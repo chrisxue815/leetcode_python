@@ -3,7 +3,7 @@ import utils
 
 
 # O(nlog(n)) time. O(n) space. Sorting.
-class Solution(object):
+class Solution:
     def reorderLogFiles(self, logs):
         """
         :type logs: List[str]

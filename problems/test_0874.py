@@ -10,7 +10,7 @@ directions = [
 
 
 # O(len(commands)) time. O(len(obstacles)) space. Hash table.
-class Solution(object):
+class Solution:
     def robotSim(self, commands, obstacles):
         """
         :type commands: List[int]

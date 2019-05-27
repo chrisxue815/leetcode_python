@@ -3,7 +3,7 @@ import unittest
 _a = ord('a')
 
 
-class Solution(object):
+class Solution:
     def findAnagrams(self, s, p):
         """
         :type s: str

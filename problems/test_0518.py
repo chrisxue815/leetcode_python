@@ -3,7 +3,7 @@ import utils
 
 
 # O(n*m) time. O(m) space. Space-optimized DP.
-class Solution(object):
+class Solution:
     def change(self, amount, coins):
         """
         :type amount: int

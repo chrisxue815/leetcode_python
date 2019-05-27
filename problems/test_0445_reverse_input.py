@@ -12,7 +12,7 @@ def reverse_list(root):
     return prev
 
 
-class Solution(object):
+class Solution:
     def addTwoNumbers(self, l1, l2):
         """
         :type l1: ListNode

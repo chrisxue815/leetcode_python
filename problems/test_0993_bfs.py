@@ -3,7 +3,7 @@ import utils
 from tree import TreeNode
 
 # O(n) time. O(n) space. BFS.
-class Solution(object):
+class Solution:
     def isCousins(self, root, x, y):
         """
         :type root: TreeNode

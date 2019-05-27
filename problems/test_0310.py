@@ -5,7 +5,7 @@ import utils
 
 
 # O(V+E) time. O(V) space. BFS.
-class Solution(object):
+class Solution:
     def findMinHeightTrees(self, n, edges):
         """
         :type n: int

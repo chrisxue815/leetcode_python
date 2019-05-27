@@ -22,7 +22,7 @@ def binary_search(a, x, left=0, right=-1):
     return left
 
 
-class Solution(object):
+class Solution:
     def intersection(self, nums1, nums2):
         """
         :type nums1: List[int]

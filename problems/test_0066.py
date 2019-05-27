@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def plusOne(self, digits):
         """
         :type digits: List[int]

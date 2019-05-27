@@ -4,7 +4,7 @@ directions = ((-1, 0), (1, 0), (0, -1), (0, 1))
 
 
 # O(n) time. O(1) space. DFS.
-class Solution(object):
+class Solution:
     def solve(self, board):
         """
         :type board: List[List[str]]

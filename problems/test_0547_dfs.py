@@ -12,7 +12,7 @@ def _set0(m, i):
 
 
 # O(n^2) time. O(1) space. DFS.
-class Solution(object):
+class Solution:
     def findCircleNum(self, m):
         """
         :type m: List[List[int]]

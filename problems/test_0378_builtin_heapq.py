@@ -3,7 +3,7 @@ import heapq
 
 
 # O(n^2 * log(n)) time. O(n) space. Binary heap.
-class Solution(object):
+class Solution:
     def kthSmallest(self, matrix, k):
         """
         :type matrix: List[List[int]]

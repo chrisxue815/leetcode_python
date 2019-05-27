@@ -33,7 +33,7 @@ def _down_maxheap(a, root, hi):
         root = child
 
 
-class Solution(object):
+class Solution:
     def kthSmallest(self, matrix, k):
         """
         :type matrix: List[List[int]]

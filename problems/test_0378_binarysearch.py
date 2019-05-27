@@ -19,7 +19,7 @@ def _count_smaller_or_equal_numbers(num, matrix):
 
 
 # O(nlog(n)log(n^2)) time. O(1) space. Binary search.
-class Solution(object):
+class Solution:
     def kthSmallest(self, matrix, k):
         """
         :type matrix: List[List[int]]

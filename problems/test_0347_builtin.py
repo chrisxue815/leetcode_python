@@ -2,7 +2,7 @@ import unittest
 import collections
 
 
-class Solution(object):
+class Solution:
     def topKFrequent(self, nums, k):
         """
         :type nums: List[int]

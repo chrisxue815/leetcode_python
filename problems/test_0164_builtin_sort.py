@@ -2,7 +2,7 @@ import unittest
 
 
 # O(nlog(n)) time. Built-in sort (Timsort).
-class Solution(object):
+class Solution:
     def maximumGap(self, nums):
         """
         :type nums: List[int]

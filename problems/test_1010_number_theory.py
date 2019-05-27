@@ -4,7 +4,7 @@ import utils
 
 
 # O(n) time. O(n) space. Number theory, array.
-class Solution(object):
+class Solution:
     def numPairsDivisibleBy60(self, time):
         """
         :type time: List[int]

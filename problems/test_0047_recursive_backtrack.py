@@ -2,7 +2,7 @@ import itertools
 import unittest
 
 
-class Solution(object):
+class Solution:
     def permuteUnique(self, nums):
         """
         :type nums: List[int]

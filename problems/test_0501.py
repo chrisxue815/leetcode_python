@@ -3,7 +3,7 @@ import unittest
 from tree import TreeNode
 
 
-class Solution(object):
+class Solution:
 
     def __init__(self):
         self.prev_val = -sys.maxsize - 1  # assuming minint is not in the tree

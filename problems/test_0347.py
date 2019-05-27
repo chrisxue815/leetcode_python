@@ -3,7 +3,7 @@ import collections
 import heapq
 
 
-class Solution(object):
+class Solution:
     def topKFrequent(self, nums, k):
         """
         :type nums: List[int]

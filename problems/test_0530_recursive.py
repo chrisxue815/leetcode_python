@@ -2,7 +2,7 @@ import unittest
 from tree import TreeNode
 
 
-class Solution(object):
+class Solution:
     def __init__(self):
         self.min_diff = 0x7FFFFFFF
         self.prev = None

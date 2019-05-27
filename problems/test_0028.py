@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def strStr(self, haystack, needle):
         """
         :type haystack: str

@@ -3,7 +3,7 @@ import utils
 
 
 # O(nlog(n)) time. O(n) space. Sort, greedy.
-class Solution(object):
+class Solution:
     def findLongestChain(self, pairs):
         """
         :type pairs: List[List[int]]

@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def letterCombinations(self, digits):
         """
         :type digits: str

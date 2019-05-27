@@ -2,7 +2,7 @@ import unittest
 import itertools
 
 
-class Solution(object):
+class Solution:
     def magicalString(self, n):
         """
         :type n: int

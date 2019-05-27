@@ -2,7 +2,7 @@ import unittest
 import sys
 
 
-class Solution(object):
+class Solution:
     def findRestaurant(self, list1, list2):
         """
         :type list1: List[str]

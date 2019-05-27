@@ -27,7 +27,7 @@ def _to_bst(head, length):
     return root, head
 
 
-class Solution(object):
+class Solution:
     def sortedListToBST(self, head):
         """
         :type head: ListNode

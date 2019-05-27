@@ -16,7 +16,7 @@ def backspace(s, si):
 
 
 # O(n) time. O(1) space. Iteration.
-class Solution(object):
+class Solution:
     def backspaceCompare(self, s, t):
         """
         :type s: str

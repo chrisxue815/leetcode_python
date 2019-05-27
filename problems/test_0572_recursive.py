@@ -21,7 +21,7 @@ def _match(s, t):
     return s.val == t.val and _match(s.left, t.left) and _match(s.right, t.right)
 
 
-class Solution(object):
+class Solution:
     def isSubtree(self, s, t):
         """
         :type s: TreeNode

@@ -4,7 +4,7 @@ from tree import TreeNode
 
 
 # O(n) time. O(log(n)) space. Iterative in-order traversal.
-class Solution(object):
+class Solution:
     def minDiffInBST(self, root):
         """
         :type root: TreeNode

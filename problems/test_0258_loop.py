@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def addDigits(self, num):
         """
         :type num: int

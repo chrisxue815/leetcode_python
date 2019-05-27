@@ -4,7 +4,7 @@ import utils
 
 
 # O(V+E) time. O(V) space. BFS.
-class Solution(object):
+class Solution:
     def networkDelayTime(self, times, n, k):
         """
         :type times: List[List[int]]

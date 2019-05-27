@@ -5,7 +5,7 @@ import utils
 
 
 # O(n) time. O(1) space. Math.
-class Solution(object):
+class Solution:
     def hasGroupsSizeX(self, deck):
         """
         :type deck: List[int]

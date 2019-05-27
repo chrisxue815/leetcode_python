@@ -4,7 +4,7 @@ import utils
 
 
 # O(n) time. O(1) space. Two pointers.
-class Solution(object):
+class Solution:
     def sortArrayByParity(self, a):
         """
         :type a: List[int]

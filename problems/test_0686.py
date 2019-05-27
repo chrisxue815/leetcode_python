@@ -2,7 +2,7 @@ import unittest
 
 
 # O(n)
-class Solution(object):
+class Solution:
     def repeatedStringMatch(self, a, b):
         """
         :type a: str

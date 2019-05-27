@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(1) space. Counting.
-class Solution(object):
+class Solution:
     def shortestCompletingWord(self, licensePlate, words):
         """
         :type licensePlate: str

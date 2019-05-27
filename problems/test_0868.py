@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(1) space. Bit manipulation.
-class Solution(object):
+class Solution:
     def binaryGap(self, n):
         """
         :type n: int

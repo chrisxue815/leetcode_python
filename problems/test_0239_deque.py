@@ -3,7 +3,7 @@ import collections
 
 
 # O(n) time. O(n) space. Deque.
-class Solution(object):
+class Solution:
     def maxSlidingWindow(self, nums, k):
         """
         :type nums: List[int]

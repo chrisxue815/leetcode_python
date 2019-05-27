@@ -3,7 +3,7 @@ import utils
 
 
 # O(1) time. O(1) space. Math.
-class Solution(object):
+class Solution:
     def isRectangleOverlap(self, rec1, rec2):
         """
         :type rec1: List[int]

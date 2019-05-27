@@ -3,7 +3,7 @@ import utils
 
 
 # O(V+E) time. O(V) space. DFS.
-class Solution(object):
+class Solution:
     def allPathsSourceTarget(self, graph):
         """
         :type graph: List[List[int]]

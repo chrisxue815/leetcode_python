@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def maxArea(self, height):
         """
         :type height: List[int]

@@ -3,7 +3,7 @@ import unittest
 from tree import TreeNode, null
 
 
-class Codec(object):
+class Codec:
 
     def __init__(self):
         self.tree = ''

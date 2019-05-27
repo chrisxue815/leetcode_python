@@ -5,7 +5,7 @@ import utils
 
 
 # O(n^2) time. O(n) space. Brute-force, combination, backtracking.
-class Solution(object):
+class Solution:
     def numPairsDivisibleBy60(self, time):
         """
         :type time: List[int]

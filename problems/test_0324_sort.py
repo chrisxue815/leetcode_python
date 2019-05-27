@@ -2,7 +2,7 @@ import unittest
 
 
 # O(nlog(n)) time, O(n) space. Sorting, math
-class Solution(object):
+class Solution:
     def wiggleSort(self, nums):
         """
         :type nums: List[int]

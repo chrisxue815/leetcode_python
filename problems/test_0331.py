@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def isValidSerialization(self, preorder):
         """
         :type preorder: str

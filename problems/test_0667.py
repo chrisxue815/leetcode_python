@@ -2,7 +2,7 @@ import unittest
 
 
 # O(n). Math
-class Solution(object):
+class Solution:
     def constructArray(self, n, k):
         """
         :type n: int

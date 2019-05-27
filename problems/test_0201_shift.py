@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def rangeBitwiseAnd(self, m, n):
         """
         :type m: int

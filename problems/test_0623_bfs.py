@@ -2,7 +2,7 @@ import unittest
 from tree import TreeNode
 
 
-class Solution(object):
+class Solution:
     def addOneRow(self, root, v, d):
         """
         :type root: TreeNode

@@ -11,7 +11,7 @@ from tree import TreeLinkNode, null
 #         self.next = None
 
 
-class Solution(object):
+class Solution:
     # @param root, a tree link node
     # @return nothing
 

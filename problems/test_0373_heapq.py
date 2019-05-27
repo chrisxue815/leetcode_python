@@ -2,7 +2,7 @@ import heapq
 import unittest
 
 
-class Solution(object):
+class Solution:
     def kSmallestPairs(self, nums1, nums2, k):
         """
         :type nums1: List[int]

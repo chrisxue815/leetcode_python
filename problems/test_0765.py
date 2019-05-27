@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(n) space. Greedy.
-class Solution(object):
+class Solution:
     def minSwapsCouples(self, row):
         """
         :type row: List[int]

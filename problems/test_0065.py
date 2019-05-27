@@ -2,7 +2,7 @@ import unittest
 import re
 
 
-class Solution(object):
+class Solution:
     def isNumber(self, s):
         """
         :type s: str

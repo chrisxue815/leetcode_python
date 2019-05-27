@@ -5,7 +5,7 @@ from tree import TreeNode
 
 
 # O(n) time. O(n) space. BFS.
-class Solution(object):
+class Solution:
     def sumRootToLeaf(self, root):
         """
         :type root: TreeNode

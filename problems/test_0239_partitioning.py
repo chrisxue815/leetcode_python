@@ -2,7 +2,7 @@ import unittest
 
 
 # O(n) time. O(n) space. Partitioning, left and right max.
-class Solution(object):
+class Solution:
     def maxSlidingWindow(self, nums, k):
         """
         :type nums: List[int]

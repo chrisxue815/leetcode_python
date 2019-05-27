@@ -2,7 +2,7 @@ import unittest
 import collections
 
 
-class Solution(object):
+class Solution:
     def numberOfBoomerangs(self, points):
         """
         :type points: List[List[int]]

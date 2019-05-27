@@ -2,7 +2,7 @@ import unittest
 
 
 # O(n). DFS.
-class Solution(object):
+class Solution:
     def maxAreaOfIsland(self, grid):
         """
         :type grid: List[List[int]]

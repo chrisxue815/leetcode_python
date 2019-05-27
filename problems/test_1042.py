@@ -11,7 +11,7 @@ def to_color(candidates):
 
 
 # O(V+E) time. O(1) space. Four color theorem, graph, bit manipulation.
-class Solution(object):
+class Solution:
     def gardenNoAdj(self, N, paths):
         """
         :type N: int

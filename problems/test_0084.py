@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def largestRectangleArea(self, heights):
         """
         :type heights: List[int]

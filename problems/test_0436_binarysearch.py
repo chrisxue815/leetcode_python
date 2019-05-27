@@ -3,13 +3,13 @@ import unittest
 
 
 # Definition for an interval.
-class Interval(object):
+class Interval:
     def __init__(self, s=0, e=0):
         self.start = s
         self.end = e
 
 
-class Solution(object):
+class Solution:
     def findRightInterval(self, intervals):
         """
         :type intervals: List[Interval]

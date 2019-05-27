@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(1) space. Math.
-class Solution(object):
+class Solution:
     def surfaceArea(self, grid):
         """
         :type grid: List[List[int]]

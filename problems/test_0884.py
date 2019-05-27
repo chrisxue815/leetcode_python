@@ -4,7 +4,7 @@ import utils
 
 
 # O(n) time. O(n) space. Hash table.
-class Solution(object):
+class Solution:
     def uncommonFromSentences(self, a, b):
         """
         :type a: str

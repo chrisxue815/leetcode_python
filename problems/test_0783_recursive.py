@@ -4,7 +4,7 @@ from tree import TreeNode
 
 
 # O(n) time. O(log(n)) space. Recursive in-order traversal.
-class Solution(object):
+class Solution:
     def __init__(self):
         self.min_diff = 0x7FFFFFFF
         self.prev = None

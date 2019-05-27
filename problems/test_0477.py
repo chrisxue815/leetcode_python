@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def totalHammingDistance(self, nums):
         """
         :type nums: List[int]

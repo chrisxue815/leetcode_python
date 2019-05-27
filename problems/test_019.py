@@ -2,7 +2,7 @@ import unittest
 from linkedlist import ListNode
 
 
-class Solution(object):
+class Solution:
     def removeNthFromEnd(self, head, n):
         """
         :type head: ListNode

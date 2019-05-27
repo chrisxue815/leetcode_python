@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(n) space. Math, hash table.
-class Solution(object):
+class Solution:
     def fairCandySwap(self, a, b):
         """
         :type a: List[int]

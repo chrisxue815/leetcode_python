@@ -2,7 +2,7 @@ import collections
 import unittest
 
 
-class Solution(object):
+class Solution:
     def fourSumCount(self, A, B, C, D):
         """
         :type A: List[int]

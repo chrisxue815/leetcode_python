@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def findMinDifference(self, timePoints):
         """
         :type timePoints: List[str]

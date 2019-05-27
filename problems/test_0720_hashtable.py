@@ -3,7 +3,7 @@ import utils
 
 
 # O(nlog(n)) time. O(n) space. Sorting, hash table.
-class Solution(object):
+class Solution:
     def longestWord(self, words):
         """
         :type words: List[str]

@@ -34,7 +34,7 @@ def _reveal(board, digits, i, j):
         _reveal(board, digits, ni, nj)
 
 
-class Solution(object):
+class Solution:
     def updateBoard(self, board, click):
         """
         :type board: List[List[str]]

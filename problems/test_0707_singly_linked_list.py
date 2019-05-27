@@ -3,13 +3,13 @@ import unittest
 import utils
 
 
-class ListNode(object):
+class ListNode:
     def __init__(self, val):
         self.val = val
         self.next = None
 
 
-class MyLinkedList(object):
+class MyLinkedList:
     def __init__(self):
         """
         Initialize your data structure here.

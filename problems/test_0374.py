@@ -14,7 +14,7 @@ def guess(num):
     return 0
 
 
-class Solution(object):
+class Solution:
     def guessNumber(self, n):
         """
         :type n: int

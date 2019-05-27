@@ -3,7 +3,7 @@ import utils
 
 
 # O(n^2) time. O(n) space. DP.
-class Solution(object):
+class Solution:
     def minDistance(self, word1, word2):
         """
         :type word1: str

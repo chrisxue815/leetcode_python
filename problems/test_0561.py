@@ -2,7 +2,7 @@ import unittest
 import itertools
 
 
-class Solution(object):
+class Solution:
     def arrayPairSum(self, nums):
         """
         :type nums: List[int]

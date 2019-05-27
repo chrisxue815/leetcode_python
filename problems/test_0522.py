@@ -11,7 +11,7 @@ def is_subseq(a, b):
     return False
 
 
-class Solution(object):
+class Solution:
     def findLUSlength(self, strs):
         """
         :type strs: List[str]

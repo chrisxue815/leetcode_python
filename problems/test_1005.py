@@ -4,7 +4,7 @@ import utils
 
 
 # O(nlog(n)) time. O(n) space. Algebra, sorting.
-class Solution(object):
+class Solution:
     def largestSumAfterKNegations(self, A, K):
         """
         :type A: List[int]

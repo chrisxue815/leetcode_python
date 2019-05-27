@@ -3,7 +3,7 @@ from tree import TreeNode
 
 
 # O(n). Recursive DFS.
-class Solution(object):
+class Solution:
     def findSecondMinimumValue(self, root):
         """
         :type root: TreeNode

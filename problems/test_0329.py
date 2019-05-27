@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(n) space. DFS.
-class Solution(object):
+class Solution:
     def longestIncreasingPath(self, matrix):
         """
         :type matrix: List[List[int]]

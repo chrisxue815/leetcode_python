@@ -2,7 +2,7 @@ import unittest
 
 
 # O(n). Induction, binary search
-class Solution(object):
+class Solution:
     def nextPermutation(self, nums):
         """
         :type nums: List[int]

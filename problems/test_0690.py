@@ -2,7 +2,7 @@ import unittest
 
 
 # Employee info
-class Employee(object):
+class Employee:
     def __init__(self, id, importance, subordinates):
         # It's the unique id of each node.
         # unique id of this employee
@@ -14,7 +14,7 @@ class Employee(object):
 
 
 # O(n). Hash table, DFS.
-class Solution(object):
+class Solution:
     def getImportance(self, employees, id):
         """
         :type employees: List[Employee]

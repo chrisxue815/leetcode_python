@@ -31,7 +31,7 @@ def _reverse_append(root, vals):
         root = right
 
 
-class Solution(object):
+class Solution:
     def postorderTraversal(self, root):
         """
         :type root: TreeNode

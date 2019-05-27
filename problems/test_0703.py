@@ -5,7 +5,7 @@ import utils
 
 
 # O(log(k)) time. O(k) space. Binary heap.
-class KthLargest(object):
+class KthLargest:
     def __init__(self, k, nums):
         """
         :type k: int

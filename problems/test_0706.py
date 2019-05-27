@@ -5,7 +5,7 @@ import utils
 CAPACITY = 10103
 
 
-class Entry(object):
+class Entry:
     def __init__(self, h, key, value, n):
         self.h = h  # hash
         self.key = key
@@ -13,7 +13,7 @@ class Entry(object):
         self.n = n  # next
 
 
-class MyHashMap(object):
+class MyHashMap:
     def __init__(self):
         """
         Initialize your data structure here.

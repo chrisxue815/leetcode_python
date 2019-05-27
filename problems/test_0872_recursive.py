@@ -14,7 +14,7 @@ def dfs(root, leaves):
 
 
 # O(n) time. O(n) space. Recursive DFS.
-class Solution(object):
+class Solution:
     def leafSimilar(self, root1, root2):
         """
         :type root1: TreeNode

@@ -4,7 +4,7 @@ import utils
 
 
 # O(1) time. O(1) space. Bit manipulation.
-class Solution(object):
+class Solution:
     def bitwiseComplement(self, N):
         """
         :type N: int

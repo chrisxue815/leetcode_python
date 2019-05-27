@@ -4,7 +4,7 @@ from linkedlist import ListNode
 
 
 # O(n) time. O(1) space. Iteration.
-class Solution(object):
+class Solution:
     def oddEvenList(self, head):
         """
         :type head: ListNode

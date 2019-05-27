@@ -2,7 +2,7 @@ import unittest
 import utils
 
 
-class TrieNode(object):
+class TrieNode:
     def __init__(self):
         self.val = None
         self.children = [None] * 26
@@ -21,7 +21,7 @@ class TrieNode(object):
 
 
 # O(n) time. O(n) space. Trie.
-class Solution(object):
+class Solution:
     def longestWord(self, words):
         """
         :type words: List[str]

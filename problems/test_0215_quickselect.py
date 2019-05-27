@@ -25,7 +25,7 @@ def kth_largest(nums, lo, hi, k):
 
 
 # Quickselect, O(1) space. Best case and average O(n), worst case O(n^2) time
-class Solution(object):
+class Solution:
     def findKthLargest(self, nums, k):
         """
         :type nums: List[int]

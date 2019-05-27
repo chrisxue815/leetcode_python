@@ -2,7 +2,7 @@ import unittest
 
 
 # O(n) time. O(1) space.
-class Solution(object):
+class Solution:
     def findDisappearedNumbers(self, nums):
         """
         :type nums: List[int]

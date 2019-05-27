@@ -3,7 +3,7 @@ import collections
 import random
 
 
-class RandomizedSet(object):
+class RandomizedSet:
     def __init__(self):
         """
         Initialize your data structure here.

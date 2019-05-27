@@ -2,7 +2,7 @@ import unittest
 from tree import TreeNode, null
 
 
-class Solution(object):
+class Solution:
 
     def zigzagLevelOrder(self, root):
         """

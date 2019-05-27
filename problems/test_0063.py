@@ -3,7 +3,7 @@ import utils
 
 
 # O(mn) time. O(mn) space. DP.
-class Solution(object):
+class Solution:
     def uniquePathsWithObstacles(self, obstacleGrid):
         """
         :type obstacleGrid: List[List[int]]

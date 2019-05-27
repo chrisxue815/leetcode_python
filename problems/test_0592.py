@@ -29,7 +29,7 @@ def gcd(a, b):
     return a
 
 
-class Solution(object):
+class Solution:
     def fractionAddition(self, s):
         """
         :type s: str

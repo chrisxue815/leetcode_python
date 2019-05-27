@@ -33,7 +33,7 @@ def _dfs_right_to_left(s, start, last_deleted, results):
     results.append(s)
 
 
-class Solution(object):
+class Solution:
     def removeInvalidParentheses(self, s):
         """
         :type s: str

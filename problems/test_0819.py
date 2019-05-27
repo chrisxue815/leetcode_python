@@ -5,7 +5,7 @@ import utils
 
 
 # O(n) time. O(n) space. Hash table.
-class Solution(object):
+class Solution:
     def mostCommonWord(self, paragraph, banned):
         """
         :type paragraph: str

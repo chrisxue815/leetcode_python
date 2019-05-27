@@ -10,7 +10,7 @@ def is_beautiful(index, num):
         return num % index == 0
 
 
-class Solution(object):
+class Solution:
     def __init__(self):
         self.n = 0
         self.count = 0

@@ -10,7 +10,7 @@ def _sum_and_tilt_sum(root):
     return left_sum + right_sum + root.val, left_tilt + right_tilt + abs(left_sum - right_sum)
 
 
-class Solution(object):
+class Solution:
     def findTilt(self, root):
         """
         :type root: TreeNode

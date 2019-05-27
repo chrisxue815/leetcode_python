@@ -2,7 +2,7 @@ import unittest
 
 
 # O(n)
-class Solution(object):
+class Solution:
     def increasingTriplet(self, nums):
         """
         :type nums: List[int]

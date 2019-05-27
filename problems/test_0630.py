@@ -3,7 +3,7 @@ import heapq
 
 
 # O(nlog(n)) time. O(n) space. Greedy.
-class Solution(object):
+class Solution:
     def scheduleCourse(self, courses):
         """
         :type courses: List[List[int]]

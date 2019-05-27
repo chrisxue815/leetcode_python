@@ -24,7 +24,7 @@ def _read_num(s, i):
     return sign * num, len(s)
 
 
-class Solution(object):
+class Solution:
     def fractionAddition(self, s):
         """
         :type s: str

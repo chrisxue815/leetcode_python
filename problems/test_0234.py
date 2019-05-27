@@ -10,7 +10,7 @@ def count(head):
     return result
 
 
-class Solution(object):
+class Solution:
     def isPalindrome(self, head):
         """
         :type head: ListNode

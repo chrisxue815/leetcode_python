@@ -3,7 +3,7 @@ from tree import TreeNode
 
 
 # O(n). Recursion.
-class Solution(object):
+class Solution:
     def trimBST(self, root, L, R):
         """
         :type root: TreeNode

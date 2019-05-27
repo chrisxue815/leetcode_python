@@ -4,7 +4,7 @@ from linkedlist import ListNode
 
 
 # O(n) time. O(n) space. Linked-list.
-class Solution(object):
+class Solution:
     def numComponents(self, head, g):
         """
         :type head: ListNode

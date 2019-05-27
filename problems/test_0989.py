@@ -3,7 +3,7 @@ import utils
 
 
 # O(n) time. O(1) space. Algebra.
-class Solution(object):
+class Solution:
     def addToArrayForm(self, a, k):
         """
         :type a: List[int]

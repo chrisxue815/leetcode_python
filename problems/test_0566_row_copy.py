@@ -1,7 +1,7 @@
 import unittest
 
 
-class Solution(object):
+class Solution:
     def matrixReshape(self, nums, r, c):
         """
         :type nums: List[List[int]]

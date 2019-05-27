@@ -10,7 +10,7 @@ to_morse = [
 
 
 # O(n) time. O(n) space. Hash table.
-class Solution(object):
+class Solution:
     def uniqueMorseRepresentations(self, words):
         """
         :type words: List[str]

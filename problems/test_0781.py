@@ -4,7 +4,7 @@ import utils
 
 
 # O(n) time. O(n) space. Hash table, math.
-class Solution(object):
+class Solution:
     def numRabbits(self, answers):
         """
         :type answers: List[int]

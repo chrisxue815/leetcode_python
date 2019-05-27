@@ -48,7 +48,7 @@ def _dfs(board, hand, inserted, num_inserted, min_num_inserted):
     return min_num_inserted
 
 
-class Solution(object):
+class Solution:
     def findMinStep(self, board, hand):
         """
         :type board: str

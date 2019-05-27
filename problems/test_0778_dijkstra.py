@@ -4,7 +4,7 @@ import utils
 
 
 # O(nlog(n)) time. O(n) space. Dijkstra.
-class Solution(object):
+class Solution:
     def swimInWater(self, grid):
         """
         :type grid: List[List[int]]

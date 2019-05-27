@@ -2,7 +2,7 @@ import unittest
 from collections import defaultdict
 
 
-class Solution(object):
+class Solution:
     def intersect(self, nums1, nums2):
         """
         :type nums1: List[int]

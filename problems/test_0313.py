@@ -2,7 +2,7 @@ import unittest
 import heapq
 
 
-class Solution(object):
+class Solution:
     def nthSuperUglyNumber(self, n, primes):
         """
         :type n: int

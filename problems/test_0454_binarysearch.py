@@ -18,7 +18,7 @@ def _binary_search(a, x, lo=0, hi=-1):
     return ~lo
 
 
-class Solution(object):
+class Solution:
     def fourSumCount(self, A, B, C, D):
         """
         :type A: List[int]

@@ -2,7 +2,7 @@ import unittest
 import operator
 
 
-class Solution(object):
+class Solution:
     def diffWaysToCompute(self, s):
         """
         :type s: str

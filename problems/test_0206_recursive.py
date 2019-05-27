@@ -14,7 +14,7 @@ def _reverse_list(curr, prev):
 
 
 # O(n) time. O(n) space. Tail recursion.
-class Solution(object):
+class Solution:
     def reverseList(self, head):
         """
         :type head: ListNode

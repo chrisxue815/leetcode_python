@@ -22,7 +22,7 @@ def calc(graph, visited, a, c):
 
 
 # O(V+E) time. O(V) space. DFS.
-class Solution(object):
+class Solution:
     def calcEquation(self, equations, values, queries):
         """
         :type equations: List[List[str]]

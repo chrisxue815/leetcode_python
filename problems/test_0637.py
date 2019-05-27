@@ -2,7 +2,7 @@ import unittest
 from tree import TreeNode
 
 
-class Solution(object):
+class Solution:
     def averageOfLevels(self, root):
         """
         :type root: TreeNode

@@ -2,7 +2,7 @@ import unittest
 import collections
 
 
-class Solution(object):
+class Solution:
     def findLHS(self, nums):
         """
         :type nums: List[int]

@@ -3,7 +3,7 @@ import utils
 
 
 # O(n^2) time. O(1) space. Naive string searching.
-class Solution(object):
+class Solution:
     def rotateString(self, a, b):
         """
         :type a: str

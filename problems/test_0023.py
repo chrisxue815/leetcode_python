@@ -4,7 +4,7 @@ import unittest
 from linkedlist import ListNode
 
 
-class Solution(object):
+class Solution:
     def mergeKLists(self, lists):
         """
         :type lists: List[ListNode]

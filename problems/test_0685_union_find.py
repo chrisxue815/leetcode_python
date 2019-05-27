@@ -9,7 +9,7 @@ def find_root(parents, node):
 
 
 # O(nlog(n)) time. O(n) space. Union-find.
-class Solution(object):
+class Solution:
     def findRedundantDirectedConnection(self, edges):
         """
         :type edges: List[List[int]]
