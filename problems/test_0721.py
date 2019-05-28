@@ -1,15 +1,12 @@
 import unittest
+from typing import List
 
 import utils
 
 
 # O(nlog(n)) time. O(n) space. Union-find.
 class Solution:
-    def accountsMerge(self, accounts):
-        """
-        :type accounts: List[List[str]]
-        :rtype: List[List[str]]
-        """
+    def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
         parents = list(range(len(accounts)))
         owners = {}
         unions = {}
