@@ -1,15 +1,13 @@
 import unittest
+from typing import List
+
 import utils
 from tree import TreeNode
 
 
 # O(n) time. O(log(n)) space. Iterative pre-order DFS, stack.
 class Solution:
-    def preorderTraversal(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[int]
-        """
+    def preorderTraversal(self, root: TreeNode) -> List[int]:
         result = []
         stack = []
         curr = root
