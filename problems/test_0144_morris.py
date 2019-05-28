@@ -1,50 +1,52 @@
 import unittest
+from typing import List
+
+import utils
 from tree import TreeNode
 
 
-def _find_predecessor(root):
-    cur = root.left
-    if not cur:
+def _find_predecessor(curr):
+    p = curr.left
+    if not p:
         return None
-    right = cur.right
-    while right and right is not root:
-        cur = right
-        right = cur.right
-    return cur
+    while p.right and p.right is not curr:
+        p = p.right
+    return p
 
 
+# O(n) time. O(1) space. Morris pre-order traversal.
 class Solution:
-    def preorderTraversal(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[int]
-        """
-        vals = []
+    def preorderTraversal(self, root: TreeNode) -> List[int]:
+        result = []
+        curr = root
 
-        while root:
-            predecessor = _find_predecessor(root)
+        while curr:
+            p = _find_predecessor(curr)
 
-            if not predecessor:
-                vals.append(root.val)
-                root = root.right
-            elif predecessor.right is root:
-                predecessor.right = None
-                root = root.right
+            if p:
+                if p.right:
+                    p.right = None
+                    curr = curr.right
+                else:
+                    result.append(curr.val)
+                    p.right = curr
+                    curr = curr.left
             else:
-                vals.append(root.val)
-                predecessor.right = root
-                root = root.left
+                result.append(curr.val)
+                curr = curr.right
 
-        return vals
+        return result
 
 
 class Test(unittest.TestCase):
-    def test_serialize(self):
-        self._test([4, 2, 6, 1, 3, 5, 7], [4, 2, 1, 3, 6, 5, 7])
+    def test(self):
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, vals, expected):
-        root = TreeNode.from_array(vals)
-        self.assertEqual(expected, Solution().preorderTraversal(root))
+        for case in cases:
+            args = str(case.args)
+            root = TreeNode.from_array(case.args.root)
+            actual = Solution().preorderTraversal(root)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
