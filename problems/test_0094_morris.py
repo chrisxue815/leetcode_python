@@ -1,41 +1,40 @@
 import unittest
+from typing import List
+
 from tree import TreeNode
 
 
-def _find_predecessor(root):
-    cur = root.left
-    if not cur:
+def _find_predecessor(curr):
+    p = curr.left
+    if not p:
         return None
-    right = cur.right
-    while right and right is not root:
-        cur = right
-        right = cur.right
-    return cur
+    while p.right and p.right is not curr:
+        p = p.right
+    return p
 
 
+# O(n) time. O(1) space. Morris in-order traversal.
 class Solution:
-    def inorderTraversal(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[int]
-        """
-        vals = []
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        result = []
+        curr = root
 
-        while root:
-            predecessor = _find_predecessor(root)
+        while curr:
+            p = _find_predecessor(curr)
 
-            if not predecessor:
-                vals.append(root.val)
-                root = root.right
-            elif predecessor.right is root:
-                vals.append(root.val)
-                predecessor.right = None
-                root = root.right
+            if p:
+                if p.right:
+                    result.append(curr.val)
+                    p.right = None
+                    curr = curr.right
+                else:
+                    p.right = curr
+                    curr = curr.left
             else:
-                predecessor.right = root
-                root = root.left
+                result.append(curr.val)
+                curr = curr.right
 
-        return vals
+        return result
 
 
 class Test(unittest.TestCase):
