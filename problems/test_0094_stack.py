@@ -1,15 +1,13 @@
 import unittest
+from typing import List
+
 import utils
 from tree import TreeNode
 
 
 # O(n) time. O(log(n)) space. Iterative in-order DFS, stack.
 class Solution:
-    def inorderTraversal(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[int]
-        """
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
         result = []
         stack = []
         curr = root
