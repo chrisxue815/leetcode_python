@@ -1,72 +1,66 @@
 import unittest
+from typing import List
+
+import utils
 from tree import TreeNode
 
 
-def _find_predecessor(root):
-    cur = root.left
-    if not cur:
+def _find_predecessor(curr):
+    p = curr.left
+    if not p:
         return None
-    right = cur.right
-    while right and right is not root:
-        cur = right
-        right = cur.right
-    return cur
+    while p.right and p.right is not curr:
+        p = p.right
+    return p
 
 
-def _reverse_append(root, vals):
-    parent = None
-    while root:
-        right = root.right
-        root.right = parent
-        parent = root
-        root = right
+def _reverse_append(result, start):
+    curr = start
+    prev = None
+    while curr:
+        curr.right, prev, curr = prev, curr, curr.right
 
-    root = parent
-    parent = None
-    while root:
-        vals.append(root.val)
-        right = root.right
-        root.right = parent
-        parent = root
-        root = right
+    curr = prev
+    prev = None
+    while curr:
+        result.append(curr.val)
+        curr.right, prev, curr = prev, curr, curr.right
 
 
+# O(n) time. O(1) space. Morris post-order traversal.
 class Solution:
-    def postorderTraversal(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[int]
-        """
-        vals = []
-        dump = root
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
+        result = []
+        dummy = TreeNode(0)
+        dummy.left = root
+        curr = dummy
 
-        while root:
-            predecessor = _find_predecessor(root)
+        while curr:
+            p = _find_predecessor(curr)
 
-            if not predecessor:
-                root = root.right
-            elif predecessor.right is root:
-                predecessor.right = None
-
-                _reverse_append(root.left, vals)
-
-                root = root.right
+            if p:
+                if p.right:
+                    p.right = None
+                    _reverse_append(result, curr.left)
+                    curr = curr.right
+                else:
+                    p.right = curr
+                    curr = curr.left
             else:
-                predecessor.right = root
-                root = root.left
+                curr = curr.right
 
-        _reverse_append(dump, vals)
-
-        return vals
+        return result
 
 
 class Test(unittest.TestCase):
-    def test_serialize(self):
-        self._test([4, 2, 6, 1, 3, 5, 7], [1, 3, 2, 5, 7, 6, 4])
+    def test(self):
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, vals, expected):
-        root = TreeNode.from_array(vals)
-        self.assertEqual(expected, Solution().postorderTraversal(root))
+        for case in cases:
+            args = str(case.args)
+            root = TreeNode.from_array(case.args.root)
+            actual = Solution().postorderTraversal(root)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
