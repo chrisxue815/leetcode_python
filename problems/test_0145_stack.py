@@ -1,15 +1,13 @@
 import unittest
+from typing import List
+
 import utils
 from tree import TreeNode
 
 
 # O(n) time. O(log(n)) space. Iterative post-order DFS, stack.
 class Solution:
-    def postorderTraversal(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[int]
-        """
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
         result = []
         stack = []
         curr = root
@@ -24,7 +22,6 @@ class Solution:
                 break
 
             curr = stack.pop()
-
             if stack and stack[-1] is curr:
                 curr = curr.right
             else:
