@@ -1,6 +1,7 @@
 import unittest
 from typing import List
 
+import utils
 from tree import TreeNode
 
 
@@ -38,12 +39,14 @@ class Solution:
 
 
 class Test(unittest.TestCase):
-    def test_serialize(self):
-        self._test([4, 2, 6, 1, 3, 5, 7], [1, 2, 3, 4, 5, 6, 7])
+    def test(self):
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, vals, expected):
-        root = TreeNode.from_array(vals)
-        self.assertEqual(expected, Solution().inorderTraversal(root))
+        for case in cases:
+            args = str(case.args)
+            root = TreeNode.from_array(case.args.root)
+            actual = Solution().inorderTraversal(root)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
