@@ -1,29 +1,32 @@
-import unittest
-from linkedlist import ListNode
 import random
+import unittest
+
+from linkedlist import ListNode
 
 
+# Random advance.
 class Solution:
-    def __init__(self, head):
+    # O(1) time. O(1) space.
+    def __init__(self, head: ListNode):
         """
         @param head The linked list's head.
         Note that the head is guaranteed to be not null, so it contains at least one node.
-        :type head: ListNode
         """
         self.head = head
         self.curr = head
-        self.rand = random.Random()
 
-    def getRandom(self):
+    # O(1) time. O(1) space.
+    def getRandom(self) -> int:
         """
         Returns a random node's value.
-        :rtype: int
         """
-        for _ in range(self.rand.randint(0, 4)):
-            if self.curr.next:
-                self.curr = self.curr.next
-            else:
+        rand = random.Random()
+
+        for _ in range(rand.randrange(4)):
+            self.curr = self.curr.next
+            if not self.curr:
                 self.curr = self.head
+
         return self.curr.val
 
 
