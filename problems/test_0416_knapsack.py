@@ -17,9 +17,12 @@ class Solution:
         dp = [False] * (target + 1)
         dp[0] = True
 
-        for i in range(1, len(nums) + 1):
-            for j in range(target, nums[i - 1] - 1, -1):
-                dp[j] = dp[j] or dp[j - nums[i - 1]]
+        for num in nums:
+            for j in range(target, num - 1, -1):
+                dp[j] |= dp[j - num]
+
+            if dp[target]:
+                return True
 
         return dp[target]
 
