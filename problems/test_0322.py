@@ -1,24 +1,25 @@
 import unittest
+from typing import List
+
 import utils
 
+MAX_INT = 0x7fffffff
 
-# O(nm) time. O(m) space. Space-optimized DP.
+
+# O(len(coins) * amount) time. O(amount) space. Space-optimized DP, unbounded knapsack.
 class Solution:
-    def coinChange(self, coins, amount):
-        """
-        :type coins: List[int]
-        :type amount: int
-        :rtype: int
-        """
-        max_num_coins = amount + 1
-        dp = [max_num_coins] * max_num_coins
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        # dp[j]: the fewest number of coins you need in coins[:i] to make up amount j
+        dp = [MAX_INT] * (amount + 1)
         dp[0] = 0
 
-        for coin in coins:
-            for curr_amount in range(coin, amount + 1):
-                dp[curr_amount] = min(dp[curr_amount], dp[curr_amount - coin] + 1)
+        for i in range(1, len(coins) + 1):
+            for j in range(coins[i - 1], amount + 1):
+                num = dp[j - coins[i - 1]]
+                if num != MAX_INT:
+                    dp[j] = min(dp[j], num + 1)
 
-        return dp[-1] if dp[-1] < max_num_coins else -1
+        return dp[amount] if dp[amount] != MAX_INT else -1
 
 
 class Test(unittest.TestCase):
