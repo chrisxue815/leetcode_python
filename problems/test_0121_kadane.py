@@ -1,15 +1,13 @@
 import unittest
+from typing import List
+
 import utils
 
 
 # O(n) time. O(1) space. Kadane's algorithm.
 class Solution:
-    def maxProfit(self, prices):
-        """
-        :type prices: List[int]
-        :rtype: int
-        """
-        max_ending_here = max_so_far = 0
+    def maxProfit(self, prices: List[int]) -> int:
+        max_so_far = max_ending_here = 0
 
         for i in range(1, len(prices)):
             diff = prices[i] - prices[i - 1]
