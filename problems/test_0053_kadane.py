@@ -1,30 +1,19 @@
 import unittest
+from typing import List
+
 import utils
 
 
 # O(n) time. O(1) space. Kadane's algorithm, greedy.
 class Solution:
-    def maxSubArray(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        if not nums:
-            return 0
+    def maxSubArray(self, nums: List[int]) -> int:
+        max_so_far = max_ending_here = -0x80000000
 
-        max_sum = nums[0]
-        cur_sum = max_sum
+        for num in nums:
+            max_ending_here = max(num, max_ending_here + num)
+            max_so_far = max(max_so_far, max_ending_here)
 
-        for num in nums[1:]:
-            if cur_sum <= 0:
-                cur_sum = num
-            else:
-                cur_sum += num
-
-            if cur_sum > max_sum:
-                max_sum = cur_sum
-
-        return max_sum
+        return max_so_far
 
 
 class Test(unittest.TestCase):
