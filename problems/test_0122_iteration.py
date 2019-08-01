@@ -1,14 +1,12 @@
 import unittest
+from typing import List
+
 import utils
 
 
 # O(n) time. O(1) space. Iteration.
 class Solution:
-    def maxProfit(self, prices):
-        """
-        :type prices: List[int]
-        :rtype: int
-        """
+    def maxProfit(self, prices: List[int]) -> int:
         result = 0
 
         for i in range(1, len(prices)):

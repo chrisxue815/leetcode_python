@@ -1,14 +1,12 @@
 import unittest
+from typing import List
+
 import utils
 
 
 # O(n) time. O(1) space. Space-optimized DP.
 class Solution:
-    def maxProfit(self, prices):
-        """
-        :type prices: List[int]
-        :rtype: int
-        """
+    def maxProfit(self, prices: List[int]) -> int:
         sell1 = sell2 = 0
         buy1 = buy2 = -0x80000000
 

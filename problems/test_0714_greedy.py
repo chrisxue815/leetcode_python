@@ -1,15 +1,12 @@
 import unittest
+from typing import List
+
 import utils
 
 
 # O(n) time. O(1) space. Greedy.
 class Solution:
-    def maxProfit(self, prices, fee):
-        """
-        :type prices: List[int]
-        :type fee: int
-        :rtype: int
-        """
+    def maxProfit(self, prices: List[int], fee: int) -> int:
         result = 0
         lo = 0x7FFFFFFF
 
