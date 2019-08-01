@@ -13,51 +13,39 @@ class ListNode:
 
 class LinkedList:
     def __init__(self):
-        self.head = None
-        self.tail = None
+        self.sentinel = ListNode(0, 0)
+        self.sentinel.nxt = self.sentinel
+        self.sentinel.prev = self.sentinel
 
     def append(self, curr):
-        if self.tail:
-            self.insert_after(self.tail, curr)
-        else:
-            self.head = self.tail = curr
-            curr.prev = curr.next = curr
+        self.insert_before(self.sentinel, curr)
 
-    def insert_after(self, prev, curr):
-        next = prev.next
+    def insert_before(self, nxt, curr):
+        prev = nxt.prev
 
-        prev.next = curr
-        next.prev = curr
+        nxt.prev = curr
+        curr.next = nxt
 
         curr.prev = prev
-        curr.next = next
-
-        if prev is self.tail:
-            self.tail = curr
+        prev.next = curr
 
     def remove(self, curr):
         prev = curr.prev
-        next = curr.next
+        nxt = curr.next
 
-        prev.next = next
-        next.prev = prev
+        prev.next = nxt
+        nxt.prev = prev
 
         curr.prev = None
         curr.next = None
 
-        if curr is self.head:
-            if curr is self.tail:
-                self.head = None
-                self.tail = None
-            else:
-                self.head = next
-        elif curr is self.tail:
-            self.tail = prev
-
     def popleft(self):
-        head = self.head
+        head = self.sentinel.next
         self.remove(head)
         return head
+
+    def tail(self):
+        return self.sentinel.prev
 
 
 # O(capacity) space. Hash table, linked list.
@@ -94,7 +82,7 @@ class LRUCache:
         if not curr:
             return None
 
-        if curr is not self.node_list.tail:
+        if curr is not self.node_list.tail():
             self.node_list.remove(curr)
             self.node_list.append(curr)
 
