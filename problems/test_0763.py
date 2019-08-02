@@ -1,38 +1,39 @@
 import unittest
+from typing import List
+
 import utils
 
 
 # O(n) time. O(1) space. Two pointers, greedy.
 class Solution:
-    def partitionLabels(self, s):
-        """
-        :type s: str
-        :rtype: List[int]
-        """
-        if not s:
+    def partitionLabels(self, S: str) -> List[int]:
+        if not S:
             return []
 
         result = []
         lo = 0
-        lo_ch = ord(s[0])
+        lo_ch = ord(S[0])
         rightmost_index = [-1] * (ord('z') + 1)
 
-        for hi in range(len(s) - 1, -1, -1):
-            hi_ch = ord(s[hi])
+        for hi in range(len(S) - 1, -1, -1):
+            hi_ch = ord(S[hi])
             if rightmost_index[hi_ch] == -1:
                 rightmost_index[hi_ch] = hi
+
             if hi_ch == lo_ch:
                 break
 
-        while lo < len(s):
-            hi = rightmost_index[ord(s[lo])]
+        while lo < len(S):
+            hi = rightmost_index[ord(S[lo])]
             i = lo
+
             while i < hi:
-                ch = ord(s[i])
+                ch = ord(S[i])
                 rightmost = rightmost_index[ch]
                 if rightmost > hi:
                     hi = rightmost
                 i += 1
+
             result.append(hi - lo + 1)
             lo = hi + 1
 

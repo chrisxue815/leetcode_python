@@ -1,14 +1,12 @@
 import unittest
+from typing import List
+
 import utils
 
 
 # O(nlog(n)) time. O(n) space. Sorting.
 class Solution:
-    def reorderLogFiles(self, logs):
-        """
-        :type logs: List[str]
-        :rtype: List[str]
-        """
+    def reorderLogFiles(self, logs: List[str]) -> List[str]:
         letter_logs = []
         digit_logs = []
 

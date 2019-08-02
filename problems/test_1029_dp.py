@@ -1,15 +1,12 @@
 import unittest
+from typing import List
 
 import utils
 
 
 # O(n^2) time. O(n^2) space. DP.
 class Solution:
-    def twoCitySchedCost(self, costs):
-        """
-        :type costs: List[List[int]]
-        :rtype: int
-        """
+    def twoCitySchedCost(self, costs: List[List[int]]) -> int:
         m = len(costs)
         n = m // 2
 

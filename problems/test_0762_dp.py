@@ -1,4 +1,5 @@
 import unittest
+
 import utils
 
 
@@ -11,16 +12,11 @@ def bit_counts(r):
 
 # O(n) time. O(n) space. DP.
 class Solution:
-    def countPrimeSetBits(self, l, r):
-        """
-        :type l: int
-        :type r: int
-        :rtype: int
-        """
-        counts = bit_counts(r)
+    def countPrimeSetBits(self, L: int, R: int) -> int:
+        counts = bit_counts(R)
         # let n = [2, 3, 5, 7, 11, 13, 17, 19]
         # the n-th bit of 665772 is set
-        return sum((665772 >> counts[num]) & 1 for num in range(l, r + 1))
+        return sum((665772 >> counts[num]) & 1 for num in range(L, R + 1))
 
 
 class Test(unittest.TestCase):
