@@ -4,19 +4,24 @@ from typing import List
 import utils
 
 
-# O(n^2) time. O(1) space. Iteration.
+# O(n) time. O(k) space. Math, hash table.
 class Solution:
     def checkSubarraySum(self, nums: List[int], k: int) -> bool:
-        for i in range(len(nums)):
-            s = nums[i]
-            for j in range(i + 1, len(nums)):
-                s += nums[j]
-                if k == 0:
-                    if s == 0:
-                        return True
-                else:
-                    if s % k == 0:
-                        return True
+        sum_to_index = {0: -1}
+        s = 0
+
+        for curr in range(len(nums)):
+            s += nums[curr]
+            if k:
+                s %= k
+
+            prev = sum_to_index.get(s, -2)
+
+            if prev != -2:
+                if curr - prev > 1:
+                    return True
+            else:
+                sum_to_index[s] = curr
 
         return False
 
