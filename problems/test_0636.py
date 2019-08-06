@@ -4,7 +4,7 @@ from typing import List
 import utils
 
 
-# O(n). O(depth) space. Stack.
+# O(n) time. O(depth) space. Stack.
 class Solution:
     def exclusiveTime(self, n: int, logs: List[str]) -> List[int]:
         result = [0] * n
