@@ -1,3 +1,4 @@
+import collections
 import unittest
 from typing import List
 
@@ -5,36 +6,40 @@ import utils
 from tree import TreeNode
 
 
-# O(n) time. O(n) space. Tree BFS, separate queue for each level.
+# O(n) time. O(n) space. Tree BFS, a single queue.
 class Solution:
     def zigzagLevelOrder(self, root: TreeNode) -> List[List[int]]:
         if not root:
             return []
 
         result = []
-        q = [root]
+        q = collections.deque([root])
         left_to_right = True
 
-        while q:
-            level = []
-            new_q = []
+        while True:
+            size = len(q)
+            if size == 0:
+                break
 
-            for curr in reversed(q):
+            level = []
+
+            for _ in range(size):
+                if left_to_right:
+                    curr = q.popleft()
+                    if curr.left:
+                        q.append(curr.left)
+                    if curr.right:
+                        q.append(curr.right)
+                else:
+                    curr = q.pop()
+                    if curr.right:
+                        q.appendleft(curr.right)
+                    if curr.left:
+                        q.appendleft(curr.left)
+
                 level.append(curr.val)
 
-                if left_to_right:
-                    if curr.left:
-                        new_q.append(curr.left)
-                    if curr.right:
-                        new_q.append(curr.right)
-                else:
-                    if curr.right:
-                        new_q.append(curr.right)
-                    if curr.left:
-                        new_q.append(curr.left)
-
             result.append(level)
-            q = new_q
             left_to_right = not left_to_right
 
         return result
