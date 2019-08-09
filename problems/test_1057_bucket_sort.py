@@ -1,32 +1,32 @@
-import heapq
 import unittest
 from typing import List
 
 import utils
 
 
-# O(nmlog(nm)) time. O(nm) space. Heap sort, TLE.
+# O(nm) time. O(nm) space. Heap sort, TLE.
 class Solution:
     def assignBikes(self, workers: List[List[int]], bikes: List[List[int]]) -> List[int]:
-        q = []
+        pairs_by_distance = [[] for _ in range(2000)]
 
         for wi, (wx, wy) in enumerate(workers):
             for bi, (bx, by) in enumerate(bikes):
-                heapq.heappush(q, (abs(wx - bx) + abs(wy - by), wi, bi))
+                dist = abs(wx - bx) + abs(wy - by)
+                pairs_by_distance[dist].append((wi, bi))
 
-        result = [0] * len(workers)
+        result = [-1] * len(workers)
         num_results = 0
-        worker_free = [True] * len(workers)
         bike_free = [True] * len(bikes)
 
-        while num_results < len(workers):
-            _, wi, bi = heapq.heappop(q)
+        for pairs in pairs_by_distance:
+            for wi, bi in pairs:
+                if result[wi] == -1 and bike_free[bi]:
+                    result[wi] = bi
+                    bike_free[bi] = False
+                    num_results += 1
 
-            if worker_free[wi] and bike_free[bi]:
-                result[wi] = bi
-                num_results += 1
-                worker_free[wi] = False
-                bike_free[bi] = False
+                    if num_results >= len(workers):
+                        break
 
         return result
 
