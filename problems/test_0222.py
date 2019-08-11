@@ -4,23 +4,32 @@ import utils
 from tree import TreeNode
 
 
-def height_and_count(root):
-    if not root:
-        return -1, 0
-
-    lh, lc = height_and_count(root.left)
-    if lc != (1 << (lh + 1)) - 1:
-        return lh + 1, lc + (1 << lh)
-
-    rh, rc = height_and_count(root.right)
-    return lh + 1, lc + rc + 1
+# Number of edges
+def height(root):
+    result = -1
+    while root:
+        result += 1
+        root = root.left
+    return result
 
 
-# O(n) time. O(log(n)) space. Tree, math, geometric progression.
+# O(n) time. O(log(n)) space. Tree, binary search, math, geometric progression.
 class Solution:
     def countNodes(self, root: TreeNode) -> int:
-        height, count = height_and_count(root)
-        return count
+        tree_height = height(root)
+
+        if tree_height == -1:
+            return 0
+        if tree_height == 0:
+            return 1
+
+        left_height = tree_height - 1
+        right_height = height(root.right)
+
+        if left_height == right_height:
+            return (1 << (left_height + 1)) + self.countNodes(root.right)
+        else:
+            return (1 << (right_height + 1)) + self.countNodes(root.left)
 
 
 class Test(unittest.TestCase):
