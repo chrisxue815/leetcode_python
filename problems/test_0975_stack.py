@@ -31,11 +31,11 @@ class Solution:
 
         # up[i] = 1 if we can start from i, jump up, jump some more times, and reach the end
         up = [0] * n
-        up[-1] = 1
 
         # down[i] = 1 if we can start from i, jump down, jump some more times, and reach the end
         down = [0] * n
-        down[-1] = 1
+
+        up[-1] = down[-1] = 1
 
         for i in range(n - 2, -1, -1):
             up[i] = down[next_higher[i]]
