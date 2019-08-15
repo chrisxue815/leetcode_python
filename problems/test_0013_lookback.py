@@ -1,17 +1,17 @@
 import unittest
 
+import utils
 
+_SYMBOLS = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+
+
+# O(n) time. O(1) space. String.
 class Solution:
-    def romanToInt(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        symbols = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    def romanToInt(self, s: str) -> int:
         result = prev = 0
 
         for ch in reversed(s):
-            curr = symbols[ch]
+            curr = _SYMBOLS[ch]
             if curr < prev:
                 result -= curr
             else:
@@ -23,30 +23,12 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test('I', 1)
-        self._test('II', 2)
-        self._test('III', 3)
-        self._test('IV', 4)
-        self._test('V', 5)
-        self._test('VI', 6)
-        self._test('VII', 7)
-        self._test('VIII', 8)
-        self._test('IX', 9)
-        self._test('X', 10)
-        self._test('XI', 11)
-        self._test('XIV', 14)
-        self._test('XV', 15)
-        self._test('XVI', 16)
-        self._test('XX', 20)
-        self._test('XL', 40)
-        self._test('XLIV', 44)
-        self._test('XLV', 45)
-        self._test('XLVIII', 48)
-        self._test('IL', 49)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, s, expected):
-        actual = Solution().romanToInt(s)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().romanToInt(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
