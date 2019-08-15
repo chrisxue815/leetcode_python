@@ -1,4 +1,5 @@
 import itertools
+import re
 import unittest
 from typing import List
 
@@ -8,27 +9,12 @@ import utils
 # O(n + len(options) * len(groups)) time. O(n) space. String.
 class Solution:
     def expand(self, S: str) -> List[str]:
-        groups = []
-        options = []
-        in_braces = False
-
-        for c in S:
-            if c == '{':
-                in_braces = True
-            elif c == '}':
-                options.sort()
-                groups.append(options)
-                options = []
-                in_braces = False
-            elif c == ',':
-                pass
-            else:
-                if in_braces:
-                    options.append(c)
-                else:
-                    groups.append([c])
-
+        groups = re.split(r'[{}]', S)
+        groups = (sorted(options.split(',')) for options in groups)
         return [''.join(options) for options in itertools.product(*groups)]
+
+    def expand_one_liner(self, S: str) -> List[str]:
+        return [''.join(options) for options in itertools.product(*(sorted(options.split(',')) for options in re.split(r'[{}]', S)))]
 
 
 class Test(unittest.TestCase):
