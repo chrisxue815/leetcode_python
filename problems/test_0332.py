@@ -1,16 +1,14 @@
 import collections
 import heapq
 import unittest
+from typing import List
+
 import utils
 
 
-# O(V+E) time. O(V) space. Hierholzer, DFS.
+# O(V+E) time. O(V) space. Eulerian path, Hierholzer's algorithm, DFS.
 class Solution:
-    def findItinerary(self, tickets):
-        """
-        :type tickets: List[List[str]]
-        :rtype: List[str]
-        """
+    def findItinerary(self, tickets: List[List[str]]) -> List[str]:
         graph = collections.defaultdict(list)
 
         for origin, dest in tickets:
