@@ -4,32 +4,34 @@ import unittest
 import utils
 
 
-# O(k * k^n) time. O(n * k^n) space. Math, combinatorics, backtracking.
+# O(k^n) time. O(k^n) space. Math, combinatorics, graph, Eulerian path, Hierholzer's algorithm, DFS.
 class Solution:
     def crackSafe(self, n: int, k: int) -> str:
+        digits = [str(i) for i in range(k)]
+
+        if n == 1:
+            return ''.join(digits)
+
         result = []
-        visited = set()
-        target_count = k ** n
+        graph = {}
 
         def dfs(prefix):
-            if len(visited) == target_count:
-                return True
+            suffixes = graph.get(prefix)
+            if suffixes is None:
+                suffixes = list(digits)
+                graph[prefix] = suffixes
 
-            for i in range(k):
-                pw = prefix + str(i)
-                if pw not in visited:
-                    visited.add(pw)
-                    if dfs(pw[1:]):
-                        result.append(str(i))
-                        return True
-                    visited.remove(pw)
+            while suffixes:
+                suffix = suffixes.pop()
+                pw = prefix + suffix
+                dfs(pw[1:])
 
-            return False
+            result.append(prefix[-1])
 
         initial_prefix = '0' * (n - 1)
         dfs(initial_prefix)
 
-        return initial_prefix + ''.join(reversed(result))
+        return initial_prefix[:-1] + ''.join(reversed(result))
 
 
 class Test(unittest.TestCase):
