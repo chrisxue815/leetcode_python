@@ -4,7 +4,7 @@ from typing import List
 import utils
 
 
-# O(nm) time. O(nm) space. Heap sort, TLE.
+# O(nm) time. O(nm) space. Bucket sort.
 class Solution:
     def assignBikes(self, workers: List[List[int]], bikes: List[List[int]]) -> List[int]:
         pairs_by_distance = [[] for _ in range(2000)]
