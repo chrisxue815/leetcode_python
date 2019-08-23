@@ -6,36 +6,27 @@ import utils
 # O(n) time. O(1) space. Iteration, math.
 class Solution:
     def licenseKeyFormatting(self, S: str, K: int) -> str:
-        num_alphanum = sum(1 for c in S if c != '-')
+        num_alphanum = len(S) - S.count('-')
         if num_alphanum == 0:
             return ''
 
-        num_dashes, first_group_len = divmod(num_alphanum, K)
-        if first_group_len == 0:
-            first_group_len = K
-            num_dashes -= 1
+        num_dashes, first_group_len = divmod(num_alphanum - 1, K)
+        first_group_len += 1
 
-        dst = ['_'] * (num_alphanum + num_dashes)
+        dst = [' '] * (num_alphanum + num_dashes)
         si = 0
-        di = 0
+        group_len = first_group_len
 
-        for _ in range(first_group_len):
-            while S[si] == '-':
-                si += 1
-            dst[di] = S[si].upper()
-            si += 1
-            di += 1
-
-        for _ in range(num_dashes):
-            dst[di] = '-'
-            di += 1
-
-            for _ in range(K):
+        for di in range(len(dst)):
+            if group_len > 0:
                 while S[si] == '-':
                     si += 1
                 dst[di] = S[si].upper()
                 si += 1
-                di += 1
+                group_len -= 1
+            else:
+                dst[di] = '-'
+                group_len = K
 
         return ''.join(dst)
 
