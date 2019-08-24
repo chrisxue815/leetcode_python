@@ -1,14 +1,12 @@
 import unittest
+from typing import List
+
 import utils
 
 
 # O(n) time. O(n) space. Hash table.
 class Solution:
-    def numUniqueEmails(self, emails):
-        """
-        :type emails: List[str]
-        :rtype: int
-        """
+    def numUniqueEmails(self, emails: List[str]) -> int:
         normalized = set()
 
         for email in emails:
@@ -16,7 +14,7 @@ class Solution:
 
             local = local.split('+', 1)[0].replace('.', '')
 
-            normalized.add(local + '@' + domain)
+            normalized.add((local, domain))
 
         return len(normalized)
 
