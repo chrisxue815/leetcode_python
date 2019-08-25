@@ -6,16 +6,13 @@ import utils
 # O(n) time. O(1) space. Iteration, reverse.
 class Solution:
     def licenseKeyFormatting(self, S: str, K: int) -> str:
-        reversed_alpha_nums = (c.upper() for c in reversed(S) if c != '-')
         result = []
 
-        for i, c in enumerate(reversed_alpha_nums):
-            result.append(c)
-            if (i + 1) % K == 0:
-                result.append('-')
-
-        if result and result[-1] == '-':
-            result.pop()
+        for c in reversed(S):
+            if c != '-':
+                if len(result) % (K + 1) == K:
+                    result.append('-')
+                result.append(c.upper())
 
         return ''.join(reversed(result))
 
