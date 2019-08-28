@@ -14,12 +14,12 @@ class Solution:
         result = 0
         prev_start = points[0][1] + 1
 
-        for s, e in points:
-            if e < prev_start:
+        for start, end in points:
+            if end < prev_start:
                 result += 1
-                prev_start = s
+                prev_start = start
             else:
-                prev_start = max(prev_start, s)
+                prev_start = max(prev_start, start)
 
         return result
 
