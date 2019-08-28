@@ -1,0 +1,36 @@
+import unittest
+from typing import List
+
+import utils
+
+
+# O(nlog(n)) time. O(1) space. Interval, sorting by end in ascending order, greedy.
+class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -> int:
+        if not points:
+            return 0
+
+        points.sort(key=lambda point: (point[1], point[0]))
+        result = 0
+        prev_end = points[0][0] - 1
+
+        for s, e in points:
+            if prev_end < s:
+                result += 1
+                prev_end = e
+
+        return result
+
+
+class Test(unittest.TestCase):
+    def test(self):
+        cases = utils.load_test_json(__file__).test_cases
+
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().findMinArrowShots(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
+
+
+if __name__ == '__main__':
+    unittest.main()
