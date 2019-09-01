@@ -1,46 +1,35 @@
 import unittest
+from typing import List
+
+import utils
 
 
-# Definition for an interval.
-class Interval:
-    def __init__(self, s=0, e=0):
-        self.start = s
-        self.end = e
-
-
+# O(nlog(n)) time. O(1) space. Interval, sorting by start, greedy.
 class Solution:
-    def merge(self, intervals):
-        """
-        :type intervals: List[Interval]
-        :rtype: List[Interval]
-        """
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         if not intervals:
             return []
-        intervals.sort(key=lambda x: x.start)
+
+        intervals.sort()
         result = [intervals[0]]
 
-        for interval in intervals:
-            if interval.start <= result[-1].end:
-                result[-1].end = max(result[-1].end, interval.end)
+        for start, end in intervals:
+            if result[-1][1] < start:
+                result.append([start, end])
             else:
-                result.append(interval)
+                result[-1][1] = max(result[-1][1], end)
 
         return result
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test(
-            [[1, 3], [2, 6], [8, 10], [15, 18]],
-            [[1, 6], [8, 10], [15, 18]])
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, intervals, expected):
-        intervals = [Interval(s, e) for s, e in intervals]
-
-        actual = Solution().merge(intervals)
-
-        actual = [[interval.start, interval.end] for interval in actual]
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().merge(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
