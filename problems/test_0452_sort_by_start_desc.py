@@ -11,15 +11,15 @@ class Solution:
             return 0
 
         points.sort(reverse=True)
-        result = 0
+        num_non_overlaps = 0
         prev_start = points[0][1] + 1
 
         for start, end in points:
             if end < prev_start:
-                result += 1
+                num_non_overlaps += 1
                 prev_start = start
 
-        return result
+        return num_non_overlaps
 
 
 class Test(unittest.TestCase):
