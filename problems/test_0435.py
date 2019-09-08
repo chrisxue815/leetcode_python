@@ -1,44 +1,35 @@
 import unittest
+from typing import List
+
+import utils
 
 
-# Definition for an interval.
-class Interval:
-    def __init__(self, s=0, e=0):
-        self.start = s
-        self.end = e
-
-
+# O(nlog(n)) time. O(1) space. Interval, sorting by end, greedy.
 class Solution:
-    def eraseOverlapIntervals(self, intervals):
-        """
-        :type intervals: List[Interval]
-        :rtype: int
-        """
+    def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
         if not intervals:
             return 0
 
-        intervals.sort(key=lambda x: x.end)
-        prev = intervals[0].end
-        count = 1
+        intervals.sort(key=lambda interval: (interval[1], interval[0]))
+        num_non_overlaps = 0
+        prev_end = intervals[0][0] - 1
 
-        for curr in intervals:
-            if curr.start >= prev:
-                count += 1
-                prev = curr.end
+        for start, end in intervals:
+            if prev_end <= start:
+                num_non_overlaps += 1
+                prev_end = end
 
-        return len(intervals) - count
+        return len(intervals) - num_non_overlaps
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([[1, 2], [2, 3], [3, 4], [1, 3]], 1)
-        self._test([[1, 2], [1, 2], [1, 2]], 2)
-        self._test([[1, 2], [2, 3]], 0)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, intervals, expected):
-        intervals = [Interval(start, end) for start, end in intervals]
-        actual = Solution().eraseOverlapIntervals(intervals)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().eraseOverlapIntervals(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
