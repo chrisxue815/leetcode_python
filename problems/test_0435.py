@@ -10,7 +10,7 @@ class Solution:
         if not intervals:
             return 0
 
-        intervals.sort(key=lambda interval: (interval[1], interval[0]))
+        intervals.sort(key=lambda interval: interval[1])
         num_non_overlaps = 0
         prev_end = intervals[0][0] - 1
 

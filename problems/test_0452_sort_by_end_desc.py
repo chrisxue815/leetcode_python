@@ -10,7 +10,7 @@ class Solution:
         if not points:
             return 0
 
-        points.sort(key=lambda point: (point[1], point[0]), reverse=True)
+        points.sort(key=lambda point: point[1], reverse=True)
         result = 0
         prev_start = points[0][1] + 1
 

@@ -10,7 +10,7 @@ class Solution:
         if not intervals:
             return []
 
-        intervals.sort(key=lambda interval: (interval[1], interval[0]), reverse=True)
+        intervals.sort(key=lambda interval: interval[1], reverse=True)
         result = [intervals[0]]
 
         for start, end in intervals:
