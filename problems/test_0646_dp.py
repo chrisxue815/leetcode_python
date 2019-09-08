@@ -1,24 +1,22 @@
 import unittest
+from typing import List
+
 import utils
 
 
 # O(n^2) time. O(n) space. DP.
 class Solution:
-    def findLongestChain(self, pairs):
-        """
-        :type pairs: List[List[int]]
-        :rtype: int
-        """
+    def findLongestChain(self, pairs: List[List[int]]) -> int:
         pairs.sort()
 
-        # dp[j]: Length of the longest pair chain in pairs[0:i+1] that contains pairs[j]
-        dp = [1] * len(pairs)
+        # dp[i]: Length of the longest pair chain in pairs[:i]
+        dp = [1] * (len(pairs) + 1)
+        dp[0] = 0
 
-        for i in range(len(pairs)):
-            for j in range(i):
-                dp[i] = max(dp[i], dp[j] + 1 if pairs[j][1] < pairs[i][0] else dp[j])
+        for i in range(2, len(pairs) + 1):
+            dp[i] = max(dp[j] + 1 if pairs[j - 1][1] < pairs[i - 1][0] else dp[j] for j in range(1, i))
 
-        return dp[-1]
+        return dp[len(pairs)]
 
 
 class Test(unittest.TestCase):
