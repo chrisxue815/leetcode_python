@@ -35,7 +35,7 @@ class Test(unittest.TestCase):
         for case in cases:
             args = str(case.args)
             actual = Solution().insert(**case.args.__dict__)
-            self.assertCountEqual(case.expected, actual, msg=args)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
