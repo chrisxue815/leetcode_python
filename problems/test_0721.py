@@ -36,7 +36,7 @@ class Solution:
             for email in emails[1:]:
                 union[1].add(email)
 
-        return [[name] + list(sorted(emails)) for name, emails in unions.values()]
+        return [[name] + sorted(emails) for name, emails in unions.values()]
 
 
 class Test(unittest.TestCase):

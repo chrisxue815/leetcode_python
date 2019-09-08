@@ -42,7 +42,7 @@ class Solution:
 
             return i, result
 
-        return list(sorted(parse_product(0)[1]))
+        return sorted(parse_product(0)[1])
 
 
 class Test(unittest.TestCase):
