@@ -1,45 +1,39 @@
 import sys
 import unittest
+from typing import List
+
+import utils
 
 
-# Definition for an interval.
-class Interval:
-    def __init__(self, s=0, e=0):
-        self.start = s
-        self.end = e
-
-
+# O(n^2) time. O(1) space. Brute-force.
 class Solution:
-    def findRightInterval(self, intervals):
-        """
-        :type intervals: List[Interval]
-        :rtype: List[int]
-        """
-        result = []
-        for i in range(len(intervals)):
-            min_index = -1
+    def findRightInterval(self, intervals: List[List[int]]) -> List[int]:
+        result = [0] * len(intervals)
+
+        for i, (i_start, i_end) in enumerate(intervals):
             min_val = sys.maxsize
-            for j in range(len(intervals)):
+            min_index = -1
+
+            for j, (j_start, j_end) in enumerate(intervals):
                 if i == j:
                     continue
-                if intervals[i].end <= intervals[j].start < min_val:
-                    min_index = j
-                    min_val = intervals[j].start
 
-            result.append(min_index)
+                if i_end <= j_start < min_val:
+                    min_val = j_start
+                    min_index = j
+
+            result[i] = min_index
         return result
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([[1, 2]], [-1])
-        self._test([[3, 4], [2, 3], [1, 2]], [-1, 0, 1])
-        self._test([[1, 4], [2, 3], [3, 4]], [-1, 2, -1])
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, intervals, expected):
-        intervals = [Interval(a[0], a[1]) for a in intervals]
-        actual = Solution().findRightInterval(intervals)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().findRightInterval(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
