@@ -1,27 +1,25 @@
 import unittest
+from typing import List
+
 import utils
 
 
-# O(nlog(n)) time. O(n) space. Sort, greedy.
+# O(nlog(n)) time. O(1) space. Interval, sorting by end, greedy.
 class Solution:
-    def findLongestChain(self, pairs):
-        """
-        :type pairs: List[List[int]]
-        :rtype: int
-        """
+    def findLongestChain(self, pairs: List[List[int]]) -> int:
         if not pairs:
             return 0
 
-        pairs.sort(key=lambda x: x[1])
-        result = 1
-        prev = pairs[0][1]
+        pairs.sort(key=lambda pair: pair[1])
+        num_non_overlaps = 0
+        prev_end = pairs[0][0] - 1
 
-        for i in range(1, len(pairs)):
-            if prev < pairs[i][0]:
-                prev = pairs[i][1]
-                result += 1
+        for start, end in pairs:
+            if prev_end < start:
+                num_non_overlaps += 1
+                prev_end = end
 
-        return result
+        return num_non_overlaps
 
 
 class Test(unittest.TestCase):
