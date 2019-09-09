@@ -1,26 +1,24 @@
 import collections
 import unittest
+from typing import List
 
-_a = ord('a')
+import utils
 
 
 def _count_sort(s):
     counts = [0] * 26
     for ch in s:
-        counts[ord(ch) - _a] += 1
+        counts[ord(ch) - ord('a')] += 1
 
     s = ''
     for i in range(26):
-        s += chr(i + _a) * counts[i]
+        s += chr(ord('a') + i) * counts[i]
     return s
 
 
+# O(nm) time. O(nm) space. Anagram, counting sort, hash table.
 class Solution:
-    def groupAnagrams(self, strs):
-        """
-        :type strs: List[str]
-        :rtype: List[List[str]]
-        """
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         anagrams = collections.defaultdict(list)
 
         for s in strs:
@@ -31,15 +29,12 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test(["eat", "tea", "tan", "ate", "nat", "bat"], [
-            ["eat", "tea", "ate"],
-            ["tan", "nat"],
-            ["bat"]
-        ])
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, strs, expected):
-        actual = Solution().groupAnagrams(strs)
-        self.assertCountEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().groupAnagrams(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
