@@ -1,38 +1,37 @@
 import unittest
+from typing import List
+
+import utils
 
 
+# O(log(n)) time. O(1) space. Binary search.
 class Solution:
-    def findMin(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+    def findMin(self, nums: List[int]) -> int:
         lo = 0
         hi = len(nums) - 1
+
         while lo < hi:
-            lo_val = nums[lo]
-            if lo_val <= nums[hi]:
-                return lo_val
+            if nums[lo] <= nums[hi]:
+                return nums[lo]
 
             mid = lo + ((hi - lo) >> 1)
-            mid_val = nums[mid]
 
-            if mid_val < lo_val:
-                hi = mid
-            else:
+            if nums[lo] <= nums[mid]:
                 lo = mid + 1
+            else:
+                hi = mid
 
         return nums[lo]
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([4, 5, 6, 7, 0, 1, 2], 0)
-        self._test([0, 1, 2, 4, 5, 6, 7], 0)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, nums, expected):
-        actual = Solution().findMin(nums)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().findMin(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
