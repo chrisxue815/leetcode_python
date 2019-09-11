@@ -1,32 +1,41 @@
 import unittest
+
+import utils
 from tree import TreeNode
 
 
-def _height_and_diameter(root):
-    if not root:
-        return 0, 0
-    lh, ld = _height_and_diameter(root.left)
-    rh, rd = _height_and_diameter(root.right)
-    return max(lh, rh) + 1, max(ld, rd, lh + rh)
-
-
+# O(n) time. O(log(n)) space. Recursive post-order DFS, tree height.
 class Solution:
-    def diameterOfBinaryTree(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
-        return _height_and_diameter(root)[1]
+    def diameterOfBinaryTree(self, root: TreeNode) -> int:
+        result = 0
+
+        # Number of nodes
+        def height(curr):
+            if not curr:
+                return 0
+
+            left_level = height(curr.left)
+            right_level = height(curr.right)
+
+            nonlocal result
+            result = max(result, left_level + right_level)
+
+            return max(left_level, right_level) + 1
+
+        height(root)
+
+        return result
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 2, 3, 4, 5], 3)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, root, expected):
-        root = TreeNode.from_array(root)
-        actual = Solution().diameterOfBinaryTree(root)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            root = TreeNode.from_array(case.args.root)
+            actual = Solution().diameterOfBinaryTree(root)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':

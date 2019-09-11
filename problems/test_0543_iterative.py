@@ -1,38 +1,39 @@
 import unittest
+
 import utils
 from tree import TreeNode
 
 
-# O(n) time. O(log(n)) space. Iterative post-order DFS, stack.
+# O(n) time. O(log(n)) space. Iterative post-order DFS, stack, tree height.
 class Solution:
-    def diameterOfBinaryTree(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
-        if not root:
-            return 0
-
+    def diameterOfBinaryTree(self, root: TreeNode) -> int:
+        result = 0
         stack = []
         curr = root
 
-        while curr or stack:
-            if curr:
+        while True:
+            while curr:
                 stack.append(curr)
                 stack.append(curr)
                 curr = curr.left
-            else:
-                curr = stack.pop()
-                if stack and stack[-1] is curr:
-                    curr = curr.right
-                else:
-                    lh, ld = (curr.left.height, curr.left.diameter) if curr.left else (0, 0)
-                    rh, rd = (curr.right.height, curr.right.diameter) if curr.right else (0, 0)
-                    curr.height = 1 + max(lh, rh)
-                    curr.diameter = max(lh + rh, ld, rd)
-                    curr = None
 
-        return root.diameter
+            if not stack:
+                break
+
+            curr = stack.pop()
+
+            if stack and stack[-1] is curr:
+                curr = curr.right
+            else:
+                left_height = curr.left.height if curr.left else 0
+                right_height = curr.right.height if curr.right else 0
+
+                curr.height = max(left_height, right_height) + 1
+                result = max(result, left_height + right_height)
+
+                curr = None
+
+        return result
 
 
 class Test(unittest.TestCase):
