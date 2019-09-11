@@ -4,6 +4,7 @@ from typing import List
 import utils
 
 
+# O(log(n)) time. O(1) space. Binary search.
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         lo = 0
