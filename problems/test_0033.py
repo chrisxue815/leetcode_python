@@ -12,24 +12,20 @@ class Solution:
 
         while lo <= hi:
             mid = lo + ((hi - lo) >> 1)
-            mid_val = nums[mid]
 
-            if target == mid_val:
+            if target == nums[mid]:
                 return mid
 
-            lo_val = nums[lo]
-            hi_val = nums[hi]
-
-            if lo_val <= mid_val:
-                if lo_val <= target <= mid_val:
-                    hi = mid - 1
-                else:
+            if nums[mid] < nums[hi]:
+                if nums[mid] <= target <= nums[hi]:
                     lo = mid + 1
+                else:
+                    hi = mid - 1
             else:
-                if mid_val <= target <= hi_val:
-                    lo = mid + 1
-                else:
+                if nums[lo] <= target <= nums[mid]:
                     hi = mid - 1
+                else:
+                    lo = mid + 1
 
         return -1
 

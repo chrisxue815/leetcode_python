@@ -1,46 +1,38 @@
 import unittest
+from typing import List
+
+import utils
 
 
+# O(log(n)) average, O(n) worst-case time. O(1) space. Binary search.
 class Solution:
-    def findMin(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+    def findMin(self, nums: List[int]) -> int:
         lo = 0
         hi = len(nums) - 1
+
         while lo < hi:
-            lo_val = nums[lo]
-            hi_val = nums[hi]
-
-            if lo_val < hi_val:
-                return lo_val
-
             mid = lo + ((hi - lo) >> 1)
-            mid_val = nums[mid]
 
-            if mid_val < lo_val:
+            if nums[mid] < nums[hi]:
                 hi = mid
-            elif mid_val > lo_val or lo_val > hi_val:
+            elif nums[mid] > nums[hi]:
                 lo = mid + 1
             else:
-                lo += 1
+                if nums[hi - 1] > nums[hi]:
+                    break
+                hi -= 1
 
-        return nums[lo]
+        return nums[hi]
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([4, 5, 5, 6, 7, 0, 1, 2], 0)
-        self._test([4, 5, 6, 7, 0, 1, 2, 2], 0)
-        self._test([4, 4, 5, 6, 7, 0, 1, 2], 0)
-        self._test([4, 4, 5, 6, 7, 0, 1, 2, 4], 0)
-        self._test([0, 1, 2, 4, 4, 5, 6, 7], 0)
-        self._test([1], 1)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, nums, expected):
-        actual = Solution().findMin(nums)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().findMin(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':

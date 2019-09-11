@@ -6,33 +6,28 @@ import utils
 
 # O(log(n)) average, O(n) worst-case time. O(1) space. Binary search.
 class Solution:
-    def search(self, nums: List[int], target: int) -> bool:
+    def search(self, nums: List[int], target: int) -> int:
         lo = 0
         hi = len(nums) - 1
 
         while lo <= hi:
             mid = lo + ((hi - lo) >> 1)
-            mid_val = nums[mid]
 
-            if mid_val == target:
+            if target == nums[mid]:
                 return True
 
-            while nums[lo] == nums[mid] and lo < mid:
-                lo += 1
-
-            lo_val = nums[lo]
-            hi_val = nums[hi]
-
-            if lo_val <= mid_val:
-                if lo_val <= target <= mid_val:
+            if nums[mid] < nums[hi]:
+                if nums[mid] <= target <= nums[hi]:
+                    lo = mid + 1
+                else:
+                    hi = mid - 1
+            elif nums[mid] > nums[hi]:
+                if nums[lo] <= target <= nums[mid]:
                     hi = mid - 1
                 else:
                     lo = mid + 1
             else:
-                if mid_val <= target <= hi_val:
-                    lo = mid + 1
-                else:
-                    hi = mid - 1
+                hi -= 1
 
         return False
 
