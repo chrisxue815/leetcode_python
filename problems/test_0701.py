@@ -4,8 +4,8 @@ from tree import TreeNode
 
 
 # O(log(n)) time. O(log(n)) space. Recursive DFS.
-class Solution(object):
-    def insertIntoBST(self, root, val):
+class Solution:
+    def insertIntoBST(self, root: TreeNode, val: int) -> TreeNode:
         """
         :type root: TreeNode
         :type val: int

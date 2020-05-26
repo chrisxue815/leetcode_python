@@ -1,11 +1,13 @@
 import unittest
+from typing import List
+
 import utils
 from tree import TreeNode
 
 
 # O(n) time. O(log(n)) space. Stack.
-class Solution(object):
-    def bstFromPreorder(self, preorder):
+class Solution:
+    def bstFromPreorder(self, preorder: List[int]) -> TreeNode:
         """
         :type preorder: List[int]
         :rtype: TreeNode
