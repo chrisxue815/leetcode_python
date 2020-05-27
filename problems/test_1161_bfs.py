@@ -4,7 +4,7 @@ import utils
 from tree import TreeNode
 
 
-# O(n) time. O(log(n)) space. BFS.
+# O(n) time. O(n) space. BFS.
 class Solution:
     def maxLevelSum(self, root: TreeNode) -> int:
         if not root:

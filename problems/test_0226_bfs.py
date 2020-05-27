@@ -4,7 +4,7 @@ import utils
 from tree import TreeNode
 
 
-# O(n) time. O(log(n)) space. BFS.
+# O(n) time. O(n) space. BFS.
 class Solution:
     def invertTree(self, root: TreeNode) -> TreeNode:
         if not root:
