@@ -3,7 +3,7 @@ import utils
 from tree import TreeNode
 
 
-# O(n) time. O(n) space. BFS.
+# O(n) time. O(log(n)) space. Recursive DFS.
 class Solution:
     def getTargetCopy(self, original: TreeNode, cloned: TreeNode, target: TreeNode) -> TreeNode:
         if not original:
