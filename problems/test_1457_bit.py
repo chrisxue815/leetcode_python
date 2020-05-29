@@ -3,27 +3,23 @@ import utils
 from tree import TreeNode
 
 
-# O(n) time. O(log(n)) space. Recursive DFS.
+# O(n) time. O(log(n)) space. Recursive DFS, bit manipulation.
 class Solution:
     def pseudoPalindromicPaths(self, root: TreeNode) -> int:
-        count = [0] * 10
-
-        def dfs(curr):
+        def dfs(curr, count):
             if not curr:
                 return 0
 
-            count[curr.val] += 1
+            count ^= 1 << curr.val
 
             if curr.left or curr.right:
-                result = dfs(curr.left) + dfs(curr.right)
+                result = dfs(curr.left, count) + dfs(curr.right, count)
             else:
-                num_odds = sum(c & 1 for c in count)
-                result = 1 if num_odds <= 1 else 0
+                result = 1 if count == 0 or count & (count - 1) == 0 else 0
 
-            count[curr.val] -= 1
             return result
 
-        return dfs(root)
+        return dfs(root, 0)
 
 
 class Test(unittest.TestCase):
