@@ -3,7 +3,7 @@ import utils
 from tree import TreeNode
 
 
-# O(n) time. O(log(n)) space. Recursive DFS, monotonic queue.
+# O(n) time. O(log(n)) space. Recursive DFS, monotone queue.
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
         if not root:
