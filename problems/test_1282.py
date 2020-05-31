@@ -9,14 +9,11 @@ from tree import TreeNode
 # O(n) time. O(number of groups) space. Hash table.
 class Solution:
     def groupThePeople(self, groupSizes: List[int]) -> List[List[int]]:
-        group_size_to_groups = collections.defaultdict(list)
-        for i, group_size in enumerate(groupSizes):
-            groups = group_size_to_groups[group_size]
-            if groups and len(groups[-1]) < group_size:
-                groups[-1].append(i)
-            else:
-                groups.append([i])
-        return [group for groups in group_size_to_groups.values() for group in groups]
+        group_size_to_people = collections.defaultdict(list)
+        for person, group_size in enumerate(groupSizes):
+            group_size_to_people[group_size].append(person)
+        return [[people[i * group_size + j] for j in range(group_size)] for group_size, people in
+                group_size_to_people.items() for i in range(len(people) // group_size)]
 
 
 class Test(unittest.TestCase):
