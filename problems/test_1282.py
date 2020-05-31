@@ -10,10 +10,12 @@ from tree import TreeNode
 class Solution:
     def groupThePeople(self, groupSizes: List[int]) -> List[List[int]]:
         group_size_to_people = collections.defaultdict(list)
+
         for person, group_size in enumerate(groupSizes):
             group_size_to_people[group_size].append(person)
-        return [[people[i * group_size + j] for j in range(group_size)] for group_size, people in
-                group_size_to_people.items() for i in range(len(people) // group_size)]
+
+        return [people[i:i + group_size] for group_size, people in
+                group_size_to_people.items() for i in range(0, len(people), group_size)]
 
 
 class Test(unittest.TestCase):
