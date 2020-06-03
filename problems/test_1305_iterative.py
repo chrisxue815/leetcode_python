@@ -8,36 +8,26 @@ from tree import TreeNode
 # O(n) time. O(log(n)) space. Iterative in-order DFS, merging.
 class Solution:
     def getAllElements(self, root1: TreeNode, root2: TreeNode) -> List[int]:
-        def advance(node, stack):
+        def push_left(node, stack):
             while node:
                 stack.append(node)
                 node = node.left
-            if stack:
-                return stack.pop()
-            else:
-                return None
 
         result = []
         stack1 = []
         stack2 = []
-        node1 = advance(root1, stack1)
-        node2 = advance(root2, stack2)
+        push_left(root1, stack1)
+        push_left(root2, stack2)
 
-        while node1 and node2:
-            if node1.val <= node2.val:
-                result.append(node1.val)
-                node1 = advance(node1.right, stack1)
+        while stack1 or stack2:
+            if not stack2 or stack1 and stack1[-1].val <= stack2[-1].val:
+                node = stack1.pop()
+                result.append(node.val)
+                push_left(node.right, stack1)
             else:
-                result.append(node2.val)
-                node2 = advance(node2.right, stack2)
-
-        if not node1:
-            node1 = node2
-            stack1 = stack2
-
-        while node1:
-            result.append(node1.val)
-            node1 = advance(node1.right, stack1)
+                node = stack2.pop()
+                result.append(node.val)
+                push_left(node.right, stack2)
 
         return result
 
