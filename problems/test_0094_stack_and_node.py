@@ -10,18 +10,19 @@ class Solution:
     def inorderTraversal(self, root: TreeNode) -> List[int]:
         result = []
         stack = []
+        curr = root
 
-        def push_left(node):
-            while node:
-                stack.append(node)
-                node = node.left
+        while True:
+            while curr:
+                stack.append(curr)
+                curr = curr.left
 
-        push_left(root)
+            if not stack:
+                break
 
-        while stack:
             curr = stack.pop()
             result.append(curr.val)
-            push_left(curr.right)
+            curr = curr.right
 
         return result
 
