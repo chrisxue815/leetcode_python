@@ -15,16 +15,19 @@ class Solution:
         result = 0
 
         def dfs(curr):
-            nonlocal result
+            if not curr.left and not curr.right:
+                return [(1, 1)]
 
             left = dfs(curr.left) if curr.left else []
             right = dfs(curr.right) if curr.right else []
 
             if left and right:
+                nonlocal result
                 rsum = []
                 s = 0
+                lh = left[0][0]
                 for height, count in right:
-                    if left[0][0] + height > distance:
+                    if lh + height > distance:
                         break
                     s += count
                     rsum.append((height, s))
@@ -35,32 +38,33 @@ class Solution:
                     result += left[li][1] * rsum[ri][1]
                     li += 1
                     if li < len(left):
-                        while ri >= 0 and left[li][0] + rsum[ri][0] > distance:
+                        lh = left[li][0]
+                        while ri >= 0 and lh + rsum[ri][0] > distance:
                             ri -= 1
 
-            if not curr.left and not curr.right:
-                return [(1, 1)]
-            else:
-                merged = []
-                li = 0
-                ri = 0
-                while li < len(left) and ri < len(right):
-                    if left[li][0] > distance - 2 or right[ri][0] > distance - 2:
-                        break
-                    if left[li][0] == right[ri][0]:
-                        merged.append((left[li][0] + 1, left[li][1] + right[ri][1]))
-                        li += 1
-                        ri += 1
-                    elif left[li][0] < right[ri][0]:
-                        merged.append((left[li][0] + 1, left[li][1]))
-                        li += 1
-                    else:
-                        merged.append((right[ri][0] + 1, right[ri][1]))
-                        ri += 1
-                merge(merged, distance, left, li)
-                merge(merged, distance, right, ri)
+            merged = []
+            li = 0
+            ri = 0
+            while li < len(left) and ri < len(right):
+                lh = left[li][0]
+                rh = right[ri][0]
+                if lh > distance - 2 or rh > distance - 2:
+                    break
+                if lh == rh:
+                    merged.append((lh + 1, left[li][1] + right[ri][1]))
+                    li += 1
+                    ri += 1
+                elif lh < rh:
+                    merged.append((lh + 1, left[li][1]))
+                    li += 1
+                else:
+                    merged.append((rh + 1, right[ri][1]))
+                    ri += 1
 
-                return merged
+            merge(merged, distance, left, li)
+            merge(merged, distance, right, ri)
+
+            return merged
 
         if root:
             dfs(root)
