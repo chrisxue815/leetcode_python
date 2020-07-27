@@ -23,23 +23,22 @@ class Solution:
 
             if left and right:
                 nonlocal result
-                rsum = []
                 s = 0
                 lh = left[0][0]
-                for height, count in right:
+                for ri, (height, count) in enumerate(right):
                     if lh + height > distance:
+                        ri -= 1
                         break
                     s += count
-                    rsum.append((height, s))
 
                 li = 0
-                ri = len(rsum) - 1
                 while li < len(left) and ri >= 0:
-                    result += left[li][1] * rsum[ri][1]
+                    result += left[li][1] * s
                     li += 1
                     if li < len(left):
                         lh = left[li][0]
-                        while ri >= 0 and lh + rsum[ri][0] > distance:
+                        while ri >= 0 and lh + right[ri][0] > distance:
+                            s -= right[ri][1]
                             ri -= 1
 
             merged = []
