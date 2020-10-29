@@ -3,6 +3,7 @@ import utils
 from tree import TreeNode
 
 
+# O(n) time. O(n) space. BFS.
 class Solution:
     def isEvenOddTree(self, root: TreeNode) -> bool:
         if not root:
