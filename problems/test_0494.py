@@ -4,22 +4,27 @@ from typing import List
 import utils
 
 
-# O(len(nums) * sum(nums)) time. O(len(nums) * sum(nums)) space. DP, 0-1 knapsack.
+# O(len(nums) * (sum(nums) + max(nums))) time. O(len(nums) * (sum(nums) + max(nums))) space. DP, 0-1 knapsack.
 class Solution:
     def findTargetSumWays(self, nums: List[int], S: int) -> int:
-        sum_nums = sum(nums)
-        if not (-sum_nums <= S <= sum_nums):
+        if not nums:
+            return 1 if S == 0 else 0
+
+        sum_ = sum(nums)
+        if not (-sum_ <= S <= sum_):
             return 0
 
-        max_num = max(nums)
+        max_ = max(nums)
+        bound = sum_ + max_
+        range_ = bound * 2 + 1
 
         # dp[i][j]: how many ways to assign symbols to make sum of nums[:i] equal to target j
-        dp = [[0] * ((sum_nums + max_num) * 2 + 1) for _ in range(len(nums) + 1)]
+        dp = [[0] * range_ for _ in range(len(nums) + 1)]
         dp[0][0] = 1
 
         for i in range(1, len(nums) + 1):
             num = nums[i - 1]
-            for j in range(-sum_nums - num, sum_nums + num + 1):
+            for j in range(-sum_, sum_ + 1):
                 dp[i][j] = dp[i - 1][j - num] + dp[i - 1][j + num]
 
         return dp[len(nums)][S]
