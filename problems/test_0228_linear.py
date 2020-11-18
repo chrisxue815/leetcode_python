@@ -1,13 +1,12 @@
 import unittest
+from typing import List
+
+import utils
 
 
-# O(n). Linear iteration
+# O(n) time. O(1) space. Linear iteration.
 class Solution:
-    def summaryRanges(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[str]
-        """
+    def summaryRanges(self, nums: List[int]) -> List[str]:
         if not nums:
             return []
 
@@ -29,12 +28,12 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([0, 1, 2, 4, 5, 7], ['0->2', '4->5', '7'])
-        self._test([0, 2, 3, 4, 6, 8, 9], ['0', '2->4', '6', '8->9'])
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, nums, expected):
-        actual = Solution().summaryRanges(nums)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().summaryRanges(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
