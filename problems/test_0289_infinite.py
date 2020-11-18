@@ -1,12 +1,16 @@
 import unittest
 import collections
 
+from typing import List
 
+import utils
+
+
+# O(n) time. O(n) space. Array, hash table.
 class Solution:
-    def gameOfLife(self, board):
+    def gameOfLife(self, board: List[List[int]]) -> None:
         """
-        :type board: List[List[int]]
-        :rtype: void Do not return anything, modify board in-place instead.
+        Do not return anything, modify board in-place instead.
         """
         height = len(board)
         width = len(board[0])
@@ -32,51 +36,12 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([
-            [0, 0, 0, 0],
-            [0, 1, 1, 0],
-            [0, 1, 1, 0],
-            [0, 0, 0, 0],
-        ], [
-            [0, 0, 0, 0],
-            [0, 1, 1, 0],
-            [0, 1, 1, 0],
-            [0, 0, 0, 0],
-        ])
+        cases = utils.load_test_json(__file__).test_cases
 
-        self._test([
-            [0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0],
-            [0, 1, 1, 1, 0],
-            [0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0],
-        ], [
-            [0, 0, 0, 0, 0],
-            [0, 0, 1, 0, 0],
-            [0, 0, 1, 0, 0],
-            [0, 0, 1, 0, 0],
-            [0, 0, 0, 0, 0],
-        ])
-
-        self._test([
-            [0, 0, 0, 0, 0, 0],
-            [0, 1, 1, 0, 0, 0],
-            [0, 1, 1, 0, 0, 0],
-            [0, 0, 0, 1, 1, 0],
-            [0, 0, 0, 1, 1, 0],
-            [0, 0, 0, 0, 0, 0],
-        ], [
-            [0, 0, 0, 0, 0, 0],
-            [0, 1, 1, 0, 0, 0],
-            [0, 1, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0],
-            [0, 0, 0, 1, 1, 0],
-            [0, 0, 0, 0, 0, 0],
-        ])
-
-    def _test(self, board, expected):
-        Solution().gameOfLife(board)
-        self.assertEqual(expected, board)
+        for case in cases:
+            args = str(case.args)
+            Solution().gameOfLife(**case.args.__dict__)
+            self.assertEqual(case.expected, case.args.board, msg=args)
 
 
 if __name__ == '__main__':
