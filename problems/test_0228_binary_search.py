@@ -4,6 +4,7 @@ from typing import List
 import utils
 
 
+# Best case: O(log(n)) time, worst case: O(nlog(n)) time. O(1) space. Binary search.
 class Solution:
     def summaryRanges(self, nums: List[int]) -> List[str]:
         result = []
