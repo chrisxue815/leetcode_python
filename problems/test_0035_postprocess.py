@@ -1,13 +1,12 @@
 import unittest
+from typing import List
+
+import utils
 
 
+# O(log(n)) time. O(1) space. Binary search.
 class Solution:
-    def searchInsert(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: int
-        """
+    def searchInsert(self, nums: List[int], target: int) -> int:
         n = len(nums)
         lo = 0
         hi = n
@@ -29,14 +28,12 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 3, 5, 6], 5, 2)
-        self._test([1, 3, 5, 6], 2, 1)
-        self._test([1, 3, 5, 6], 7, 4)
-        self._test([1, 3, 5, 6], 0, 0)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, nums, target, expected):
-        actual = Solution().searchInsert(nums, target)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().searchInsert(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
