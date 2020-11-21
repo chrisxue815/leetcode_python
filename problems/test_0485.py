@@ -1,12 +1,12 @@
 import unittest
+from typing import List
+
+import utils
 
 
+# O(n) time. O(1) space. Array.
 class Solution:
-    def findMaxConsecutiveOnes(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
         max_count = 0
         count = 0
 
@@ -23,11 +23,12 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 1, 0, 1, 1, 1], 3)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, nums, expected):
-        actual = Solution().findMaxConsecutiveOnes(nums)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().findMaxConsecutiveOnes(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
