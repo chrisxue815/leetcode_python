@@ -1,38 +1,39 @@
 import unittest
+from typing import List
+
+import utils
 
 
+# O(n) time. O(1) space. Ring detection.
 class Solution:
-    def arrayNesting(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        max_ring = 0
-        remain = len(nums)
-        for index in range(len(nums)):
-            ring = 0
-            while True:
-                num = nums[index]
-                if num == -1:
-                    break
-                ring += 1
-                remain -= 1
-                nums[index] = -1
-                index = num
-            if ring > max_ring:
-                max_ring = ring
-            if not remain:
-                break
-        return max_ring
+    def arrayNesting(self, nums: List[int]) -> int:
+        result = 0
+        for start, num in enumerate(nums):
+            if num == -1:
+                continue
+
+            size = 0
+            i = start
+
+            while nums[i] != -1:
+                size += 1
+                nxt = nums[i]
+                nums[i] = -1
+                i = nxt
+
+            result = max(result, size)
+
+        return result
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([5, 4, 0, 3, 1, 6, 2], 4)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, nums, expected):
-        actual = Solution().arrayNesting(nums)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().arrayNesting(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
