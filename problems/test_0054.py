@@ -1,13 +1,13 @@
 import unittest
 
+from typing import List
 
-# O(n) time. O(1) space. Induction.
+import utils
+
+
+# O(n) time. O(1) space. Matrix.
 class Solution:
-    def spiralOrder(self, matrix):
-        """
-        :type matrix: List[List[int]]
-        :rtype: List[int]
-        """
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         if not matrix or not matrix[0]:
             return []
 
@@ -17,60 +17,50 @@ class Solution:
 
         result = [0] * n
 
-        top = left = row = col = i = 0
+        top = left = i = 0
         bottom = height - 1
         right = width - 1
 
         while True:
+            for col in range(left, right + 1):
+                result[i] = matrix[top][col]
+                i += 1
             if i >= n:
                 break
-            for col in range(col, right + 1):
-                result[i] = matrix[row][col]
-                i += 1
-
-            if i >= n:
-                break
-            for row in range(row + 1, bottom + 1):
-                result[i] = matrix[row][col]
-                i += 1
-
-            if i >= n:
-                break
-            for col in range(col - 1, left - 1, -1):
-                result[i] = matrix[row][col]
-                i += 1
-
-            if i >= n:
-                break
-            for row in range(row - 1, top, -1):
-                result[i] = matrix[row][col]
-                i += 1
-
-            col += 1
             top += 1
-            left += 1
-            bottom -= 1
+
+            for row in range(top, bottom + 1):
+                result[i] = matrix[row][right]
+                i += 1
+            if i >= n:
+                break
             right -= 1
+
+            for col in range(right, left - 1, -1):
+                result[i] = matrix[bottom][col]
+                i += 1
+            if i >= n:
+                break
+            bottom -= 1
+
+            for row in range(bottom, top - 1, -1):
+                result[i] = matrix[row][left]
+                i += 1
+            if i >= n:
+                break
+            left += 1
+
         return result
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([
-            [1, 2, 3],
-            [4, 5, 6],
-            [7, 8, 9],
-        ], [1, 2, 3, 6, 9, 8, 7, 4, 5])
+        cases = utils.load_test_json(__file__).test_cases
 
-        self._test([
-            [1, 2, 3, 4, 5],
-            [6, 7, 8, 9, 10],
-            [11, 12, 13, 14, 15],
-        ], [1, 2, 3, 4, 5, 10, 15, 14, 13, 12, 11, 6, 7, 8, 9])
-
-    def _test(self, matrix, expected):
-        actual = Solution().spiralOrder(matrix)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().spiralOrder(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
