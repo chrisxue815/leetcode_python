@@ -1,36 +1,33 @@
 import unittest
+from typing import List
+
+import utils
 
 
+# O(n) time. O(1) space. Array.
 class Solution:
-    def findPoisonedDuration(self, timeSeries, duration):
-        """
-        :type timeSeries: List[int]
-        :type duration: int
-        :rtype: int
-        """
-        prev_end = 0
-        total = 0
+    def findPoisonedDuration(self, timeSeries: List[int], duration: int) -> int:
+        if not timeSeries:
+            return 0
 
-        for time in timeSeries:
-            if time < prev_end:
-                new_end = time + duration
-                total += new_end - prev_end
-                prev_end = new_end
-            else:
-                total += duration
-                prev_end = time + duration
+        result = duration
+        prev = timeSeries[0]
 
-        return total
+        for curr in timeSeries:
+            result += min(duration, curr - prev)
+            prev = curr
+
+        return result
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 4], 2, 4)
-        self._test([1, 2], 2, 3)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, timeSeries, duration, expected):
-        actual = Solution().findPoisonedDuration(timeSeries, duration)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().findPoisonedDuration(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
