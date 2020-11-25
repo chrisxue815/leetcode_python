@@ -1,14 +1,13 @@
 import collections
 import unittest
+from typing import List
+
+import utils
 
 
+# O(n) time. O(n) space. Hash table, counting.
 class Solution:
-    def findPairs(self, nums, k):
-        """
-        :type nums: List[int]
-        :type k: int
-        :rtype: int
-        """
+    def findPairs(self, nums: List[int], k: int) -> int:
         if k < 0 or not nums:
             return 0
 
@@ -32,14 +31,12 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([3, 1, 4, 1, 5], 2, 2)
-        self._test([1, 2, 3, 4, 5], 1, 4)
-        self._test([1, 3, 1, 5, 4], 0, 1)
-        self._test([1, 3, 1, 5, 4], -1, 0)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, nums, k, expected):
-        actual = Solution().findPairs(nums, k)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().findPairs(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
