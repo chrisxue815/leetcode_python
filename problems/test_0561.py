@@ -1,13 +1,13 @@
 import unittest
 import itertools
+from typing import List
+
+import utils
 
 
+# O(nlog(n)) time. O(1) space. Sort.
 class Solution:
-    def arrayPairSum(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+    def arrayPairSum(self, nums: List[int]) -> int:
         if not nums:
             return 0
         nums.sort()
@@ -16,12 +16,12 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 4, 3, 2], 4)
-        self._test([1, 4, 3, 2, 6, 5], 9)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, nums, expected):
-        actual = Solution().arrayPairSum(nums)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().arrayPairSum(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
