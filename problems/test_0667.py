@@ -1,14 +1,13 @@
 import unittest
 
+from typing import List
 
-# O(n). Math
+import utils
+
+
+# O(n) time. O(1) space. Math.
 class Solution:
-    def constructArray(self, n, k):
-        """
-        :type n: int
-        :type k: int
-        :rtype: List[int]
-        """
+    def constructArray(self, n: int, k: int) -> List[int]:
         result = list(range(1, n - k))
 
         for i in range(k + 1):
@@ -22,12 +21,12 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test(3, 1, [1, 2, 3])
-        self._test(3, 2, [1, 3, 2])
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, n, k, expected):
-        actual = Solution().constructArray(n, k)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().constructArray(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
