@@ -1,5 +1,7 @@
 import unittest
 
+import utils
+
 
 def is_beautiful(index, num):
     if index == num:
@@ -10,18 +12,15 @@ def is_beautiful(index, num):
         return num % index == 0
 
 
+# O(n!) time. O(n) space. Backtracking, Recursive permutation.
 class Solution:
     def __init__(self):
-        self.n = 0
+        self.N = 0
         self.count = 0
 
-    def countArrangement(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
-        self.n = n
-        self._count(list(range(1, n + 1)), n - 1)
+    def countArrangement(self, N: int) -> int:
+        self.N = N
+        self._count(list(range(1, N + 1)), N - 1)
         return self.count
 
     def _count(self, nums, start):
@@ -42,14 +41,12 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test(1, 1)
-        self._test(2, 2)
-        self._test(3, 3)
-        self._test(7, 41)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, n, expected):
-        actual = Solution().countArrangement(n)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().countArrangement(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,7 @@
 import unittest
 
+import utils
+
 
 def permutations(n):
     nums = list(range(1, n + 1))
@@ -31,14 +33,11 @@ def is_beautiful(index, num):
         return num % index == 0
 
 
+# O(n!) time. O(n) space. Backtracking, iterative permutation.
 class Solution:
-    def countArrangement(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
+    def countArrangement(self, N: int) -> int:
         count = 0
-        for permutation in permutations(n):
+        for permutation in permutations(N):
             for index, num in enumerate(permutation):
                 if not is_beautiful(index + 1, num):
                     break
@@ -49,14 +48,12 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test(1, 1)
-        self._test(2, 2)
-        self._test(3, 3)
-        self._test(7, 41)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, n, expected):
-        actual = Solution().countArrangement(n)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().countArrangement(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
