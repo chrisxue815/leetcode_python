@@ -1,12 +1,12 @@
 import unittest
+from typing import List
+
+import utils
 
 
+# O(n) time. O(1) space. Math.
 class Solution:
-    def maximumProduct(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+    def maximumProduct(self, nums: List[int]) -> int:
         max1, max2, max3, min1, min2 = -1000, -1000, -1000, 1000, 1000
         for num in nums:
             if num > max3:
@@ -27,22 +27,12 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 2, 3], 6)
-        self._test([1, 2, 3, 4], 24)
-        self._test([1, 2, 3, -4, -5], 60)
-        self._test([1, 2, 3, -4], 6)
-        self._test([1, 2, -3, -4], 24)
-        self._test([1, 2, -3, 0], 0)
-        self._test([1, 2, -3], -6)
-        self._test([1, -2, -3, -4], 12)
-        self._test([1, -2, 0], 0)
-        self._test([1, 0, 0], 0)
-        self._test([-1, -2, -3, 0], 0)
-        self._test([-1, -2, -3, -4], -6)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, nums, expected):
-        actual = Solution().maximumProduct(nums)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().maximumProduct(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
