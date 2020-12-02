@@ -1,5 +1,7 @@
 import unittest
 
+import utils
+
 
 def find_max(digits, start):
     max_digit_index = start
@@ -13,13 +15,9 @@ def find_max(digits, start):
     return max_digit_index, max_digit
 
 
-# O(n). Math.
+# O(n) time. O(n) space. Math, array.
 class Solution:
-    def maximumSwap(self, num):
-        """
-        :type num: int
-        :rtype: int
-        """
+    def maximumSwap(self, num: int) -> int:
         digits = []
         q = num
         while q:
@@ -47,14 +45,12 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test(2736, 7236)
-        self._test(9973, 9973)
-        self._test(31313, 33311)
-        self._test(11313, 31311)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, n, expected):
-        actual = Solution().maximumSwap(n)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().maximumSwap(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
