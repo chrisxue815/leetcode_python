@@ -1,12 +1,12 @@
 import unittest
+from typing import List
+
+import utils
 
 
+# O(n^2) time. O(1) space. Array.
 class Solution:
-    def generate(self, numRows):
-        """
-        :type numRows: int
-        :rtype: List[List[int]]
-        """
+    def generate(self, numRows: int) -> List[List[int]]:
         if not numRows:
             return []
         triangle = [[1] * i for i in range(1, numRows + 1)]
@@ -23,20 +23,12 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test(
-            5,
-            [
-                [1],
-                [1, 1],
-                [1, 2, 1],
-                [1, 3, 3, 1],
-                [1, 4, 6, 4, 1],
-            ]
-        )
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, numRows, expected):
-        actual = Solution().generate(numRows)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().generate(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
