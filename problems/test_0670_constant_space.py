@@ -22,6 +22,9 @@ class Solution:
                 right_digit_index = max_digit_index
             i += 1
 
+        if left_digit_index == -1:
+            return num
+
         result = 0
         multiple = 1
         i = 0
