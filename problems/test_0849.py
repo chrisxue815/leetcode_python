@@ -1,14 +1,12 @@
 import unittest
+from typing import List
+
 import utils
 
 
 # O(n) time. O(1) space. Iteration.
 class Solution:
-    def maxDistToClosest(self, seats):
-        """
-        :type seats: List[int]
-        :rtype: int
-        """
+    def maxDistToClosest(self, seats: List[int]) -> int:
         lo = 0
 
         while lo < len(seats) and seats[lo] == 0:
@@ -18,11 +16,10 @@ class Solution:
 
         for hi in range(lo + 1, len(seats)):
             if seats[hi] == 1:
-                if seats[hi - 1] == 0:
-                    result = max(result, (hi - lo) >> 1)
+                result = max(result, (hi - lo) >> 1)
                 lo = hi
 
-        result = max(result, len(seats) - lo - 1)
+        result = max(result, len(seats) - 1 - lo)
 
         return result
 
