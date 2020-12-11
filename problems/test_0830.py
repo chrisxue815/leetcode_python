@@ -1,26 +1,20 @@
-import math
 import unittest
+from typing import List
+
 import utils
 
 
-# O(n) time. O(1) space. Iteration.
+# O(n) time. O(1) space. Array, iteration.
 class Solution:
-    def largeGroupPositions(self, s):
-        """
-        :type s: str
-        :rtype: List[List[int]]
-        """
+    def largeGroupPositions(self, s: str) -> List[List[int]]:
         result = []
         lo = 0
 
-        for hi in range(1, len(s)):
-            if s[hi] != s[lo]:
-                if hi - lo >= 3:
-                    result.append([lo, hi - 1])
-                lo = hi
-
-        if len(s) - lo >= 3:
-            result.append([lo, len(s) - 1])
+        for hi in range(len(s)):
+            if hi == len(s) - 1 or s[hi] != s[hi + 1]:
+                if hi - lo >= 2:
+                    result.append([lo, hi])
+                lo = hi + 1
 
         return result
 
