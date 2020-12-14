@@ -1,73 +1,70 @@
 import unittest
-from collections import deque
+import collections
+
+import utils
 
 
 class MyStack:
+
     def __init__(self):
         """
         Initialize your data structure here.
         """
-        self._que = deque()
+        self._q = collections.deque()
         self._top = None
 
-    def push(self, x):
+    def push(self, x: int) -> None:
         """
         Push element x onto stack.
-        :type x: int
-        :rtype: void
         """
-        self._que.append(x)
+        self._q.append(x)
         self._top = x
 
-    def pop(self):
+    def pop(self) -> int:
         """
         Removes the element on top of the stack and returns that element.
-        :rtype: int
         """
-        for i in range(len(self._que) - 2):
-            self._que.append(self._que.popleft())
-        self._top = self._que.popleft()
-        self._que.append(self._top)
-        return self._que.popleft()
+        q = self._q
 
-    def top(self):
+        for _ in range(len(q) - 2):
+            q.append(q.popleft())
+
+        if len(q) > 1:
+            self._top = q.popleft()
+            q.append(self._top)
+        else:
+            self._top = None
+
+        return q.popleft()
+
+    def top(self) -> int:
         """
         Get the top element.
-        :rtype: int
         """
         return self._top
 
-    def empty(self):
+    def empty(self) -> bool:
         """
         Returns whether the stack is empty.
-        :rtype: bool
         """
-        return not self._que
+        return not self._q
 
 
 class Test(unittest.TestCase):
     def test(self):
-        stack = MyStack()
-        stack.push(1)
-        stack.push(2)
-        stack.push(3)
+        cls = MyStack
+        cases = utils.load_test_json(__file__).test_cases
 
-        self.assertEqual(3, stack.pop())
-        self.assertEqual(2, stack.top())
-        self.assertEqual(False, stack.empty())
+        for case in cases:
+            args = str(case.args)
+            obj = None
 
-        self.assertEqual(2, stack.pop())
-        self.assertEqual(1, stack.top())
-        self.assertEqual(False, stack.empty())
-
-        stack.push(4)
-
-        self.assertEqual(4, stack.pop())
-        self.assertEqual(1, stack.top())
-        self.assertEqual(False, stack.empty())
-
-        self.assertEqual(1, stack.pop())
-        self.assertEqual(True, stack.empty())
+            for func, parameters, expected in zip(case.functions, case.args, case.expected):
+                if func == cls.__name__:
+                    obj = cls(*parameters)
+                else:
+                    actual = getattr(obj, func)(*parameters)
+                    self.assertEqual(expected, actual, msg=args)
 
 
 if __name__ == '__main__':
