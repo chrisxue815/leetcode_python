@@ -9,15 +9,7 @@ import utils
 # O(n) time. O(n) space. Math, GCD, hash table.
 class Solution:
     def hasGroupsSizeX(self, deck: List[int]) -> bool:
-        counts = collections.Counter(deck)
-        gcd = next(iter(counts.values()))
-
-        for count in counts.values():
-            gcd = math.gcd(gcd, count)
-            if gcd == 1:
-                return False
-
-        return True
+        return math.gcd(*collections.Counter(deck).values()) > 1
 
 
 class Test(unittest.TestCase):
