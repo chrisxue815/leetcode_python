@@ -1,73 +1,64 @@
 import unittest
 
+import utils
+
 
 class MyQueue:
+
     def __init__(self):
         """
         Initialize your data structure here.
         """
-        self.push_stack = []
-        self.pop_stack = []
+        self._push_stack = []
+        self._pop_stack = []
 
-    def push(self, x):
+    def push(self, x: int) -> None:
         """
         Push element x to the back of queue.
-        :type x: int
-        :rtype: void
         """
-        self.push_stack.append(x)
+        self._push_stack.append(x)
 
-    def pop(self):
+    def pop(self) -> int:
         """
         Removes the element from in front of queue and returns that element.
-        :rtype: int
         """
-        if not self.pop_stack:
-            while self.push_stack:
-                self.pop_stack.append(self.push_stack.pop())
-        return self.pop_stack.pop()
+        self._refill_pop_stack()
+        return self._pop_stack.pop()
 
-    def peek(self):
+    def peek(self) -> int:
         """
         Get the front element.
-        :rtype: int
         """
-        if not self.pop_stack:
-            while self.push_stack:
-                self.pop_stack.append(self.push_stack.pop())
-        return self.pop_stack[-1]
+        self._refill_pop_stack()
+        return self._pop_stack[-1]
 
-    def empty(self):
+    def _refill_pop_stack(self):
+        if not self._pop_stack:
+            while self._push_stack:
+                self._pop_stack.append(self._push_stack.pop())
+
+    def empty(self) -> bool:
         """
         Returns whether the queue is empty.
-        :rtype: bool
         """
-        return not self.pop_stack and not self.push_stack
+        return not self._push_stack and not self._pop_stack
 
 
 class Test(unittest.TestCase):
     def test(self):
-        que = MyQueue()
-        que.push(1)
-        que.push(2)
-        que.push(3)
+        cls = MyQueue
+        cases = utils.load_test_json(__file__).test_cases
 
-        self.assertEqual(1, que.pop())
-        self.assertEqual(2, que.peek())
-        self.assertEqual(False, que.empty())
+        for case in cases:
+            args = str(case.args)
+            obj = None
 
-        self.assertEqual(2, que.pop())
-        self.assertEqual(3, que.peek())
-        self.assertEqual(False, que.empty())
-
-        que.push(4)
-
-        self.assertEqual(3, que.pop())
-        self.assertEqual(4, que.peek())
-        self.assertEqual(False, que.empty())
-
-        self.assertEqual(4, que.pop())
-        self.assertEqual(True, que.empty())
+            for func, parameters, expected in zip(case.functions, case.args, case.expected):
+                if func == cls.__name__:
+                    obj = cls(*parameters)
+                else:
+                    actual = getattr(obj, func)(*parameters)
+                    self.assertEqual(expected, actual, msg=args)
 
 
 if __name__ == '__main__':
