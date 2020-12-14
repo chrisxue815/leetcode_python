@@ -1,22 +1,19 @@
 import collections
-import fractions
+import math
 import unittest
+from typing import List
+
 import utils
 
 
-# O(n) time. O(1) space. Math.
+# O(n) time. O(n) space. Math, GCD, hash table.
 class Solution:
-    def hasGroupsSizeX(self, deck):
-        """
-        :type deck: List[int]
-        :rtype: bool
-        """
-        counter = collections.Counter(deck)
-        gcd = None
+    def hasGroupsSizeX(self, deck: List[int]) -> bool:
+        counts = collections.Counter(deck)
+        gcd = next(iter(counts.values()))
 
-        for count in counter.values():
-            gcd = fractions.gcd(gcd, count) if gcd else count
-
+        for count in counts.values():
+            gcd = math.gcd(gcd, count)
             if gcd == 1:
                 return False
 
