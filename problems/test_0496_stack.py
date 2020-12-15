@@ -1,35 +1,31 @@
 import unittest
+from typing import List
+
+import utils
 
 
+# O(len(nums1) + len(nums2)) time. O(len(nums2)) space. Monotone stack, hash table.
 class Solution:
-    def nextGreaterElement(self, findNums, nums):
-        """
-        :type findNums: List[int]
-        :type nums: List[int]
-        :rtype: List[int]
-        """
-        next_greater = dict()
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        next_greater = {}
         stack = []
 
-        for num in nums:
-            while stack and num > stack[-1]:
+        for num in nums2:
+            while stack and stack[-1] < num:
                 next_greater[stack.pop()] = num
             stack.append(num)
 
-        for i in range(len(findNums)):
-            findNums[i] = next_greater.get(findNums[i]) or -1
-
-        return findNums
+        return [next_greater.get(num, -1) for num in nums1]
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([4, 1, 2], [1, 3, 4, 2], [-1, 3, -1])
-        self._test([2, 4], [1, 2, 3, 4], [3, -1])
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, findNums, nums, expected):
-        actual = Solution().nextGreaterElement(findNums, nums)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().nextGreaterElement(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
