@@ -1,44 +1,43 @@
 import unittest
+from typing import List
+
+import utils
 
 
+# O(n) time. O(n) space. Monotone stack.
 class Solution:
-    def nextGreaterElements(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[int]
-        """
+    def nextGreaterElements(self, nums: List[int]) -> List[int]:
         result = [-1] * len(nums)
         stack = []
 
-        for i in range(len(nums)):
-            num = nums[i]
-            while stack and num > nums[stack[-1]]:
+        for i, num in enumerate(nums):
+            while stack and nums[stack[-1]] < num:
                 result[stack.pop()] = num
+
             stack.append(i)
 
         i = 1
-        while i < len(stack) and stack[i] == stack[0]:
+        while i < len(stack) and nums[stack[i]] == nums[stack[0]]:
             i += 1
+        if i >= len(stack):
+            return result
         stack = stack[i:]
 
         for num in nums:
-            while stack:
-                if num <= nums[stack[-1]]:
-                    break
+            while nums[stack[-1]] < num:
                 result[stack.pop()] = num
-            else:
-                break
-
-        return result
+                if not stack:
+                    return result
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 2, 1], [2, -1, 2])
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, nums, expected):
-        actual = Solution().nextGreaterElements(nums)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().nextGreaterElements(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
