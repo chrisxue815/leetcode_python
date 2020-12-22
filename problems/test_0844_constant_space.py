@@ -17,24 +17,19 @@ def backspace(s, si):
 
 # O(n) time. O(1) space. Iteration.
 class Solution:
-    def backspaceCompare(self, s, t):
-        """
-        :type s: str
-        :type t: str
-        :rtype: bool
-        """
-        si = len(s) - 1
-        ti = len(t) - 1
+    def backspaceCompare(self, S: str, T: str) -> bool:
+        si = len(S) - 1
+        ti = len(T) - 1
 
         while True:
-            si = backspace(s, si)
-            ti = backspace(t, ti)
+            si = backspace(S, si)
+            ti = backspace(T, ti)
 
             if si < 0:
                 return ti < 0
             if ti < 0:
                 return False
-            if s[si] != t[ti]:
+            if S[si] != T[ti]:
                 return False
             si -= 1
             ti -= 1

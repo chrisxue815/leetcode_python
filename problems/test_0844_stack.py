@@ -15,13 +15,8 @@ def remove_backspace(s):
 
 # O(n) time. O(n) space. Stack.
 class Solution:
-    def backspaceCompare(self, s, t):
-        """
-        :type s: str
-        :type t: str
-        :rtype: bool
-        """
-        return remove_backspace(s) == remove_backspace(t)
+    def backspaceCompare(self, S: str, T: str) -> bool:
+        return remove_backspace(S) == remove_backspace(T)
 
 
 class Test(unittest.TestCase):
