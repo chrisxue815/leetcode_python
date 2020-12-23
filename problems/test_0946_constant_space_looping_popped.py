@@ -7,19 +7,22 @@ import utils
 # O(n) time. O(1) space. Stack.
 class Solution:
     def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
-        i = 0
-        j = 0
+        i = -1
+        j = -1
 
         for x in popped:
             while True:
-                if i > 0 and pushed[i - 1] == x:
+                if i >= 0 and pushed[i] == x:
                     i -= 1
                     break
-                if j >= len(pushed):
-                    return False
-                pushed[i] = pushed[j]
+
                 i += 1
                 j += 1
+
+                if j >= len(pushed):
+                    return False
+
+                pushed[i] = pushed[j]
 
         return True
 
