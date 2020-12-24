@@ -3,18 +3,21 @@ import unittest
 import utils
 
 
+# O(n) space. Stack.
 class CustomStack:
 
     def __init__(self, maxSize: int):
         self.stack = []
         self.max_size = maxSize
 
+    # O(1) time.
     def push(self, x: int) -> None:
         if len(self.stack) >= self.max_size:
             return
 
         self.stack.append([x, 0])
 
+    # O(1) time.
     def pop(self) -> int:
         stack = self.stack
         if not stack:
@@ -27,6 +30,7 @@ class CustomStack:
 
         return x + inc
 
+    # O(1) time.
     def increment(self, k: int, val: int) -> None:
         if not self.stack:
             return
