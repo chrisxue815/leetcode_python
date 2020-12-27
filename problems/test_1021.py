@@ -5,11 +5,7 @@ import utils
 
 # O(n) time. O(1) space. Space-optimized stack.
 class Solution:
-    def removeOuterParentheses(self, S):
-        """
-        :type S: str
-        :rtype: str
-        """
+    def removeOuterParentheses(self, S: str) -> str:
         result = ''
         lo = 1
         count = 0
