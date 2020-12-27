@@ -1,67 +1,55 @@
 import unittest
-from tree import TreeNode, null
 
-# Definition for a  binary tree node
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+import utils
+from tree import TreeNode
 
 
+# O(log(n)) space.
 class BSTIterator:
 
-    def __init__(self, root):
-        """
-        :type root: TreeNode
-        """
+    def __init__(self, root: TreeNode):
         stack = []
-        self.stack = stack
         while root:
             stack.append(root)
             root = root.left
+        self.stack = stack
 
-    def hasNext(self):
-        """
-        :rtype: bool
-        """
-        return len(self.stack) > 0
-
-    def next(self):
-        """
-        :rtype: int
-        """
+    # O(1) time.
+    def next(self) -> int:
         stack = self.stack
-
         if not stack:
-            return None
+            return 0
 
-        curr = stack.pop()
-        nextnode = curr.right
+        cur = stack.pop()
+        nxt = cur.right
 
-        while nextnode:
-            stack.append(nextnode)
-            nextnode = nextnode.left
+        while nxt:
+            stack.append(nxt)
+            nxt = nxt.left
 
-        return curr.val
+        return cur.val
 
-
-# Your BSTIterator will be called like this:
-# i, v = BSTIterator(root), []
-# while i.hasNext(): v.append(i.next())
+    # O(1) time.
+    def hasNext(self) -> bool:
+        return len(self.stack) > 0
 
 
 class Test(unittest.TestCase):
-
     def test(self):
-        self._test([4, 2, 6, 1, 3, 5, 7])
+        cls = BSTIterator
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, vals):
-        root = TreeNode.from_array(vals)
-        i, v = BSTIterator(root), []
-        while i.hasNext():
-            v.append(i.next())
-        self.assertEqual(root.to_array_inorder(), v)
+        for case in cases:
+            args = str(case.args)
+            obj = None
+
+            for func, parameters, expected in zip(case.functions, case.args, case.expected):
+                if func == cls.__name__:
+                    root = TreeNode.from_array(parameters[0])
+                    obj = cls(root)
+                else:
+                    actual = getattr(obj, func)(*parameters)
+                    self.assertEqual(expected, actual, msg=args)
 
 
 if __name__ == '__main__':
