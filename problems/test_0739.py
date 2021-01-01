@@ -1,23 +1,20 @@
 import unittest
+from typing import List
+
 import utils
 
 
-# O(n) time. O(n) space. Stack.
+# O(n) time. O(n) space. Monotone stack.
 class Solution:
-    def dailyTemperatures(self, temperatures):
-        """
-        :type temperatures: List[int]
-        :rtype: List[int]
-        """
-        result = [0] * len(temperatures)
+    def dailyTemperatures(self, T: List[int]) -> List[int]:
+        result = [0] * len(T)
         stack = []
 
-        for i, t in enumerate(temperatures):
-            while stack and temperatures[stack[-1]] < t:
-                prev_i = stack.pop()
-                result[prev_i] = i - prev_i
-
-            stack.append(i)
+        for i, t in enumerate(T):
+            while stack and stack[-1][1] < t:
+                j, _ = stack.pop()
+                result[j] = i - j
+            stack.append((i, t))
 
         return result
 
