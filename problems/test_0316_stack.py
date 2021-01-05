@@ -1,41 +1,39 @@
 import unittest
 
+import utils
 
+
+# O(n) time. O(1) space. Stack.
 class Solution:
-    def removeDuplicateLetters(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
+    def removeDuplicateLetters(self, s: str) -> str:
         s = list(map(ord, s))
         stack = []
         counts = [0] * (ord('z') + 1)
-        visited = list(counts)
+        visited = [False] * (ord('z') + 1)
 
-        for ch in s:
-            counts[ch] += 1
+        for c in s:
+            counts[c] += 1
 
-        for ch in s:
-            counts[ch] -= 1
-            if visited[ch]:
+        for c in s:
+            counts[c] -= 1
+            if visited[c]:
                 continue
-            while stack and ch < stack[-1] and counts[stack[-1]]:
-                visited[stack.pop()] = 0
-            stack.append(ch)
-            visited[ch] = 1
+            while stack and c < stack[-1] and counts[stack[-1]]:
+                visited[stack.pop()] = False
+            stack.append(c)
+            visited[c] = True
 
-        return ''.join(chr(ch) for ch in stack)
+        return ''.join(map(chr, stack))
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test('bcab', 'bca')
-        self._test('bcabc', 'abc')
-        self._test('cbacdcbc', 'acdb')
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, s, expected):
-        actual = Solution().removeDuplicateLetters(s)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().removeDuplicateLetters(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':

@@ -1,48 +1,47 @@
 import unittest
 
+import utils
+
 
 def _find_max_possible_index(s, count, counts):
     counts = list(counts)
     for i in range(len(s) - 1, -1, -1):
-        ch = ord(s[i])
-        if counts[ch]:
-            counts[ch] = 0
+        c = ord(s[i])
+        if counts[c]:
+            counts[c] = 0
             count -= 1
             if count == 0:
                 return i
 
 
+# O(n^2) time. O(1) space. Greedy.
 class Solution:
-    def removeDuplicateLetters(self, s):
-        """
-        :type s: str
-        :rtype: str
-        """
+    def removeDuplicateLetters(self, s: str) -> str:
         result = []
         counts = [0] * (ord('z') + 1)
 
-        for ch in s:
-            counts[ord(ch)] = 1
+        for c in s:
+            counts[ord(c)] = 1
 
         count = sum(counts)
         hi = _find_max_possible_index(s, count, counts)
         lo = 0
 
         for _ in range(count):
-            min_ch = 256
+            min_c = 256
             min_i = 0
             for i in range(lo, hi + 1):
-                ch = ord(s[i])
-                if counts[ch] and ch < min_ch:
-                    min_ch = ch
+                c = ord(s[i])
+                if counts[c] and c < min_c:
+                    min_c = c
                     min_i = i
 
-            result.append(chr(min_ch))
-            counts[min_ch] = 0
+            result.append(chr(min_c))
+            counts[min_c] = 0
             count -= 1
             lo = min_i + 1
 
-            if min_ch == ord(s[hi]):
+            if min_c == ord(s[hi]):
                 hi = _find_max_possible_index(s, count, counts)
 
         return ''.join(result)
@@ -50,13 +49,12 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test('bcab', 'bca')
-        self._test('bcabc', 'abc')
-        self._test('cbacdcbc', 'acdb')
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, s, expected):
-        actual = Solution().removeDuplicateLetters(s)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().removeDuplicateLetters(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
