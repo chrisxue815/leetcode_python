@@ -1,40 +1,31 @@
 import unittest
-import sys
+from typing import List
+
+import utils
 
 
+# O(n) time. O(n) space. Monotone stack.
 class Solution:
-    def find132pattern(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: bool
-        """
-        ak = -sys.maxsize - 1
+    def find132pattern(self, nums: List[int]) -> bool:
+        num_k = -10 ** 9 - 1
         stack = []
         for num in reversed(nums):
-            if num < ak:
+            if num < num_k:
                 return True
-            while stack and num > stack[-1]:
-                ak = stack.pop()
+            while stack and stack[-1] < num:
+                num_k = stack.pop()
             stack.append(num)
         return False
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 2, 3, 4], False)
-        self._test([3, 1, 4, 2], True)
-        self._test([-1, 3, 2, 0], True)
-        self._test([3, 1, 4, 0], False)
-        self._test([3, 1, 4, 0, 5], False)
-        self._test([3, 1, 4, 0, 5, 3], True)
-        self._test([3, 1, 2], False)
-        self._test([4, 1, 3, 2], True)
-        self._test([8, 10, 4, 6, 5], True)
-        self._test([3, 5, 0, 3, 4], True)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, nums, expected):
-        actual = Solution().find132pattern(nums)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            actual = Solution().find132pattern(**case.args.__dict__)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
