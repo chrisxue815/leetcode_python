@@ -1,31 +1,27 @@
 import unittest
+
 import utils
 from tree import TreeNode
 
 
-# O(n) time. O(log(n)) space. Iterative in-order DFS.
+# O(n) time. O(log(n)) space. Recursive in-order DFS.
 class Solution:
-    def increasingBST(self, root):
-        """
-        :type root: TreeNode
-        :rtype: TreeNode
-        """
-        stack = []
-        prev = dummy = TreeNode(0)
+    def increasingBST(self, root: TreeNode) -> TreeNode:
+        dummy = parent = TreeNode(0)
 
-        while True:
-            while root:
-                stack.append(root)
-                root = root.left
+        def dfs(curr):
+            if not curr:
+                return
 
-            if not stack:
-                break
+            nonlocal parent
+            dfs(curr.left)
+            parent.left = None
+            parent.right = curr
+            parent = curr
+            dfs(curr.right)
 
-            root = stack.pop()
-            prev.right = root
-            root.left = None
-            prev = root
-            root = root.right
+        dfs(root)
+        parent.left = None
 
         return dummy.right
 
