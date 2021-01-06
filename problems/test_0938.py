@@ -1,30 +1,23 @@
 import unittest
+
 import utils
 from tree import TreeNode
 
 
 # O(n) time. O(log(n)) space. Recursive pre-order DFS.
 class Solution:
-    def rangeSumBST(self, root, l, r):
-        """
-        :type root: TreeNode
-        :type l: int
-        :type r: int
-        :rtype: int
-        """
+    def rangeSumBST(self, root: TreeNode, low: int, high: int) -> int:
         if not root:
             return 0
 
-        if l <= root.val <= r:
-            result = root.val
-        else:
-            result = 0
+        result = 0
 
-        if l <= root.val:
-            result += self.rangeSumBST(root.left, l, r)
-
-        if root.val <= r:
-            result += self.rangeSumBST(root.right, l, r)
+        if low <= root.val <= high:
+            result += root.val
+        if low < root.val:
+            result += self.rangeSumBST(root.left, low, high)
+        if root.val < high:
+            result += self.rangeSumBST(root.right, low, high)
 
         return result
 
@@ -36,7 +29,7 @@ class Test(unittest.TestCase):
         for case in cases:
             args = str(case.args)
             root = TreeNode.from_array(case.args.root)
-            actual = Solution().rangeSumBST(root, case.args.l, case.args.r)
+            actual = Solution().rangeSumBST(root, case.args.low, case.args.high)
             self.assertEqual(case.expected, actual, msg=args)
 
 
