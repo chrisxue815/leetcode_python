@@ -1,33 +1,33 @@
 import unittest
+
 import utils
 from tree import TreeNode
 
 
 # O(n) time. O(log(n)) space. Recursive in-order traversal.
 class Solution:
-    def __init__(self):
-        self.min_diff = 0x7FFFFFFF
-        self.prev = None
+    def minDiffInBST(self, root: TreeNode) -> int:
+        result = 0x7fff_ffff
+        prev = None
 
-    def minDiffInBST(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
-
-        def dfs(node):
-            if not node:
+        def dfs(curr):
+            if not curr:
                 return
-            dfs(node.left)
 
-            if self.prev is not None:
-                self.min_diff = min(self.min_diff, node.val - self.prev)
-            self.prev = node.val
+            nonlocal result
+            nonlocal prev
 
-            dfs(node.right)
+            dfs(curr.left)
+
+            if prev is not None:
+                result = min(result, curr.val - prev)
+            prev = curr.val
+
+            dfs(curr.right)
 
         dfs(root)
-        return self.min_diff
+
+        return result
 
 
 class Test(unittest.TestCase):

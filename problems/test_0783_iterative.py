@@ -1,33 +1,39 @@
 import unittest
+
 import utils
 from tree import TreeNode
 
 
 # O(n) time. O(log(n)) space. Iterative in-order traversal.
 class Solution:
-    def minDiffInBST(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
-        min_diff = 0x7FFFFFFF
-        prev = None
+    def minDiffInBST(self, root: TreeNode) -> int:
+        if not root:
+            return 0
+
+        result = 0x7fff_ffff
         stack = []
 
-        while root or stack:
-            if root:
+        while root.left:
+            stack.append(root)
+            root = root.left
+
+        prev = root.val
+        root = root.right
+
+        while True:
+            while root:
                 stack.append(root)
                 root = root.left
-            else:
-                root = stack.pop()
 
-                if prev is not None:
-                    min_diff = min(min_diff, root.val - prev)
-                prev = root.val
+            if not stack:
+                break
 
-                root = root.right
+            root = stack.pop()
+            result = min(result, root.val - prev)
+            prev = root.val
+            root = root.right
 
-        return min_diff
+        return result
 
 
 class Test(unittest.TestCase):
