@@ -1,19 +1,16 @@
-class Node:
-    """
-    # Definition for a Node.
-    """
+from typing import List
 
-    def __init__(self, val, children):
+
+# Definition for a Node.
+class Node:
+    def __init__(self, val=None, children=None):
         self.val = val
         self.children = children
 
 
+# O(n) time. O(depth) space. Iterative DFS.
 class Solution:
-    def preorder(self, root):
-        """
-        :type root: Node
-        :rtype: List[int]
-        """
+    def preorder(self, root: 'Node') -> List[int]:
         if not root:
             return []
 
