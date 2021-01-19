@@ -1,43 +1,44 @@
 import unittest
+
+import utils
 from tree import TreeNode
 
 
 class Solution:
-    def tree2str(self, t):
-        """
-        :type t: TreeNode
-        :rtype: str
-        """
+    def tree2str(self, t: TreeNode) -> str:
         if not t:
             return ''
 
-        def dfs(node):
-            result.append(str(node.val))
-            if node.left:
+        result = []
+
+        def dfs(curr):
+            result.append(str(curr.val))
+
+            if curr.left:
                 result.append('(')
-                dfs(node.left)
+                dfs(curr.left)
                 result.append(')')
-            elif node.right:
+            elif curr.right:
                 result.append('()')
-            if node.right:
+
+            if curr.right:
                 result.append('(')
-                dfs(node.right)
+                dfs(curr.right)
                 result.append(')')
 
-        result = []
         dfs(t)
         return ''.join(result)
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 2, 3, 4], '1(2(4))(3)')
-        self._test([1, 2, 3, None, 4], '1(2()(4))(3)')
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, t, expected):
-        t = TreeNode.from_array(t)
-        actual = Solution().tree2str(t)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            t = TreeNode.from_array(case.args.t)
+            actual = Solution().tree2str(t)
+            self.assertEqual(case.expected, actual, msg=args)
 
 
 if __name__ == '__main__':
