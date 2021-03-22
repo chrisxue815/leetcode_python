@@ -4,6 +4,7 @@ import utils
 from tree import TreeNode
 
 
+# O(n) time. O(log(n)) space. Recursive pre-order DFS.
 class Solution:
     def tree2str(self, t: TreeNode) -> str:
         if not t:
