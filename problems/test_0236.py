@@ -1,58 +1,55 @@
 import unittest
-from tree import TreeNode, null
+
+import utils
+from tree import TreeNode
 
 
+# O(n) time. O(log(n)) space. In-order DFS.
 class Solution:
-    def __init__(self):
-        self.p = None
-        self.q = None
-        self.lca = None
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        def dfs(curr):
+            if not curr:
+                return None, 0
 
-    def lowestCommonAncestor(self, root, p, q):
-        """
-        :type root: TreeNode
-        :type p: TreeNode
-        :type q: TreeNode
-        :rtype: TreeNode
-        """
-        self.p = p
-        self.q = q
-        self._num_matches(root)
-        return self.lca
+            ancestor, num_matches_left = dfs(curr.left)
+            if num_matches_left == 2:
+                return ancestor, 2
 
-    def _num_matches(self, root):
-        if not root:
-            return 0
+            if curr is p or curr is q:
+                if num_matches_left == 1:
+                    return curr, 2
+                else:
+                    num_matches_left = 1
 
-        num_left_matches = self._num_matches(root.left)
-        if num_left_matches == 2:
-            return 2
+            ancestor, num_matches_right = dfs(curr.right)
+            if num_matches_left + num_matches_right == 2:
+                return ancestor or curr, 2
 
-        if root is self.p or root is self.q:
-            num_left_matches += 1
-        if num_left_matches == 2:
-            self.lca = root
-            return 2
+            return None, num_matches_left + num_matches_right
 
-        num_right_matches = self._num_matches(root.right)
-        if num_left_matches == 1 and num_right_matches == 1:
-            self.lca = root
-            return 2
-
-        return num_left_matches + num_right_matches
+        return dfs(root)[0]
 
 
 class Test(unittest.TestCase):
     def test(self):
-        root = TreeNode.from_array([3, 5, 1, 6, 2, 0, 8, null, null, 7, 4])
-        self._test(root, root.left, root.right, root)
-        self._test(root, root.left, root.left.right.right, root.left)
-        self._test(root, root.right.left, root.right.right, root.right)
-        self._test(root, root.left, TreeNode(0), None)
+        cases = utils.load_test_json(__file__).test_cases
 
-    def _test(self, root, p, q, expected):
-        actual = Solution().lowestCommonAncestor(root, p, q)
-        self.assertEqual(expected, actual)
+        for case in cases:
+            args = str(case.args)
+            root = TreeNode.from_array(case.args.root)
+            p = self.find_node(root, case.args.p)
+            q = self.find_node(root, case.args.q)
+
+            actual = Solution().lowestCommonAncestor(root, p, q)
+
+            self.assertEqual(case.expected, actual.val, msg=args)
+
+    def find_node(self, root, val):
+        if not root:
+            return None
+        if root.val == val:
+            return root
+        return self.find_node(root.left, val) or self.find_node(root.right, val)
 
 
 if __name__ == '__main__':
