@@ -20,15 +20,13 @@ class Solution:
                 result.append(curr.val)
                 appended = True
 
-            if curr.left:
-                dfs(curr.left, False, leftmost, rightmost and not is_root and not curr.right)
+            dfs(curr.left, False, leftmost, rightmost and not curr.right and not is_root)
 
             if not appended and not curr.left and not curr.right:
                 result.append(curr.val)
                 appended = True
 
-            if curr.right:
-                dfs(curr.right, False, leftmost and not is_root and not curr.left, rightmost)
+            dfs(curr.right, False, leftmost and not curr.left and not is_root, rightmost)
 
             if not appended and rightmost:
                 result.append(curr.val)
