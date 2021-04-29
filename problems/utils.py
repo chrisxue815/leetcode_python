@@ -3,6 +3,19 @@ import os
 import types
 
 
+def test(tst, file, solution, func=None):
+    if not func:
+        func_name = next(f for f in dir(solution) if not f.startswith('__'))
+        func = getattr(solution, func_name)
+
+    cases = load_test_json(file).test_cases
+
+    for case in cases:
+        args = str(case.args)
+        actual = func(solution(), **case.args.__dict__)
+        tst.assertEqual(case.expected, actual, msg=args)
+
+
 def load_test_json(source_path):
     source_filename = os.path.splitext(os.path.basename(source_path))[0]
     prefix, problem_id, *_ = source_filename.split('_', 2)

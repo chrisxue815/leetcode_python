@@ -12,14 +12,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        func_name = next(f for f in dir(Solution) if not f.startswith('__'))
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            func = getattr(Solution(), func_name)
-            actual = func(**case.args.__dict__)
-            self.assertEqual(case.expected, actual, msg=args)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
