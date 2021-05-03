@@ -13,23 +13,19 @@ class Solution:
         intervals.sort(key=lambda interval: interval[1], reverse=True)
         result = [intervals[0]]
 
-        for start, end in intervals:
-            if end < result[-1][0]:
-                result.append([start, end])
+        for interval in intervals:
+            if interval[1] < result[-1][0]:
+                result.append(interval)
             else:
-                result[-1][0] = min(result[-1][0], start)
+                result[-1][0] = min(result[-1][0], interval[0])
 
+        result.reverse()
         return result
 
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            actual = Solution().merge(**case.args.__dict__)
-            self.assertCountEqual(case.expected, actual, msg=args)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
