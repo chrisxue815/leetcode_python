@@ -7,10 +7,11 @@ import utils
 # O(n) time. O(1) space. Kadane's algorithm, greedy.
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
-        max_so_far = max_ending_here = -0x80000000
+        max_so_far = -0x80000000
+        max_ending_here = 0
 
         for num in nums:
-            max_ending_here = max(num, max_ending_here + num)
+            max_ending_here = max(max_ending_here + num, num)
             max_so_far = max(max_so_far, max_ending_here)
 
         return max_so_far
@@ -18,12 +19,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            actual = Solution().maxSubArray(**case.args.__dict__)
-            self.assertEqual(case.expected, actual, msg=args)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
