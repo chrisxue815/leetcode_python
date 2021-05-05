@@ -3,7 +3,7 @@ import os
 import types
 
 
-def test(tst, file, solution, func=None):
+def test(tst, file, solution, func=None, args_processor=None, result_processor=None):
     if not func:
         func_name = next(f for f in dir(solution) if not f.startswith('__'))
         func = getattr(solution, func_name)
@@ -12,7 +12,13 @@ def test(tst, file, solution, func=None):
 
     for case in cases:
         args = str(case.args)
+        if args_processor:
+            case.args = args_processor(case.args)
+
         actual = func(solution(), **case.args.__dict__)
+
+        if result_processor:
+            actual = result_processor(actual)
         tst.assertEqual(case.expected, actual, msg=args)
 
 
