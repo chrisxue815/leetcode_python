@@ -2,6 +2,8 @@ import json
 import os
 import types
 
+from tree import TreeNode
+
 
 def test(tst, file, solution, func=None, args_processor=None, result_processor=None):
     if not func:
@@ -20,6 +22,11 @@ def test(tst, file, solution, func=None, args_processor=None, result_processor=N
         if result_processor:
             actual = result_processor(actual)
         tst.assertEqual(case.expected, actual, msg=args)
+
+
+def tree_processor(args):
+    args.root = TreeNode.from_array(args.root)
+    return args
 
 
 def load_test_json(source_path):

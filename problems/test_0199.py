@@ -1,56 +1,34 @@
-import queue
 import unittest
-from tree import TreeNode, null
+from typing import List
+
+import utils
+from tree import TreeNode
 
 
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
+# O(n) time. O(n) space. BFS.
 class Solution:
-
-    def rightSideView(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[int]
-        """
+    def rightSideView(self, root: TreeNode) -> List[int]:
         if not root:
             return []
+        result = []
+        q = [root]
 
-        right_view = []
-        q = queue.Queue()
-        q.put(root)
+        while q:
+            result.append(q[-1].val)
+            next_q = []
+            for curr in q:
+                if curr.left:
+                    next_q.append(curr.left)
+                if curr.right:
+                    next_q.append(curr.right)
+            q = next_q
 
-        while not q.empty():
-            qsize = q.qsize() - 1
-            node = self._pop_and_push_subtree(q)
-            right_view.append(node.val)
-
-            for _ in range(qsize):
-                self._pop_and_push_subtree(q)
-
-        return right_view
-
-    def _pop_and_push_subtree(self, q):
-        node = q.get()
-        if node.right:
-            q.put(node.right)
-        if node.left:
-            q.put(node.left)
-        return node
+        return result
 
 
 class Test(unittest.TestCase):
-
     def test(self):
-        self._test([4, 2, 6, 1, 3, 5, 7, 0])
-
-    def _test(self, vals):
-        root = TreeNode.from_array(vals)
-        self.assertEqual(Solution().rightSideView(root), [4, 6, 7, 0])
+        utils.test(self, __file__, Solution, args_processor=utils.tree_processor)
 
 
 if __name__ == '__main__':
