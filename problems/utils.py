@@ -15,7 +15,7 @@ def test(tst, file, solution, func=None, args_processor=None, result_processor=N
     for case in cases:
         args = str(case.args)
         if args_processor:
-            case.args = args_processor(case.args)
+            args_processor(case.args)
 
         actual = func(solution(), **case.args.__dict__)
 
@@ -26,7 +26,6 @@ def test(tst, file, solution, func=None, args_processor=None, result_processor=N
 
 def tree_processor(args):
     args.root = TreeNode.from_array(args.root)
-    return args
 
 
 def load_test_json(source_path):
