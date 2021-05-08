@@ -1,49 +1,35 @@
 import unittest
+
+import utils
 from linkedlist import ListNode
 
 
+# O(n) time. O(1) space. Two pointers
 class Solution:
-    def partition(self, head, x):
-        """
-        :type head: ListNode
-        :type x: int
-        :rtype: ListNode
-        """
-        small_head = ListNode(0)
-        small_curr = small_head
-        large_head = ListNode(0)
-        large_curr = large_head
+    def partition(self, head: ListNode, x: int) -> ListNode:
+        dummy_lo = lo = ListNode(0)
+        dummy_hi = hi = ListNode(0)
 
         while head:
             if head.val < x:
-                small_curr.next = head
-                small_curr = head
+                lo.next = head
+                lo = head
             else:
-                large_curr.next = head
-                large_curr = head
+                hi.next = head
+                hi = head
             head = head.next
 
-        small_curr.next = large_head.next
-        large_curr.next = None
-        return small_head.next
+        lo.next = dummy_hi.next
+        hi.next = None
+        return dummy_lo.next
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 4, 3, 2, 5, 2], 3, [1, 2, 2, 4, 3, 5])
-        self._test([1, 4, 2, 5, 2, 3], 3, [1, 2, 2, 4, 5, 3])
-        self._test([3, 1, 4, 2, 5, 2], 3, [1, 2, 2, 3, 4, 5])
-        self._test([1], 3, [1])
-        self._test([], 3, [])
+        utils.test(self, __file__, Solution,
+                   process_args=self.process_args,
+                   process_result=utils.linked_list_to_array)
 
-    def _test(self, head, x, expected):
-        head = ListNode.from_array(head)
-
-        actual = Solution().partition(head, x)
-
-        actual = ListNode.to_array(actual)
-        self.assertEqual(expected, actual)
-
-
-if __name__ == '__main__':
-    unittest.main()
+    @staticmethod
+    def process_args(args):
+        args.head = ListNode.from_array(args.head)
