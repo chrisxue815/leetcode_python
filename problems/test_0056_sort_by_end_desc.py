@@ -25,7 +25,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        utils.test(self, __file__, Solution, result_processor=lambda result: sorted(result))
+        utils.test(self, __file__, Solution, process_result=lambda result: sorted(result))
 
 
 if __name__ == '__main__':

@@ -2,10 +2,11 @@ import json
 import os
 import types
 
+from linkedlist import ListNode
 from tree import TreeNode
 
 
-def test(tst, file, solution, func=None, args_processor=None, result_processor=None):
+def test(tst, file, solution, func=None, process_args=None, process_result=None):
     if not func:
         func_name = next(f for f in dir(solution) if not f.startswith('__'))
         func = getattr(solution, func_name)
@@ -14,18 +15,22 @@ def test(tst, file, solution, func=None, args_processor=None, result_processor=N
 
     for case in cases:
         args = str(case.args)
-        if args_processor:
-            args_processor(case.args)
+        if process_args:
+            process_args(case.args)
 
         actual = func(solution(), **case.args.__dict__)
 
-        if result_processor:
-            actual = result_processor(actual)
+        if process_result:
+            actual = process_result(actual)
         tst.assertEqual(case.expected, actual, msg=args)
 
 
-def tree_processor(args):
+def root_array_to_tree(args):
     args.root = TreeNode.from_array(args.root)
+
+
+def linked_list_to_array(result):
+    return ListNode.to_array(result)
 
 
 def load_test_json(source_path):
