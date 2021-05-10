@@ -9,7 +9,8 @@ class Solution:
         m = len(nums1)
         n = len(nums2)
         if m > n:
-            nums1, nums2, m, n = nums2, nums1, n, m
+            nums1, nums2 = nums2, nums1
+            m, n = n, m
 
         lo = 0
         hi = m
