@@ -1,51 +1,38 @@
 import heapq
 import unittest
+from typing import List
 
+import utils
 from linkedlist import ListNode
 
 
+# O(klog(n)) time. O(k) space. Min-heap.
 class Solution:
-    def mergeKLists(self, lists):
-        """
-        :type lists: List[ListNode]
-        :rtype: ListNode
-        """
-        if not lists:
-            return None
+    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+        dummy = curr = ListNode(0)
+        q = [(head.val, i, head) for i, head in enumerate(lists) if head]
+        heapq.heapify(q)
 
-        lists = [(head.val, head) for head in lists if head]
+        while q:
+            val, i, head = q[0]
+            curr.next = head
+            curr = head
+            head = head.next
 
-        heapq.heapify(lists)
-
-        dummy = ListNode(0)
-        curr = dummy
-
-        while lists:
-            val, prev = lists[0]
-            curr.next = ListNode(val)
-            curr = curr.next
-
-            if prev.next:
-                heapq.heapreplace(lists, (prev.next.val, prev.next))
+            if head:
+                heapq.heapreplace(q, (head.val, i, head))
             else:
-                heapq.heappop(lists)
+                heapq.heappop(q)
 
         return dummy.next
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([[2, 6], [1, 4], [3, 5], [7], []], [1, 2, 3, 4, 5, 6, 7])
-        self._test([], [])
+        utils.test(self, __file__, Solution,
+                   process_args=self.process_args,
+                   process_result=utils.linked_list_to_array)
 
-    def _test(self, lists, expected):
-        lists = [ListNode.from_array(l) for l in lists]
-
-        actual = Solution().mergeKLists(lists)
-
-        actual = ListNode.to_array(actual)
-        self.assertEqual(expected, actual)
-
-
-if __name__ == '__main__':
-    unittest.main()
+    @staticmethod
+    def process_args(args):
+        args.lists = [ListNode.from_array(head) for head in args.lists]
