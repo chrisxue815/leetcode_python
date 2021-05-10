@@ -10,8 +10,10 @@ from linkedlist import ListNode
 class Solution:
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
         dummy = curr = ListNode(0)
-        q = [(head.val, i, head) for i, head in enumerate(lists) if head]
-        heapq.heapify(q)
+        q = []
+        for i, head in enumerate(lists):
+            if head:
+                heapq.heappush(q, (head.val, i, head))
 
         while q:
             val, i, head = q[0]
