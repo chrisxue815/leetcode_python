@@ -7,23 +7,16 @@ import utils
 # O(n) time. O(n) space. Hash table.
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        num_to_index = {}
+        visited = {}
 
         for i, num in enumerate(nums):
-            if target - num in num_to_index:
-                return [num_to_index[target - num], i]
-            num_to_index[num] = i
+            j = visited.get(target - num, -1)
+            if j != -1:
+                return [j, i]
+
+            visited[num] = i
 
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            actual = Solution().twoSum(**case.args.__dict__)
-            self.assertEqual(case.expected, actual, msg=args)
-
-
-if __name__ == '__main__':
-    unittest.main()
+        utils.test(self, __file__, Solution)

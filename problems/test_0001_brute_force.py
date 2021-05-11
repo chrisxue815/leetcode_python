@@ -8,20 +8,11 @@ import utils
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         for i, a in enumerate(nums):
-            for j, b in enumerate(nums[i + 1:]):
-                if a + b == target:
-                    return [i, i + 1 + j]
+            for j in range(i + 1, len(nums)):
+                if a + nums[j] == target:
+                    return [i, j]
 
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            actual = Solution().twoSum(**case.args.__dict__)
-            self.assertEqual(case.expected, actual, msg=args)
-
-
-if __name__ == '__main__':
-    unittest.main()
+        utils.test(self, __file__, Solution)
