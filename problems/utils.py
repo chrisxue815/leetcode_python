@@ -6,7 +6,7 @@ from linkedlist import ListNode
 from tree import TreeNode
 
 
-def test(tst, file, solution, func=None, process_args=None, process_result=None):
+def test(tst, file, solution, func=None, process_args=None, process_result=None, check_result=None):
     if not func:
         func_name = next(f for f in dir(solution) if not f.startswith('__'))
         func = getattr(solution, func_name)
@@ -22,7 +22,11 @@ def test(tst, file, solution, func=None, process_args=None, process_result=None)
 
         if process_result:
             actual = process_result(actual)
-        tst.assertEqual(case.expected, actual, msg=args)
+
+        if check_result:
+            check_result(case.expected, actual, args)
+        else:
+            tst.assertEqual(case.expected, actual, msg=args)
 
 
 def root_array_to_tree(args):

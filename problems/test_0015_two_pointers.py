@@ -1,60 +1,48 @@
 import unittest
+from typing import List
+
+import utils
 
 
+# O(n^2) time. O(1) space. Two pointers.
 class Solution:
-    def threeSum(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[List[int]]
-        """
-        nums.sort()
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
         result = []
+        nums.sort()
 
-        for i in range(len(nums) - 2):
-            a = nums[i]
-            if a + nums[i + 1] + nums[i + 2] > 0:
-                break
-            if i > 0 and nums[i - 1] == a or a + nums[-1] + nums[-2] < 0:
+        for i, a in enumerate(nums):
+            if i > 0 and nums[i - 1] == a:
                 continue
 
-            residual = -a
-            lo = i + 1
-            hi = len(nums) - 1
+            target = -a
+            j = i + 1
+            k = len(nums) - 1
 
-            while lo < hi:
-                lo_num = nums[lo]
-                hi_num = nums[hi]
-                s = lo_num + hi_num
-                if s < residual:
-                    lo += 1
-                elif s > residual:
-                    hi -= 1
+            while j < k:
+                s = nums[j] + nums[k]
+                if s == target:
+                    result.append([a, nums[j], nums[k]])
+                    increase_j = True
+                    decrease_k = True
+                elif s < target:
+                    increase_j = True
+                    decrease_k = False
                 else:
-                    result.append([a, lo_num, hi_num])
-                    lo += 1
-                    hi -= 1
-                    while lo < hi and nums[lo] == lo_num:
-                        lo += 1
-                    while lo < hi and nums[hi] == hi_num:
-                        hi -= 1
+                    increase_j = False
+                    decrease_k = True
+
+                if increase_j:
+                    j += 1
+                    while j < k and nums[j - 1] == nums[j]:
+                        j += 1
+                if decrease_k:
+                    k -= 1
+                    while j < k and nums[k] == nums[k + 1]:
+                        k -= 1
 
         return result
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([-1, 0, 1, 2, -1, -4], [
-            [-1, 0, 1],
-            [-1, -1, 2],
-        ])
-        self._test([-1, -1, 0, 1], [
-            [-1, 0, 1],
-        ])
-
-    def _test(self, nums, expected):
-        actual = Solution().threeSum(nums)
-        self.assertCountEqual(expected, actual)
-
-
-if __name__ == '__main__':
-    unittest.main()
+        utils.test(self, __file__, Solution, check_result=self.assertCountEqual)
