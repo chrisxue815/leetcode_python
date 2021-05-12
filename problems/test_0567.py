@@ -1,45 +1,40 @@
 import unittest
 
+import utils
 
+
+# O(n) time. O(1) space. Sliding window.
 class Solution:
-    def checkInclusion(self, s1, s2):
-        """
-        :type s1: str
-        :type s2: str
-        :rtype: bool
-        """
-        counts1 = [0] * 128
-        counts2 = [0] * 128
+    def checkInclusion(self, s1: str, s2: str) -> bool:
         lo = 0
+        target = len(s1) - 1
+        counts = [0] * 128
+        for c in s1:
+            counts[ord(c)] += 1
 
-        for ch in s1:
-            counts1[ord(ch)] += 1
+        for hi, c in enumerate(s2):
+            c = ord(c)
+            count = counts[c]
 
-        for hi, hi_ch in enumerate(s2):
-            hi_ch = ord(hi_ch)
-            counts2[hi_ch] += 1
-            if counts2[hi_ch] == counts1[hi_ch]:
-                if hi - lo + 1 == len(s1):
-                    return True
-            else:
-                while counts2[hi_ch] > counts1[hi_ch]:
-                    counts2[ord(s2[lo])] -= 1
+            if count == 0:
+                while True:
+                    lo_char = ord(s2[lo])
                     lo += 1
+                    if lo_char == c:
+                        break
+                    counts[lo_char] += 1
+            else:
+                count -= 1
+                if count == 0 and hi - lo == target:
+                    return True
+                counts[c] = count
 
         return False
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test('ab', 'eidbaooo', True)
-        self._test('ab', 'eidboaoo', False)
-        self._test('aab', 'eidabbaooo', False)
-        self._test('aab', 'eidaaabooo', True)
-        self._test('adc', 'dcda', True)
-
-    def _test(self, s1, s2, expected):
-        actual = Solution().checkInclusion(s1, s2)
-        self.assertEqual(expected, actual)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
