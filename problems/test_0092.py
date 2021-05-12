@@ -38,3 +38,7 @@ class Test(unittest.TestCase):
     @staticmethod
     def process_args(args):
         args.head = ListNode.from_array(args.head)
+
+
+if __name__ == '__main__':
+    unittest.main()

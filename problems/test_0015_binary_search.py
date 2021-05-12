@@ -41,3 +41,7 @@ class Solution:
 class Test(unittest.TestCase):
     def test(self):
         utils.test(self, __file__, Solution, check_result=self.assertCountEqual)
+
+
+if __name__ == '__main__':
+    unittest.main()

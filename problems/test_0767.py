@@ -39,3 +39,7 @@ class Test(unittest.TestCase):
 
         for i in range(1, len(actual)):
             self.assertNotEqual(actual[i - 1], actual[i], msg)
+
+
+if __name__ == '__main__':
+    unittest.main()

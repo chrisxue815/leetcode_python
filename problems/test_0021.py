@@ -34,3 +34,7 @@ class Test(unittest.TestCase):
     def process_args(args):
         args.l1 = ListNode.from_array(args.l1)
         args.l2 = ListNode.from_array(args.l2)
+
+
+if __name__ == '__main__':
+    unittest.main()
