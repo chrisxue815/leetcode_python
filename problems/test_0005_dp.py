@@ -3,7 +3,7 @@ import unittest
 import utils
 
 
-# O(n^2) time. O(n^2) space. DP.
+# O(n^2) time. O(n^2) space. Palindrome, DP.
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         n = len(s)
@@ -33,12 +33,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            actual = Solution().longestPalindrome(**case.args.__dict__)
-            self.assertEqual(case.expected, actual, msg=args)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
