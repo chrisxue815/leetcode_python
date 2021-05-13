@@ -34,7 +34,7 @@ class Test(unittest.TestCase):
     def test(self):
         utils.test(self, __file__, Solution, check_result=self.check_result)
 
-    def check_result(self, expected, actual, msg):
+    def check_result(self, expected, actual, msg, case):
         self.assertCountEqual(expected, actual, msg)
 
         for i in range(1, len(actual)):

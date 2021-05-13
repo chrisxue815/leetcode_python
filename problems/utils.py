@@ -14,7 +14,7 @@ def test(tst, file, solution, func=None, process_args=None, process_result=None,
     cases = load_test_json(file).test_cases
 
     for case in cases:
-        args = str(case.args)
+        msg = str(case.args)
         if process_args:
             process_args(case.args)
 
@@ -24,9 +24,9 @@ def test(tst, file, solution, func=None, process_args=None, process_result=None,
             actual = process_result(actual)
 
         if check_result:
-            check_result(case.expected, actual, args)
+            check_result(case.expected, actual, msg, case)
         else:
-            tst.assertEqual(case.expected, actual, msg=args)
+            tst.assertEqual(case.expected, actual, msg=msg)
 
 
 def root_array_to_tree(args):

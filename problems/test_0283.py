@@ -1,31 +1,32 @@
 import unittest
+from typing import List
+
+import utils
 
 
+# O(n) time. O(1) space. Iteration.
 class Solution:
-    def moveZeroes(self, nums):
+    def moveZeroes(self, nums: List[int]) -> None:
         """
-        :type nums: List[int]
-        :rtype: void Do not return anything, modify nums in-place instead.
+        Do not return anything, modify nums in-place instead.
         """
-        write_index = 0
-        for read_index in range(len(nums)):
-            if nums[read_index]:
-                nums[write_index] = nums[read_index]
-                write_index += 1
+        lo = 0
 
-        for write_index in range(write_index, len(nums)):
-            nums[write_index] = 0
+        for hi, num in enumerate(nums):
+            if num:
+                nums[lo] = num
+                lo += 1
 
-        return nums
+        for lo in range(lo, len(nums)):
+            nums[lo] = 0
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([0, 1, 0, 3, 12], [1, 3, 12, 0, 0])
+        utils.test(self, __file__, Solution, check_result=self.check_result)
 
-    def _test(self, nums, expected):
-        Solution().moveZeroes(nums)
-        self.assertEqual(expected, nums)
+    def check_result(self, expected, actual, msg, case):
+        self.assertEqual(expected, case.args.nums, msg)
 
 
 if __name__ == '__main__':
