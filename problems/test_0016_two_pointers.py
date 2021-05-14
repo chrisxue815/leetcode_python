@@ -1,13 +1,12 @@
 import unittest
+from typing import List
+
+import utils
 
 
+# O(n^2) time. O(1) space. Two pointers.
 class Solution:
-    def threeSumClosest(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: int
-        """
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
         min_diff = 0x7FFFFFFF
         closest = 0
         nums.sort()
@@ -52,11 +51,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([-1, 2, 1, -4], 1, 2)
-
-    def _test(self, nums, target, expected):
-        actual = Solution().threeSumClosest(nums, target)
-        self.assertEqual(expected, actual)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
