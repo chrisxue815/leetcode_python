@@ -1,5 +1,8 @@
-import unittest
 import collections
+import unittest
+from typing import List
+
+import utils
 
 
 class MaxQueue:
@@ -23,14 +26,9 @@ class MaxQueue:
         return self.queue[0][0]
 
 
-# O(n) time. O(n) space. Monotone priority queue.
+# O(n) time. O(n) space. Monotone queue.
 class Solution:
-    def maxSlidingWindow(self, nums, k):
-        """
-        :type nums: List[int]
-        :type k: int
-        :rtype: List[int]
-        """
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         result = []
         queue = MaxQueue()
         k -= 1
@@ -44,11 +42,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 3, -1, -3, 5, 3, 6, 7], 3, [3, 3, 5, 5, 6, 7])
-
-    def _test(self, nums, k, expected):
-        actual = Solution().maxSlidingWindow(nums, k)
-        self.assertEqual(expected, actual)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
