@@ -9,7 +9,7 @@ class Solution:
     def diameterOfBinaryTree(self, root: TreeNode) -> int:
         result = 0
 
-        # Number of nodes
+        # Number of nodes in the longest downward path
         def height(curr):
             if not curr:
                 return 0
@@ -29,13 +29,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            root = TreeNode.from_array(case.args.root)
-            actual = Solution().diameterOfBinaryTree(root)
-            self.assertEqual(case.expected, actual, msg=args)
+        utils.test(self, __file__, Solution, process_args=utils.root_array_to_tree)
 
 
 if __name__ == '__main__':
