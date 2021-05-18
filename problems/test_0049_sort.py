@@ -19,8 +19,8 @@ class Test(unittest.TestCase):
     def test(self):
         utils.test(self, __file__, Solution, check_result=self.check_result)
 
-    def check_result(self, expected, actual, msg, case):
-        expected = sorted(sorted(group) for group in expected)
+    def check_result(self, case, actual, msg):
+        expected = sorted(sorted(group) for group in case.expected)
         actual = sorted(sorted(group) for group in actual)
         self.assertEqual(expected, actual, msg)
 

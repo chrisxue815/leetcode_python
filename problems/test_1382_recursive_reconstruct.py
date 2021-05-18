@@ -1,54 +1,33 @@
-import math
 import unittest
 
 import utils
 from tree import TreeNode
 
 
-# O(n) time. O(1) space. DSW algorithm.
+# O(n) time. O(n) space. Recursive in-order DFS.
 class Solution:
     def balanceBST(self, root: TreeNode) -> TreeNode:
-        if not root:
-            return None
+        values = []
 
-        def tree_to_vine(tail):
-            count = 0
-            rest = tail.right
-            while rest:
-                if rest.left:
-                    pivot = rest.left
-                    rest.left = pivot.right
-                    pivot.right = rest
-                    rest = pivot
-                    tail.right = pivot
-                else:
-                    tail = rest
-                    rest = rest.right
-                    count += 1
-            return count
+        def dfs(curr):
+            if not curr:
+                return
+            dfs(curr.left)
+            values.append(curr.val)
+            dfs(curr.right)
 
-        def compress(tail, count):
-            rest = tail.right
-            for _ in range(count):
-                pivot = rest.right
-                rest.right = pivot.left
-                pivot.left = rest
-                tail.right = pivot
-                tail = pivot
-                rest = pivot.right
+        dfs(root)
 
-        dummy = TreeNode(0)
-        dummy.right = root
-        size = tree_to_vine(dummy)
+        def reconstruct(start, end):
+            if start >= end:
+                return None
+            mid = start + ((end - start) >> 1)
+            curr = TreeNode(values[mid])
+            curr.left = reconstruct(start, mid)
+            curr.right = reconstruct(mid + 1, end)
+            return curr
 
-        non_leaves = int(2 ** int(math.log(size + 1, 2))) - 1
-        compress(dummy, size - non_leaves)
-        non_leaves >>= 1
-        while non_leaves > 0:
-            compress(dummy, non_leaves)
-            non_leaves >>= 1
-
-        return dummy.right
+        return reconstruct(0, len(values))
 
 
 class Test(unittest.TestCase):

@@ -1,54 +1,33 @@
-import math
 import unittest
 
 import utils
 from tree import TreeNode
 
 
-# O(n) time. O(1) space. DSW algorithm.
+# O(n) time. O(n) space. Iterative in-order DFS.
 class Solution:
     def balanceBST(self, root: TreeNode) -> TreeNode:
-        if not root:
-            return None
+        nodes = []
+        stack = []
 
-        def tree_to_vine(tail):
-            count = 0
-            rest = tail.right
-            while rest:
-                if rest.left:
-                    pivot = rest.left
-                    rest.left = pivot.right
-                    pivot.right = rest
-                    rest = pivot
-                    tail.right = pivot
-                else:
-                    tail = rest
-                    rest = rest.right
-                    count += 1
-            return count
+        while root or stack:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            nodes.append(root)
+            root = root.right
 
-        def compress(tail, count):
-            rest = tail.right
-            for _ in range(count):
-                pivot = rest.right
-                rest.right = pivot.left
-                pivot.left = rest
-                tail.right = pivot
-                tail = pivot
-                rest = pivot.right
+        def reconstruct(start, end):
+            if start >= end:
+                return None
+            mid = start + ((end - start) >> 1)
+            curr = nodes[mid]
+            curr.left = reconstruct(start, mid)
+            curr.right = reconstruct(mid + 1, end)
+            return curr
 
-        dummy = TreeNode(0)
-        dummy.right = root
-        size = tree_to_vine(dummy)
-
-        non_leaves = int(2 ** int(math.log(size + 1, 2))) - 1
-        compress(dummy, size - non_leaves)
-        non_leaves >>= 1
-        while non_leaves > 0:
-            compress(dummy, non_leaves)
-            non_leaves >>= 1
-
-        return dummy.right
+        return reconstruct(0, len(nodes))
 
 
 class Test(unittest.TestCase):

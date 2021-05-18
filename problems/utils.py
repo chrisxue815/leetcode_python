@@ -6,7 +6,7 @@ from linkedlist import ListNode
 from tree import TreeNode
 
 
-def test(tst, file, solution, func=None, process_args=None, process_result=None, check_result=None):
+def test(tst, file, solution, func=None, process_case=None, process_args=None, process_result=None, check_result=None):
     if not func:
         func_name = next(f for f in dir(solution) if not f.startswith('__'))
         func = getattr(solution, func_name)
@@ -15,6 +15,8 @@ def test(tst, file, solution, func=None, process_args=None, process_result=None,
 
     for case in cases:
         msg = str(case.args)
+        if process_case:
+            process_case(case)
         if process_args:
             process_args(case.args)
 
@@ -24,7 +26,7 @@ def test(tst, file, solution, func=None, process_args=None, process_result=None,
             actual = process_result(actual)
 
         if check_result:
-            check_result(case.expected, actual, msg, case)
+            check_result(case, actual, msg)
         else:
             tst.assertEqual(case.expected, actual, msg=msg)
 

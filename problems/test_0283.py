@@ -25,8 +25,8 @@ class Test(unittest.TestCase):
     def test(self):
         utils.test(self, __file__, Solution, check_result=self.check_result)
 
-    def check_result(self, expected, actual, msg, case):
-        self.assertEqual(expected, case.args.nums, msg)
+    def check_result(self, case, actual, msg):
+        self.assertEqual(case.expected, case.args.nums, msg)
 
 
 if __name__ == '__main__':
