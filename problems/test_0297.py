@@ -1,70 +1,77 @@
-import queue
+import collections
 import unittest
-from tree import TreeNode, null
+
+import utils
+from tree import TreeNode
 
 
 class Codec:
+    # O(n) time. O(n) space. BFS.
     def serialize(self, root):
         """Encodes a tree to a single string.
 
         :type root: TreeNode
         :rtype: str
         """
-        vals = []
-        que = queue.Queue()
-        que.put(root)
+        values = []
+        q = collections.deque()
+        q.append(root)
 
-        while not que.empty():
-            node = que.get()
+        while q:
+            node = q.popleft()
 
-            if not node:
-                vals.append('#')
+            if node:
+                values.append(node.val)
+                q.append(node.left)
+                q.append(node.right)
             else:
-                vals.append(node.val)
-                que.put(node.left)
-                que.put(node.right)
+                values.append('#')
 
-        return ' '.join(map(str, vals))
+        while q and q[-1] == '#':
+            q.pop()
 
+        return ' '.join(map(str, values))
+
+    # O(n) time. O(n) space. BFS.
     def deserialize(self, data):
         """Decodes your encoded data to tree.
 
         :type data: str
         :rtype: TreeNode
         """
-        root_parent = TreeNode(0)
-        que = queue.Queue()
-        que.put((root_parent, 'l'))
+        dummy = TreeNode(0)
+        q = collections.deque()
+        q.append((dummy, True))
 
         for val in data.split(' '):
-            (parent, leftOrRight) = que.get()
+            parent, is_left = q.popleft()
 
             if val == '#':
                 continue
 
             node = TreeNode(int(val))
 
-            if leftOrRight == 'l':
+            if is_left:
                 parent.left = node
             else:
                 parent.right = node
 
-            que.put((node, 'l'))
-            que.put((node, 'r'))
+            q.append((node, True))
+            q.append((node, False))
 
-        return root_parent.left
+        return dummy.left
 
 
 class Test(unittest.TestCase):
-    def test_serialize(self):
-        self._test([])
-        self._test([1, 2, 3, 4, 5, 6, 7])
-        self._test([1, 2, 3, null, 4, 5])
+    def test(self):
+        utils.test(self, __file__, Codec, Codec.serialize,
+                   process_args=utils.root_array_to_tree,
+                   check_result=self.check_result)
 
-    def _test(self, vals):
-        root = TreeNode.from_array(vals)
-        codec = Codec()
-        self.assertEqual(vals, TreeNode.to_array_static(codec.deserialize(codec.serialize(root))))
+    def check_result(self, case, actual, msg):
+        expected = TreeNode.to_array_static(case.args.root)
+        actual = TreeNode.to_array_static(Codec().deserialize(actual))
+        self.assertEqual(expected, actual, msg)
 
 
 if __name__ == '__main__':

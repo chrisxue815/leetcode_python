@@ -18,7 +18,7 @@ class Solution:
             elif distance_squared < -q[0][0]:
                 heapq.heapreplace(q, (-distance_squared, x, y))
 
-        return [it[1:] for it in q]
+        return [[x, y] for _, x, y in q]
 
 
 class Test(unittest.TestCase):
