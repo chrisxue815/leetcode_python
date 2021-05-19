@@ -23,7 +23,8 @@ class Test(unittest.TestCase):
     def test(self):
         utils.test(self, __file__, Solution, process_args=self.process_args)
 
-    def process_args(self, args):
+    @staticmethod
+    def process_args(args):
         args.head = ListNode.from_array(args.head)
 
         if args.pos >= 0:

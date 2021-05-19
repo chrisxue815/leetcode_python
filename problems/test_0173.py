@@ -38,7 +38,8 @@ class Test(unittest.TestCase):
     def test(self):
         utils.test_invocations(self, __file__, BSTIterator, process_args=self.process_args)
 
-    def process_args(self, func, parameters):
+    @staticmethod
+    def process_args(func, parameters):
         if func == BSTIterator.__name__:
             parameters[0] = TreeNode.from_array(parameters[0])
 

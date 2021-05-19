@@ -30,14 +30,17 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
+        utils.test(self, __file__, Solution,
+                   process_args=utils.root_array_to_tree,
+                   process_result=self.process_result,
+                   check_result=self.check_result)
 
-        for case in cases:
-            args = str(case.args)
-            root = TreeNode.from_array(case.args.root)
-            actual = Solution().findDuplicateSubtrees(root)
-            actual = [root.to_array() for root in actual]
-            self.assertCountEqual(case.expected, actual, msg=args)
+    @staticmethod
+    def process_result(actual):
+        return [root.to_array() for root in actual]
+
+    def check_result(self, case, actual, msg):
+        self.assertCountEqual(case.expected, actual, msg=msg)
 
 
 if __name__ == '__main__':
