@@ -1,12 +1,14 @@
 import unittest
+
+import utils
 from tree import TreeNode
 
 
-def _kth(node, k, index):
+def kth(node, k, index):
     if not node:
-        return index, None
+        return index, 0
 
-    index, result = _kth(node.left, k, index)
+    index, result = kth(node.left, k, index)
     if index == k:
         return index, result
 
@@ -14,29 +16,18 @@ def _kth(node, k, index):
     if index == k:
         return index, node.val
 
-    return _kth(node.right, k, index)
+    return kth(node.right, k, index)
 
 
-# O(n) time. O(h) space. Recursive, pure functional, in-order traversal.
-# Optimization: self-balancing BST
+# O(n) time. O(log(n)) space. Recursive in-order DFS.
 class Solution:
-    def kthSmallest(self, root, k):
-        """
-        :type root: TreeNode
-        :type k: int
-        :rtype: int
-        """
-        return _kth(root, k, 0)[1]
+    def kthSmallest(self, root: TreeNode, k: int) -> int:
+        return kth(root, k, 0)[1]
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([4, 2, 6, 1, 3, 5, 7], 6, 6)
-
-    def _test(self, root, k, expected):
-        root = TreeNode.from_array(root)
-        actual = Solution().kthSmallest(root, k)
-        self.assertEqual(expected, actual)
+        utils.test(self, __file__, Solution, process_args=utils.root_array_to_tree)
 
 
 if __name__ == '__main__':

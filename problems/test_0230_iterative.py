@@ -1,41 +1,29 @@
 import unittest
+
+import utils
 from tree import TreeNode
 
 
-# O(n) time. O(h) space. Iterative in-order traversal.
-# Optimization: self-balancing BST
+# O(n) time. O(log(n)) space. Iterative in-order DFS.
 class Solution:
-    def kthSmallest(self, root, k):
-        """
-        :type root: TreeNode
-        :type k: int
-        :rtype: int
-        """
-        count = 0
+    def kthSmallest(self, root: TreeNode, k: int) -> int:
+        index = 0
         stack = []
 
         while root or stack:
-            if root:
+            while root:
                 stack.append(root)
                 root = root.left
-            else:
-                root = stack.pop()
-                count += 1
-                if count == k:
-                    return root.val
-                root = root.right
-
-        return None
+            root = stack.pop()
+            index += 1
+            if index == k:
+                return root.val
+            root = root.right
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([4, 2, 6, 1, 3, 5, 7], 6, 6)
-
-    def _test(self, root, k, expected):
-        root = TreeNode.from_array(root)
-        actual = Solution().kthSmallest(root, k)
-        self.assertEqual(expected, actual)
+        utils.test(self, __file__, Solution, process_args=utils.root_array_to_tree)
 
 
 if __name__ == '__main__':
