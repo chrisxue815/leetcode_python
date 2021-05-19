@@ -20,8 +20,7 @@ class Solution:
 
             return lr + 1, rl + 1
 
-        result = max(max(dfs(root)), result)
-        return result
+        return max(max(dfs(root)), result)
 
 
 class Test(unittest.TestCase):

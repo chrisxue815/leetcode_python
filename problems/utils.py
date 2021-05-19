@@ -31,6 +31,33 @@ def test(tst, file, solution, func=None, process_case=None, process_args=None, p
             tst.assertEqual(case.expected, actual, msg=msg)
 
 
+def test_invocations(tst, file, solution, process_case=None, process_args=None, process_result=None, check_result=None):
+    cases = load_test_json(file).test_cases
+
+    for case in cases:
+        msg = str(case.args)
+        if process_case:
+            process_case(case)
+        obj = None
+
+        for func, parameters, expected in zip(case.functions, case.args, case.expected):
+            if process_args:
+                process_args(func, parameters)
+
+            if func == solution.__name__:
+                obj = solution(*parameters)
+            else:
+                actual = getattr(obj, func)(*parameters)
+
+                if process_result:
+                    actual = process_result(actual)
+
+                if check_result:
+                    check_result(expected, actual, msg)
+                else:
+                    tst.assertEqual(expected, actual, msg=msg)
+
+
 def root_array_to_tree(args):
     args.root = TreeNode.from_array(args.root)
 
