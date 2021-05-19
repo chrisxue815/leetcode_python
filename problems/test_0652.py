@@ -6,18 +6,19 @@ import utils
 from tree import TreeNode
 
 
+# O(n) time. O(n) space. Recursive post-order DFS, hash table.
 class Solution:
     def findDuplicateSubtrees(self, root: TreeNode) -> List[TreeNode]:
         result = []
-        trees = collections.defaultdict()
-        trees.default_factory = trees.__len__
+        uids = collections.defaultdict()
+        uids.default_factory = uids.__len__
         count = collections.Counter()
 
         def lookup(node):
             if not node:
                 return -1
 
-            uid = trees[node.val, lookup(node.left), lookup(node.right)]
+            uid = uids[node.val, lookup(node.left), lookup(node.right)]
             count[uid] += 1
             if count[uid] == 2:
                 result.append(node)
