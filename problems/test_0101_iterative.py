@@ -1,41 +1,33 @@
 import unittest
+
+import utils
 from tree import TreeNode
 
 
+# O(n) time. O(log(n)) space. Iterative DFS.
 class Solution:
-    def isSymmetric(self, root):
-        """
-        :type root: TreeNode
-        :rtype: bool
-        """
-        if not root:
-            return True
+    def isSymmetric(self, root: TreeNode) -> bool:
         q = [(root.left, root.right)]
 
         while q:
-            next_q = []
-            for left, right in q:
-                if (left is None) != (right is None):
-                    return False
-                if left:
-                    if left.val != right.val:
-                        return False
-                    next_q.append((left.left, right.right))
-                    next_q.append((left.right, right.left))
-            q = next_q
+            left, right = q.pop()
+            if left is None:
+                if right is None:
+                    continue
+                return False
+            if right is None:
+                return False
+            if left.val != right.val:
+                return False
+            q.append((left.left, right.right))
+            q.append((left.right, right.left))
 
         return True
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 2, 2, 3, 4, 4, 3], True)
-        self._test([1, 2, 2, None, 3, None, 3], False)
-
-    def _test(self, root, expected):
-        root = TreeNode.from_array(root)
-        actual = Solution().isSymmetric(root)
-        self.assertEqual(expected, actual)
+        utils.test(self, __file__, Solution, process_args=utils.root_array_to_tree)
 
 
 if __name__ == '__main__':
