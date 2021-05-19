@@ -14,7 +14,7 @@ class BSTIterator:
             root = root.left
         self.stack = stack
 
-    # O(1) time.
+    # Amortized O(1) time.
     def next(self) -> int:
         stack = self.stack
         if not stack:
@@ -36,20 +36,11 @@ class BSTIterator:
 
 class Test(unittest.TestCase):
     def test(self):
-        cls = BSTIterator
-        cases = utils.load_test_json(__file__).test_cases
+        utils.test_invocations(self, __file__, BSTIterator, process_args=self.process_args)
 
-        for case in cases:
-            args = str(case.args)
-            obj = None
-
-            for func, parameters, expected in zip(case.functions, case.args, case.expected):
-                if func == cls.__name__:
-                    root = TreeNode.from_array(parameters[0])
-                    obj = cls(root)
-                else:
-                    actual = getattr(obj, func)(*parameters)
-                    self.assertEqual(expected, actual, msg=args)
+    def process_args(self, func, parameters):
+        if func == BSTIterator.__name__:
+            parameters[0] = TreeNode.from_array(parameters[0])
 
 
 if __name__ == '__main__':
