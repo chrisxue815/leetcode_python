@@ -50,10 +50,10 @@ def test_invocations(tst, file, solution, process_case=None, process_args=None, 
                 actual = getattr(obj, func)(*parameters)
 
                 if process_result:
-                    actual = process_result(actual)
+                    actual = process_result(func, actual)
 
                 if check_result:
-                    check_result(expected, actual, msg)
+                    check_result(func, parameters, expected, actual, msg)
                 else:
                     tst.assertEqual(expected, actual, msg=msg)
 
