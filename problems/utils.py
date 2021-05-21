@@ -62,6 +62,10 @@ def root_array_to_tree(args):
     args.root = TreeNode.from_array(args.root)
 
 
+def tree_to_array(actual):
+    return TreeNode.to_array_static(actual)
+
+
 def linked_list_to_array(result):
     return ListNode.to_array(result)
 
