@@ -8,7 +8,7 @@ def add_row(curr, val, depth):
     if not curr:
         return
 
-    if depth != 2:
+    if depth > 2:
         add_row(curr.left, val, depth - 1)
         add_row(curr.right, val, depth - 1)
     else:
