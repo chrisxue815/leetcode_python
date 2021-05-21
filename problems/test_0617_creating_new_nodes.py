@@ -4,7 +4,7 @@ import utils
 from tree import TreeNode
 
 
-# O(n) time. O(log(n)) space. Recursive preorder DFS.
+# O(n) time. O(log(n)) space. Recursive post-order DFS.
 class Solution:
     def mergeTrees(self, t1: TreeNode, t2: TreeNode) -> TreeNode:
         if not t1 and not t2:
@@ -19,15 +19,16 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
+        utils.test(self, __file__, Solution, process_args=self.process_args, process_result=self.process_result)
 
-        for case in cases:
-            args = str(case.args)
-            t1 = TreeNode.from_array(case.args.t1)
-            t2 = TreeNode.from_array(case.args.t2)
-            actual = Solution().mergeTrees(t1, t2)
-            actual = actual.to_array()
-            self.assertEqual(case.expected, actual, msg=args)
+    @staticmethod
+    def process_args(case):
+        case.t1 = TreeNode.from_array(case.t1)
+        case.t2 = TreeNode.from_array(case.t2)
+
+    @staticmethod
+    def process_result(actual):
+        return TreeNode.to_array_static(actual)
 
 
 if __name__ == '__main__':

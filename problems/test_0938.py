@@ -4,7 +4,7 @@ import utils
 from tree import TreeNode
 
 
-# O(n) time. O(log(n)) space. Recursive pre-order DFS.
+# O(n) time. O(log(n)) space. Recursive post-order DFS.
 class Solution:
     def rangeSumBST(self, root: TreeNode, low: int, high: int) -> int:
         if not root:
