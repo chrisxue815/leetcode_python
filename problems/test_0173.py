@@ -4,9 +4,10 @@ import utils
 from tree import TreeNode
 
 
-# O(log(n)) space.
+# Iterative in-order DFS.
 class BSTIterator:
 
+    # O(log(n)) time. O(log(n)) space.
     def __init__(self, root: TreeNode):
         stack = []
         while root:
@@ -14,7 +15,7 @@ class BSTIterator:
             root = root.left
         self.stack = stack
 
-    # Amortized O(1) time.
+    # Amortized O(1) time. O(1) space.
     def next(self) -> int:
         stack = self.stack
         if not stack:
@@ -29,7 +30,7 @@ class BSTIterator:
 
         return cur.val
 
-    # O(1) time.
+    # O(1) time. O(1) space.
     def hasNext(self) -> bool:
         return len(self.stack) > 0
 
