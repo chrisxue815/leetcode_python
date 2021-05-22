@@ -1,53 +1,35 @@
 import collections
 import unittest
-from tree import TreeNode, null
+from typing import List
+
+import utils
+from tree import TreeNode
 
 
+# O(n) time. O(n) space. Recursive post-order DFS, hash table.
 class Solution:
+    def findFrequentTreeSum(self, root: TreeNode) -> List[int]:
+        counts = collections.Counter()
 
-    def __init__(self):
-        self.counts = collections.Counter()
+        def dfs(curr):
+            if not curr:
+                return 0
 
-    def findFrequentTreeSum(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[int]
-        """
-        self._tree_sum(root)
+            s = curr.val + dfs(curr.left) + dfs(curr.right)
+            counts[s] += 1
+            return s
 
-        max_count = 0
-        max_tree_sums = []
-
-        for sum_, count in list(self.counts.items()):
-            if max_count < count:
-                max_count = count
-                del max_tree_sums[:]
-                max_tree_sums.append(sum_)
-            elif max_count == count:
-                max_tree_sums.append(sum_)
-
-        return max_tree_sums
-
-    def _tree_sum(self, node):
-        if not node:
-            return 0
-
-        left = self._tree_sum(node.left)
-        right = self._tree_sum(node.right)
-
-        sum_ = left + right + node.val
-        self.counts[sum_] += 1
-        return sum_
+        dfs(root)
+        max_count = max(counts.values())
+        return [s for s, count in counts.items() if count == max_count]
 
 
 class Test(unittest.TestCase):
-
     def test(self):
-        root = TreeNode.from_array([5, 2, -3])
-        self.assertCountEqual([2, -3, 4], Solution().findFrequentTreeSum(root))
+        utils.test(self, __file__, Solution, process_args=utils.root_array_to_tree, check_result=self.check_result)
 
-        root = TreeNode.from_array([5, 2, -5])
-        self.assertCountEqual([2], Solution().findFrequentTreeSum(root))
+    def check_result(self, case, actual, msg):
+        self.assertCountEqual(case.expected, actual, msg)
 
 
 if __name__ == '__main__':
