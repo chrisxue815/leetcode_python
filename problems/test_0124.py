@@ -1,50 +1,35 @@
 import unittest
-from tree import TreeNode, null
+
+import utils
+from tree import TreeNode
 
 
+# O(n) time. O(log(n)) space. Recursive post-order DFS.
 class Solution:
-    def __init__(self):
-        self.max = None
+    def maxPathSum(self, root: TreeNode) -> int:
+        result = -0x80000000
 
-    def maxPathSum(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
-        if not root:
-            return 0
+        def dfs(curr):
+            if not curr:
+                return 0
 
-        self._max_path_sum(root)
-        return self.max
+            left = max(0, dfs(curr.left))
+            right = max(0, dfs(curr.right))
 
-    def _max_path_sum(self, root):
-        if root.left:
-            leftmax = self._max_path_sum(root.left)
-        else:
-            leftmax = 0
+            r = left + right + curr.val
+            nonlocal result
+            if result < r:
+                result = r
 
-        if root.right:
-            rightmax = self._max_path_sum(root.right)
-        else:
-            rightmax = 0
+            return curr.val + max(left, right)
 
-        max_sum_as_root = max(root.val, root.val + leftmax, root.val + rightmax)
-        max_sum_containing_root = max(max_sum_as_root, root.val + leftmax + rightmax)
-
-        if not self.max or max_sum_containing_root > self.max:
-            self.max = max_sum_containing_root
-
-        return max_sum_as_root
+        dfs(root)
+        return result
 
 
 class Test(unittest.TestCase):
-    def test_serialize(self):
-        self._test([1, 2, 3], 6)
-        self._test([5, 4, 8, 11, null, 13, 4, 7, 2, null, null, null, 1], 48)
-
-    def _test(self, vals, expected):
-        root = TreeNode.from_array(vals)
-        self.assertEqual(expected, Solution().maxPathSum(root))
+    def test(self):
+        utils.test(self, __file__, Solution, process_args=utils.root_array_to_tree)
 
 
 if __name__ == '__main__':
