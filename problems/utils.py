@@ -58,10 +58,6 @@ def test_invocations(tst, file, solution, process_case=None, process_args=None, 
                     tst.assertEqual(expected, actual, msg=msg)
 
 
-def root_array_to_tree(args):
-    args.root = TreeNode.from_array(args.root)
-
-
 def tree_to_array(actual):
     return TreeNode.to_array_static(actual)
 

@@ -38,7 +38,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        utils.test(self, __file__, Solution, process_args=utils.root_array_to_tree)
+        utils.test(self, __file__, Solution, process_args=TreeNode.from_root_array)
 
 
 if __name__ == '__main__':

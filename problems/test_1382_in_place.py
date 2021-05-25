@@ -56,7 +56,7 @@ class Test(unittest.TestCase):
         utils.test(self, __file__, Solution, process_case=self.process_case, check_result=self.check_result)
 
     def process_case(self, case):
-        utils.root_array_to_tree(case.args)
+        TreeNode.from_root_array(case.args)
         case.expected = self.in_order(case.args.root)
 
     def check_result(self, case, actual, msg):

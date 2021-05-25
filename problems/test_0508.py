@@ -26,7 +26,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        utils.test(self, __file__, Solution, process_args=utils.root_array_to_tree, check_result=self.check_result)
+        utils.test(self, __file__, Solution, process_args=TreeNode.from_root_array, check_result=self.check_result)
 
     def check_result(self, case, actual, msg):
         self.assertCountEqual(case.expected, actual, msg)
