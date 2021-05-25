@@ -3,7 +3,6 @@ import os
 import types
 
 from linkedlist import ListNode
-from tree import TreeNode
 
 
 def test(tst, file, solution, func=None, process_case=None, process_args=None, process_result=None, check_result=None):
@@ -56,10 +55,6 @@ def test_invocations(tst, file, solution, process_case=None, process_args=None, 
                     check_result(func, parameters, expected, actual, msg)
                 else:
                     tst.assertEqual(expected, actual, msg=msg)
-
-
-def tree_to_array(actual):
-    return TreeNode.to_array_static(actual)
 
 
 def linked_list_to_array(result):
