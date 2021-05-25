@@ -1,50 +1,40 @@
+import collections
 import unittest
+
 import utils
 from tree import TreeNode
 
-# O(n) time. O(n) space. BFS.
+
+# O(n) time. O(n) space. BFS, bit manipulation.
 class Solution:
-    def isCousins(self, root, x, y):
-        """
-        :type root: TreeNode
-        :type x: int
-        :type y: int
-        :rtype: bool
-        """
-        q = [(root, None)]
+    def isCousins(self, root: TreeNode, x: int, y: int) -> bool:
+        q = collections.deque()
+        q.append(root)
 
         while q:
-            new_q = []
-            found_parent = None
+            j = -1
 
-            for i, (curr, parent) in enumerate(q):
+            for i in range(len(q)):
+                curr = q.popleft()
                 if not curr:
                     continue
 
                 if curr.val == x or curr.val == y:
-                    if found_parent:
-                        return found_parent is not parent
+                    if j == -1:
+                        j = i
                     else:
-                        found_parent = parent
+                        return i != j | 1
 
-                new_q.append((curr.left, curr))
-                new_q.append((curr.right, curr))
+                q.append(curr.left)
+                q.append(curr.right)
 
-            if found_parent:
+            if j != -1:
                 return False
-
-            q = new_q
 
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            root = TreeNode.from_array(case.args.root)
-            actual = Solution().isCousins(root, case.args.x, case.args.y)
-            self.assertEqual(case.expected, actual, msg=args)
+        utils.test(self, __file__, Solution, process_args=utils.root_array_to_tree)
 
 
 if __name__ == '__main__':
