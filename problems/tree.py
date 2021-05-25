@@ -83,6 +83,10 @@ class TreeNode:
 
         return root_parent.left
 
+    @classmethod
+    def from_root_array(cls, case):
+        case.root = cls.from_array(case.root)
+
     def to_array_inorder(self):
         """
         Serializes binary tree using inorder DFS traversal
@@ -101,28 +105,6 @@ class TreeNode:
 
         if node.right:
             TreeNode._to_array_inorder(node.right, vals)
-
-
-class TreeLinkNode(TreeNode):
-    def __init__(self, x):
-        super(TreeLinkNode, self).__init__(x)
-        self.next = None
-
-    def to_array_bfs_fulltree(self):
-        """
-        Serializes FULL binary tree in Leetcode style using level order traversal (BFS)
-        :rtype: List[int or None]
-        """
-        vals = []
-        prev = curr = self
-
-        while prev:
-            while curr:
-                vals.append(curr.val)
-                curr = curr.next
-            prev = curr = prev.left
-
-        return vals
 
 
 class Test(unittest.TestCase):

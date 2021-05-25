@@ -1,5 +1,6 @@
 import unittest
-from tree import TreeLinkNode, null
+
+from tree_link_node import Node
 
 
 # Definition for binary tree with next pointer.
@@ -20,7 +21,7 @@ class Solution:
             return
 
         curr = root
-        phantom = TreeLinkNode(0)
+        phantom = Node(0)
         prev = phantom
 
         while True:
@@ -48,12 +49,12 @@ class Solution:
 class Test(unittest.TestCase):
 
     def test(self):
-        self._test([4, 2, 6, 1, 3, 5, 7])
+        self._test([4, 2, 6, 1, 3, 5, 7], [4, None, 2, 6, None, 1, 3, 5, 7, None])
 
-    def _test(self, vals):
-        root = TreeLinkNode.from_array(vals)
+    def _test(self, vals, expected):
+        root = Node.from_array(vals)
         Solution().connect(root)
-        self.assertEqual(vals, root.to_array_bfs_fulltree())
+        self.assertEqual(expected, Node.to_next_value_array(root))
 
 
 if __name__ == '__main__':

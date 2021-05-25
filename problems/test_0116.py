@@ -1,45 +1,36 @@
 import unittest
-from tree import TreeLinkNode, null
 
-# Definition for binary tree with next pointer.
-# class TreeLinkNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-#         self.next = None
+import utils
+from tree_link_node import Node
 
 
+# O(n) time. O(1) space. Next right pointer traversal.
 class Solution:
-    # @param root, a tree link node
-    # @return nothing
-
-    def connect(self, root):
+    def connect(self, root: 'Node') -> 'Node':
         if not root:
-            return
+            return None
 
-        curr = root
-        next_level = curr.left
+        leftmost = root
 
-        while next_level:
+        while leftmost.left:
+            curr = leftmost
+
             while curr:
                 curr.left.next = curr.right
                 if curr.next:
                     curr.right.next = curr.next.left
                 curr = curr.next
-            curr = next_level
-            next_level = curr.left
+
+            leftmost = leftmost.left
+
+        return root
 
 
 class Test(unittest.TestCase):
-
     def test(self):
-        self._test([4, 2, 6, 1, 3, 5, 7])
-
-    def _test(self, vals):
-        root = TreeLinkNode.from_array(vals)
-        Solution().connect(root)
-        self.assertEqual(vals, root.to_array_bfs_fulltree())
+        utils.test(self, __file__, Solution,
+                   process_args=Node.from_root_array,
+                   process_result=Node.to_next_value_array)
 
 
 if __name__ == '__main__':
