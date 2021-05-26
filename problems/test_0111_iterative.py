@@ -1,41 +1,35 @@
+import collections
 import unittest
+
+import utils
 from tree import TreeNode
 
 
+# O(n) time. O(n) space. BFS.
 class Solution:
-    def minDepth(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
+    def minDepth(self, root: TreeNode) -> int:
         if not root:
             return 0
-        q = [root]
+
+        q = collections.deque()
+        q.append(root)
         depth = 1
 
         while q:
-            new_q = []
-            for node in q:
-                if not node.left and not node.right:
+            for _ in range(len(q)):
+                curr = q.popleft()
+                if not curr.left and not curr.right:
                     return depth
-                if node.left:
-                    new_q.append(node.left)
-                if node.right:
-                    new_q.append(node.right)
-            q = new_q
+                if curr.left:
+                    q.append(curr.left)
+                if curr.right:
+                    q.append(curr.right)
             depth += 1
 
 
 class Test(unittest.TestCase):
-    def test_serialize(self):
-        self._test([5, 4, 8, 11, None, 13, 4, 7, 2, None, None, None, 1], 3)
-        self._test([], 0)
-        self._test([1], 1)
-
-    def _test(self, root, expected):
-        root = TreeNode.from_array(root)
-        actual = Solution().minDepth(root)
-        self.assertEqual(expected, actual)
+    def test(self):
+        utils.test(self, __file__, Solution, process_args=TreeNode.from_root_array)
 
 
 if __name__ == '__main__':
