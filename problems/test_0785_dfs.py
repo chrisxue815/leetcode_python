@@ -1,15 +1,12 @@
-import collections
 import unittest
+from typing import List
+
 import utils
 
 
 # O(V+E) time. O(V) space. DFS.
 class Solution:
-    def isBipartite(self, graph):
-        """
-        :type graph: List[List[int]]
-        :rtype: bool
-        """
+    def isBipartite(self, graph: List[List[int]]) -> bool:
         groups = [-1] * len(graph)
 
         def dfs(a, a_group):
@@ -19,12 +16,9 @@ class Solution:
             for b in graph[a]:
                 if groups[b] == b_group:
                     continue
-
-                if groups[b] == a_group:
+                if groups[b] == a_group or not dfs(b, b_group):
                     return False
 
-                if not dfs(b, b_group):
-                    return False
             return True
 
         for i in range(len(graph)):
@@ -36,12 +30,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            actual = Solution().isBipartite(**case.args.__dict__)
-            self.assertEqual(case.expected, actual, msg=args)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
