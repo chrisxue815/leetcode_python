@@ -1,46 +1,39 @@
 import unittest
+from typing import List
+
+import utils
+
+digit_letters = ['', '', 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz']
 
 
+# O(4^n) time. O(4^n) space. Recursive backtracking.
 class Solution:
-    def __init__(self):
-        self.digit_letters = ['', '', 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz']
-        self.digits = None
-        self.n = 0
-        self.result = []
-
-    def letterCombinations(self, digits):
-        """
-        :type digits: str
-        :rtype: List[str]
-        """
+    def letterCombinations(self, digits: str) -> List[str]:
         if not digits:
             return []
 
-        zero = ord('0')
-        self.digits = [ord(i) - zero for i in digits]
-        self.n = len(self.digits)
+        result = []
+        digits = [ord(i) - ord('0') for i in digits]
 
-        self._backtrack(0, '')
+        def dfs(cur, s):
+            if cur == len(digits):
+                result.append(s)
+            else:
+                nxt = cur + 1
+                for ch in digit_letters[digits[cur]]:
+                    dfs(nxt, s + ch)
 
-        return self.result
+        dfs(0, '')
 
-    def _backtrack(self, start, s):
-        if start == self.n:
-            self.result.append(s)
-        else:
-            next_index = start + 1
-            for ch in self.digit_letters[self.digits[start]]:
-                self._backtrack(next_index, s + ch)
+        return result
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test("23", ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"])
-        self._test("", [])
+        utils.test(self, __file__, Solution, check_result=self.check_result)
 
-    def _test(self, digits, expected):
-        actual = Solution().letterCombinations(digits)
-        self.assertEqual(expected, actual)
+    def check_result(self, args, actual, msg):
+        self.assertCountEqual(args.expected, actual, msg)
 
 
 if __name__ == '__main__':
