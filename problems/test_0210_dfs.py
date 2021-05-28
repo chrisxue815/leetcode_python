@@ -1,4 +1,6 @@
 import unittest
+from typing import List
+
 import utils
 
 NOT_VISITED = -1
@@ -8,19 +10,14 @@ COMPLETE = 1
 
 # O(V+E) time. O(V) space. DFS.
 class Solution:
-    def findOrder(self, num_courses, prerequisites):
-        """
-        :type num_courses: int
-        :type prerequisites: List[List[int]]
-        :rtype: List[int]
-        """
-        graph = [[] for _ in range(num_courses)]
+    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        graph = [[] for _ in range(numCourses)]
 
         for successor, predecessor in prerequisites:
             graph[successor].append(predecessor)
 
         result = []
-        visited_nodes = [NOT_VISITED] * num_courses
+        visited_nodes = [NOT_VISITED] * numCourses
 
         def try_reverse_topological_sort(node):
             if visited_nodes[node] != NOT_VISITED:
@@ -37,7 +34,7 @@ class Solution:
 
             return True
 
-        for node in range(num_courses):
+        for node in range(numCourses):
             if not try_reverse_topological_sort(node):
                 return []
 
@@ -46,12 +43,10 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
+        utils.test(self, __file__, Solution, check_result=self.check_result)
 
-        for case in cases:
-            args = str(case.args)
-            actual = Solution().findOrder(**case.args.__dict__)
-            self.assertIn(actual, case.expected, msg=args)
+    def check_result(self, args, actual, msg):
+        self.assertIn(actual, args.expected, msg)
 
 
 if __name__ == '__main__':

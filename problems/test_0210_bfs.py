@@ -1,18 +1,15 @@
 import collections
 import unittest
+from typing import List
+
 import utils
 
 
 # O(V+E) time. O(V) space. BFS.
 class Solution:
-    def findOrder(self, num_courses, prerequisites):
-        """
-        :type num_courses: int
-        :type prerequisites: List[List[int]]
-        :rtype: List[int]
-        """
-        graph = [[] for _ in range(num_courses)]
-        in_degrees = [0] * num_courses
+    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        graph = [[] for _ in range(numCourses)]
+        in_degrees = [0] * numCourses
 
         for successor, predecessor in prerequisites:
             graph[predecessor].append(successor)
@@ -35,17 +32,15 @@ class Solution:
                 if in_degrees[successor] == 0:
                     q.append(successor)
 
-        return result if len(result) == num_courses else []
+        return result if len(result) == numCourses else []
 
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
+        utils.test(self, __file__, Solution, check_result=self.check_result)
 
-        for case in cases:
-            args = str(case.args)
-            actual = Solution().findOrder(**case.args.__dict__)
-            self.assertIn(actual, case.expected, msg=args)
+    def check_result(self, args, actual, msg):
+        self.assertIn(actual, args.expected, msg)
 
 
 if __name__ == '__main__':
