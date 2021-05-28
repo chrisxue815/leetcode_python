@@ -1,33 +1,28 @@
 import unittest
+
 import utils
 from tree import TreeNode
 
 
-# O(n) time. O(log(n)) space. Recursive DFS.
+# O(n) time. O(log(n)) space. Recursive post-order DFS.
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
-        def dfs(curr, max_):
+        def dfs(curr, max_so_far):
             if not curr:
                 return 0
-            if curr.val >= max_:
+            if curr.val >= max_so_far:
                 good = 1
-                max_ = curr.val
+                max_so_far = curr.val
             else:
                 good = 0
-            return good + dfs(curr.left, max_) + dfs(curr.right, max_)
+            return good + dfs(curr.left, max_so_far) + dfs(curr.right, max_so_far)
 
-        return dfs(root, -10000)
+        return dfs(root, -0x80000000)
 
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            root = TreeNode.from_array(case.args.root)
-            actual = Solution().goodNodes(root)
-            self.assertEqual(case.expected, actual, msg=args)
+        utils.test(self, __file__, Solution, process_args=TreeNode.from_root_array)
 
 
 if __name__ == '__main__':
