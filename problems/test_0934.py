@@ -56,7 +56,7 @@ class Solution:
                     if mark == 2:
                         return result
                     if mark == 0:
-                        grid[r2][c2] = curr_mark
+                        grid[r2][c2] = 4
                         q.append((r2, c2))
             result += 1
 
