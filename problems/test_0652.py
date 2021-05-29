@@ -33,14 +33,11 @@ class Test(unittest.TestCase):
         utils.test(self, __file__, Solution,
                    process_args=TreeNode.from_root_array,
                    process_result=self.process_result,
-                   check_result=self.check_result)
+                   asserter=self.assertCountEqual)
 
     @staticmethod
     def process_result(actual):
         return [root.to_array() for root in actual]
-
-    def check_result(self, case, actual, msg):
-        self.assertCountEqual(case.expected, actual, msg=msg)
 
 
 if __name__ == '__main__':

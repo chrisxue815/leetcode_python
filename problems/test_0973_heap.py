@@ -23,10 +23,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        utils.test(self, __file__, Solution, check_result=self.check_result)
-
-    def check_result(self, case, actual, msg):
-        self.assertCountEqual(case.expected, actual, msg)
+        utils.test(self, __file__, Solution, asserter=self.assertCountEqual)
 
 
 if __name__ == '__main__':

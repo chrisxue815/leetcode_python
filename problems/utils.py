@@ -5,7 +5,12 @@ import types
 from linkedlist import ListNode
 
 
-def test(tst, file, solution, func=None, process_case=None, process_args=None, process_result=None, check_result=None):
+def test(tst, file, solution, func=None,
+         process_case=None,
+         process_args=None,
+         process_result=None,
+         check_result=None,
+         asserter=None):
     if not func:
         func_name = next(f for f in dir(solution) if not f.startswith('__'))
         func = getattr(solution, func_name)
@@ -26,6 +31,8 @@ def test(tst, file, solution, func=None, process_case=None, process_args=None, p
 
         if check_result:
             check_result(case, actual, msg)
+        elif asserter:
+            asserter(case.expected, actual, msg)
         else:
             tst.assertEqual(case.expected, actual, msg=msg)
 
