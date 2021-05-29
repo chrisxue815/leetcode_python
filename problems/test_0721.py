@@ -21,32 +21,28 @@ class Solution:
 
         for curr, emails in enumerate(accounts):
             for email in emails[1:]:
-                prev = owners.get(email, -1)
-                if prev == -1:
-                    owners[email] = curr
-                else:
-                    root = find_root(prev)
+                if email in owners:
+                    root = find_root(owners[email])
                     parents[root] = curr
+                else:
+                    owners[email] = curr
 
         for curr, emails in enumerate(accounts):
             root = find_root(curr)
-            union = unions.get(root)
-            if not union:
-                unions[root] = union = (emails[0], set())
+            if root in unions:
+                name, union = unions[root]
+            else:
+                union = set()
+                unions[root] = (emails[0], union)
             for email in emails[1:]:
-                union[1].add(email)
+                union.add(email)
 
         return [[name] + sorted(emails) for name, emails in unions.values()]
 
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            actual = Solution().accountsMerge(**case.args.__dict__)
-            self.assertCountEqual(case.expected, actual, msg=args)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
