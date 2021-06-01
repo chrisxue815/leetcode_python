@@ -1,18 +1,15 @@
 import collections
 import unittest
+from typing import List
+
 import utils
 
 
 # O(V+E) time. O(V) space. BFS.
 class Solution:
-    def canFinish(self, num_courses, prerequisites):
-        """
-        :type num_courses: int
-        :type prerequisites: List[List[int]]
-        :rtype: bool
-        """
-        graph = [[] for _ in range(num_courses)]
-        in_degrees = [0] * num_courses
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        graph = [[] for _ in range(numCourses)]
+        in_degrees = [0] * numCourses
 
         for successor, predecessor in prerequisites:
             graph[predecessor].append(successor)
@@ -35,17 +32,12 @@ class Solution:
                 if in_degrees[successor] == 0:
                     q.append(successor)
 
-        return k == num_courses
+        return k == numCourses
 
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            actual = Solution().canFinish(**case.args.__dict__)
-            self.assertEqual(case.expected, actual, msg=args)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':

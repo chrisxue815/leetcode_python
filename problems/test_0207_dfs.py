@@ -1,4 +1,5 @@
 import unittest
+from typing import List
 
 import utils
 
@@ -9,18 +10,13 @@ COMPLETE = 1
 
 # O(V+E) time. O(V) space. DFS.
 class Solution:
-    def canFinish(self, num_courses, prerequisites):
-        """
-        :type num_courses: int
-        :type prerequisites: List[List[int]]
-        :rtype: bool
-        """
-        graph = [[] for _ in range(num_courses)]
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        graph = [[] for _ in range(numCourses)]
 
         for successor, predecessor in prerequisites:
             graph[predecessor].append(successor)
 
-        visited_nodes = [NOT_VISITED] * num_courses
+        visited_nodes = [NOT_VISITED] * numCourses
 
         # See Guava Graphs.hasCycle():
         # https://github.com/google/guava/blob/674148d9d7a99c450fec9751edb9f826bc3f5784/guava/src/com/google/common/graph/Graphs.java#L56
@@ -38,17 +34,12 @@ class Solution:
 
             return False
 
-        return not any(has_cycle(node) for node in range(num_courses))
+        return not any(has_cycle(node) for node in range(numCourses))
 
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            actual = Solution().canFinish(**case.args.__dict__)
-            self.assertEqual(case.expected, actual, msg=args)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
