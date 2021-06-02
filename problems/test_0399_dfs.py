@@ -1,5 +1,7 @@
 import collections
 import unittest
+from typing import List
+
 import utils
 
 
@@ -23,13 +25,7 @@ def calc(graph, visited, a, c):
 
 # O(V+E) time. O(V) space. DFS.
 class Solution:
-    def calcEquation(self, equations, values, queries):
-        """
-        :type equations: List[List[str]]
-        :type values: List[float]
-        :type queries: List[List[str]]
-        :rtype: List[float]
-        """
+    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
         result = []
         graph = collections.defaultdict(dict)
 
@@ -54,12 +50,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            actual = Solution().calcEquation(**case.args.__dict__)
-            self.assertEqual(case.expected, actual, msg=args)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
