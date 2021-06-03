@@ -1,4 +1,7 @@
 import unittest
+from typing import List
+
+import utils
 
 
 class UnionFind:
@@ -42,15 +45,11 @@ class UnionFind:
 
 # O(nlog(n)) time. O(n) space. Union-find.
 class Solution:
-    def findCircleNum(self, m):
-        """
-        :type m: List[List[int]]
-        :rtype: int
-        """
-        uf = UnionFind(len(m))
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        uf = UnionFind(len(isConnected))
 
-        for i, row in enumerate(m):
-            for j in range(i + 1, len(m)):
+        for i, row in enumerate(isConnected):
+            for j in range(i + 1, len(isConnected)):
                 if row[j]:
                     uf.union(i, j)
 
@@ -59,28 +58,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([
-            [1, 1, 0],
-            [1, 1, 0],
-            [0, 0, 1],
-        ], 2)
-
-        self._test([
-            [1, 1, 0],
-            [1, 1, 1],
-            [0, 1, 1],
-        ], 1)
-
-        self._test([
-            [1, 0, 0, 1],
-            [0, 1, 1, 0],
-            [0, 1, 1, 1],
-            [1, 0, 1, 1],
-        ], 1)
-
-    def _test(self, m, expected):
-        actual = Solution().findCircleNum(m)
-        self.assertEqual(expected, actual)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':

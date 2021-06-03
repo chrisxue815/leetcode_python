@@ -1,56 +1,34 @@
 import unittest
+from typing import List
+
+import utils
 
 
-def _set0(m, i):
-    m[i][i] = 0
-    for j in range(len(m)):
-        if m[j][j] == 0 or m[i][j] == 0:
-            continue
-        m[j][j] = 0
-        m[i][j] = 0
-        _set0(m, j)
-
-
-# O(n^2) time. O(1) space. DFS.
+# O(n) time. O(n) space. DFS.
 class Solution:
-    def findCircleNum(self, m):
-        """
-        :type m: List[List[int]]
-        :rtype: int
-        """
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        def dfs(i):
+            if isConnected[i][i] == 0:
+                return False
+            isConnected[i][i] = 0
+            for j in range(i):
+                if isConnected[j][i]:
+                    dfs(j)
+            for j in range(i + 1, len(isConnected)):
+                if isConnected[i][j]:
+                    dfs(j)
+            return True
+
         result = 0
-        for i in range(len(m)):
-            if m[i][i] == 0:
-                continue
-            result += 1
-            _set0(m, i)
+        for i in range(len(isConnected)):
+            if dfs(i):
+                result += 1
         return result
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([
-            [1, 1, 0],
-            [1, 1, 0],
-            [0, 0, 1],
-        ], 2)
-
-        self._test([
-            [1, 1, 0],
-            [1, 1, 1],
-            [0, 1, 1],
-        ], 1)
-
-        self._test([
-            [1, 0, 0, 1],
-            [0, 1, 1, 0],
-            [0, 1, 1, 1],
-            [1, 0, 1, 1],
-        ], 1)
-
-    def _test(self, m, expected):
-        actual = Solution().findCircleNum(m)
-        self.assertEqual(expected, actual)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
