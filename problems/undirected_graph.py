@@ -10,14 +10,14 @@ class DefaultDict(dict):
 
 
 # Definition for a undirected graph node
-class UndirectedGraphNode:
+class Node:
     def __init__(self, x):
-        self.label = x
+        self.val = x
         self.neighbors = []
 
     @staticmethod
     def parse(s):
-        nodes = DefaultDict(UndirectedGraphNode)
+        nodes = DefaultDict(Node)
         for group in s[1:-1].split('#'):
             group = group.split(',')
             label = int(group[0])
@@ -27,7 +27,7 @@ class UndirectedGraphNode:
 
     def __eq__(self, other):
         def equals(a, b):
-            if a.label != b.label or len(a.neighbors) != len(b.neighbors):
+            if a.val != b.val or len(a.neighbors) != len(b.neighbors):
                 return False
             for a, b in zip(a.neighbors, b.neighbors):
                 if not equals(a, b):

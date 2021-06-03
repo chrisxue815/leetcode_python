@@ -6,21 +6,19 @@ from undirected_graph import *
 
 # O(V+E) time. O(V) space. DFS.
 class Solution:
-    # @param node, a undirected graph node
-    # @return a undirected graph node
-    def cloneGraph(self, node):
+    def cloneGraph(self, node: 'Node') -> 'Node':
         if not node:
             return None
 
         nodes = {}
 
         def clone(a):
-            b = nodes.get(a.label, None)
+            b = nodes.get(a.val, None)
             if b:
                 return b
 
-            b = UndirectedGraphNode(a.label)
-            nodes[b.label] = b
+            b = Node(a.val)
+            nodes[b.val] = b
             b.neighbors = [clone(neighbor) for neighbor in a.neighbors]
             return b
 
@@ -33,7 +31,7 @@ class Test(unittest.TestCase):
 
         for case in cases:
             args = str(case.args)
-            nodes = UndirectedGraphNode.parse(case.args.graph)
+            nodes = Node.parse(case.args.graph)
             for node in nodes.values():
                 actual = Solution().cloneGraph(node)
                 self.assertEqual(node, actual, msg=args)
