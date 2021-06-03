@@ -7,14 +7,14 @@ import utils
 
 # O(V + Elog(E)) time. O(V + E) space. Graph, BFS, Dijkstra.
 class Solution:
-    def networkDelayTime(self, times: List[List[int]], N: int, K: int) -> int:
-        graph = [[] for _ in range(N + 1)]
+    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
+        graph = [[] for _ in range(n + 1)]
 
         for u, v, w in times:
             graph[u].append((v, w))
 
-        q = [(0, K)]
-        visited = [False] * (N + 1)
+        q = [(0, k)]
+        visited = [False] * (n + 1)
         num_visited = 0
         longest_path = 0
 
@@ -32,17 +32,12 @@ class Solution:
                 if not visited[nxt]:
                     heapq.heappush(q, (path_len + edge_len, nxt))
 
-        return longest_path if num_visited == N else -1
+        return longest_path if num_visited == n else -1
 
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            actual = Solution().networkDelayTime(**case.args.__dict__)
-            self.assertEqual(case.expected, actual, msg=args)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
