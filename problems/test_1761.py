@@ -4,6 +4,7 @@ from typing import List
 import utils
 
 
+# Graph, hash table, sorting
 class Solution:
     def minTrioDegree(self, n: int, edges: List[List[int]]) -> int:
         result = 0x7FFFFFFF
