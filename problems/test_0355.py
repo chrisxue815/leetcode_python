@@ -1,7 +1,8 @@
-import unittest
 import collections
-import itertools
 import heapq
+import itertools
+import unittest
+from typing import List
 
 
 class User:
@@ -18,36 +19,26 @@ class Twitter:
         self.users = collections.defaultdict(User)
         self.timer = itertools.count(step=-1)
 
-    def postTweet(self, userId, tweetId):
+    def postTweet(self, userId: int, tweetId: int) -> None:
         """
         Compose a new tweet.
-        :type userId: int
-        :type tweetId: int
-        :rtype: void
         """
         tweets = self.users[userId].tweets
         if len(tweets) >= 10:
             tweets.pop()
         tweets.appendleft((next(self.timer), tweetId))
 
-    def getNewsFeed(self, userId):
+    def getNewsFeed(self, userId: int) -> List[int]:
         """
-        Retrieve the 10 most recent tweet ids in the user's news feed.
-        Each item in the news feed must be posted by users who the user followed or by the user herself.
-        Tweets must be ordered from most recent to least recent.
-        :type userId: int
-        :rtype: List[int]
+        Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent.
         """
         user = self.users[userId]
         tweets = heapq.merge(*(followee.tweets for followee in user.followees))
         return [x[1] for x in itertools.islice(tweets, 10)]
 
-    def follow(self, followerId, followeeId):
+    def follow(self, followerId: int, followeeId: int) -> None:
         """
         Follower follows a followee. If the operation is invalid, it should be a no-op.
-        :type followerId: int
-        :type followeeId: int
-        :rtype: void
         """
         if followerId == followeeId:
             return
@@ -55,12 +46,9 @@ class Twitter:
         followee = self.users[followeeId]
         follower.followees.add(followee)
 
-    def unfollow(self, followerId, followeeId):
+    def unfollow(self, followerId: int, followeeId: int) -> None:
         """
         Follower unfollows a followee. If the operation is invalid, it should be a no-op.
-        :type followerId: int
-        :type followeeId: int
-        :rtype: void
         """
         if followerId == followeeId:
             return
