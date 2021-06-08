@@ -1,16 +1,14 @@
 import heapq
 import unittest
+from typing import List
 
 import utils
 
 
 # O(log(k)) time. O(k) space. Binary heap.
 class KthLargest:
-    def __init__(self, k, nums):
-        """
-        :type k: int
-        :type nums: List[int]
-        """
+
+    def __init__(self, k: int, nums: List[int]):
         k_largest = []
 
         for num in nums[:k]:
@@ -22,11 +20,7 @@ class KthLargest:
         self.k_largest = k_largest
         self.k = k
 
-    def add(self, val):
-        """
-        :type val: int
-        :rtype: int
-        """
+    def add(self, val: int) -> int:
         if len(self.k_largest) < self.k:
             heapq.heappush(self.k_largest, val)
         else:
@@ -37,19 +31,7 @@ class KthLargest:
 
 class Test(unittest.TestCase):
     def test(self):
-        cls = KthLargest
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            obj = None
-
-            for func, parameters, expected in zip(case.functions, case.args, case.expected):
-                if func == cls.__name__:
-                    obj = cls(*parameters)
-                else:
-                    actual = getattr(obj, func)(*parameters)
-                    self.assertEqual(expected, actual, msg=args)
+        utils.test_invocations(self, __file__, KthLargest)
 
 
 if __name__ == '__main__':
