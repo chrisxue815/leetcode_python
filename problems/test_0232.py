@@ -3,7 +3,7 @@ import unittest
 import utils
 
 
-# Stack.
+# O(n) space. Stack.
 class MyQueue:
 
     # O(1) time. O(1) space.
