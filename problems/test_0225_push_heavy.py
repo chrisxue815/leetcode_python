@@ -32,7 +32,7 @@ class MyStack:
         """
         Get the top element.
         """
-        return self._q[0]
+        return self._q[0] if self._q else None
 
     def empty(self) -> bool:
         """
@@ -43,19 +43,7 @@ class MyStack:
 
 class Test(unittest.TestCase):
     def test(self):
-        cls = MyStack
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            obj = None
-
-            for func, parameters, expected in zip(case.functions, case.args, case.expected):
-                if func == cls.__name__:
-                    obj = cls(*parameters)
-                else:
-                    actual = getattr(obj, func)(*parameters)
-                    self.assertEqual(expected, actual, msg=args)
+        utils.test_invocations(self, __file__, MyStack)
 
 
 if __name__ == '__main__':
