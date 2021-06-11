@@ -1,6 +1,6 @@
-import unittest
 import collections
 import random
+import unittest
 
 
 class RandomizedCollection:
@@ -11,11 +11,9 @@ class RandomizedCollection:
         self.values = []
         self.indices = collections.defaultdict(list)
 
-    def insert(self, val):
+    def insert(self, val: int) -> bool:
         """
         Inserts a value to the collection. Returns true if the collection did not already contain the specified element.
-        :type val: int
-        :rtype: bool
         """
         pool = self.indices[val]
         is_new_val = not pool
@@ -23,11 +21,9 @@ class RandomizedCollection:
         self.values.append((val, len(pool) - 1))
         return is_new_val
 
-    def remove(self, val):
+    def remove(self, val: int) -> bool:
         """
         Removes a value from the collection. Returns true if the collection contained the specified element.
-        :type val: int
-        :rtype: bool
         """
         pool = self.indices[val]
         if not pool:
@@ -43,10 +39,9 @@ class RandomizedCollection:
 
         return True
 
-    def getRandom(self):
+    def getRandom(self) -> int:
         """
         Get a random element from the collection.
-        :rtype: int
         """
         return self.values[random.randrange(len(self.values))][0]
 
