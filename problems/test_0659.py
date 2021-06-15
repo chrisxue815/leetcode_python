@@ -1,13 +1,12 @@
-import unittest
 import heapq
+import unittest
+from typing import List
+
+import utils
 
 
 class Solution:
-    def isPossible(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: bool
-        """
+    def isPossible(self, nums: List[int]) -> bool:
         if not nums:
             return False
 
@@ -35,14 +34,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 2, 3, 3, 4, 5], True)
-        self._test([1, 2, 3, 3, 4, 4, 5, 5], True)
-        self._test([1, 2, 3, 4, 4, 5], False)
-        self._test([1, 3, 4, 5], False)
-
-    def _test(self, nums, expected):
-        actual = Solution().isPossible(nums)
-        self.assertEqual(expected, actual)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
