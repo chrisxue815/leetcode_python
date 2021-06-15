@@ -1,5 +1,7 @@
 import unittest
 
+import utils
+
 
 def _binary_search(a, x, lo, hi):
     while lo <= hi:
@@ -16,12 +18,7 @@ def _binary_search(a, x, lo, hi):
 
 
 class Solution:
-    def isSubsequence(self, s, t):
-        """
-        :type s: str
-        :type t: str
-        :rtype: bool
-        """
+    def isSubsequence(self, s: str, t: str) -> bool:
         base = ord('a')
         index_map = [[] for i in range(26)]
         for i in range(len(t)):
@@ -40,12 +37,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test('ace', 'abcde', True)
-        self._test('aec', 'abcde', False)
-
-    def _test(self, s, t, expected):
-        actual = Solution().isSubsequence(s, t)
-        self.assertEqual(expected, actual)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
