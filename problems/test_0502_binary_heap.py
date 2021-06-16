@@ -1,22 +1,18 @@
-import unittest
 import heapq
+import unittest
+from typing import List
+
+import utils
 
 
 # O(klog(n)) time. O(n) space. Binary heap.
 class Solution:
-    def findMaximizedCapital(self, k, w, profits, capitals):
-        """
-        :type k: int
-        :type w: int
-        :type profits: List[int]
-        :type capitals: List[int]
-        :rtype: int
-        """
+    def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
         capital_queue = []
         profit_queue = []
 
-        for i, capital in enumerate(capitals):
-            heapq.heappush(capital_queue, (capital, i))
+        for i, c in enumerate(capital):
+            heapq.heappush(capital_queue, (c, i))
 
         for _ in range(k):
             while capital_queue and capital_queue[0][0] <= w:
@@ -32,11 +28,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test(2, 0, [1, 2, 3], [0, 1, 1], 4)
-
-    def _test(self, k, w, profits, capitals, expected):
-        actual = Solution().findMaximizedCapital(k, w, profits, capitals)
-        self.assertEqual(expected, actual)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
