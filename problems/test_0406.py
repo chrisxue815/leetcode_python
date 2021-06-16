@@ -1,12 +1,11 @@
 import unittest
+from typing import List
+
+import utils
 
 
 class Solution:
-    def reconstructQueue(self, people):
-        """
-        :type people: List[List[int]]
-        :rtype: List[List[int]]
-        """
+    def reconstructQueue(self, people: List[List[int]]) -> List[List[int]]:
         people.sort(key=lambda h_k: (-h_k[0], h_k[1]))
 
         r = []
@@ -18,14 +17,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test(
-            [[7, 0], [4, 4], [7, 1], [5, 0], [6, 1], [5, 2]],
-            [[5, 0], [7, 0], [5, 2], [6, 1], [4, 4], [7, 1]]
-        )
-
-    def _test(self, people, expected):
-        actual = Solution().reconstructQueue(people)
-        self.assertEqual(expected, actual)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
