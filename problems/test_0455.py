@@ -1,14 +1,13 @@
-import unittest
 import bisect
+import unittest
+from typing import List
+
+import utils
 
 
+# O(nlog(n)) time. O(1) space. Sorting, binary search.
 class Solution:
-    def findContentChildren(self, g, s):
-        """
-        :type g: List[int]
-        :type s: List[int]
-        :rtype: int
-        """
+    def findContentChildren(self, g: List[int], s: List[int]) -> int:
         g.sort()
         s.sort()
         lo = 0
@@ -19,17 +18,13 @@ class Solution:
                 lo += 1
             else:
                 return greed_index
+
         return len(g)
 
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 2, 3], [1, 1], 1)
-        self._test([1, 2], [1, 2, 3], 2)
-
-    def _test(self, g, s, expected):
-        actual = Solution().findContentChildren(g, s)
-        self.assertEqual(expected, actual)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
