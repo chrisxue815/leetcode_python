@@ -6,29 +6,29 @@ import utils
 
 # O(n) time. O(1) space. Two pointers, greedy.
 class Solution:
-    def partitionLabels(self, S: str) -> List[int]:
-        if not S:
+    def partitionLabels(self, s: str) -> List[int]:
+        if not s:
             return []
 
         result = []
         lo = 0
-        lo_ch = ord(S[0])
+        lo_ch = ord(s[0])
         rightmost_index = [-1] * (ord('z') + 1)
 
-        for hi in range(len(S) - 1, -1, -1):
-            hi_ch = ord(S[hi])
+        for hi in range(len(s) - 1, -1, -1):
+            hi_ch = ord(s[hi])
             if rightmost_index[hi_ch] == -1:
                 rightmost_index[hi_ch] = hi
 
             if hi_ch == lo_ch:
                 break
 
-        while lo < len(S):
-            hi = rightmost_index[ord(S[lo])]
+        while lo < len(s):
+            hi = rightmost_index[ord(s[lo])]
             i = lo
 
             while i < hi:
-                ch = ord(S[i])
+                ch = ord(s[i])
                 rightmost = rightmost_index[ch]
                 if rightmost > hi:
                     hi = rightmost
@@ -42,12 +42,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            actual = Solution().partitionLabels(**case.args.__dict__)
-            self.assertEqual(case.expected, actual, msg=args)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
