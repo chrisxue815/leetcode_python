@@ -1,14 +1,11 @@
 import unittest
+from typing import List
+
+import utils
 
 
-# O(n). Mathematical modelling and reasoning
 class Solution:
-    def canCompleteCircuit(self, gas, cost):
-        """
-        :type gas: List[int]
-        :type cost: List[int]
-        :rtype: int
-        """
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
         start = total = curr = 0
 
         for i in range(len(gas)):
@@ -24,11 +21,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 2, 3, 3], [2, 1, 5, 1], 3)
-
-    def _test(self, gas, cost, expected):
-        actual = Solution().canCompleteCircuit(gas, cost)
-        self.assertEqual(expected, actual)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
