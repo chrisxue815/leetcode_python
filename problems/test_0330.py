@@ -1,14 +1,12 @@
 import unittest
+from typing import List
+
+import utils
 
 
 # O(n) time. O(1) space. Greedy.
 class Solution:
-    def minPatches(self, nums, n):
-        """
-        :type nums: List[int]
-        :type n: int
-        :rtype: int
-        """
+    def minPatches(self, nums: List[int], n: int) -> int:
         result = 0
         miss = 1
         i = 0
@@ -24,13 +22,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([1, 3], 6, 1)
-        self._test([1, 5, 10], 20, 2)
-        self._test([1, 2, 2], 5, 0)
-
-    def _test(self, nums, n, expected):
-        actual = Solution().minPatches(nums, n)
-        self.assertEqual(expected, actual)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
