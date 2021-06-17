@@ -1,13 +1,12 @@
 import unittest
+from typing import List
+
+import utils
 
 
-# O(n). Linear iteration
+# O(n) time. O(1) space. Greedy.
 class Solution:
-    def canJump(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: bool
-        """
+    def canJump(self, nums: List[int]) -> bool:
         hi = 0
         for lo, num in enumerate(nums):
             if lo > hi:
@@ -18,12 +17,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test([2, 3, 1, 1, 4], True)
-        self._test([3, 2, 1, 0, 4], False)
-
-    def _test(self, nums, expected):
-        actual = Solution().canJump(nums)
-        self.assertEqual(expected, actual)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
