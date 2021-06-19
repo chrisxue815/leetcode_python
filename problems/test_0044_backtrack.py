@@ -1,8 +1,10 @@
 import unittest
 
+import utils
+
 
 class Solution:
-    def isMatch(self, s, p):
+    def isMatch(self, s: str, p: str) -> bool:
         si = 0
         pi = 0
         pi_star = -1
@@ -35,26 +37,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test('aa', 'a', False)
-        self._test('aa', 'aa', True)
-        self._test('aaa', 'aa', False)
-        self._test('aa', '*', True)
-        self._test('aa', 'a*', True)
-        self._test('ab', '?*', True)
-        self._test('aab', 'c*a*b', False)
-
-        # * matches 0 occurrence
-        self._test('aa', '*aa', True)
-        self._test('aa', 'aa*', True)
-        self._test('', '*', True)
-        self._test('', '?', False)
-
-        self._test('', '', True)
-        self._test('a', '', False)
-
-    def _test(self, s, p, expected):
-        actual = Solution().isMatch(s, p)
-        self.assertEqual(expected, actual)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
