@@ -1,13 +1,10 @@
 import unittest
 
+import utils
+
 
 class Solution:
-    def removeKdigits(self, num, k):
-        """
-        :type num: str
-        :type k: int
-        :rtype: str
-        """
+    def removeKdigits(self, num: str, k: int) -> str:
         if not k:
             return num
         n = len(num)
@@ -27,15 +24,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test('1432219', 3, '1219')
-        self._test('10200', 1, '200')
-        self._test('10', 2, '0')
-        self._test('10', 1, '0')
-        self._test('123', 1, '12')
-
-    def _test(self, num, k, expected):
-        actual = Solution().removeKdigits(num, k)
-        self.assertEqual(expected, actual)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
