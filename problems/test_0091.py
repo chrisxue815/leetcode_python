@@ -1,14 +1,11 @@
 import unittest
+
 import utils
 
 
 # O(n) time. O(n) space. DP.
 class Solution:
-    def numDecodings(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
+    def numDecodings(self, s: str) -> int:
         # dp[i]: the number of ways to decode s[:i+1]
         dp = [0] * len(s)
 
@@ -23,12 +20,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            actual = Solution().numDecodings(**case.args.__dict__)
-            self.assertEqual(case.expected, actual, msg=args)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
