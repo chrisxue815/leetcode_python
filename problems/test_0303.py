@@ -1,16 +1,14 @@
 import unittest
+from typing import List
 
 import utils
 
 
-# DP, prefix.
+# O(n) space. DP, prefix.
 class NumArray:
 
-    # O(n) time. O(n) space.
-    def __init__(self, nums):
-        """
-        :type nums: List[int]
-        """
+    # O(n) time. O(1) space.
+    def __init__(self, nums: List[int]):
         self.sums = [0] * len(nums)
         sum_ = 0
 
@@ -19,30 +17,13 @@ class NumArray:
             self.sums[i] = sum_
 
     # O(1) time. O(1) space.
-    def sumRange(self, i, j):
-        """
-        :type i: int
-        :type j: int
-        :rtype: int
-        """
-        return self.sums[j] - (self.sums[i - 1] if i > 0 else 0)
+    def sumRange(self, left: int, right: int) -> int:
+        return self.sums[right] - (self.sums[left - 1] if left > 0 else 0)
 
 
 class Test(unittest.TestCase):
     def test(self):
-        cls = NumArray
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            obj = None
-
-            for func, parameters, expected in zip(case.functions, case.args, case.expected):
-                if func == cls.__name__:
-                    obj = cls(*parameters)
-                else:
-                    actual = getattr(obj, func)(*parameters)
-                    self.assertEqual(expected, actual, msg=args)
+        utils.test_invocations(self, __file__, NumArray)
 
 
 if __name__ == '__main__':
