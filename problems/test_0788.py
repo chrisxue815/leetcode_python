@@ -1,45 +1,31 @@
 import unittest
+
 import utils
 
-rotate_to_self = {0, 1, 8}
-rotate_to_other = {2, 5, 6, 9}
-invalid = {3, 4, 7}
+rotate_to_other = [False, False, True, False, False, True, True, False, False, True]
+invalid = [False, False, False, True, True, False, False, True, False, False]
 
 
 def is_good(num):
     valid = False
-    q = num
-    while q:
-        q, r = divmod(q, 10)
-        if r in invalid:
+    while num:
+        num, r = divmod(num, 10)
+        if invalid[r]:
             return False
-        if r in rotate_to_other:
+        if rotate_to_other[r]:
             valid = True
     return valid
 
 
-# O(n) time. O(1) space. Math, hash table.
+# O(n) time. O(1) space. Math.
 class Solution:
-    def rotatedDigits(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
-        count = 0
-        for num in range(1, n + 1):
-            if is_good(num):
-                count += 1
-        return count
+    def rotatedDigits(self, n: int) -> int:
+        return sum(is_good(num) for num in range(1, n + 1))
 
 
 class Test(unittest.TestCase):
     def test(self):
-        cases = utils.load_test_json(__file__).test_cases
-
-        for case in cases:
-            args = str(case.args)
-            actual = Solution().rotatedDigits(**case.args.__dict__)
-            self.assertEqual(case.expected, actual, msg=args)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
