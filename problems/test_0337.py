@@ -1,55 +1,41 @@
-import queue
 import unittest
-from tree import TreeNode, null
+from typing import Optional
+
+import utils
+from tree import TreeNode
+
+
+def dfs(node):
+    a = 0  # not robbing this node
+    b = node.val  # robbing this node
+    l = 0
+    r = 0
+
+    if node.left:
+        l, ll, lr = dfs(node.left)
+        a += l
+        b += ll + lr
+
+    if node.right:
+        r, rl, rr = dfs(node.right)
+        a += r
+        b += rl + rr
+
+    return max(a, b), l, r
 
 
 class Solution:
-
-    def rob(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
+    def rob(self, root: Optional[TreeNode]) -> int:
         if not root:
             return 0
 
-        self._rob(root)
-        return root.optimal
-
-    def _rob(self, node):
-        a = 0  # not robbing this node
-        b = node.val  # robbing this node
-
-        if node.left:
-            self._rob(node.left)
-            a += node.left.optimal
-            if node.left.left:
-                b += node.left.left.optimal
-            if node.left.right:
-                b += node.left.right.optimal
-
-        if node.right:
-            self._rob(node.right)
-            a += node.right.optimal
-            if node.right.left:
-                b += node.right.left.optimal
-            if node.right.right:
-                b += node.right.right.optimal
-
-        node.optimal = max(a, b)
+        result, _, _ = dfs(root)
+        return result
 
 
 class Test(unittest.TestCase):
-
     def test(self):
-        root = TreeNode.from_array([3, 2, 3, null, 3, null, 1])
-        self.assertEqual(7, Solution().rob(root))
-
-        root = TreeNode.from_array([3, 4, 5, 1, 3, null, 1])
-        self.assertEqual(9, Solution().rob(root))
-
-        root = TreeNode.from_array([4, 1, null, 2, null, 3])
-        self.assertEqual(7, Solution().rob(root))
+        utils.test(self, __file__, Solution, process_args=TreeNode.from_root_array)
 
 
 if __name__ == '__main__':
