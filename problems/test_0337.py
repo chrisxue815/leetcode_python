@@ -6,22 +6,20 @@ from tree import TreeNode
 
 
 def dfs(node):
-    a = 0  # not robbing this node
-    b = node.val  # robbing this node
-    l = 0
-    r = 0
+    a = node.val  # robbing this node
+    b = 0  # not robbing this node
 
     if node.left:
-        l, ll, lr = dfs(node.left)
-        a += l
-        b += ll + lr
+        la, lb = dfs(node.left)
+        a += lb
+        b += max(la, lb)
 
     if node.right:
-        r, rl, rr = dfs(node.right)
-        a += r
-        b += rl + rr
+        ra, rb = dfs(node.right)
+        a += rb
+        b += max(ra, rb)
 
-    return max(a, b), l, r
+    return a, b
 
 
 class Solution:
@@ -29,8 +27,8 @@ class Solution:
         if not root:
             return 0
 
-        result, _, _ = dfs(root)
-        return result
+        a, b = dfs(root)
+        return max(a, b)
 
 
 class Test(unittest.TestCase):
