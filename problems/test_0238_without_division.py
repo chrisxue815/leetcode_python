@@ -10,14 +10,14 @@ class Solution:
         result = [1] * len(nums)
 
         product = 1
-        for i in range(1, len(nums)):
-            product *= nums[i - 1]
-            result[i] = product
+        for i in range(len(nums) - 1):
+            product *= nums[i]
+            result[i + 1] = product
 
         product = 1
-        for i in range(len(nums) - 2, -1, -1):
-            product *= nums[i + 1]
-            result[i] *= product
+        for i in range(len(nums) - 1, 0, -1):
+            product *= nums[i]
+            result[i - 1] *= product
 
         return result
 
