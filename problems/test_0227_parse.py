@@ -28,20 +28,20 @@ class Solution:
     def calculate(self, s: str) -> int:
         result = 0
         sign = 1
-        i, multiplier = parse_num(s, 0)
+        i, product = parse_num(s, 0)
 
         while i <= len(s):
             i, operator = parse_operator(s, i)
             i, num = parse_num(s, i)
 
             if operator == '*':
-                multiplier *= num
+                product *= num
             elif operator == '/':
-                multiplier //= num
+                product //= num
             elif operator == '+' or operator == '-':
-                result += sign * multiplier
+                result += sign * product
                 sign = 44 - ord(operator)  # '+' == 43, '-' == 45
-                multiplier = num
+                product = num
 
         return result
 
