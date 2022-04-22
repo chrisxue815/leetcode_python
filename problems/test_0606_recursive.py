@@ -6,8 +6,8 @@ from tree import TreeNode
 
 # O(n) time. O(log(n)) space. Recursive pre-order DFS.
 class Solution:
-    def tree2str(self, t: TreeNode) -> str:
-        if not t:
+    def tree2str(self, root: TreeNode) -> str:
+        if not root:
             return ''
 
         result = []
@@ -27,7 +27,7 @@ class Solution:
                 dfs(curr.right)
                 result.append(')')
 
-        dfs(t)
+        dfs(root)
         return ''.join(result)
 
 
@@ -37,8 +37,8 @@ class Test(unittest.TestCase):
 
         for case in cases:
             args = str(case.args)
-            t = TreeNode.from_array(case.args.t)
-            actual = Solution().tree2str(t)
+            root = TreeNode.from_array(case.args.root)
+            actual = Solution().tree2str(root)
             self.assertEqual(case.expected, actual, msg=args)
 
 
