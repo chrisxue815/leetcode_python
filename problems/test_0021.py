@@ -1,4 +1,5 @@
 import unittest
+from typing import Optional
 
 import utils
 from linkedlist import ListNode
@@ -6,21 +7,21 @@ from linkedlist import ListNode
 
 # O(n) time. O(1) space. Merging linked list
 class Solution:
-    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         dummy = ListNode(0)
         prev = dummy
 
-        while l1 and l2:
-            if l1.val <= l2.val:
-                prev.next = l1
-                prev = l1
-                l1 = l1.next
+        while list1 and list2:
+            if list1.val <= list2.val:
+                prev.next = list1
+                prev = list1
+                list1 = list1.next
             else:
-                prev.next = l2
-                prev = l2
-                l2 = l2.next
+                prev.next = list2
+                prev = list2
+                list2 = list2.next
 
-        prev.next = l1 if l1 else l2
+        prev.next = list1 if list1 else list2
         return dummy.next
 
 
@@ -32,8 +33,8 @@ class Test(unittest.TestCase):
 
     @staticmethod
     def process_args(args):
-        args.l1 = ListNode.from_array(args.l1)
-        args.l2 = ListNode.from_array(args.l2)
+        args.list1 = ListNode.from_array(args.list1)
+        args.list2 = ListNode.from_array(args.list2)
 
 
 if __name__ == '__main__':
