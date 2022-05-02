@@ -1,4 +1,3 @@
-import collections
 import unittest
 from typing import Optional, List
 
@@ -12,18 +11,21 @@ class Solution:
         if not root:
             return []
 
-        matrix = []
+        cols = {}
         queue = [(root, 0)]
         min_col = 0
         max_col = 0
 
         while queue:
             new_queue = []
-            row = collections.defaultdict(list)
-            matrix.append(row)
+            row = {}
 
             for curr, c in queue:
-                row[c].append(curr.val)
+                cell = row.get(c, None)
+                if cell is None:
+                    row[c] = [curr.val]
+                else:
+                    cell.append(curr.val)
 
                 if min_col > c:
                     min_col = c
@@ -35,16 +37,19 @@ class Solution:
                 if curr.right:
                     new_queue.append((curr.right, c + 1))
 
+            for c, cell in row.items():
+                cell.sort()
+                col = cols.get(c, None)
+                if col is None:
+                    cols[c] = cell
+                else:
+                    col += cell
+
             queue = new_queue
 
         result = []
-
         for c in range(min_col, max_col + 1):
-            col = []
-            result.append(col)
-            for row in matrix:
-                row[c].sort()
-                col += row[c]
+            result.append(cols[c])
 
         return result
 
