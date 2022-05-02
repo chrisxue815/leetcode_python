@@ -13,8 +13,6 @@ class Solution:
 
         cols = {}
         queue = [(root, 0)]
-        min_col = 0
-        max_col = 0
 
         while queue:
             new_queue = []
@@ -26,11 +24,6 @@ class Solution:
                     row[c] = [curr.val]
                 else:
                     cell.append(curr.val)
-
-                if min_col > c:
-                    min_col = c
-                if max_col < c:
-                    max_col = c
 
                 if curr.left:
                     new_queue.append((curr.left, c - 1))
@@ -48,8 +41,8 @@ class Solution:
             queue = new_queue
 
         result = []
-        for c in range(min_col, max_col + 1):
-            result.append(cols[c])
+        for c, col in sorted(cols.items()):
+            result.append(col)
 
         return result
 
