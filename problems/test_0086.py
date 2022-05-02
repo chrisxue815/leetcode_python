@@ -1,4 +1,5 @@
 import unittest
+from typing import Optional
 
 import utils
 from linkedlist import ListNode
@@ -6,7 +7,7 @@ from linkedlist import ListNode
 
 # O(n) time. O(1) space. Two pointers
 class Solution:
-    def partition(self, head: ListNode, x: int) -> ListNode:
+    def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
         dummy_lo = lo = ListNode(0)
         dummy_hi = hi = ListNode(0)
 

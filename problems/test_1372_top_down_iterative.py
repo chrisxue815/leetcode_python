@@ -1,4 +1,5 @@
 import unittest
+from typing import Optional
 
 import utils
 from tree import TreeNode
@@ -6,7 +7,7 @@ from tree import TreeNode
 
 # O(n) time. O(log(n)) space. Top down, iterative DFS.
 class Solution:
-    def longestZigZag(self, root: TreeNode) -> int:
+    def longestZigZag(self, root: Optional[TreeNode]) -> int:
         result = 0
         stack = []
 

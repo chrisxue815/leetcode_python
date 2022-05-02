@@ -1,6 +1,6 @@
 import heapq
 import unittest
-from typing import List
+from typing import List, Optional
 
 import utils
 from linkedlist import ListNode
@@ -8,7 +8,7 @@ from linkedlist import ListNode
 
 # O(klog(n)) time. O(k) space. Min-heap.
 class Solution:
-    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         dummy = curr = ListNode(0)
         q = []
         for i, head in enumerate(lists):

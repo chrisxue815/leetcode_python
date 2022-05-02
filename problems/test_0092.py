@@ -1,4 +1,5 @@
 import unittest
+from typing import Optional
 
 import utils
 from linkedlist import ListNode
@@ -6,7 +7,7 @@ from linkedlist import ListNode
 
 # O(n) time. O(1) space.
 class Solution:
-    def reverseBetween(self, head: ListNode, left: int, right: int) -> ListNode:
+    def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
         dummy = start = ListNode(0)
         dummy.next = head
 

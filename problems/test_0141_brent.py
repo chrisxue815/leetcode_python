@@ -1,4 +1,5 @@
 import unittest
+from typing import Optional
 
 import utils
 from linkedlist import ListNode
@@ -6,7 +7,7 @@ from linkedlist import ListNode
 
 # O(n) time. O(1) space. Brent's cycle detection algorithm
 class Solution:
-    def hasCycle(self, head: ListNode) -> bool:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
         if not head:
             return False
 
