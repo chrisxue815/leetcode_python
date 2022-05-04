@@ -1,4 +1,5 @@
 import unittest
+from typing import Optional
 
 import utils
 from tree import TreeNode
@@ -6,7 +7,7 @@ from tree import TreeNode
 
 # O(n) time. O(log(n)) space. Iterative DFS.
 class Solution:
-    def isSymmetric(self, root: TreeNode) -> bool:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         q = [(root.left, root.right)]
 
         while q:

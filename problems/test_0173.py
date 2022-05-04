@@ -1,4 +1,5 @@
 import unittest
+from typing import Optional
 
 import utils
 from tree import TreeNode
@@ -8,7 +9,7 @@ from tree import TreeNode
 class BSTIterator:
 
     # O(log(n)) time. O(log(n)) space.
-    def __init__(self, root: TreeNode):
+    def __init__(self, root: Optional[TreeNode]):
         stack = []
         while root:
             stack.append(root)

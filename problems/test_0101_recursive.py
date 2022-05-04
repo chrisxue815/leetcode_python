@@ -1,4 +1,5 @@
 import unittest
+from typing import Optional
 
 import utils
 from tree import TreeNode
@@ -16,7 +17,7 @@ def is_symmetric(left, right):
 
 # O(n) time. O(log(n)) space. Recursive DFS.
 class Solution:
-    def isSymmetric(self, root: TreeNode) -> bool:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         return is_symmetric(root.left, root.right)
 
 

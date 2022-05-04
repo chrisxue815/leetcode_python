@@ -1,4 +1,5 @@
 import unittest
+from typing import Optional
 
 import utils
 from tree import TreeNode
@@ -21,7 +22,7 @@ def kth(node, k, index):
 
 # O(n) time. O(log(n)) space. Recursive in-order DFS.
 class Solution:
-    def kthSmallest(self, root: TreeNode, k: int) -> int:
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         return kth(root, k, 0)[1]
 
 

@@ -1,6 +1,6 @@
 import collections
 import unittest
-from typing import List
+from typing import List, Optional
 
 import utils
 from tree import TreeNode
@@ -8,7 +8,7 @@ from tree import TreeNode
 
 # O(n) time. O(n) space. Recursive post-order DFS, hash table.
 class Solution:
-    def findDuplicateSubtrees(self, root: TreeNode) -> List[TreeNode]:
+    def findDuplicateSubtrees(self, root: Optional[TreeNode]) -> List[Optional[TreeNode]]:
         result = []
         uids = collections.defaultdict()
         uids.default_factory = uids.__len__
