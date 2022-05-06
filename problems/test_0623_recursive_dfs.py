@@ -1,4 +1,5 @@
 import unittest
+from typing import Optional
 
 import utils
 from tree import TreeNode
@@ -22,7 +23,7 @@ def add_row(curr, val, depth):
 
 # O(n) time. O(log(n)) space. Recursive DFS.
 class Solution:
-    def addOneRow(self, root: TreeNode, val: int, depth: int) -> TreeNode:
+    def addOneRow(self, root: Optional[TreeNode], val: int, depth: int) -> Optional[TreeNode]:
         if depth == 1:
             node = TreeNode(val)
             node.left = root

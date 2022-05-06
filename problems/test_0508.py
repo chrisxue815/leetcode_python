@@ -1,6 +1,6 @@
 import collections
 import unittest
-from typing import List
+from typing import List, Optional
 
 import utils
 from tree import TreeNode
@@ -8,7 +8,7 @@ from tree import TreeNode
 
 # O(n) time. O(n) space. Recursive post-order DFS, hash table.
 class Solution:
-    def findFrequentTreeSum(self, root: TreeNode) -> List[int]:
+    def findFrequentTreeSum(self, root: Optional[TreeNode]) -> List[int]:
         counts = collections.Counter()
 
         def dfs(curr):

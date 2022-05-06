@@ -1,4 +1,5 @@
 import unittest
+from typing import Optional
 
 import utils
 from tree import TreeNode
@@ -6,7 +7,7 @@ from tree import TreeNode
 
 # O(n) time. O(n) space. BFS.
 class Solution:
-    def addOneRow(self, root: TreeNode, val: int, depth: int) -> TreeNode:
+    def addOneRow(self, root: Optional[TreeNode], val: int, depth: int) -> Optional[TreeNode]:
         if depth == 1:
             curr = TreeNode(val)
             curr.left = root

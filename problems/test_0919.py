@@ -1,5 +1,6 @@
 import collections
 import unittest
+from typing import Optional
 
 import utils
 from tree import TreeNode
@@ -9,7 +10,7 @@ from tree import TreeNode
 class CBTInserter:
 
     # O(n) time. O(n) space.
-    def __init__(self, root: TreeNode):
+    def __init__(self, root: Optional[TreeNode]):
         self.root = root
         self.q = q = collections.deque()
         q.append(root)
@@ -26,9 +27,9 @@ class CBTInserter:
             q.popleft()
 
     # O(1) time. O(1) space.
-    def insert(self, v: int) -> int:
+    def insert(self, val: int) -> int:
         curr = self.q[0]
-        new_node = TreeNode(v)
+        new_node = TreeNode(val)
         if curr.left:
             curr.right = new_node
             self.q.popleft()
@@ -38,7 +39,7 @@ class CBTInserter:
         return curr.val
 
     # O(1) time. O(1) space.
-    def get_root(self) -> TreeNode:
+    def get_root(self) -> Optional[TreeNode]:
         return self.root
 
 

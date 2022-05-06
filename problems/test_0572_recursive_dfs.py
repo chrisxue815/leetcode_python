@@ -1,4 +1,5 @@
 import unittest
+from typing import Optional
 
 import utils
 from tree import TreeNode
@@ -20,7 +21,7 @@ def match(a, b):
 
 # O(n) time. O(log(n)) space. Recursive DFS.
 class Solution:
-    def isSubtree(self, root: TreeNode, subRoot: TreeNode) -> bool:
+    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
         subtree_height = height(subRoot)
 
         def dfs(curr):
