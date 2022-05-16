@@ -6,7 +6,7 @@ from tree_link_node import Node
 
 # O(n) time. O(1) space. Next right pointer traversal.
 class Solution:
-    def connect(self, root: 'Node') -> 'Node':
+    def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
         if not root:
             return None
 

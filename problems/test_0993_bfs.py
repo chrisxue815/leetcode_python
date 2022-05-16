@@ -1,5 +1,6 @@
 import collections
 import unittest
+from typing import Optional
 
 import utils
 from tree import TreeNode
@@ -7,7 +8,7 @@ from tree import TreeNode
 
 # O(n) time. O(n) space. BFS, bit manipulation.
 class Solution:
-    def isCousins(self, root: TreeNode, x: int, y: int) -> bool:
+    def isCousins(self, root: Optional[TreeNode], x: int, y: int) -> bool:
         q = collections.deque()
         q.append(root)
 

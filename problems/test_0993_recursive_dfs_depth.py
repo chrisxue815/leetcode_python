@@ -1,4 +1,5 @@
 import unittest
+from typing import Optional
 
 import utils
 from tree import TreeNode
@@ -6,7 +7,7 @@ from tree import TreeNode
 
 # O(n) time. O(log(n)) space. Recursive pre-order DFS.
 class Solution:
-    def isCousins(self, root: TreeNode, x: int, y: int) -> bool:
+    def isCousins(self, root: Optional[TreeNode], x: int, y: int) -> bool:
         found = []
 
         def dfs(curr, parent, depth):

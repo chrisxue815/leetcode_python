@@ -1,5 +1,6 @@
 import collections
 import unittest
+from typing import Optional
 
 import utils
 from tree import TreeNode
@@ -7,7 +8,7 @@ from tree import TreeNode
 
 # O(n) time. O(n) space. BFS.
 class Solution:
-    def minDepth(self, root: TreeNode) -> int:
+    def minDepth(self, root: Optional[TreeNode]) -> int:
         if not root:
             return 0
 

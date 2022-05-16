@@ -1,12 +1,13 @@
 import collections
 import unittest
+from typing import List
 
 import utils
 
 
 # O(n) time. O(n) space. BFS.
 class Solution:
-    def snakesAndLadders(self, board):
+    def snakesAndLadders(self, board: List[List[int]]) -> int:
         n = len(board)
         moves = {1: 0}
         q = collections.deque()

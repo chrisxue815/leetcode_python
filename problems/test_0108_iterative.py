@@ -1,5 +1,5 @@
 import unittest
-from typing import List
+from typing import List, Optional
 
 import utils
 from tree import TreeNode
@@ -7,7 +7,7 @@ from tree import TreeNode
 
 # O(n) time. O(log(n)) space. Iterative DFS.
 class Solution:
-    def sortedArrayToBST(self, nums: List[int]) -> TreeNode:
+    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
         stack = []
         dummy = TreeNode(0)
         stack.append((0, len(nums), dummy, True))

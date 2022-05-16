@@ -1,5 +1,5 @@
 import unittest
-from typing import List
+from typing import List, Optional
 
 import utils
 from tree import TreeNode
@@ -7,7 +7,7 @@ from tree import TreeNode
 
 # O(n) time. O(log(n)) space. Recursive DFS.
 class Solution:
-    def sortedArrayToBST(self, nums: List[int]) -> TreeNode:
+    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
         def dfs(lo, hi):
             if lo >= hi:
                 return None
