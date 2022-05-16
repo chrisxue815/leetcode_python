@@ -1,12 +1,10 @@
 import unittest
 
+import utils
+
 
 class Solution:
-    def numTrees(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
+    def numTrees(self, n: int) -> int:
         f = [1, 1]
         for i in range(2, n + 1):
             fi = 0
@@ -19,15 +17,7 @@ class Solution:
 
 class Test(unittest.TestCase):
     def test(self):
-        self._test(0, 1)
-        self._test(1, 1)
-        self._test(2, 2)
-        self._test(3, 5)
-        self._test(4, 14)
-
-    def _test(self, n, expected):
-        actual = Solution().numTrees(n)
-        self.assertEqual(expected, actual)
+        utils.test(self, __file__, Solution)
 
 
 if __name__ == '__main__':
