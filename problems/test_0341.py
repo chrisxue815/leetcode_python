@@ -1,14 +1,11 @@
 import unittest
 
 import test_0385
+from nested_integer import NestedInteger
 
 
 class NestedIterator:
-    def __init__(self, nestedList):
-        """
-        Initialize your data structure here.
-        :type nestedList: List[NestedInteger]
-        """
+    def __init__(self, nestedList: [NestedInteger]):
         self.stack = []
         self.next_index = -1
 
@@ -39,18 +36,12 @@ class NestedIterator:
             else:
                 return None
 
-    def next(self):
-        """
-        :rtype: int
-        """
+    def next(self) -> int:
         curr = self.next_item
         self.next_item = self._move_next()
         return curr
 
-    def hasNext(self):
-        """
-        :rtype: bool
-        """
+    def hasNext(self) -> bool:
         return self.next_item is not None
 
 
