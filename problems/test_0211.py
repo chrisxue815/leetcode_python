@@ -6,9 +6,6 @@ import utils
 class WordDictionary:
 
     def __init__(self):
-        """
-        Initialize your data structure here.
-        """
         self.root = {}
 
     def addWord(self, word: str) -> None:
