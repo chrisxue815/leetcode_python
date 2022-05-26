@@ -5,16 +5,10 @@ import random
 
 class RandomizedCollection:
     def __init__(self):
-        """
-        Initialize your data structure here.
-        """
         self.values = []
         self.indices = collections.defaultdict(set)
 
     def insert(self, val: int) -> bool:
-        """
-        Inserts a value to the collection. Returns true if the collection did not already contain the specified element.
-        """
         pool = self.indices[val]
         is_new_val = not pool
         pool.add(len(self.values))
@@ -22,9 +16,6 @@ class RandomizedCollection:
         return is_new_val
 
     def remove(self, val: int) -> bool:
-        """
-        Removes a value from the collection. Returns true if the collection contained the specified element.
-        """
         pool = self.indices[val]
         if not pool:
             return False
@@ -41,9 +32,6 @@ class RandomizedCollection:
         return True
 
     def getRandom(self) -> int:
-        """
-        Get a random element from the collection.
-        """
         return self.values[random.randrange(len(self.values))]
 
 
