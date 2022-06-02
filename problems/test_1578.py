@@ -6,14 +6,14 @@ import utils
 
 # O(n) time. O(1) space. Greedy.
 class Solution:
-    def minCost(self, s: str, cost: List[int]) -> int:
+    def minCost(self, colors: str, neededTime: List[int]) -> int:
         result = 0
-        prev_char = s[0]
-        prev_cost = cost[0]
+        prev_char = colors[0]
+        prev_cost = neededTime[0]
 
-        for i in range(1, len(s)):
-            curr_char = s[i]
-            curr_cost = cost[i]
+        for i in range(1, len(colors)):
+            curr_char = colors[i]
+            curr_cost = neededTime[i]
 
             if curr_char != prev_char:
                 prev_char = curr_char
